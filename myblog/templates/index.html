@@ -145,43 +145,37 @@
 
 <div class="tlinks">Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a></div>
 
+
 <!-- Main content area -->
 <main class="container">
     <div class="row">
-
         <!-- Main content -->
         <div class="col-md-8">
-            <article>
-                <h2 class="article-title">主要内容</h2>
+            {% block content %}
+                <article>
 
-                <p class="article-meta">Posted on
-                    <time datetime="2017-05-14">14 May</time>
-                    by <a href="#" rel="author">Joe Bloggs</a></p>
+                    <h2 class="article-title">主要内容</h2>
 
-{#                可定义以后博客的简要信息#}
-                <p>Welcome to portal, a free CSS3 &amp; HTML5 responsive web template from <a href="#" title="ZyPOP">ZyPOP</a>.
-                    This template is completely <strong>free</strong> to use permitting a link remains back to <a
-                            href="#" title="ZyPOP">ZyPOP</a>.</p>
+                    <p class="article-meta">Posted on
+                        <time datetime="2017-05-14">14 May</time>
+                        by <a href="#" rel="author">Joe Bloggs</a></p>
 
-{#                <p> Should you wish to use this template unbranded you can buy a template license from our website for#}
-{#                    8.00 GBP, this will allow you remove all branding related to our site, for more information about#}
-{#                    this see below.</p>#}
-{##}
-{#                <p>This template has been tested in:</p>#}
+                    {#                可定义以后博客的简要信息#}
+                    <p>Welcome to portal, a free CSS3 &amp; HTML5 responsive web template from <a href="#"
+                                                                                                  title="ZyPOP">ZyPOP</a>.
+                        This template is completely <strong>free</strong> to use permitting a link remains back to <a
+                                href="#" title="ZyPOP">ZyPOP</a>.</p>
 
-{#                一个简单的行列#}
-{#                <ul>#}
-{#                    <li>Firefox</li>#}
-{#                    <li>IE / Edge</li>#}
-{#                    <li>Chrome</li>#}
-{#                    <li>Safari</li>#}
-{#                    <li>iOS / Android</li>#}
-{#                </ul>#}
-{#                两个按钮#}
-                <a href="#" class="btn btn-primary">Read more</a>
-                <a href="#" class="btn btn-secondary">Comments</a>
+                    {#                <p> Should you wish to use this template unbranded you can buy a template license from our website for#}
+                    {#                    8.00 GBP, this will allow you remove all branding related to our site, for more information about#}
+                    {#                    this see below.</p>#}
+                    {##}
+                    {#                <p>This template has been tested in:</p>#}
 
-            </article>
+                    <a href="#" class="btn btn-primary">Read more</a>
+                    <a href="#" class="btn btn-secondary">Comments</a>
+                </article>
+            {% endblock %}
 
             <article>
 
@@ -190,10 +184,14 @@
                     <time datetime="2013-05-14">14 May</time>
                     by <a href="#" rel="author">Joe Bloggs</a></p>
 
-                <p>Purchasing a template license for 8.00 GBP (at time of writing around 12 USD) gives you the right to
-                    remove any branding including links, logos and source tags relating to ZyPOP. As well as waiving the
-                    attribution requirement, your payment will also help us provide continued support for users as well
-                    as creating new web templates. Find out more about how to buy at the licensing page on our website
+                <p>Purchasing a template license for 8.00 GBP (at time of writing around 12 USD) gives you the right
+                    to
+                    remove any branding including links, logos and source tags relating to ZyPOP. As well as waiving
+                    the
+                    attribution requirement, your payment will also help us provide continued support for users as
+                    well
+                    as creating new web templates. Find out more about how to buy at the licensing page on our
+                    website
                     which can be accessed at <a href="#licensing" title="template license">#licensing</a></p>
 
                 <h3>Lorem lipsum</h3>
@@ -226,6 +224,7 @@
         </div>
 
         <!-- 侧边栏导航 -->
+
         <!-- Sidebar -->
         <aside class="col-md-4">
             <div class="sidebar-box">
@@ -270,10 +269,9 @@
                 </ul>
             </div>
         </aside>
-
-
     </div>
 </main>
+
 
 <!-- 底部导航模块 -->
 <!-- Footer -->
@@ -335,7 +333,7 @@
         </div>
     </footer>
 </div>
-{% block content %}
+{% block contents %}
 
     <!-- Bootcamp JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
