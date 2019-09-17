@@ -1,0 +1,73 @@
+{% extends "week.html" %}
+{% block title %} 模板语法可硬{{ week }} {% endblock %}
+{% block rect %}
+    {% for i in week %}
+        <rect class="bar" fill="#1f77b4" y="327" height="{{ i.num|safe }}" width="21" x="1">
+            <!-- 获取焦点显示详细信息    -->
+            <title>Work Week: 2018.51
+                Nbr:{{ i.NO|safe }}
+
+                BeforeReview: {{ i.BeforeReview|safe }}
+                Review:{{ i.Review|safe }}
+                Maintainer: {{ i.Maintainer }}
+                SubmitToMerge:{{ i.SubmitToMerge }}
+                Merge:{{ i.Merge }}
+            </title>
+        </rect>
+    {% endfor %}
+{% endblock rect %}
+
+{% block week %}
+    {% for w in week %}
+        <g class="tick" transform="translate(35.30769230769231,0)" style="opacity: 1;">
+            <line y2="6" x2="0"></line>
+            <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)" style="text-anchor: middle;">
+                {{ w|safe }}
+            </text>
+        </g>
+    {% endfor %}
+{% endblock %}
+
+{% block timeline %}
+    {% for t in context %}
+        <g class="tick" transform="translate(11.76923076923077,0)" style="opacity: 1;">
+            <line y2="6" x2="0"></line>
+            <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)"
+                  style="text-anchor: middle;">
+                {{ t }}
+            </text>
+        </g>
+    {% endfor %}
+{% endblock %}
+
+{% block numdetails %}
+    {% for i in context %}
+        <g class="stack _0">
+        <rect class="bar" fill="#1f77b4" y="215" height="13" width="21" x="1">
+            <title>Work Week: {{ i|safe }}
+
+                Nbr: {{ i.num|safe }}</title>
+        </rect>
+    {% endfor %}
+{% endblock %}
+
+{% block details %}
+    {% for x in context %}
+        <tbody>
+        <tr class="dc-table-group">
+            <td class="dc-table-label" colspan="7">{{ x|safe }}</td>
+        </tr>
+        {% for y in x %}
+            <tr class="dc-table-row">
+                <td class="dc-table-column _0"><a href="https://android.intel.com/680511" target="_blank">680511</a>
+                </td>
+                <td class="dc-table-column _1">{{ y.PatchId }}</td>
+                <td class="dc-table-column _2">{{ y.Date }}</td>
+                <td class="dc-table-column _3">{{ y.Before }}</td>
+                <td class="dc-table-column _4">{{ y.Review }}</td>
+                <td class="dc-table-column _5">{{ y.Maintainer }}</td>
+                <td class="dc-table-column _6">{{ y.Submit }}</td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

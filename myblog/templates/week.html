@@ -1,0 +1,403 @@
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<script scr="../static/patch_lifecycle.js"></script>
+<body>
+<div id="weeks" ng-show="viewsBooleans.showweeks" class="panel">
+    <div class="row">
+        <h4>Patch Cycle Chart / Work Week</h4>
+        <div dc-chart="barChart" dc-width="990" dc-height="400" dc-margins="{top:10, right:10, bottom:50, left:50}"
+             dc-dimension="cycleDimension" dc-x="d3.scale.ordinal(cycleDimensionGroup)" dc-x-units="dc.units.ordinal"
+             dc-x-axis-label="'Work Week (Year.WW)'" dc-round="dc.round.floor"
+             dc-legend="dc.legend().x(75).y(0).itemWidth(140).horizontal(true)" dc-elastic-y="true"
+             dc-always-use-rounding="true" dc-y-axis-padding="'10%'" dc-y-axis-label="'Hours'"
+             dc-render-horizontal-grid-lines="true" dc-hidable-stacks="true" dc-post-setup-chart="cycleChartConfigure"
+             class="dc-chart">
+            <svg width="990" height="400">
+                <g>
+                    <g class="grid-line horizontal" transform="translate(62,10)">
+                        <line x1="1" y1="328" x2="918" y2="328" opacity="0"></line>
+                        <line x1="1" y1="298" x2="918" y2="298" opacity="0"></line>
+                        <line x1="1" y1="268" x2="918" y2="268" opacity="0"></line>
+                        <line x1="1" y1="237" x2="918" y2="237" opacity="0"></line>
+                        <line x1="1" y1="207" x2="918" y2="207" opacity="0"></line>
+                        <line x1="1" y1="177" x2="918" y2="177" opacity="0"></line>
+                        <line x1="1" y1="147" x2="918" y2="147" opacity="0"></line>
+                        <line x1="1" y1="116" x2="918" y2="116" opacity="0"></line>
+                        <line x1="1" y1="86" x2="918" y2="86" opacity="0"></line>
+                        <line x1="1" y1="56" x2="918" y2="56" opacity="0"></line>
+                        <line x1="1" y1="26" x2="918" y2="26" opacity="0"></line>
+                    </g>
+
+                    <g class="chart-body" transform="translate(62, 10)"
+                       clip-path="url(http://cactus-metrics.sh.intel.com/metrics/#dc-chart78-clip)">
+                        <g class="stack _0">
+                            {% block rect %}
+                                <!-- height 就是将来build数量的字段, x轴的位置. -->
+                                <rect class="bar" fill="#1f77b4" y="327" height="1" width="21" x="1">
+                                    <!-- 获取焦点显示详细信息    -->
+                                    <title>Work Week: 2018.51
+                                        Nbr: 1
+
+                                        BeforeReview: 0 Day(s) 1 Hour(s) (13%)
+                                        Review: 0 Day(s) 1 Hour(s) (13%)
+                                        Maintainer: 0 Day(s) 0 Hour(s) (0%)
+                                        SubmitToMerge: 0 Day(s) 5 Hour(s) (63%)
+                                        Merge: 0 Day(s) 1 Hour(s) (13%)
+                                    </title>
+                                </rect>
+                                <!-- height 就是将来build数量的字段,  x轴的位置 -->
+                                <rect class="bar" fill="#1f77b4" y="304" height="24" width="21" x="24.53846153846154">
+                                    <title>Work Week: 2018.52
+                                        Nbr: 4
+
+                                        BeforeReview: 1 Day(s) 15 Hour(s) (82%)
+                                        Review: 0 Day(s) 2 Hour(s) (3%)
+                                        Maintainer: 0 Day(s) 1 Hour(s) (1%)
+                                        SubmitToMerge: 0 Day(s) 4 Hour(s) (9%)
+                                        Merge: 0 Day(s) 2 Hour(s) (4%)
+                                    </title>
+                                </rect>
+                            {% endblock %}
+                        </g>
+                    </g>
+
+                    <g class="axis x" transform="translate(62,338)">
+                        {% block week %}
+                            <g class="tick" transform="translate(11.76923076923077,0)" style="opacity: 1;">
+                                <line y2="6" x2="0"></line>
+                                <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)"
+                                      style="text-anchor: middle;">
+                                    2018.51
+                                </text>
+                            </g>
+                            <g class="tick" transform="translate(35.30769230769231,0)" style="opacity: 1;">
+                                <line y2="6" x2="0"></line>
+                                <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)"
+                                      style="text-anchor: middle;">
+                                    2018.52
+                                </text>
+                            </g>
+                        {% endblock %}
+                        <path class="domain" d="M0,6V0H918V6"></path>
+                    </g>
+                    <text class="x-axis-label" transform="translate(521,388)" text-anchor="middle">
+                        Work Week (Year.WW)
+                    </text>
+
+                    <!-- y轴时间     -->
+                    <g class="axis y" transform="translate(62,10)">
+                        <g class="tick" transform="translate(0,328)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                0
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,298)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                50
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,268)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                100
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,237)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                150
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,207)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                200
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,177)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                250
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,147)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                300
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,116)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                350
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,86)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                400
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,56)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                450
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,26)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                500
+                            </text>
+                        </g>
+                        <path class="domain" d="M-6,0H0V328H-6"></path>
+                    </g>
+                    <text transform="translate(12,174),rotate(-90)" class="y-axis-label y-label" text-anchor="middle">
+                        Hours
+                    </text>
+                </g>
+                <defs>
+                    <clippath id="dc-chart78-clip">
+                        <rect width="918" height="328" transform="translate(-0, -0)"></rect>
+                    </clippath>
+                </defs>
+
+                <g class="dc-legend" transform="translate(75,0)">
+                    <g class="dc-legend-item" transform="translate(0,0)">
+                        <rect width="12" height="12" fill="#1f77b4"></rect>
+                        <text x="14" y="10.5">
+                            avgBeforeReviewTime
+                        </text>
+                    </g>
+                    <g class="dc-legend-item" transform="translate(140,0)">
+                        <rect width="12" height="12" fill="#ff7f0e"></rect>
+                        <text x="14" y="10.5">
+                            avgReviewTime
+                        </text>
+                    </g>
+                    <g class="dc-legend-item" transform="translate(280,0)">
+                        <rect width="12" height="12" fill="#2ca02c"></rect>
+                        <text x="14" y="10.5">
+                            avgMaintainerTime
+                        </text>
+                    </g>
+                    <g class="dc-legend-item" transform="translate(420,0)">
+                        <rect width="12" height="12" fill="#d62728"></rect>
+                        <text x="14" y="10.5">
+                            avgSubmitToMergeTime
+                        </text>
+                    </g>
+                    <g class="dc-legend-item" transform="translate(0,17)">
+                        <rect width="12" height="12" fill="#9467bd"></rect>
+                        <text x="14" y="10.5">
+                            avgMergeTime
+                        </text>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Number of Patches / Work Week</h4>
+        <div dc-chart="barChart" dc-width="990" dc-height="300" dc-margins="{top:10, right:10, bottom:50, left:50}"
+             dc-dimension="cycleDimension" dc-group="cycleDimensionGroup" dc-x="d3.scale.ordinal(cycleDimensionGroup)"
+             dc-x-units="dc.units.ordinal" dc-x-axis-label="'Work Week (Year.WW)'" dc-round="dc.round.floor"
+             dc-elastic-y="true" dc-always-use-rounding="true" dc-y-axis-padding="'10%'"
+             dc-y-axis-label="'Number of Patches'" dc-render-horizontal-grid-lines="true"
+             dc-post-setup-chart="wwNbPatchBarChartSetup" class="dc-chart">
+            <svg width="990" height="300">
+                <g>
+                    <g class="grid-line horizontal" transform="translate(62,10)">
+                        <line x1="1" y1="228" x2="918" y2="228" opacity="0"></line>
+                        <line x1="1" y1="202" x2="918" y2="202" opacity="0"></line>
+                        <line x1="1" y1="176" x2="918" y2="176" opacity="0"></line>
+                        <line x1="1" y1="150" x2="918" y2="150" opacity="0"></line>
+                        <line x1="1" y1="124" x2="918" y2="124" opacity="0"></line>
+                        <line x1="1" y1="98" x2="918" y2="98" opacity="0"></line>
+                        <line x1="1" y1="73" x2="918" y2="73" opacity="0"></line>
+                        <line x1="1" y1="47" x2="918" y2="47" opacity="0"></line>
+                        <line x1="1" y1="21" x2="918" y2="21" opacity="0"></line>
+                    </g>
+                    <g class="chart-body" transform="translate(62, 10)"
+                       clip-path="url(http://cactus-metrics.sh.intel.com/metrics/#dc-chart79-clip)">
+                        <!-- x轴时间排列 -->
+                        {% block numdetails %}
+                            <g class="stack _0">
+                                <rect class="bar" fill="#1f77b4" y="215" height="13" width="21" x="1">
+                                    <title>Work Week: 2018.51
+
+                                        Nbr: 1</title>
+                                </rect>
+                                <rect class="bar" fill="#1f77b4" y="176" height="52" width="21" x="24.53846153846154">
+                                    <title>Work Week: 2018.52
+
+                                        Nbr: 4</title>
+                                </rect>
+                            </g>
+                        {% endblock %}
+                    </g>
+                    <g class="axis x" transform="translate(62,238)">
+                        {% block timeline %}
+                            <g class="tick" transform="translate(11.76923076923077,0)" style="opacity: 1;">
+                                <line y2="6" x2="0"></line>
+                                <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)"
+                                      style="text-anchor: middle;">
+                                    2018.51
+                                </text>
+                            </g>
+                            <g class="tick" transform="translate(35.30769230769231,0)" style="opacity: 1;">
+                                <line y2="6" x2="0"></line>
+                                <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)"
+                                      style="text-anchor: middle;">
+                                    2018.52
+                                </text>
+                            </g>
+                        {% endblock %}
+                        <path class="domain" d="M0,6V0H918V6"></path>
+                    </g>
+                    <text class="x-axis-label" transform="translate(521,288)" text-anchor="middle">
+                        Work Week (Year.WW)
+                    </text>
+                    <!-- y轴值      -->
+                    <g class="axis y" transform="translate(62,10)">
+                        <g class="tick" transform="translate(0,228)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                0
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,202)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                2
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,176)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                4
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,150)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                6
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,124)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                8
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,98)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                10
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,73)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                12
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,47)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                14
+                            </text>
+                        </g>
+                        <g class="tick" transform="translate(0,21)" style="opacity: 1;">
+                            <line x2="-6" y2="0"></line>
+                            <text x="-9" dy=".32em" y="0" style="text-anchor: end;">
+                                16
+                            </text>
+                        </g>
+                        <path class="domain" d="M-6,0H0V228H-6"></path>
+                    </g>
+                    <text transform="translate(12,124),rotate(-90)" class="y-axis-label y-label" text-anchor="middle">
+                        Number of Patches
+                    </text>
+                </g>
+                <defs>
+                    <clippath id="dc-chart79-clip">
+                        <rect width="918" height="228" transform="translate(-0, -0)"></rect>
+                    </clippath>
+                </defs>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- 显示每条详细信息 -->
+<table dc-chart="dataTable" dc-dimension="cycleDimension" dc-group="tableGroup" dc-size="100"
+       dc-post-setup-chart="tablePostFormat" class="table table-hover dc-data-table dc-chart">
+    <thead>
+    <tr>
+        <th class="dc-table-head">Patch Id</th>
+        <th class="dc-table-head">Date</th>
+        <th class="dc-table-head">Before Review Time</th>
+        <th class="dc-table-head">Review Time</th>
+        <th class="dc-table-head">Maintainer Time</th>
+        <th class="dc-table-head">Submit To Merge Time</th>
+        <th class="dc-table-head">Merge Time</th>
+    </tr>
+    </thead>
+    <!-- 每周详情 -->
+    {% block details %}
+        <tbody>
+        <tr class="dc-table-group">
+            <td class="dc-table-label" colspan="7">WW2019.37</td>
+        </tr>
+        <tr class="dc-table-row">
+            <td class="dc-table-column _0"><a href="https://android.intel.com/680511" target="_blank">680511</a></td>
+            <td class="dc-table-column _1">13/09/19</td>
+            <td class="dc-table-column _2">0</td>
+            <td class="dc-table-column _3">0</td>
+            <td class="dc-table-column _4">1</td>
+            <td class="dc-table-column _5">0</td>
+            <td class="dc-table-column _6">2</td>
+        </tr>
+        <tr class="dc-table-row">
+            <td class="dc-table-column _0"><a href="https://android.intel.com/680191" target="_blank">680191</a></td>
+            <td class="dc-table-column _1">10/09/19</td>
+            <td class="dc-table-column _2">10</td>
+            <td class="dc-table-column _3">0</td>
+            <td class="dc-table-column _4">2</td>
+            <td class="dc-table-column _5">2</td>
+            <td class="dc-table-column _6">2</td>
+        </tbody>
+        <tbody>
+        <tr class="dc-table-group">
+            <td class="dc-table-label" colspan="7">WW2019.36</td>
+        </tr>
+        <tr class="dc-table-row">
+            <td class="dc-table-column _0"><a href="https://android.intel.com/679759" target="_blank">679759</a></td>
+            <td class="dc-table-column _1">06/09/19</td>
+            <td class="dc-table-column _2">0</td>
+            <td class="dc-table-column _3">0</td>
+            <td class="dc-table-column _4">2</td>
+            <td class="dc-table-column _5">14</td>
+            <td class="dc-table-column _6">2</td>
+        </tr>
+        <tr class="dc-table-row">
+            <td class="dc-table-column _0"><a href="https://android.intel.com/679365" target="_blank">679365</a></td>
+            <td class="dc-table-column _1">03/09/19</td>
+            <td class="dc-table-column _2">20</td>
+            <td class="dc-table-column _3">0</td>
+            <td class="dc-table-column _4">2</td>
+            <td class="dc-table-column _5">3</td>
+            <td class="dc-table-column _6">2</td>
+        </tr>
+        </tbody>
+    {% endblock %}
+
+    </tbody>
+</table>
+</body>
+</html>
