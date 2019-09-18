@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Echarts使用心得总结——异步数据加载和更新</title>
+    <title>Echarts使用</title>
     <!-- including ECharts file -->
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
@@ -123,18 +123,18 @@ $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
 // 显示标题，图例和空的坐标轴
 myChart1.setOption({
     title: {
-        text: '异步数据加载示例'
+        text: 'Number of Patches / Work Week'
     },
     tooltip: {},
     legend: {
-        data:['销量']
+        data:[]
     },
     xAxis: {
         data: []
     },
     yAxis: {},
     series: [{
-        name: '销量',
+        name: 'num',
         type: 'bar',
         data: []
     }]
@@ -149,11 +149,15 @@ $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
 		},
 		yAxis: {},
 		series: [{
-			name: '销量',
+			name: 'name:销量',
 			type: 'bar',
 			data: resule.Result.value
 		}]
 	});
+});
+// 处理点击事件并且跳转到相应的百度搜索页面
+myChart1.on('click', function (params) {
+    window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
 });
     </script>
 </body>
