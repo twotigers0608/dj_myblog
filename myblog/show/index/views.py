@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.views import View
+from django.http import HttpResponse, JsonResponse
+import json
 
 
 # Create your views here.
 
 class Home(View):
-
     def get(self, request):
-
         week = {
             '2018.51': {'num': '21',
                         'NO': 1,
@@ -34,5 +34,36 @@ class Home(View):
                         'Submit': 4,
                         },
         }
-        context = {'week':week}
+
+        context = {'week': week}
         return render(request, 'text.html', context=context)
+
+
+class Json(View):
+    def get(self, request):
+        count = {
+            "State": 1,
+            "Message": "成功",
+            "Result": {
+                "name": [
+                    "衬衫",
+                    "羊毛衫",
+                    "雪纺衫",
+                    "裤子",
+                    "高跟鞋",
+                    "袜子"
+                ],
+                "value": [
+                    5,
+                    20,
+                    36,
+                    10,
+                    10,
+                    20
+                ]
+            }
+        }
+
+        # return HttpResponse(json.dumps(count, ensure_ascii=False), content_type="application/json,charset=utf-8")
+        # return JsonResponse(count)
+        return HttpResponse(count)

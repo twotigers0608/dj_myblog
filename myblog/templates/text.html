@@ -11,190 +11,194 @@
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="myChart" style="width:990px;height:400px;margin:auto;"></div>
 
-    <script type="text/javascript">
-    
-        var myChart = echarts.init(document.getElementById('myChart'));
-        
-// 显示标题，图例和空的坐标轴
-myChart.setOption({
-   
-    title: {
-        text: 'Patch Cycle Chart / Work Week'
-    },
-    tooltip: {},
-    legend: {
-        data:['Work Week(Years.WW)']
-    },
-    xAxis: {
-        data: []
-    },
-    yAxis: {},
-    series: [{
-        name: '销量',
-        type: 'bar',
-        data: []
-    }]
-});
+<script type="text/javascript">
 
-// 异步加载数据
-$.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {		
-	//resule = JSON.parse(resule);//把string字符串转换为json数组
-	myChart.setOption({
-        // 顶部选择
+    var myChart = echarts.init(document.getElementById('myChart'));
+
+    // 显示标题，图例和空的坐标轴
+    myChart.setOption({
+
+        title: {
+            text: 'Patch Cycle Chart / Work Week'
+        },
+        tooltip: {},
         legend: {
-        data: ['New', 'Reviewing','Approved','Merged','Released']
+            data: ['Work Week(Years.WW)']
         },
-        // 自动调节位置
-        toolbox: {
-        show : true,
-        orient: 'vertical',
-        x: 'right',
-        y: 'center',
-        feature : {
-        mark : true,
-        dataView : {readOnly: false},
-        magicType:['line', 'bar'],
-        restore : true,
-        saveAsImage : true
-        }
+        xAxis: {
+            data: []
         },
-        calculable : true,
-        // 显示每周
-		xAxis: {
-            data:  ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
-            axisLabel: {
-                        interval:0,
-                        rotate:40
-                    },
-        },
-        // 每周每个任务的时间
-        yAxis: {
-            type : 'value',
-            splitArea : {show : true}
-            },
-		series: [ {
-            name: 'New',
+        yAxis: {},
+        series: [{
+            name: '销量',
             type: 'bar',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            },
-            // 将来返回New种的时间
-            data: [320, 302, 301, 334, 390, 330, 320]
-        },
-        {
-            name: 'Reviewing',
-            type: 'bar',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            },
-            data: [120, 132, 101, 134, 90, 230, 210]
-        },
-        {
-            name: 'Approved',
-            type: 'bar',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            },
-            data: [220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-            name: 'Merged',
-            type: 'bar',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            },
-            data: [150, 212, 201, 154, 190, 330, 410]
-        },
-        {
-            name: 'Released',
-            type: 'bar',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            },
-            data: [820, 832, 901, 934, 1290, 1330, 1320]
+            data: []
         }]
-	});
-});
-    </script>
-    <div id="main" style="width:990px;height:400px;margin:auto;"></div>
+    });
 
-    <script type="text/javascript">
-    
-		var myChart1 = echarts.init(document.getElementById('main'));
-// 显示标题，图例和空的坐标轴
-myChart1.setOption({
-    title: {
-        text: 'Number of Patches / Work Week'
-    },
-    tooltip: {},
-    legend: {
-        data:[]
-    },
-    xAxis: {
-        data: []
-    },
-    yAxis: {},
-    series: [{
-        name: 'num',
-        type: 'bar',
-        data: []
-    }]
-});
+    // 异步加载数据
+    $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
+        //resule = JSON.parse(resule);//把string字符串转换为json数组
+        myChart.setOption({
+            // 顶部选择
+            legend: {
+                data: ['New', 'Reviewing', 'Approved', 'Merged', 'Released']
+            },
+            // 自动调节位置
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                x: 'right',
+                y: 'center',
+                feature: {
+                    mark: true,
+                    dataView: {readOnly: false},
+                    magicType: ['line', 'bar'],
+                    restore: true,
+                    saveAsImage: true
+                }
+            },
+            calculable: true,
+            // 显示每周
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子", "衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+                axisLabel: {
+                    interval: 0,
+                    rotate: 40
+                },
+            },
+            // 每周每个任务的时间
+            yAxis: {
+                type: 'value',
+                splitArea: {show: true}
+            },
+            series: [{
+                name: 'New',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                // 将来返回New种的时间
+                data: [320, 302, 301, 334, 390, 330, 320]
+            },
+                {
+                    name: 'Reviewing',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: 'Approved',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: 'Merged',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [150, 212, 201, 154, 190, 330, 410]
+                },
+                {
+                    name: 'Released',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: [820, 832, 901, 934, 1290, 1330, 1320]
+                }]
+        });
+    });
+</script>
 
-// 异步加载数据
-$.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {		
-	//resule = JSON.parse(resule);//把string字符串转换为json数组
-	myChart1.setOption({
-		xAxis: {
-			data:  resule.Result.name
-		},
-		yAxis: {},
-		series: [{
-			name: 'name:销量',
-			type: 'bar',
-			data: resule.Result.value
-		}]
-	});
-});
-// 处理点击事件并且跳转到相应的百度搜索页面
-myChart1.on('click', function (params) {
-    window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
-});
-myChart.on('click', function (params) {
-    window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
-})
-    </script>
+<div id="main" style="width:990px;height:400px;margin:auto;"></div>
+
+<script type="text/javascript">
+
+    var myChart1 = echarts.init(document.getElementById('main'));
+    // 显示标题，图例和空的坐标轴
+    myChart1.setOption({
+        title: {
+            text: 'Number of Patches / Work Week'
+        },
+        tooltip: {},
+        legend: {
+            data: []
+        },
+        xAxis: {
+            data: []
+        },
+        yAxis: {},
+        series: [{
+            name: 'num',
+            type: 'bar',
+            data: []
+        }
+        ]
+    });
+
+    // 异步加载数据
+    $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
+    //$.get('getjson').done(function (resule) {
+        //resule = JSON.parse(resule);//把string字符串转换为json数组
+        myChart1.setOption({
+            xAxis: {
+                data: resule.Result.name
+            },
+            yAxis: {},
+            series: [{
+                name: 'name:销量',
+                type: 'bar',
+                data: resule.Result.value
+            }
+            ]
+        });
+    });
+    // 处理点击事件并且跳转到相应的百度搜索页面
+    myChart1.on('click', function (params) {
+        window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+    });
+    myChart.on('click', function (params) {
+        window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+    })
+</script>
 <table class="table table-hover dc-data-table dc-chart">
     <thead>
-        <tr>
-            <th class="dc-table-head" >Patch Id</th>
-            <th class="dc-table-head">Date</th>
-            <th class="dc-table-head">Before Review Time</th>
-            <th class="dc-table-head">Review Time</th>
-            <th class="dc-table-head">Maintainer Time</th>
-            <th class="dc-table-head">Submit To Merge Time</th>
-            <th class="dc-table-head">Merge Time</th>
-        </tr>
+    <tr>
+        <th class="dc-table-head">Patch Id</th>
+        <th class="dc-table-head">Date</th>
+        <th class="dc-table-head">Before Review Time</th>
+        <th class="dc-table-head">Review Time</th>
+        <th class="dc-table-head">Maintainer Time</th>
+        <th class="dc-table-head">Submit To Merge Time</th>
+        <th class="dc-table-head">Merge Time</th>
+    </tr>
     </thead>
 </table>
 
