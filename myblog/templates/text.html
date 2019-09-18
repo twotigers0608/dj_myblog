@@ -40,18 +40,38 @@ myChart.setOption({
 $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {		
 	//resule = JSON.parse(resule);//把string字符串转换为json数组
 	myChart.setOption({
+        // 顶部选择
         legend: {
         data: ['New', 'Reviewing','Approved','Merged','Released']
         },
+        // 自动调节位置
+        toolbox: {
+        show : true,
+        orient: 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+        mark : true,
+        dataView : {readOnly: false},
+        magicType:['line', 'bar'],
+        restore : true,
+        saveAsImage : true
+        }
+        },
+        calculable : true,
+        // 显示每周
 		xAxis: {
             data:  ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
             axisLabel: {
-                interval:0,
-                rotate:40
-            }
+                        interval:0,
+                        rotate:40
+                    },
         },
-        
-		yAxis: {},
+        // 每周每个任务的时间
+        yAxis: {
+            type : 'value',
+            splitArea : {show : true}
+            },
 		series: [ {
             name: 'New',
             type: 'bar',
@@ -62,6 +82,7 @@ $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
                     position: 'insideRight'
                 }
             },
+            // 将来返回New种的时间
             data: [320, 302, 301, 334, 390, 330, 320]
         },
         {
@@ -159,7 +180,24 @@ $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
 myChart1.on('click', function (params) {
     window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
 });
+myChart.on('click', function (params) {
+    window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+})
     </script>
+<table class="table table-hover dc-data-table dc-chart">
+    <thead>
+        <tr>
+            <th class="dc-table-head" >Patch Id</th>
+            <th class="dc-table-head">Date</th>
+            <th class="dc-table-head">Before Review Time</th>
+            <th class="dc-table-head">Review Time</th>
+            <th class="dc-table-head">Maintainer Time</th>
+            <th class="dc-table-head">Submit To Merge Time</th>
+            <th class="dc-table-head">Merge Time</th>
+        </tr>
+    </thead>
+</table>
+
 </body>
 
 </html>
