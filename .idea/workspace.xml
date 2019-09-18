@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dj_myblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dj_myblog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/show/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/static/js/echarts.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/static/js/jquery-1.8.3.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/static/js/jquery.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/templates/text.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/text.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,20 +15,7 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -233,7 +214,7 @@
       <updated>1568381846447</updated>
       <workItem from="1568381848756" duration="7369000" />
       <workItem from="1568542086183" duration="8504000" />
-      <workItem from="1568798013120" duration="3958000" />
+      <workItem from="1568798013120" duration="5238000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -256,11 +237,18 @@
       <option name="project" value="LOCAL" />
       <updated>1568798703356</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="增加echarts.js 和 jquery-3.1.1文件 绘制两个图形">
+      <created>1568806221115</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568806221115</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23732000" />
+    <option name="totallyTimeSpent" value="25012000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -272,10 +260,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="134" y="92" width="1616" height="940" extended-state="0" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17707007" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15367606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -289,7 +276,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.29510155" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2517839" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -330,7 +317,8 @@
     <MESSAGE value="初步修改首页 html" />
     <MESSAGE value="模板语法继承 测试" />
     <MESSAGE value="添加echarts插件" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加echarts插件" />
+    <MESSAGE value="增加echarts.js 和 jquery-3.1.1文件 绘制两个图形" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加echarts.js 和 jquery-3.1.1文件 绘制两个图形" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myblog/tempaltes/index.html" />

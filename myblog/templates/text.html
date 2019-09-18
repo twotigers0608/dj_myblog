@@ -13,15 +13,17 @@
 
     <script type="text/javascript">
     
-		var myChart = echarts.init(document.getElementById('myChart'));
+        var myChart = echarts.init(document.getElementById('myChart'));
+        
 // 显示标题，图例和空的坐标轴
 myChart.setOption({
+   
     title: {
-        text: '异步数据加载示例'
+        text: 'Patch Cycle Chart / Work Week'
     },
     tooltip: {},
     legend: {
-        data:['销量']
+        data:['Work Week(Years.WW)']
     },
     xAxis: {
         data: []
@@ -38,15 +40,78 @@ myChart.setOption({
 $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {		
 	//resule = JSON.parse(resule);//把string字符串转换为json数组
 	myChart.setOption({
+        legend: {
+        data: ['New', 'Reviewing','Approved','Merged','Released']
+        },
 		xAxis: {
-			data:  ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-		},
+            data:  ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+            axisLabel: {
+                interval:0,
+                rotate:40
+            }
+        },
+        
 		yAxis: {},
-		series: [{
-			name: '销量',
-			type: 'bar',
-			data: resule.Result.value
-		}]
+		series: [ {
+            name: 'New',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideRight'
+                }
+            },
+            data: [320, 302, 301, 334, 390, 330, 320]
+        },
+        {
+            name: 'Reviewing',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideRight'
+                }
+            },
+            data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name: 'Approved',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideRight'
+                }
+            },
+            data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name: 'Merged',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideRight'
+                }
+            },
+            data: [150, 212, 201, 154, 190, 330, 410]
+        },
+        {
+            name: 'Released',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideRight'
+                }
+            },
+            data: [820, 832, 901, 934, 1290, 1330, 1320]
+        }]
 	});
 });
     </script>
