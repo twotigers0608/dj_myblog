@@ -1,46 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>ECharts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Echarts使用心得总结——异步数据加载和更新</title>
     <!-- including ECharts file -->
-    <script scr="../static/js/jquery.min.js"></script>
-    <script src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
-<div id="main" style="width: 600px;height:400px;"></div>
-<script type="text/javascript">
-    // based on prepared DOM, initialize echarts instance
-    var myChart = echarts.init(document.getElementById('main'));
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="myChart" style="width:990px;height:400px;margin:auto;"></div>
 
-    // specify chart configuration item and data
-    var option = {
-        title: {
-            text: 'Patch Cycle Chart / Work Week'
-        },
-        tooltip: {},
-        legend: {
-            data: ['Sales']
-        },
-        xAxis: {
-            data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-        },
-        yAxis: {},
-        series: [{
-            name: 'Sales',
-            type: 'bar',
-            data: [50, 100, 150, 200, 250, 300, 350, 400, 535, 1]
-        }, {
-            name: 'QQ',
-            type: 'bar',
-            data: [50, 3, 46, 89, 35, 75, 83, 400, 535, 1]
-        }
-        ]
-    };
+    <script type="text/javascript">
+    
+		var myChart = echarts.init(document.getElementById('myChart'));
+// 显示标题，图例和空的坐标轴
+myChart.setOption({
+    title: {
+        text: '异步数据加载示例'
+    },
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: []
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: []
+    }]
+});
 
-    // use configuration item and data specified to show chart
-    myChart.setOption(option);
-</script>
+// 异步加载数据
+$.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {		
+	//resule = JSON.parse(resule);//把string字符串转换为json数组
+	myChart.setOption({
+		xAxis: {
+			data:  ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+		},
+		yAxis: {},
+		series: [{
+			name: '销量',
+			type: 'bar',
+			data: resule.Result.value
+		}]
+	});
+});
+    </script>
+    <div id="main" style="width:990px;height:400px;margin:auto;"></div>
+
+    <script type="text/javascript">
+    
+		var myChart1 = echarts.init(document.getElementById('main'));
+// 显示标题，图例和空的坐标轴
+myChart1.setOption({
+    title: {
+        text: '异步数据加载示例'
+    },
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: []
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: []
+    }]
+});
+
+// 异步加载数据
+$.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {		
+	//resule = JSON.parse(resule);//把string字符串转换为json数组
+	myChart1.setOption({
+		xAxis: {
+			data:  resule.Result.name
+		},
+		yAxis: {},
+		series: [{
+			name: '销量',
+			type: 'bar',
+			data: resule.Result.value
+		}]
+	});
+});
+    </script>
 </body>
 
 </html>
