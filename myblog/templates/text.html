@@ -165,21 +165,22 @@
 
     // 异步加载数据
     $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
-    //$.get('getjson').done(function (resule) {
-        //resule = JSON.parse(resule);//把string字符串转换为json数组
-        myChart1.setOption({
-            xAxis: {
-                data: resule.Result.name
-            },
-            yAxis: {},
-            series: [{
-                name: 'name:销量',
-                type: 'bar',
-                data: resule.Result.value
-            }
-            ]
+    //$.getJSON('getjson').done(function (resule) {
+            //resule = JSON.parse(resule);//把string字符串转换为json数组
+            myChart1.setOption({
+                xAxis: {
+                    data: resule.Result.name
+                },
+                yAxis: {},
+                series: [{
+                    name: 'name:销量',
+                    type: 'bar',
+                    data: resule.Result.value
+                }
+                ]
+            });
         });
-    });
+    }
     // 处理点击事件并且跳转到相应的百度搜索页面
     myChart1.on('click', function (params) {
         window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));

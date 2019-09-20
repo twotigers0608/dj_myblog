@@ -66,4 +66,5 @@ class Json(View):
 
         # return HttpResponse(json.dumps(count, ensure_ascii=False), content_type="application/json,charset=utf-8")
         # return JsonResponse(count)
-        return HttpResponse(count)
+        return JsonResponse(count, safe=False)
+

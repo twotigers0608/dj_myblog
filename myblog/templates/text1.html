@@ -8,30 +8,37 @@
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
+<div class="w1240">
+    <div class="list">
+        <a>欢迎来到宝淘</a>
+        <a class="rt" href="/taobao">首页</a>
+    </div>
+    <div class="link" id="isLogin">
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化ECharts实例
+            $(document).ready(function () {
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/user/',
+                    success: function (res) {
+                        //接口返回的json 文件 结果在res中
+                        console.log(res);
+                        //判断用户是否登录。向 <div>中写入html
+                        if (res['isLogin'] == true)
+                            $(isLogin).html('<a href="#">' + res['username'] + '</a> <a href="/logout" >退出</a> ');
+                        else
+                            $(isLogin).html('<a href="/login">登录</a> <a class="rt" href="/register">注册</a>');
+                    }
+                })
+            })
+
+        </script>
+    </div>
+    <div class="clear"></div>
+</div>
+
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="main" style="width:990px;height:400px;margin:auto;"></div>
-<script type="text/javascript">
-// 基于准备好的dom，初始化ECharts实例
-function getSceneId(scece_name, td) {
-  var post_data = {
-    "name": scece_name,
-  };
 
-  $.ajax({
-    url: {% url 'scene_update_url' %},
-    type: "POST",
-    data: post_data,
-    success: function (data) {
-      data = JSON.parse(data);
-      if (data["status"] == 1) {
-        setSceneTd(data["result"], scece_name, td);
-      } else {
-        alert(data["result"]);
-      }
-    }
-  });
-}
-</script>
 
 </body>
 </html>
