@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Echarts使用</title>
     <!-- including ECharts file -->
+    <style type="text/css" scr="../static/css/quiltreview.css"></style>
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
 </head>
@@ -164,23 +165,22 @@
     });
 
     // 异步加载数据
-    $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
-    //$.getJSON('getjson').done(function (resule) {
-            //resule = JSON.parse(resule);//把string字符串转换为json数组
-            myChart1.setOption({
-                xAxis: {
-                    data: resule.Result.name
-                },
-                yAxis: {},
-                series: [{
-                    name: 'name:销量',
-                    type: 'bar',
-                    data: resule.Result.value
-                }
-                ]
-            });
+    //$.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
+    $.get('/postjson/').done(function (resule) {
+        //resule = JSON.parse(resule);//把string字符串转换为json数组
+        myChart1.setOption({
+            xAxis: {
+                data: resule.Result.name
+            },
+            yAxis: {},
+            series: [{
+                name: 'name:销量',
+                type: 'bar',
+                data: resule.Result.value
+            }
+            ]
         });
-    }
+    })
     // 处理点击事件并且跳转到相应的百度搜索页面
     myChart1.on('click', function (params) {
         window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
@@ -188,19 +188,34 @@
     myChart.on('click', function (params) {
         window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
     })
+
 </script>
-<table class="table table-hover dc-data-table dc-chart">
-    <thead>
+<table class="changeTable accountDashboard" style="width: 100%;">
+    <colgroup>
+         {{ 'Lts 2018' }}
+    </colgroup>
+</table>
+<table>
     <tr>
-        <th class="dc-table-head">Patch Id</th>
-        <th class="dc-table-head">Date</th>
-        <th class="dc-table-head">Before Review Time</th>
-        <th class="dc-table-head">Review Time</th>
-        <th class="dc-table-head">Maintainer Time</th>
-        <th class="dc-table-head">Submit To Merge Time</th>
-        <th class="dc-table-head">Merge Time</th>
+        <th class="subHrader" colspan="6">{{ 'Ltp 2018' }}</th>
     </tr>
-    </thead>
+<tr>
+    <td class="dataHeard2">Branch</td>
+    <td class="dataHeard2">New</td>
+    <td class="dataHeard2">Reviewing</td>
+    <td class="dataHeard2">Approved</td>
+    <td class="dataHeard2">Merged</td>
+    <td class="dataHeard2">Released</td>
+</tr>
+    <tr>
+        <td class="dataCell2">android</td>
+        <td class="dataCell2">0</td>
+        <td class="dataCell2">0</td>
+        <td class="dataCell2">0</td>
+        <td class="dataCell2"><a href="week1.html" target="_blank">4</a></td>
+        <td class="dataCell2">19</td>
+    </tr>
+</thead>
 </table>
 
 </body>
