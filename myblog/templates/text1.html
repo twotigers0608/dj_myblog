@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Echarts使用</title>
@@ -7,38 +8,46 @@
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
 </head>
-<body>    <!-- prepare a DOM container with width and height -->
-<div class="w1240">
-    <div class="list">
-        <a>欢迎来到宝淘</a>
-        <a class="rt" href="/taobao">首页</a>
-    </div>
-    <div class="link" id="isLogin">
-        <script type="text/javascript">
-            // 基于准备好的dom，初始化ECharts实例
-            $(document).ready(function () {
-                $.ajax({
-                    url: 'http://127.0.0.1:8000/api/user/',
-                    success: function (res) {
-                        //接口返回的json 文件 结果在res中
-                        console.log(res);
-                        //判断用户是否登录。向 <div>中写入html
-                        if (res['isLogin'] == true)
-                            $(isLogin).html('<a href="#">' + res['username'] + '</a> <a href="/logout" >退出</a> ');
-                        else
-                            $(isLogin).html('<a href="/login">登录</a> <a class="rt" href="/register">注册</a>');
-                    }
-                })
-            })
 
-        </script>
+<body>
+    <!-- prepare a DOM container with width and height -->
+    <div id="main" style="width:990px;height:400px;margin:auto;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化ECharts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+        // 处理点击事件并且跳转到相应的百度搜索页面
+        // myChart.on('click', function (params) {
+        //     window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+        // });
+        window.addEventListener("resize", function () {
+            myChart.resize();
+        })
+        myChart.on('click', function (params) {
+            //为所欲为
+            console.log(params.name)
+        }
+    </script>
     </div>
     <div class="clear"></div>
-</div>
+    </div>
 
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width:990px;height:400px;margin:auto;"></div>
-
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width:990px;height:400px;margin:auto;"></div>
 
 </body>
 </html>

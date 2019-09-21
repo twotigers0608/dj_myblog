@@ -39,6 +39,7 @@
 
     // 异步加载数据
     $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
+        myChart.hideLoading();
         //resule = JSON.parse(resule);//把string字符串转换为json数组
         myChart.setOption({
             // 顶部选择
@@ -167,8 +168,23 @@
     // 异步加载数据
     //$.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
     $.get('/postjson/').done(function (resule) {
+        myChart.hideLoading();
         //resule = JSON.parse(resule);//把string字符串转换为json数组
         myChart1.setOption({
+            // 自动调节位置
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                x: 'right',
+                y: 'center',
+                feature: {
+                    mark: true,
+                    dataView: {readOnly: false},
+                    magicType: ['line', 'bar'],
+                    restore: true,
+                    saveAsImage: true
+                }
+            },
             xAxis: {
                 data: resule.Result.name
             },
@@ -188,7 +204,13 @@
     myChart.on('click', function (params) {
         window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
     })
-
+    
+</script>
+<table></table>
+<script type="text/javascript">
+    $.get('/tabledata/').done(function Gettable(result) {
+        
+    })
 </script>
 <table class="changeTable accountDashboard" style="width: 100%;">
     <colgroup>

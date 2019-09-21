@@ -39,3 +39,43 @@ class Home(View):
         return render(request, 'text.html', context=context)
 
 
+def getajax(request):
+    if request.method == "GET":
+        return render(request, 'testajax.html')
+
+
+def UserJson(request):
+    # 测试 ajax 请求
+    if request.method == "GET":
+        data = [
+            {
+                "name": "SheyPang",
+                "rolename": "管理员",
+                "status": "1",
+                "isActive": "1",
+                "createTime": "2018-01-01",
+                "lastLogin": "2018-02-02"
+            }, {
+                "name": "PPPPPPP",
+                "rolename": "管理员",
+                "status": "1",
+                "isActive": "1",
+                "createTime": "2018-01-01",
+                "lastLogin": "2018-02-02"
+            }, {
+                "name": "AAAAAA",
+                "rolename": "管理员",
+                "status": "1",
+                "isActive": "1",
+                "createTime": "2017-01-01",
+                "lastLogin": "2017-02-02"
+            }, {
+                "name": "VVVVVVVV",
+                "rolename": "管理员",
+                "status": "1",
+                "isActive": "1",
+                "createTime": "2018-06-04",
+                "lastLogin": "2018-02-02"
+            }
+        ]
+    return JsonResponse({"status": "200", "msg": "OK", "data": data})
