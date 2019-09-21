@@ -7,6 +7,9 @@
     <style type="text/css" scr="../static/css/quiltreview.css"></style>
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="../static/js/ajax.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          rel="external nofollow">
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
@@ -204,42 +207,54 @@
     myChart.on('click', function (params) {
         window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
     })
-    
+
 </script>
-<table></table>
-<script type="text/javascript">
-    $.get('/tabledata/').done(function Gettable(result) {
-        
-    })
+<table class="table table-bordered" id='tabledata'>
+    <tr>
+        <th>Week</th>
+        <th>Branch</td>
+        <th>New</th>
+        <th>Reviewing</th>
+        <th>Approved</th>
+        <th>Merged</th>
+        <th>Released</th>
+    </tr>
+</table>
+<script>
+    $(function for_ajax() {
+        var options = {
+            url: "weekjson",//json文件或者数据库查询后的地址
+            colums: [{
+                "Index": "week",
+                "Name": "Week"
+            }, {
+                "Index": "branch",
+                "Name": "Branch"
+            }, {
+                "Index": "new",
+                "Name": "New"
+            }, {
+                "Index": "reviewing",
+                "Name": "Reviewing"
+            }, {
+                "Index": "approved",
+                "Name": "Approved"
+            }, {
+                "Index": "merged",
+                "Name": "Merged"
+            }, {
+                "Index": "released",
+                "Name": "Released"
+            }]
+        }
+        $("#tabledata").grid(options);
+    });
 </script>
 <table class="changeTable accountDashboard" style="width: 100%;">
     <colgroup>
-         {{ 'Lts 2018' }}
+        {{ 'Lts 2018' }}
     </colgroup>
 </table>
-<table>
-    <tr>
-        <th class="subHrader" colspan="6">{{ 'Ltp 2018' }}</th>
-    </tr>
-<tr>
-    <td class="dataHeard2">Branch</td>
-    <td class="dataHeard2">New</td>
-    <td class="dataHeard2">Reviewing</td>
-    <td class="dataHeard2">Approved</td>
-    <td class="dataHeard2">Merged</td>
-    <td class="dataHeard2">Released</td>
-</tr>
-    <tr>
-        <td class="dataCell2">android</td>
-        <td class="dataCell2">0</td>
-        <td class="dataCell2">0</td>
-        <td class="dataCell2">0</td>
-        <td class="dataCell2"><a href="week1.html" target="_blank">4</a></td>
-        <td class="dataCell2">19</td>
-    </tr>
-</thead>
-</table>
-
 </body>
 
 </html>

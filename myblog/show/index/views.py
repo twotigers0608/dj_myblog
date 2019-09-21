@@ -79,3 +79,73 @@ def UserJson(request):
             }
         ]
     return JsonResponse({"status": "200", "msg": "OK", "data": data})
+
+
+def Weekjson(request):
+    if request.method == "GET":
+        data = [{
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        }, {
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        },{
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        },{
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        },{
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        },{
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        },{
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        },{
+            "week": "2019-21",
+            "branch": "Android",
+            "new": 0,
+            "reviewing": 0,
+            "approved": 0,
+            "merged": 2,
+            "released": 19,
+        },]
+        return JsonResponse({"status": "200", "msg": "OK", "data": data})

@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/show/index/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/show/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/templates/text.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/text.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,54 +19,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="256" column="8" selection-start-line="256" selection-start-column="8" selection-end-line="256" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-229">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/templates/testajax.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="43" column="36" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="36" />
+            <state relative-caret-position="31">
+              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/static/js/echarts.common.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-401" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/static/js/jquery-3.1.1.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/static/js/patch_lifecycle.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-329" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+            <state relative-caret-position="1184">
+              <caret line="139" column="24" lean-forward="true" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -73,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="136">
+              <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
               <folding>
                 <element signature="e#22#53#0" expanded="true" />
               </folding>
@@ -120,14 +108,14 @@
         <option value="$PROJECT_DIR$/myblog/myblog/urls.py" />
         <option value="$PROJECT_DIR$/myblog/myblog/settings.py" />
         <option value="$PROJECT_DIR$/myblog/templates/text1.html" />
-        <option value="$PROJECT_DIR$/myblog/templates/text.html" />
         <option value="$PROJECT_DIR$/myblog/show/getjson/urls.py" />
         <option value="$PROJECT_DIR$/myblog/show/getjson/views.py" />
-        <option value="$PROJECT_DIR$/myblog/show/index/urls.py" />
         <option value="$PROJECT_DIR$/myblog/show/index/User.json" />
         <option value="$PROJECT_DIR$/myblog/templates/testajax.html" />
-        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
+        <option value="$PROJECT_DIR$/myblog/show/index/urls.py" />
         <option value="$PROJECT_DIR$/myblog/static/js/ajax.js" />
+        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
+        <option value="$PROJECT_DIR$/myblog/templates/text.html" />
       </list>
     </option>
   </component>
@@ -138,9 +126,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="797" />
+    <option name="width" value="714" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -190,20 +177,6 @@
               <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
               <item name="myblog" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
@@ -292,9 +265,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.week.html" />
         <item itemvalue="JavaScript Debug.text1.html" />
         <item itemvalue="JavaScript Debug.text.html" />
-        <item itemvalue="JavaScript Debug.week.html" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.histogram.html" />
       </list>
@@ -313,7 +286,7 @@
       <workItem from="1568381848756" duration="7369000" />
       <workItem from="1568542086183" duration="8504000" />
       <workItem from="1568907792989" duration="574000" />
-      <workItem from="1569042431522" duration="11757000" />
+      <workItem from="1569042431522" duration="14042000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -350,11 +323,18 @@
       <option name="project" value="LOCAL" />
       <updated>1569057913939</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="解决 ajax 显示问题">
+      <created>1569062403441</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569062403441</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46028000" />
+    <option name="totallyTimeSpent" value="48313000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -466,7 +446,8 @@
     <MESSAGE value="动态获取数据失败" />
     <MESSAGE value="成功返回json数据" />
     <MESSAGE value="ajax 获取不到信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajax 获取不到信息" />
+    <MESSAGE value="解决 ajax 显示问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="解决 ajax 显示问题" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myblog/tempaltes/index.html" />
@@ -579,13 +560,6 @@
     <entry file="file://$PROJECT_DIR$/myblog/templates/one-column.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/templates/week.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="90" column="76" selection-start-line="90" selection-start-column="76" selection-end-line="90" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/myblog/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -617,31 +591,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/echarts.common.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-401" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/jquery-3.1.1.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/patch_lifecycle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-329" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#22#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -660,17 +614,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
+    <entry file="file://$PROJECT_DIR$/myblog/templates/week.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="226" column="41" selection-start-line="226" selection-start-column="41" selection-end-line="226" selection-end-column="41" />
+        <state relative-caret-position="85">
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="401" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding>
+            <element signature="e#22#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/echarts.common.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-401" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenv/myblog/lib/python3.7/site-packages/django/core/handlers/exception.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/patch_lifecycle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="37" lean-forward="true" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+        <state relative-caret-position="1184">
+          <caret line="139" column="24" lean-forward="true" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="24" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -679,15 +662,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/testajax.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="36" />
+        <state relative-caret-position="31">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="-229">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="256" column="8" selection-start-line="256" selection-start-column="8" selection-end-line="256" selection-end-column="8" />
         </state>
       </provider>
     </entry>
