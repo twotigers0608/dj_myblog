@@ -202,7 +202,11 @@
     })
     // 处理点击事件并且跳转到相应的百度搜索页面
     myChart1.on('click', function (params) {
-        window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+        alert(params.name);
+        $(function select_classs(){
+            options = params.name
+            $("#tabledata").grid(options);
+        })
     });
     myChart.on('click', function (params) {
         window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));

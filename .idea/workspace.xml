@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
+    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="index 首页进行修改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/show/getjson/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/getjson/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/show/index/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/show/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js" afterDir="false" />
@@ -19,38 +20,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="256" column="8" selection-start-line="256" selection-start-column="8" selection-end-line="256" selection-end-column="8" />
+            <state relative-caret-position="459">
+              <caret line="206" column="33" selection-start-line="206" selection-start-column="33" selection-end-line="206" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
+        <entry file="file://$PROJECT_DIR$/myblog/show/getjson/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-229">
-              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="96">
+              <caret line="11" column="47" lean-forward="true" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/templates/testajax.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1184">
-              <caret line="139" column="24" lean-forward="true" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="24" />
+            <state relative-caret-position="181">
+              <caret line="159" column="27" lean-forward="true" selection-start-line="159" selection-start-column="27" selection-end-line="159" selection-end-column="27" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -61,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+            <state relative-caret-position="153">
+              <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
               <folding>
                 <element signature="e#22#53#0" expanded="true" />
               </folding>
@@ -109,13 +104,13 @@
         <option value="$PROJECT_DIR$/myblog/myblog/settings.py" />
         <option value="$PROJECT_DIR$/myblog/templates/text1.html" />
         <option value="$PROJECT_DIR$/myblog/show/getjson/urls.py" />
-        <option value="$PROJECT_DIR$/myblog/show/getjson/views.py" />
         <option value="$PROJECT_DIR$/myblog/show/index/User.json" />
         <option value="$PROJECT_DIR$/myblog/templates/testajax.html" />
-        <option value="$PROJECT_DIR$/myblog/show/index/urls.py" />
         <option value="$PROJECT_DIR$/myblog/static/js/ajax.js" />
-        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
         <option value="$PROJECT_DIR$/myblog/templates/text.html" />
+        <option value="$PROJECT_DIR$/myblog/show/getjson/views.py" />
+        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
+        <option value="$PROJECT_DIR$/myblog/show/index/urls.py" />
       </list>
     </option>
   </component>
@@ -134,6 +129,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -176,19 +172,12 @@
               <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
               <item name="myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,7 +275,9 @@
       <workItem from="1568381848756" duration="7369000" />
       <workItem from="1568542086183" duration="8504000" />
       <workItem from="1568907792989" duration="574000" />
-      <workItem from="1569042431522" duration="14042000" />
+      <workItem from="1569042431522" duration="14097000" />
+      <workItem from="1569136125707" duration="10915000" />
+      <workItem from="1569156489032" duration="1290000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -330,11 +321,18 @@
       <option name="project" value="LOCAL" />
       <updated>1569062403441</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="index 首页进行修改">
+      <created>1569064712841</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1569064712841</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48313000" />
+    <option name="totallyTimeSpent" value="60573000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -349,7 +347,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19456366" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20028612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -447,7 +445,8 @@
     <MESSAGE value="成功返回json数据" />
     <MESSAGE value="ajax 获取不到信息" />
     <MESSAGE value="解决 ajax 显示问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="解决 ajax 显示问题" />
+    <MESSAGE value="index 首页进行修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="index 首页进行修改" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myblog/tempaltes/index.html" />
@@ -574,16 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/show/getjson/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/show/getjson/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -600,13 +589,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/show/index/User.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/show/index/User.json" />
     <entry file="file://$PROJECT_DIR$/myblog/static/js/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6309">
@@ -618,16 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="401" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="47" lean-forward="true" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-          <folding>
-            <element signature="e#22#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -650,34 +623,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1184">
-          <caret line="139" column="24" lean-forward="true" selection-start-line="139" selection-start-column="24" selection-end-line="139" selection-end-column="24" />
+        <state relative-caret-position="578">
+          <caret line="78" column="5" lean-forward="true" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/templates/testajax.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="206" column="33" selection-start-line="206" selection-start-column="33" selection-end-line="206" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding>
+            <element signature="e#22#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/show/getjson/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="11" column="47" lean-forward="true" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/templates/testajax.html">
+    <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="256" column="8" selection-start-line="256" selection-start-column="8" selection-end-line="256" selection-end-column="8" />
+        <state relative-caret-position="181">
+          <caret line="159" column="27" lean-forward="true" selection-start-line="159" selection-start-column="27" selection-end-line="159" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
