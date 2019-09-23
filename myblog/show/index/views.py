@@ -132,7 +132,7 @@ def Weekjson(request):
             "merged": 2,
             "released": 19,
         }, {
-            "week": "2019-21",
+            "week": "2019-22",
             "branch": "Android",
             "new": 0,
             "reviewing": 0,
@@ -140,7 +140,7 @@ def Weekjson(request):
             "merged": 2,
             "released": 19,
         }, {
-            "week": "2019-21",
+            "week": "2019-23",
             "branch": "Android",
             "new": 0,
             "reviewing": 0,

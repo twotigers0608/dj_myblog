@@ -200,31 +200,19 @@
             ]
         });
     })
+
     // 处理点击事件并且跳转到相应的百度搜索页面
     myChart1.on('click', function (params) {
         alert(params.name);
-        $(function select_classs(){
-            options = params.name
-            $("#tabledata").grid(options);
-        })
-    });
+        $("#tabledata tr").hide()
+        $("#tabledata ." + params.name ).show()
+
+        alert("执行过隐藏")
+    })
+    ;
     myChart.on('click', function (params) {
         window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
     })
-
-</script>
-<table class="table table-bordered" id='tabledata'>
-    <tr>
-        <th>Week</th>
-        <th>Branch</td>
-        <th>New</th>
-        <th>Reviewing</th>
-        <th>Approved</th>
-        <th>Merged</th>
-        <th>Released</th>
-    </tr>
-</table>
-<script>
     $(function for_ajax() {
         var options = {
             url: "weekjson",//json文件或者数据库查询后的地址
@@ -253,6 +241,22 @@
         }
         $("#tabledata").grid(options);
     });
+
+</script>
+<table class="table table-bordered" id='tabledata'>
+    <tr>
+        <th>Week</th>
+        <th>Branch
+        </td>
+        <th>New</th>
+        <th>Reviewing</th>
+        <th>Approved</th>
+        <th>Merged</th>
+        <th>Released</th>
+    </tr>
+</table>
+<script>
+
 </script>
 <table class="changeTable accountDashboard" style="width: 100%;">
     <colgroup>
