@@ -203,15 +203,13 @@
 
     // 处理点击事件并且跳转到相应的百度搜索页面
     myChart1.on('click', function (params) {
-        alert(params.name);
         $("#tabledata tr").hide()
         $("#tabledata ." + params.name ).show()
-
-        alert("执行过隐藏")
     })
     ;
     myChart.on('click', function (params) {
-        window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+       $("#tabledata tr").hide()
+        $("#tabledata ." + params.name ).show()
     })
     $(function for_ajax() {
         var options = {
@@ -244,16 +242,14 @@
 
 </script>
 <table class="table table-bordered" id='tabledata'>
-    <tr>
-        <th>Week</th>
-        <th>Branch
-        </td>
+    <td> Week
+        <th>Branch</th>
         <th>New</th>
         <th>Reviewing</th>
         <th>Approved</th>
         <th>Merged</th>
         <th>Released</th>
-    </tr>
+    </td>
 </table>
 <script>
 
