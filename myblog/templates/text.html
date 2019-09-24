@@ -66,7 +66,7 @@
             calculable: true,
             // 显示每周
             xAxis: {
-                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子", "衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+                data: ["2019-21", "2019-22","2019-23","2019-24", "2019-25", "2019-26", "2019-27", "2019-28", "2019-29", "2019-30"],
                 axisLabel: {
                     interval: 0,
                     rotate: 40
@@ -204,11 +204,13 @@
     // 处理点击事件并且跳转到相应的百度搜索页面
     myChart1.on('click', function (params) {
         $("#tabledata tr").hide()
+        $("#tabledata .title").show()
         $("#tabledata ." + params.name ).show()
     })
     ;
     myChart.on('click', function (params) {
        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
         $("#tabledata ." + params.name ).show()
     })
     $(function for_ajax() {
@@ -242,22 +244,15 @@
 
 </script>
 <table class="table table-bordered" id='tabledata'>
-    <td> Week
+    <tr class="title">
+        <th>Week</th>
         <th>Branch</th>
         <th>New</th>
         <th>Reviewing</th>
         <th>Approved</th>
         <th>Merged</th>
         <th>Released</th>
-    </td>
-</table>
-<script>
-
-</script>
-<table class="changeTable accountDashboard" style="width: 100%;">
-    <colgroup>
-        {{ 'Lts 2018' }}
-    </colgroup>
+    </tr>
 </table>
 </body>
 
