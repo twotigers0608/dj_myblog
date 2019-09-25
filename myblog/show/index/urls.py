@@ -6,6 +6,7 @@ urlpatterns = [
     re_path('index/$', views.Home.as_view()),
     re_path('getajax/$', views.getajax),
     re_path('getajax/Userjson/$', views.UserJson),
-    re_path('index/weekjson$', views.Weekjson),
     re_path('index/selectjson$', views.Selectjson),
+    re_path('index/weekjson$', views.Weekjson),
+
 ]
