@@ -40,7 +40,7 @@ $.fn.grid = function for_ajax(options) {
     var colums = options.colums;
     var url = options.url;
     var content = [];
-    var rqdata = []
+    var rqdata = [];
     //ajax获取数据源后存入content数据中。
     $.ajax({
         type: "get",
@@ -71,13 +71,6 @@ $.fn.grid = function for_ajax(options) {
         $tbody.append(html)
     }
 }
-$.fn.grid = (function select_classs(option) {
-    //var tr_show = $.(".tr[class=" + option + "]");
-    //table 标签下指定的 tr 标签
-    var table_show = $("#tabledata").next(".tr[class=\" +option + \"]")
-    alert("执行到此")
-    table_show.show()
-})
 $.fn.grid = function table_data(options) {
     var $tbody = $(this).find("tbody");
     var colums = options.colums;
@@ -90,7 +83,7 @@ $.fn.grid = function table_data(options) {
         url: url,
         dataType: "json",
         async: false,
-        success: function (data) {
+        success: function (data) {w
             rqdata = data;
         }
     });
