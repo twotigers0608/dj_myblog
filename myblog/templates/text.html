@@ -34,14 +34,14 @@
         },
         yAxis: {},
         series: [{
-            name: '销量',
+            name: '数量',
             type: 'bar',
             data: []
         }]
     });
 
     // 异步加载数据
-    $.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
+    $.get('ajax/get_data/').done(function (resule) {
         myChart.hideLoading();
         //resule = JSON.parse(resule);//把string字符串转换为json数组
         myChart.setOption({
@@ -66,7 +66,7 @@
             calculable: true,
             // 显示每周
             xAxis: {
-                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子", "衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
+                data: resule.Result.name,
                 axisLabel: {
                     interval: 0,
                     rotate: 40
@@ -88,7 +88,7 @@
                     }
                 },
                 // 将来返回New种的时间
-                data: [320, 302, 301, 334, 390, 330, 320]
+                data: resule.Result.new,
             },
                 {
                     name: 'Reviewing',
@@ -100,7 +100,7 @@
                             position: 'insideRight'
                         }
                     },
-                    data: [120, 132, 101, 134, 90, 230, 210]
+                    data: resule.Result.reviewing,
                 },
                 {
                     name: 'Approved',
@@ -112,7 +112,7 @@
                             position: 'insideRight'
                         }
                     },
-                    data: [220, 182, 191, 234, 290, 330, 310]
+                    data: resule.Result.approved,
                 },
                 {
                     name: 'Merged',
@@ -124,7 +124,7 @@
                             position: 'insideRight'
                         }
                     },
-                    data: [150, 212, 201, 154, 190, 330, 410]
+                    data: resule.Result.merged
                 },
                 {
                     name: 'Released',
@@ -136,7 +136,7 @@
                             position: 'insideRight'
                         }
                     },
-                    data: [820, 832, 901, 934, 1290, 1330, 1320]
+                    data: resule.Result.released,
                 }]
         });
     });
@@ -169,8 +169,7 @@
     });
 
     // 异步加载数据
-    //$.get('http://api.lwpoor.cn/echarts/getjson').done(function (resule) {
-    $.get('/postjson/').done(function (resule) {
+    $.get('ajax/get_news/').done(function (resule) {
         myChart.hideLoading();
         //resule = JSON.parse(resule);//把string字符串转换为json数组
         myChart1.setOption({
@@ -203,16 +202,18 @@
 
     // 处理点击事件并且跳转到相应的百度搜索页面
     myChart1.on('click', function (params) {
-        alert(params.name);
         $("#tabledata tr").hide()
-        $("#tabledata ." + params.name ).show()
-
-        alert("执行过隐藏")
+        $("#tabledata .title").show()
+        $("#tabledata ." + params.name).show()
     })
     ;
+
     myChart.on('click', function (params) {
-        window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
-    })
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
+        $("#tabledata ." + params.name).show()
+    });
+
     $(function for_ajax() {
         var options = {
             url: "weekjson",//json文件或者数据库查询后的地址
@@ -243,25 +244,17 @@
     });
 
 </script>
+
 <table class="table table-bordered" id='tabledata'>
-    <tr>
+    <tr class="title">
         <th>Week</th>
-        <th>Branch
-        </td>
+        <th>Branch</th>
         <th>New</th>
         <th>Reviewing</th>
         <th>Approved</th>
         <th>Merged</th>
         <th>Released</th>
     </tr>
-</table>
-<script>
-
-</script>
-<table class="changeTable accountDashboard" style="width: 100%;">
-    <colgroup>
-        {{ 'Lts 2018' }}
-    </colgroup>
 </table>
 </body>
 
