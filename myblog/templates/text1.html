@@ -1,53 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Echarts使用</title>
-    <!-- including ECharts file -->
-    <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
-</head>
+    <head>
+        <meta charset="utf-8">
+    </head>
 
-<body>
-    <!-- prepare a DOM container with width and height -->
-    <div id="main" style="width:990px;height:400px;margin:auto;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化ECharts实例
-        var myChart = echarts.init(document.getElementById('main'));
-
-        // 指定图表的配置项和数据
-        var option = {
-            xAxis: {
-                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
+    <body style="height: 100%; margin: 0">
+        <div id="container" style="height: 90%"></div>
+        <p id="p">1001</p>
+        <script src="../static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
+        <script type="text/javascript">
+            var myChart = echarts.init(document.getElementById('container'));
+            var see;
+            var option = {
+                color: ['#3398DB'],
+                title:{
+                    text:'1001',//${HunitID}
+                    show:false
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { // ??????,???????
+                        type: 'shadow' // ?????,???:'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: deal(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']),
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }],
+                yAxis: [{
+                    type: 'value'
+                }],
+                series: [{
+                    name: '????',
+                    type: 'bar',
+                    barWidth: '60%',
+                    data: [25, 10,30, 334, 390, 330, 220],
+                    itemStyle:{
+                        normal: {
+                            color: function(params) {
+                            var key = params.name.replace(/<\/?.+?>/g,"").replace(/[\r\n]/g, "");
+                        if(key  == 'Sun'){
+                            see =params.dataIndex;
+                            return "#FE8463";
+                        }else{
+                            return "#9BCA63";
+                        }
+                            }
+                        }
+                    }
+                }]
+            };
+            myChart.on('click', function(param) {
+                if(param.dataIndex == see){
+                    console.log(param.dataIndex);
+                }
+        });
         myChart.setOption(option);
-        // 处理点击事件并且跳转到相应的百度搜索页面
-        // myChart.on('click', function (params) {
-        //     window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
-        // });
-        window.addEventListener("resize", function () {
-            myChart.resize();
-        })
-        myChart.on('click', function (params) {
-            //为所欲为
-            console.log(params.name)
-        }
-    </script>
-    </div>
-    <div class="clear"></div>
-    </div>
+        function deal(x_catalog){
+                var list = [];
+                for (var i = 0; i < x_catalog.length; i++) {
+                    var s = "";
+                    for(var j = 0; j < x_catalog[i].length; j++){
+                        s += x_catalog[i][j]+"\r\n";
+                    }
+                    list.push(s);
+                }
+                return list;
+            }
+        </script>
+    </body>
 
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width:990px;height:400px;margin:auto;"></div>
-
-</body>
 </html>
+

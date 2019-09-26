@@ -3,10 +3,8 @@ from django.urls import re_path
 from . import views
 
 urlpatterns = [
-    re_path('index/$', views.Home.as_view()),
-    re_path('getajax/$', views.getajax),
-    re_path('getajax/Userjson/$', views.UserJson),
-    re_path('index/selectjson$', views.Selectjson),
-    re_path('index/weekjson$', views.Weekjson),
-
+    re_path(r'^testshow/$', views.testshow),
+    re_path(r'^testshow/ajax/get_data/$', views.ajax_get_data),
+    re_path(r'^testshow/ajax/get_news/$', views.get_news),
+    re_path(r'^testshow/weekjson$', views.Weekjson),
 ]
