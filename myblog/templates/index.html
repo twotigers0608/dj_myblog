@@ -19,12 +19,11 @@
 <div class="container">
     <div class="header-wrap d-none d-md-block">
         <div class="row">
-
             <!-- Left header box -->
             <header class="col-6 text-left">
                 <h1><span>website</span>name</h1>
             </header>
-
+            <!-- 右上角小图标 -->
             <!-- Right header box -->
             <div class="col-6 text-right">
                 <p class="header-social-icons social-icons">
@@ -56,10 +55,10 @@
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index1.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
 
-                {#下拉列表#}
+                <!-- 下拉列表 -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="false">分类</a>
@@ -73,16 +72,13 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">随笔杂谈</a>
+                    <a class="nav-link" href="article">随笔杂谈</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">tools</a>
+                    <a class="nav-link" href="tools">tools</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#"></a>
-                </li>
             </ul>
 
             <!-- 搜索 -->
@@ -95,52 +91,52 @@
     </nav>
 </div>
 
-<!-- 暂时无用的 -->
+<!-- 暂时无用的轮播图 -->
 <!-- Jumbtron / Slider -->
-{#<div class="jumbotron-wrap">#}
-{#    <div class="container">#}
-{#        <div id="mainCarousel" class="carousel slide" data-ride="carousel">#}
-{#            <div class="carousel-inner">#}
-{#                <div class="carousel-item active">#}
-{#                    <div class="jumbotron">#}
-{#                        <h1 class="text-center">Tristique sem vitae metus ornare </h1>#}
-{#                        <p class="lead text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>#}
-{#                        <p class="lead text-center">#}
-{#                            <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i> &nbsp;#}
-{#                                Learn more</a>#}
-{#                            <a class="btn btn-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i> &nbsp;#}
-{#                                Buy now</a>#}
-{#                        </p>#}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{##}
-{#                <div class="carousel-item">#}
-{#                    <div class="jumbotron">#}
-{#                        <h1 class="text-center">Cras sit amet nibh libero, in gravida nulla</h1>#}
-{#                        <p class="lead text-center">Nulla vel metus scelerisque ante sollicitudin. Cras purus odio.</p>#}
-{#                        <p class="lead text-center">#}
-{#                            <a class="btn btn-outline-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i>#}
-{#                                &nbsp; Learn more</a>#}
-{#                            <a class="btn btn-outline-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i>#}
-{#                                &nbsp; Buy now</a>#}
-{#                        </p>#}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{#            </div>#}
-{##}
-{#            <a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">#}
-{#                <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
-{#                <span class="sr-only">Previous</span>#}
-{#            </a>#}
-{#            <a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">#}
-{#                <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
-{#                <span class="sr-only">Next</span>#}
-{#            </a>#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
+<!-- <div class="jumbotron-wrap">
+    <div class="container">
+        <div id="mainCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="jumbotron">
+                        <h1 class="text-center">Tristique sem vitae metus ornare </h1>
+                        <p class="lead text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                        <p class="lead text-center">
+                            <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i> &nbsp;
+                                Learn more</a>
+                            <a class="btn btn-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i> &nbsp;
+                                Buy now</a>
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="carousel-item">
+                    <div class="jumbotron">
+                        <h1 class="text-center">Cras sit amet nibh libero, in gravida nulla</h1>
+                        <p class="lead text-center">Nulla vel metus scelerisque ante sollicitudin. Cras purus odio.</p>
+                        <p class="lead text-center">
+                            <a class="btn btn-outline-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i>
+                                &nbsp; Learn more</a>
+                            <a class="btn btn-outline-secondary btn-lg" href="#" role="button"><i class="fa fa-gbp"></i>
+                                &nbsp; Buy now</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div> -->
 
 
 <div class="tlinks">Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a></div>
@@ -151,6 +147,7 @@
     <div class="row">
         <!-- Main content -->
         <div class="col-md-8">
+
             {% block content %}
                 <article>
 
@@ -160,94 +157,89 @@
                         <time datetime="2017-05-14">14 May</time>
                         by <a href="#" rel="author">Joe Bloggs</a></p>
 
-                    {#                可定义以后博客的简要信息#}
+                    <!-- 可定义以后博客的简要信息 -->
+                    <!-- 将来查询数据库主要数据 -->
                     <p>Welcome to portal, a free CSS3 &amp; HTML5 responsive web template from <a href="#"
                                                                                                   title="ZyPOP">ZyPOP</a>.
                         This template is completely <strong>free</strong> to use permitting a link remains back to <a
                                 href="#" title="ZyPOP">ZyPOP</a>.</p>
 
-                    {#                <p> Should you wish to use this template unbranded you can buy a template license from our website for#}
-                    {#                    8.00 GBP, this will allow you remove all branding related to our site, for more information about#}
-                    {#                    this see below.</p>#}
-                    {##}
-                    {#                <p>This template has been tested in:</p>#}
+                    <a href="#" class="btn btn-primary">Read more</a>
+                    <a href="#" class="btn btn-secondary">Comments</a>
+                </article>
+                <article>
+
+                    <h2 class="article-title">第二篇博文</h2>
+                    <p class="article-meta">Posted on
+                        <time datetime="2013-05-14">14 May</time>
+                        by <a href="#" rel="author">Joe Bloggs</a></p>
+
+                    <p>Purchasing a template license for 8.00 GBP (at time of writing around 12 USD) gives you the right
+                        to
+                        remove any branding including links, logos and source tags relating to ZyPOP. As well as waiving
+                        the
+                        attribution requirement, your payment will also help us provide continued support for users as
+                        well
+                        as creating new web templates. Find out more about how to buy at the licensing page on our
+                        website
+                        which can be accessed at <a href="#licensing" title="template license">#licensing</a></p>
+
+                    <h3>Lorem lipsum</h3>
 
                     <a href="#" class="btn btn-primary">Read more</a>
                     <a href="#" class="btn btn-secondary">Comments</a>
                 </article>
             {% endblock %}
-
-            <article>
-
-                <h2 class="article-title">第二篇博文</h2>
-                <p class="article-meta">Posted on
-                    <time datetime="2013-05-14">14 May</time>
-                    by <a href="#" rel="author">Joe Bloggs</a></p>
-
-                <p>Purchasing a template license for 8.00 GBP (at time of writing around 12 USD) gives you the right
-                    to
-                    remove any branding including links, logos and source tags relating to ZyPOP. As well as waiving
-                    the
-                    attribution requirement, your payment will also help us provide continued support for users as
-                    well
-                    as creating new web templates. Find out more about how to buy at the licensing page on our
-                    website
-                    which can be accessed at <a href="#licensing" title="template license">#licensing</a></p>
-
-                <h3>Lorem lipsum</h3>
-
-                <a href="#" class="btn btn-primary">Read more</a>
-                <a href="#" class="btn btn-secondary">Comments</a>
-            </article>
-
             <!-- 分页标签的显示 -->
             <!-- Example pagination Bootstrap component -->
+
             <nav>
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
+                    {% block pagebreak %}
+                        <!-- 分页 -->
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    {% endblock %}
                 </ul>
             </nav>
+
         </div>
 
         <!-- 侧边栏导航 -->
-
         <!-- Sidebar -->
         <aside class="col-md-4">
             <div class="sidebar-box">
                 <h4>Categories</h4>
                 <div class="list-group list-group-root">
-                    <a class="list-group-item active" href="index.html">Home Page</a>
-                    <a class="list-group-item" href="examples.html">Style Examples</a>
+                    <a class="list-group-item active" href="/">Home Page</a>
+                    <a class="list-group-item" href="examples.html">分类</a>
                     <div class="list-group">
                         <a class="list-group-item" href="three-column.html">Three Column</a>
                         <a class="list-group-item" href="one-column.html">One column / no sidebar</a>
                         <a class="list-group-item" href="text.html">Text / left sidebar</a>
                     </div>
-                    <a class="list-group-item" href="three-column.html">Three column layout example</a>
-                    <a class="list-group-item" href="#">Sed aliquam libero ut velit bibendum</a>
-                    <a class="list-group-item" href="#">Maecenas condimentum velit vitae</a>
+                    <a class="list-group-item" href="article">随笔杂谈</a>
+                    <a class="list-group-item" href="tools">tools</a>
                 </div>
             </div>
 
             <!-- 定义简介 read more -->
             <div class="sidebar-box sidebar-box-bg">
                 <h4>About us</h4>
-                <p>Aenean nec massa a tortor auctor sodales sed a dolor. Duis vitae lorem sem. Proin at velit vel arcu
-                    pretium luctus. <a href="#" class="readmore">Read More &raquo;</a></p>
+                <p>风虽大,却绕过我的灵魂.<a href="aboutme/" class="readmore">Read More &raquo;</a></p>
             </div>
 
             <!-- 待完善的搜索功能 -->
@@ -263,8 +255,8 @@
             <div class="sidebar-box">
                 <h4>Helpful Links</h4>
                 <ul>
-                    <li><a href="#" title="premium templates">项目源码</a></li>
-                    <li><a href="#" title="web hosting">Django 文档</a></li>
+                    <li><a href="https://github.com/twotigers0608" title="premium templates">项目源码</a></li>
+                    <li><a href="https://www.djangoproject.com/" title="web hosting">Django 文档</a></li>
                     <li><a href="#" title="Tux Themes">HTML 参考</a></li>
                 </ul>
             </div>
@@ -281,38 +273,26 @@
             <div class="row">
                 <div class="col-sm">
                     <ul>
-                        <li><h4>Proin accumsan</h4></li>
-                        <li><a href="#">Rutrum nulla a ultrices</a></li>
-                        <li><a href="#">Blandit elementum</a></li>
-                        <li><a href="#">Proin placerat accumsan</a></li>
-                        <li><a href="#">Morbi hendrerit libero </a></li>
-                        <li><a href="#">Curabitur sit amet tellus</a></li>
+                        <li><h4>相关推荐</h4></li>
+                        <li><a href="#">xxxx</a></li>
                     </ul>
                 </div>
                 <div class="col-sm">
                     <ul>
                         <li><h4>Condimentum</h4></li>
                         <li><a href="#">Curabitur sit amet tellus</a></li>
-                        <li><a href="#">Morbi hendrerit libero </a></li>
-                        <li><a href="#">Proin placerat accumsan</a></li>
-                        <li><a href="#">Rutrum nulla a ultrices</a></li>
-                        <li><a href="#">Cras dictum</a></li>
+
                     </ul>
                 </div>
                 <div class="col-sm">
                     <ul>
                         <li><h4>Suspendisse</h4></li>
                         <li><a href="#">Morbi hendrerit libero </a></li>
-                        <li><a href="#">Proin placerat accumsan</a></li>
-                        <li><a href="#">Rutrum nulla a ultrices</a></li>
-                        <li><a href="#">Curabitur sit amet tellus</a></li>
-                        <li><a href="#">Donec in ligula nisl.</a></li>
                     </ul>
                 </div>
                 <div class="col-sm">
-                    <h4>Suspendisse</h4>
-                    <p>Integer mattis blandit turpis, quis rutrum est. Maecenas quis arcu vel felis lobortis iaculis
-                        fringilla at ligula. Nunc dignissim porttitor dolor eget porta.</p>
+                    <h4></h4>
+                    <p></p>
 
                     <p class="social-icons">
                         <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
@@ -333,7 +313,7 @@
         </div>
     </footer>
 </div>
-{% block contents %}
+{% block script_link %}
 
     <!-- Bootcamp JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

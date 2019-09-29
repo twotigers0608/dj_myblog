@@ -106,3 +106,9 @@ class Index(View):
    def get(self, request):
 
        return render(request, "index1.html")
+
+
+class Article(View):
+    def get(self, request):
+
+        return render(request, "column1.html")
