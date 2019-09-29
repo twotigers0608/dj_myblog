@@ -17,14 +17,3 @@ class Json(View):
                                                                      "value": [5, 20, 36, 10, 10, 20]}})
 
 
-def apis(request):
-    print("hello input")
-    # p={"word":"data"}
-    # 查看客户端发来的请求,前端的数据
-    print("request.body={}".format(request.body))
-    # 返回给客户端的数据
-    result = "success"
-    if request.method == "POST":
-        print(request.POST)
-
-    return JsonResponse({"status": 200, "msg": "OK", "data": result})

@@ -1,4 +1,3 @@
-
 $.fn.grid = function for_ajax(options) {
     var $tbody = $(this).find("tbody");
     var colums = options.colums;
@@ -35,7 +34,6 @@ $.fn.grid = function for_ajax(options) {
         $tbody.append(html)
     }
 }
-
 $.fn.grid = function table_data(options) {
     var $tbody = $(this).find("tbody");
     var colums = options.colums;
@@ -49,6 +47,7 @@ $.fn.grid = function table_data(options) {
         dataType: "json",
         async: false,
         success: function (data) {
+            w
             rqdata = data;
         }
     });
