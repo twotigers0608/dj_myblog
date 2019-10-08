@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/show/getjson/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/getjson/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/show/getjson/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/getjson/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/show/index/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/show/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/templates/index1.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/index1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/templates/one-column.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/one-column.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/templates/testajax.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,26 +27,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1845">
-              <caret line="78" column="51" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
+            <state relative-caret-position="408">
+              <caret line="166" column="69" lean-forward="true" selection-start-line="166" selection-start-column="69" selection-end-line="166" selection-end-column="69" />
               <folding>
                 <element signature="e#6574#6579#0#HTML" expanded="true" />
                 <element signature="e#8780#8787#1#HTML" expanded="true" />
                 <element signature="e#9377#9384#1#HTML" expanded="true" />
                 <element signature="e#11450#11457#0#HTML" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myblog/templates/one-column.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2142">
-              <caret line="79" column="21" lean-forward="true" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -335,7 +318,7 @@
       <workItem from="1569517868892" duration="856000" />
       <workItem from="1569520246786" duration="644000" />
       <workItem from="1569575539051" duration="13000" />
-      <workItem from="1569580846576" duration="17216000" />
+      <workItem from="1569580846576" duration="20987000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -414,11 +397,18 @@
       <option name="project" value="LOCAL" />
       <updated>1569582861583</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="展示文章首页信息">
+      <created>1569775654430</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1569775654430</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95460000" />
+    <option name="totallyTimeSpent" value="99231000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,7 +423,7 @@
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22719735" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22719735" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -447,7 +437,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49806523" weight="0.32619774" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50193477" side_tool="true" weight="0.32619774" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.498618" visible="true" weight="0.25280327" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.498618" visible="true" weight="0.25280327" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32925585" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -536,7 +526,8 @@
     <MESSAGE value="隐藏存在bug" />
     <MESSAGE value="恢复功能" />
     <MESSAGE value="恢复展示信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="恢复展示信息" />
+    <MESSAGE value="展示文章首页信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="展示文章首页信息" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myblog/tempaltes/index.html" />
@@ -804,23 +795,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/templates/one-column.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2142">
+          <caret line="79" column="21" lean-forward="true" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1845">
-          <caret line="78" column="51" selection-start-line="78" selection-start-column="51" selection-end-line="78" selection-end-column="51" />
+        <state relative-caret-position="408">
+          <caret line="166" column="69" lean-forward="true" selection-start-line="166" selection-start-column="69" selection-end-line="166" selection-end-column="69" />
           <folding>
             <element signature="e#6574#6579#0#HTML" expanded="true" />
             <element signature="e#8780#8787#1#HTML" expanded="true" />
             <element signature="e#9377#9384#1#HTML" expanded="true" />
             <element signature="e#11450#11457#0#HTML" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/templates/one-column.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2142">
-          <caret line="79" column="21" lean-forward="true" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
         </state>
       </provider>
     </entry>
