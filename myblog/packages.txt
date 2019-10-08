@@ -1,0 +1,8 @@
+Django==2.2.5
+django-mdeditor==0.1.16
+mysqlclient==1.4.4
+pytz==2019.2
+selenium==3.141.0
+sqlparse==0.3.0
+urllib3==1.25.6
+#pip freeze > packages.txt
