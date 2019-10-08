@@ -1,0 +1,40 @@
+{% extends "one-column.html" %}
+{% block content %}
+    <article>
+
+        <h2 class="article-title">Buy unbranded</h2>
+        <!-- 更新日期   作者  文章简要信息 -->
+        <p class="article-meta">Posted on
+            <time datetime="2017-05-14">14 May</time>
+            by <a href="#" rel="author">Joe Bloggs</a></p>
+
+        <p>文章详细信息 <a href="#licensing" title="template license">#licensing</a>
+        </p>
+
+        <h3>Lorem lipsum</h3>
+
+        <p>简要信息</p>
+
+        <a href="#" class="btn btn-primary">Read more</a>
+        <a href="#" class="btn btn-secondary">Comments</a>
+    </article>
+{% endblock %}
+
+{# 增加分页内容 #}
+{% block pagebreak %}
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+        </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+        </a>
+    </li>
+{% endblock %}
