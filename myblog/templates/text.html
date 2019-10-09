@@ -201,6 +201,7 @@
     })
 
     // 处理点击事件并且跳转到相应的百度搜索页面
+    /*
     myChart1.on('click', function (params) {
         $("#tabledata tr").hide()
         $("#tabledata .title").show()
@@ -212,6 +213,43 @@
         $("#tabledata .title").show()
         $("#tabledata ." + params.name).show()
     })
+
+     */
+    //点击事件
+      myChart1.one('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+    myChart.one('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+    myChart1.on('click', function (params) {
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+
+    myChart.on('click', function (params) {
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+
     $(function for_ajax() {
         var options = {
             url: "weekjson",//json文件或者数据库查询后的地址
