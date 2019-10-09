@@ -8,78 +8,105 @@
     <body style="height: 100%; margin: 0">
         <div id="container" style="height: 90%"></div>
         <p id="p">1001</p>
-        <script src="../static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
+        <script src="../static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
-            var myChart = echarts.init(document.getElementById('container'));
-            var see;
-            var option = {
-                color: ['#3398DB'],
-                title:{
-                    text:'1001',//${HunitID}
-                    show:false
-                },
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: { // ??????,???????
-                        type: 'shadow' // ?????,???:'line' | 'shadow'
-                    }
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis: [{
-                    type: 'category',
-                    data: deal(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']),
-                    axisTick: {
-                        alignWithLabel: true
-                    }
-                }],
-                yAxis: [{
-                    type: 'value'
-                }],
-                series: [{
-                    name: '????',
-                    type: 'bar',
-                    barWidth: '60%',
-                    data: [25, 10,30, 334, 390, 330, 220],
-                    itemStyle:{
-                        normal: {
-                            color: function(params) {
-                            var key = params.name.replace(/<\/?.+?>/g,"").replace(/[\r\n]/g, "");
-                        if(key  == 'Sun'){
-                            see =params.dataIndex;
-                            return "#FE8463";
-                        }else{
-                            return "#9BCA63";
-                        }
-                            }
-                        }
-                    }
-                }]
-            };
-            myChart.on('click', function(param) {
-                if(param.dataIndex == see){
-                    console.log(param.dataIndex);
-                }
-        });
-        myChart.setOption(option);
-        function deal(x_catalog){
-                var list = [];
-                for (var i = 0; i < x_catalog.length; i++) {
-                    var s = "";
-                    for(var j = 0; j < x_catalog[i].length; j++){
-                        s += x_catalog[i][j]+"\r\n";
-                    }
-                    list.push(s);
-                }
-                return list;
-            }
-        </script>
-    </body>
+   var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var dataAxis = ['?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?'];
+var data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
+var yMax = 500;
+var dataShadow = [];
 
+for (var i = 0; i < data.length; i++) {
+    dataShadow.push(yMax);
+}
+
+var curInt = null;
+option = {
+    title: {
+        text: '????:??? ?? ????',
+        subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
+    },
+    xAxis: {
+        data: dataAxis,
+        axisLabel: {
+            inside: true,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            show: false
+        },
+        z: 10
+    },
+    yAxis: {
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#999'
+            }
+        }
+    },
+    dataZoom: [
+        {
+            type: 'inside'
+        }
+    ],
+    series: [
+        { // For shadow
+            type: 'bar',
+            itemStyle: {
+                normal: {color: 'rgba(0,0,0,0.05)'}
+            },
+            barGap:'-100%',
+            barCategoryGap:'40%',
+            data: dataShadow,
+            animation: false
+        },
+        {
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color:function(params){
+
+
+						var key = params.dataIndex;
+						console.log(key);
+					console.log(curInt);
+						if(key===curInt){
+							return '#E062AE'
+						}else{
+							return '#37A2DA'
+						}
+					}
+                }
+            },
+            data: data
+        }
+    ]
+};
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, false);
+}
+
+myChart.on('click', function (params) {
+	myChart.clear();
+	curInt = params.dataIndex;
+	myChart.setOption(option,false);
+});
+       </script>
+   </body>
 </html>
-

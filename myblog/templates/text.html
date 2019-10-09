@@ -235,6 +235,9 @@
         }
     });
     myChart1.on('click', function (params) {
+        myChart.clear();
+        curInt = params.dataIndex;
+        myChart.setOption(option,false);
         if ($("#tabledata ." + params.name).css('display') == 'none') {
             $("#tabledata ." + params.name).show();
         } else {
