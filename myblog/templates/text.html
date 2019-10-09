@@ -216,7 +216,16 @@
 
      */
     //点击事件
-      myChart1.one('click', function (params) {
+    if (option && typeof option === "object") {
+        myChart.setOption(option, false);
+    }
+
+    myChart.on('click', function (params) {
+
+        curInt = params.dataIndex;
+        myChart.setOption(option, false);
+    });
+    myChart1.one('click', function (params) {
         $("#tabledata tr").hide()
         $("#tabledata .title").show()
         if ($("#tabledata ." + params.name).css('display') == 'none') {
@@ -235,9 +244,6 @@
         }
     });
     myChart1.on('click', function (params) {
-        myChart.clear();
-        curInt = params.dataIndex;
-        myChart.setOption(option,false);
         if ($("#tabledata ." + params.name).css('display') == 'none') {
             $("#tabledata ." + params.name).show();
         } else {

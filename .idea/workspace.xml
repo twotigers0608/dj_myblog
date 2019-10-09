@@ -4,6 +4,7 @@
     <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/templates/text.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/text.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/templates/text1.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/text1.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-547">
-              <caret line="220" column="37" lean-forward="true" selection-start-line="220" selection-start-column="37" selection-end-line="220" selection-end-column="37" />
+            <state relative-caret-position="270">
+              <caret line="228" column="33" lean-forward="true" selection-start-line="228" selection-start-column="33" selection-end-line="228" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -79,8 +80,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/templates/text1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+            <state relative-caret-position="383">
+              <caret line="103" column="29" selection-start-line="99" selection-end-line="107" selection-end-column="3" />
+              <folding>
+                <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -181,7 +187,6 @@
         <option value="$PROJECT_DIR$/myblog/show/index/User.json" />
         <option value="$PROJECT_DIR$/myblog/templates/testajax.html" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/myblog/templates/text1.html" />
         <option value="$PROJECT_DIR$/myblog/static/js/ajax.js" />
         <option value="$PROJECT_DIR$/myblog/static/js/jquery-3.1.1.min.js" />
         <option value="$PROJECT_DIR$/myblog/show/getjson/views.py" />
@@ -195,6 +200,7 @@
         <option value="$PROJECT_DIR$/myblog/packages.txt" />
         <option value="$PROJECT_DIR$/myblog/templates/one-column.html" />
         <option value="$PROJECT_DIR$/myblog/templates/column1.html" />
+        <option value="$PROJECT_DIR$/myblog/templates/text1.html" />
         <option value="$PROJECT_DIR$/myblog/templates/text.html" />
       </list>
     </option>
@@ -377,7 +383,7 @@
       <workItem from="1569580846576" duration="27166000" />
       <workItem from="1570556065565" duration="708000" />
       <workItem from="1570557486823" duration="1963000" />
-      <workItem from="1570628821748" duration="72000" />
+      <workItem from="1570628821748" duration="7582000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -498,11 +504,25 @@
       <option name="project" value="LOCAL" />
       <updated>1570556715303</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="增加图表显示的展示">
+      <created>1570628916923</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1570628916923</updated>
+    </task>
+    <task id="LOCAL-00019" summary="实现点击 刷新图标变色">
+      <created>1570636359697</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1570636359697</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108153000" />
+    <option name="totallyTimeSpent" value="115663000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,7 +537,7 @@
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23548922" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23548922" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -526,12 +546,12 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3282365" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.3282365" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49806523" weight="0.32517838" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50193477" side_tool="true" weight="0.25280327" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49806523" visible="true" weight="0.24770643" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49806523" weight="0.24770643" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32925585" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32925585" />
@@ -625,7 +645,9 @@
     <MESSAGE value="数据库迁移 更新安装库" />
     <MESSAGE value="跟新分页选项" />
     <MESSAGE value="局部修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="局部修改" />
+    <MESSAGE value="增加图表显示的展示" />
+    <MESSAGE value="实现点击 刷新图标变色" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现点击 刷新图标变色" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myblog/static/css/body.png">
@@ -908,15 +930,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/text1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+        <state relative-caret-position="383">
+          <caret line="103" column="29" selection-start-line="99" selection-end-line="107" selection-end-column="3" />
+          <folding>
+            <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-547">
-          <caret line="220" column="37" lean-forward="true" selection-start-line="220" selection-start-column="37" selection-end-line="220" selection-end-column="37" />
+        <state relative-caret-position="270">
+          <caret line="228" column="33" lean-forward="true" selection-start-line="228" selection-start-column="33" selection-end-line="228" selection-end-column="33" />
         </state>
       </provider>
     </entry>

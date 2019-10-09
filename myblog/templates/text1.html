@@ -81,7 +81,6 @@ option = {
                 normal: {
                     color:function(params){
 
-
 						var key = params.dataIndex;
 						console.log(key);
 					console.log(curInt);
@@ -103,7 +102,7 @@ if (option && typeof option === "object") {
 }
 
 myChart.on('click', function (params) {
-	myChart.clear();
+
 	curInt = params.dataIndex;
 	myChart.setOption(option,false);
 });
