@@ -1,111 +1,322 @@
 <!DOCTYPE html>
-<html style="height: 100%">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Echarts使用</title>
+    <!-- including ECharts file -->
+    <style type="text/css" scr="../static/css/quiltreview.css"></style>
+    <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="../static/js/ajax.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          rel="external nofollow">
+</head>
+<body>    <!-- prepare a DOM container with width and height -->
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="myChart" style="width:990px;height:400px;margin:auto;"></div>
 
-    <head>
-        <meta charset="utf-8">
-    </head>
+<script type="text/javascript">
 
-    <body style="height: 100%; margin: 0">
-        <div id="container" style="height: 90%"></div>
-        <p id="p">1001</p>
-        <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
-        <script src="../static/js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
-        <script type="text/javascript">
-   var dom = document.getElementById("container");
-var myChart = echarts.init(dom);
-var app = {};
-option = null;
-var dataAxis = ['?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?'];
-var data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
-var yMax = 500;
-var dataShadow = [];
+    var myChart = echarts.init(document.getElementById('myChart'));
 
-for (var i = 0; i < data.length; i++) {
-    dataShadow.push(yMax);
-}
+    // 显示标题，图例和空的坐标轴
+    myChart.setOption({
 
-var curInt = null;
-option = {
-    title: {
-        text: '????:??? ?? ????',
-        subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
-    },
-    xAxis: {
-        data: dataAxis,
-        axisLabel: {
-            inside: true,
-            textStyle: {
-                color: '#fff'
-            }
+        title: {
+            text: 'Patch Cycle Chart / Work Week'
         },
-        axisTick: {
-            show: false
+        tooltip: {},
+        legend: {
+            data: ['Work Week(Years.WW)']
         },
-        axisLine: {
-            show: false
+        xAxis: {
+            data: []
         },
-        z: 10
-    },
-    yAxis: {
-        axisLine: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisLabel: {
-            textStyle: {
-                color: '#999'
-            }
-        }
-    },
-    dataZoom: [
-        {
-            type: 'inside'
-        }
-    ],
-    series: [
-        { // For shadow
+        yAxis: {},
+        series: [{
+            name: '数量',
             type: 'bar',
-            itemStyle: {
-                normal: {color: 'rgba(0,0,0,0.05)'}
+            data: []
+        }]
+    });
+
+    // 异步加载数据
+    $.get('ajax/get_data/').done(function (resule) {
+        myChart.hideLoading();
+        //resule = JSON.parse(resule);//把string字符串转换为json数组
+        myChart.setOption({
+            // 顶部选择
+            legend: {
+                data: ['New', 'Reviewing', 'Approved', 'Merged', 'Released']
             },
-            barGap:'-100%',
-            barCategoryGap:'40%',
-            data: dataShadow,
-            animation: false
-        },
-        {
-            type: 'bar',
-            itemStyle: {
-                normal: {
-                    color:function(params){
-
-						var key = params.dataIndex;
-						console.log(key);
-					console.log(curInt);
-						if(key===curInt){
-							return '#E062AE'
-						}else{
-							return '#37A2DA'
-						}
-					}
+            // 自动调节位置
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                x: 'right',
+                y: 'center',
+                feature: {
+                    mark: true,
+                    dataView: {readOnly: false},
+                    magicType: ['line', 'bar'],
+                    restore: true,
+                    saveAsImage: true
                 }
             },
-            data: data
+            calculable: true,
+            // 显示每周
+            xAxis: {
+                data: resule.Result.name,
+                axisLabel: {
+                    interval: 0,
+                    rotate: 40
+                },
+            },
+            // 每周每个任务的时间
+            yAxis: {
+                type: 'value',
+                splitArea: {show: true}
+            },
+            series: [{
+                name: 'New',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                // 将来返回New种的时间
+                data: resule.Result.new,
+            },
+                {
+                    name: 'Reviewing',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: resule.Result.reviewing,
+                },
+                {
+                    name: 'Approved',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: resule.Result.approved,
+                },
+                {
+                    name: 'Merged',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: resule.Result.merged
+                },
+                {
+                    name: 'Released',
+                    type: 'bar',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'insideRight'
+                        }
+                    },
+                    data: resule.Result.released,
+                }]
+        });
+    });
+</script>
+
+<div id="main" style="width:990px;height:400px;margin:auto;"></div>
+
+<script type="text/javascript">
+
+    var myChart1 = echarts.init(document.getElementById('main'));
+    // 显示标题，图例和空的坐标轴
+    myChart1.setOption({
+        title: {
+            text: 'Number of Patches / Work Week'
+        },
+        tooltip: {},
+        legend: {
+            data: []
+        },
+        xAxis: {
+            data: [],
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                color: '#383738',
+                fontSize: 14,
+                margin: 20
+            },
+        },
+        yAxis: {},
+        series: [{
+            name: 'num',
+            type: 'bar',
+            data: []
         }
-    ]
-};
+        ]
+    });
 
-if (option && typeof option === "object") {
-    myChart.setOption(option, false);
-}
+    // 异步加载数据
+    $.get('ajax/get_news/').done(function (resule) {
+        myChart1.hideLoading();
+        //resule = JSON.parse(resule);//把string字符串转换为json数组
+        myChart1.setOption({
+            // 自动调节位置
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                x: 'right',
+                y: 'center',
+                feature: {
+                    mark: true,
+                    dataView: {readOnly: false},
+                    magicType: ['line', 'bar'],
+                    restore: true,
+                    saveAsImage: true
+                }
+            },
+            xAxis: {
+                data: resule.Result.name
+            },
+            yAxis: {},
+            series: [{
+                name: 'name:销量',
+                type: 'bar',
+                data: resule.Result.value
+            }
+            ]
+        });
+    })
 
-myChart.on('click', function (params) {
+    // 处理点击事件并且跳转到相应的百度搜索页面
+    /*
+    myChart1.on('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
+        $("#tabledata ." + params.name).show()
+    })
+    ;
+    myChart.on('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
+        $("#tabledata ." + params.name).show()
+    })
 
-	curInt = params.dataIndex;
-	myChart.setOption(option,false);
-});
-       </script>
-   </body>
+     */
+    //点击事件
+    myChart1.one('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+    myChart.one('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+    myChart1.on('click', function (params) {
+        myChart1.setOption({
+            yAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+
+    myChart.on('click', function (params) {
+        if ($("#tabledata ." + params.name).css('display') == 'none') {
+            $("#tabledata ." + params.name).show();
+        } else {
+            $("#tabledata ." + params.name).hide();
+        }
+    });
+
+    $(function for_ajax() {
+        var options = {
+            url: "weekjson",//json文件或者数据库查询后的地址
+            colums: [{
+                "Index": "week",
+                "Name": "Week"
+            }, {
+                "Index": "branch",
+                "Name": "Branch"
+            }, {
+                "Index": "new",
+                "Name": "New"
+            }, {
+                "Index": "reviewing",
+                "Name": "Reviewing"
+            }, {
+                "Index": "approved",
+                "Name": "Approved"
+            }, {
+                "Index": "merged",
+                "Name": "Merged"
+            }, {
+                "Index": "released",
+                "Name": "Released"
+            }]
+        }
+        $("#tabledata").grid(options);
+    });
+
+</script>
+
+<table class="table table-bordered" id='tabledata'>
+    <tr class="title">
+        <th>Week</th>
+        <th>Branch</th>
+        <th>New</th>
+        <th>Reviewing</th>
+        <th>Approved</th>
+        <th>Merged</th>
+        <th>Released</th>
+    </tr>
+</table>
+</body>
+
 </html>

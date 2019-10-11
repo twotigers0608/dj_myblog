@@ -71,7 +71,7 @@ class Post(models.Model):
         db_table = 'tb_content'
         verbose_name = '文章内容'
         verbose_name_plural = verbose_name
-        ordering = ['created_time', 'title']
+        ordering = ['-created_time']
 
     def __str__(self):
         return self.title

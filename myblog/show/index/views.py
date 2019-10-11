@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, JsonResponse
 import json
+from .models import Post
 
 
 # Create your views here.
@@ -104,8 +105,8 @@ def Weekjson(request):
 
 class Index(View):
    def get(self, request):
-
-       return render(request, "index1.html")
+        post_list = Post.objects.all().order_by('-create_time')
+        return render(request, "index1.html",context={'post_list':post_list})
 
 
 class Article(View):

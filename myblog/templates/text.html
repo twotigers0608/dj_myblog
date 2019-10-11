@@ -157,7 +157,21 @@
             data: []
         },
         xAxis: {
-            data: []
+            data: [],
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                show: false
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                color: '#383738',
+                fontSize: 14,
+                margin: 20
+            },
         },
         yAxis: {},
         series: [{
@@ -170,7 +184,7 @@
 
     // 异步加载数据
     $.get('ajax/get_news/').done(function (resule) {
-        myChart.hideLoading();
+        myChart1.hideLoading();
         //resule = JSON.parse(resule);//把string字符串转换为json数组
         myChart1.setOption({
             // 自动调节位置
@@ -216,15 +230,6 @@
 
      */
     //点击事件
-    if (option && typeof option === "object") {
-        myChart.setOption(option, false);
-    }
-
-    myChart.on('click', function (params) {
-
-        curInt = params.dataIndex;
-        myChart.setOption(option, false);
-    });
     myChart1.one('click', function (params) {
         $("#tabledata tr").hide()
         $("#tabledata .title").show()
@@ -244,6 +249,17 @@
         }
     });
     myChart1.on('click', function (params) {
+        myChart1.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
         if ($("#tabledata ." + params.name).css('display') == 'none') {
             $("#tabledata ." + params.name).show();
         } else {
