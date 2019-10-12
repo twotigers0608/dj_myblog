@@ -1,0 +1,29 @@
+url(r'^ajax/get_metrics/$', views.ajax_get_metrics),
+
+parameters:
+kernel: e.g. lts2018
+weeks: <the number of weeks that the metrics cover>
+
+From: Lin, Dave 
+Sent: Saturday, October 12, 2019 11:02 AM
+To: Liu, YanX A <yanx.a.liu@intel.com>
+Subject: data
+
+
+Data structure:
+[ { 
+total_duration: number of seconds,
+   review_duration: number of seconds,
+   merge_duration: number of seconds,
+   rel_duration: number of seconds,
+   released_time: <timestamp>,
+},
+…
+]
+
+Table:
+Released Date
+Review Time
+Verify Time
+Merge Time
+Release Time

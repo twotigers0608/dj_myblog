@@ -57,10 +57,12 @@
         data: {"kernel":"e.g.lts2018"},
         dataType: "json",        //返回数据形式为json
         success: function (results) {
-
             result = results.data
             //请求成功时执行该函数内容，result即为服务器返回的json对象
             if (result) {
+                for (var i = 0; i < result.length; i++){
+
+                }
                 for (var i = 0; i < result.length; i++) {
                     //挨个取出类别并填入类别数组
                     week.push(result[i]['released_time']);
