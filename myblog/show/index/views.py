@@ -17,11 +17,10 @@ def ajax_get_data(request):
                              "Result": {
                                  "name": ["2019-21", "2019-22", "2019-23", "2019-24", "2019-25", "2019-26", "2019-27",
                                           "2019-28", "2019-29", "2019-30"],
-                                 "new": [320, 302, 301, 334, 390, 330, 320],
-                                 "reviewing": [120, 132, 101, 134, 90, 230, 210],
-                                 "approved": [220, 182, 191, 234, 290, 330, 310],
+                                 "verify": [320, 302, 301, 334, 390, 330, 320],
+                                 "review": [120, 132, 101, 134, 90, 230, 210],
                                  "merged": [150, 212, 201, 154, 190, 330, 410],
-                                 "released": [820, 832, 901, 934, 1290, 1330, 1320],
+                                 "release": [150, 212, 201, 154, 190, 330, 410],
                              },
                              })
 
@@ -36,77 +35,50 @@ def get_news(request):
 def Weekjson(request):
     if request.method == "GET":
         data = [{
-            "week": "2019-21",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 0,
-            "merged": 2,
-            "released": 19,
-        }, {
-            "week": "2019-21",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 0,
-            "merged": 2,
-            "released": 19,
-        }, {
-            "week": "2019-22",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 2,
-            "merged": 2,
-            "released": 19,
-        }, {
-            "week": "2019-22",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 2,
-            "merged": 2,
-            "released": 19,
-        }, {
-            "week": "2019-23",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 3,
-            "merged": 3,
-            "released": 19,
-        }, {
-            "week": "2019-23",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 3,
-            "merged": 3,
-            "released": 19,
-        }, {
-            "week": "2019-24",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 4,
-            "merged": 4,
-            "released": 19,
-        }, {
-            "week": "2019-25",
-            "branch": "Android",
-            "new": 0,
-            "reviewing": 0,
-            "approved": 5,
-            "merged": 5,
-            "released": 19,
+            'total_duration': 15,
+            'review_duration': 23,
+            'merge_duration': 34,
+            'rel_duration': 25,
+            'released_time': 2019 - 22,
+        },{
+            'total_duration': 15,
+            'review_duration': 23,
+            'merge_duration': 34,
+            'rel_duration': 25,
+            'released_time': 2019 - 23,
+        },{
+            'total_duration': 15,
+            'review_duration': 23,
+            'merge_duration': 34,
+            'rel_duration': 25,
+            'released_time': 2019 - 24,
+        },{
+            'total_duration': 15,
+            'review_duration': 23,
+            'merge_duration': 34,
+            'rel_duration': 25,
+            'released_time': 2019 - 25,
+        },{
+            'total_duration': 15,
+            'review_duration': 23,
+            'merge_duration': 34,
+            'rel_duration': 25,
+            'released_time': 2019 - 26,
+        },{
+            'total_duration': 15,
+            'review_duration': 23,
+            'merge_duration': 34,
+            'rel_duration': 25,
+            'released_time': 2019 - 21,
         }, ]
         return JsonResponse({"status": "200", "msg": "OK", "data": data})
 
 
 class Index(View):
    def get(self, request):
-        post_list = Post.objects.all().order_by('-create_time')
-        return render(request, "index1.html",context={'post_list':post_list})
+        # post_list = Post.objects.all().order_by('-create_time')
+        # return render(request, "index1.html",context={'post_list':post_list})
+        pass
 
 
 class Article(View):

@@ -2,21 +2,22 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Echarts使用</title>
+    <title>week show</title>
     <!-- including ECharts file -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          rel="external nofollow">
     <style type="text/css" scr="../static/css/quiltreview.css"></style>
+    <style type="text/css" scr="../static/css/mertrics.css"></style>
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
     <script type="text/javascript" src="../static/js/ajax.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          rel="external nofollow">
+
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="myChart" style="width:990px;height:400px;margin:auto;"></div>
 
 <script type="text/javascript">
-
     var myChart = echarts.init(document.getElementById('myChart'));
 
     // 显示标题，图例和空的坐标轴
@@ -41,13 +42,13 @@
     });
 
     // 异步加载数据
-    $.get('ajax/get_data/').done(function (resule) {
+    $.get('ajax/get_metrics/').done(function (resule) {
         myChart.hideLoading();
         //resule = JSON.parse(resule);//把string字符串转换为json数组
         myChart.setOption({
             // 顶部选择
             legend: {
-                data: ['New', 'Reviewing', 'Approved', 'Merged', 'Released']
+                data: ['Review', 'Merged', 'Released']
             },
             // 自动调节位置
             toolbox: {
@@ -78,7 +79,7 @@
                 splitArea: {show: true}
             },
             series: [{
-                name: 'New',
+                name: 'vierify Time',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -87,11 +88,21 @@
                         position: 'insideRight'
                     }
                 },
-                // 将来返回New种的时间
-                data: resule.Result.new,
+                data: resule.Result.verify,
+            }, , {
+                name: 'Review Time',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                },
+                data: resule.Result.review,
             },
                 {
-                    name: 'Reviewing',
+                    name: 'Merage Time',
                     type: 'bar',
                     stack: '总量',
                     label: {
@@ -100,10 +111,10 @@
                             position: 'insideRight'
                         }
                     },
-                    data: resule.Result.reviewing,
+                    data: resule.Result.merged,
                 },
                 {
-                    name: 'Approved',
+                    name: 'Release Time',
                     type: 'bar',
                     stack: '总量',
                     label: {
@@ -112,32 +123,9 @@
                             position: 'insideRight'
                         }
                     },
-                    data: resule.Result.approved,
+                    data: resule.Result.release,
                 },
-                {
-                    name: 'Merged',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: resule.Result.merged
-                },
-                {
-                    name: 'Released',
-                    type: 'bar',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: resule.Result.released,
-                }]
+            ]
         });
     });
 </script>
@@ -157,21 +145,7 @@
             data: []
         },
         xAxis: {
-            data: [],
-            splitLine: {
-                show: false
-            },
-            axisLine: {
-                show: false
-            },
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                color: '#383738',
-                fontSize: 14,
-                margin: 20
-            },
+            data: []
         },
         yAxis: {},
         series: [{
@@ -202,7 +176,11 @@
                 }
             },
             xAxis: {
-                data: resule.Result.name
+                data: resule.Result.name,
+                axisLabel: {
+                    interval: 0,
+                    rotate: 40
+                },
             },
             yAxis: {},
             series: [{
@@ -222,31 +200,41 @@
         $("#tabledata ." + params.name).show()
     })
     ;
-    myChart.on('click', function (params) {
         $("#tabledata tr").hide()
         $("#tabledata .title").show()
-        $("#tabledata ." + params.name).show()
-    })
-
      */
-    //点击事件
+
     myChart1.one('click', function (params) {
         $("#tabledata tr").hide()
         $("#tabledata .title").show()
-        if ($("#tabledata ." + params.name).css('display') == 'none') {
-            $("#tabledata ." + params.name).show();
-        } else {
-            $("#tabledata ." + params.name).hide();
-        }
+        myChart1.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
+        $("#tabledata ." + params.name).show()
     });
     myChart.one('click', function (params) {
         $("#tabledata tr").hide()
         $("#tabledata .title").show()
-        if ($("#tabledata ." + params.name).css('display') == 'none') {
-            $("#tabledata ." + params.name).show();
-        } else {
-            $("#tabledata ." + params.name).hide();
-        }
+        myChart.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
+        $("#tabledata ." + params.name).show()
     });
     myChart1.on('click', function (params) {
         myChart1.setOption({
@@ -266,8 +254,18 @@
             $("#tabledata ." + params.name).hide();
         }
     });
-
     myChart.on('click', function (params) {
+        myChart.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
         if ($("#tabledata ." + params.name).css('display') == 'none') {
             $("#tabledata ." + params.name).show();
         } else {
@@ -279,25 +277,19 @@
         var options = {
             url: "weekjson",//json文件或者数据库查询后的地址
             colums: [{
-                "Index": "week",
+                "Index": "released_time",
                 "Name": "Week"
             }, {
-                "Index": "branch",
-                "Name": "Branch"
+                "Index": "verify_duration",
+                "Name": "Verify"
             }, {
-                "Index": "new",
-                "Name": "New"
+                "Index": "review_duration",
+                "Name": "Review",
             }, {
-                "Index": "reviewing",
-                "Name": "Reviewing"
-            }, {
-                "Index": "approved",
-                "Name": "Approved"
-            }, {
-                "Index": "merged",
+                "Index": "merged_duration",
                 "Name": "Merged"
             }, {
-                "Index": "released",
+                "Index": "rel_duration",
                 "Name": "Released"
             }]
         }
@@ -307,14 +299,12 @@
 </script>
 
 <table class="table table-bordered" id='tabledata'>
+{#<table dc-chart="dataTable" dc-dimension="cycleDimension" dc-group="tableGroup" dc-size="100" dc-post-setup-chart="tablePostFormat" class="table table-hover dc-data-table dc-chart">#}
     <tr class="title">
-        <th>Week</th>
-        <th>Branch</th>
-        <th>New</th>
-        <th>Reviewing</th>
-        <th>Approved</th>
-        <th>Merged</th>
-        <th>Released</th>
+        <th class="dc-table-label">Patch ID</th>
+        <th class="dc-table-head">Verify Time</th>
+        <th class="dc-table-head">Merage Time</th>
+        <th class="dc-table-head">Release Time</th>
     </tr>
 </table>
 </body>

@@ -8,6 +8,7 @@ $.fn.grid = function for_ajax(options) {
     $.ajax({
         type: "get",
         url: url,
+        data: {},
         dataType: "json",
         async: false,
         success: function (data) {
