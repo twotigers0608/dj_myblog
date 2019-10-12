@@ -61,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            <state relative-caret-position="276">
+              <caret line="61" column="67" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -360,6 +360,8 @@
       <workItem from="1570901680863" duration="15000" />
       <workItem from="1570901839119" duration="29000" />
       <workItem from="1570901888498" duration="21000" />
+      <workItem from="1570902748177" duration="68000" />
+      <workItem from="1570903006536" duration="305000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -522,11 +524,18 @@
       <option name="project" value="LOCAL" />
       <updated>1570897882561</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="增加需求">
+      <created>1570902767669</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1570902767670</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145813000" />
+    <option name="totallyTimeSpent" value="146186000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -538,9 +547,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17191818" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17523494" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -554,7 +564,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49806523" weight="0.32517838" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50193477" side_tool="true" weight="0.25280327" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49806523" visible="true" weight="0.235474" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49806523" visible="true" weight="0.25688073" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32925585" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32925585" />
@@ -656,7 +666,8 @@
     <MESSAGE value="裸奔到有皮肤" />
     <MESSAGE value="metrics 修改内容" />
     <MESSAGE value="前段修改需要 &#10;1.对返回数据进行处理&#10;2.需要重新构造table样式" />
-    <option name="LAST_COMMIT_MESSAGE" value="前段修改需要 &#10;1.对返回数据进行处理&#10;2.需要重新构造table样式" />
+    <MESSAGE value="增加需求" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加需求" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.virtualenv/myblog/lib/python3.7/site-packages/django/http/request.py" />
@@ -976,15 +987,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/text.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#6370#6844#0#HTML" />
-            <element signature="e#6890#7363#0#HTML" />
-            <element signature="e#6990#7309#0#HTML" />
-            <element signature="e#7409#7967#0#HTML" />
-            <element signature="e#8013#8570#0#HTML" />
-          </folding>
+        <state relative-caret-position="276">
+          <caret line="61" column="67" selection-start-line="61" selection-start-column="67" selection-end-line="61" selection-end-column="67" />
         </state>
       </provider>
     </entry>
