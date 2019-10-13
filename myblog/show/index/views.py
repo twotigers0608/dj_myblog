@@ -16,6 +16,7 @@ def ajax_get_data(request):
         data = [{
             'patch_id': '28',
             'total_duration': 15,
+            'verify_duration': 10,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
@@ -23,6 +24,7 @@ def ajax_get_data(request):
         }, {
             'patch_id': '29',
             'total_duration': 15,
+            'verify_duration': 10,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
@@ -30,6 +32,7 @@ def ajax_get_data(request):
         }, {
             'patch_id': '29',
             'total_duration': 15,
+            'verify_duration': 10,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
@@ -37,6 +40,7 @@ def ajax_get_data(request):
         }, {
             'patch_id': '31',
             'total_duration': 15,
+            'verify_duration': 10,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
@@ -44,6 +48,7 @@ def ajax_get_data(request):
         }, {
             'patch_id': '31',
             'total_duration': 15,
+            'verify_duration': 10,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
@@ -51,6 +56,7 @@ def ajax_get_data(request):
         }, {
             'patch_id': '34',
             'total_duration': 15,
+            'verify_duration': 10,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
@@ -108,6 +114,7 @@ def Weekjson(request):
         }, {
             'patch_id': '123456',
             'total_duration': 15,
+            'verify_duration': 10,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,

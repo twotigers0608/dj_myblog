@@ -183,8 +183,8 @@
             //请求成功时执行该函数内容，result即为服务器返回的json对象
             if (result_data) {
                 var data_dict = data_reduction(result_data);
-                console.log('data_dict')
-                console.log(data_dict)
+                //console.log('data_dict')
+                //console.log(data_dict)
                 var result = data_durations(data_dict)
                 //挨个取出类别并填入类别数组
                 var week = result['week'];
@@ -193,7 +193,7 @@
                     var num_leg = v.length;
                     week_num.push(num_leg)
                 })
-                console.log(week_num)
+                //console.log(week_num)
                 myChart1.hideLoading();
                 //resule = JSON.parse(resule);//把string字符串转换为json数组
                 myChart1.setOption({
@@ -225,7 +225,7 @@
                         itemStyle: {
                             normal: {
                                 color: '#06d3cd',
-                                barBorderRadius: [20, 20, 20, 20],
+                                //barBorderRadius: [20, 20, 20, 20],
                             }
                         },
                         data: week_num,
@@ -328,7 +328,7 @@
         var options = {
             url: "/ajax/get_metrics/",//json文件或者数据库查询后的地址
             colums: [{
-                "Index": "released_time",
+                "Index": "week",
                 "Name": "Week"
             }, {
                 "Index": "verify_duration",
@@ -337,7 +337,7 @@
                 "Index": "review_duration",
                 "Name": "Review"
             }, {
-                "Index": "merged_duration",
+                "Index": "merge_duration",
                 "Name": "Merged"
             }, {
                 "Index": "rel_duration",
@@ -349,13 +349,13 @@
 
 </script>
 
-<table class="table table-hover dc-data-table dc-chart" id='tabledata'>
-    {#<table dc-chart="dataTable" dc-dimension="cycleDimension" dc-group="tableGroup" dc-size="100" dc-post-setup-chart="tablePostFormat" class="table table-hover dc-data-table dc-chart">#}
+<table width="90%" class="table">
     <tr class="title">
-        <th class="dc-table-label">Patch ID</th>
-        <th class="dc-table-head">Verify Time</th>
-        <th class="dc-table-head">Merage Time</th>
-        <th class="dc-table-head">Release Time</th>
+        <th>Week</th>
+        <th>Patch ID</th>
+        <th>Verify Time</th>
+        <th>Merage Time</th>
+        <th>Release Time</th>
     </tr>
 </table>
 </body>

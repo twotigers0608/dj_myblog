@@ -1,31 +1,11 @@
-$.fn.grid = function for_ajax(options) {
-    var $tbody = $(this).find("tbody");
-    var colums = options.colums;
-    var url = options.url;
-    var content = [];
-    var rqdata = [];
-    //ajax获取数据源后存入content数据中。
-    $.ajax({
-        type: "post",
-        url: url,
-        data: {"kernel": "e.g.2018"},
-        dataType: "json",
-        async: false,
-        success: function (data) {
-            rqdata = data;
-        }
-    });
-    content = rqdata.data
-
-}
-
 function f(date) {
     var t = Date.parse(date);
     if (!isNaN(t)) {
         return new Date(Date.parse(date.replace(/-/g, "/")));
     } else {
         return new Date();
-    };
+    }
+    ;
 };
 
 function getWeekOfYear(date) {
@@ -54,7 +34,8 @@ function data_reduction(data) {
         var ww = getWeekOfYear(data[i]['released_time'])
         data[i]['week'] = ww
         week_list.push(ww)
-    };
+    }
+    ;
     for (var i = 0; i < week_list.length; i++) {
         var col = [];
         for (var l = 0; l < data.length; l++) {
@@ -79,11 +60,12 @@ function data_durations(data) {
         var merge_duration = 0;
         var released_duration = 0;
         week.push(k);
-            for (var l = 0; l < v.length; l++) {
-                review_duration += v[l]['review_duration'];
-                merge_duration += Number(v[l]['merge_duration']);
-                released_duration += v[l]['rel_duration'];
-            };
+        for (var l = 0; l < v.length; l++) {
+            review_duration += v[l]['review_duration'];
+            merge_duration += Number(v[l]['merge_duration']);
+            released_duration += v[l]['rel_duration'];
+        }
+        ;
         review_list.push(review_duration);
         merge_list.push(merge_duration);
         rel_list.push(released_duration);
@@ -92,10 +74,42 @@ function data_durations(data) {
     result['review_duration'] = review_list;
     result['merge_duration'] = merge_list;
     result['rel_duration'] = rel_list;
-    console.log(result)
+    //console.log(result)
     return result
 }
 
-function data_num(data) {
+//返回表格数据
+$.fn.grid = function for_ajax(options) {
+    var $tbody = $(this).find("tbody");
+    var colums = options.colums;
+    var url = options.url;
+    var content = [];
+    var rqdata = [];
+    //ajax获取数据源后存入content数据中。
+    $.ajax({
+        type: "post",
+        url: url,
+        data: {"kernel": "e.g.2018"},
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            result_data = data.Result;
+            var data_dict = data_reduction(result_data);
+            var result = data_durations(data_dict);
+            $.each(colums, function (key, value) {
+                //遍历数据 获取周
+                var cols = [];
+                for (var c = 0; c < value.length(); c++) {
+                    //遍历字典获取
+                    $.each(value[c], function (key2, value2) {
+                        if (key2 == value.Index) {
+                            cols.push(value2);
+                        }
+                    });
+                }
+                console.log(data_dict)
 
-}
+            });
+            content = rqdata.data
+
+        }
