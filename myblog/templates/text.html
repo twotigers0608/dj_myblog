@@ -93,7 +93,7 @@
                     // 每周每个任务的时间
                     yAxis: {
                         type: 'value',
-                        splitArea: {show: true}
+                        splitArea: {show: true},
                     },
                     series: [{
                         name: 'Review',
@@ -222,6 +222,12 @@
                     series: [{
                         name: 'name:销量',
                         type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: '#06d3cd',
+                                barBorderRadius: [20, 20, 20, 20],
+                            }
+                        },
                         data: week_num,
                     }
                     ]
