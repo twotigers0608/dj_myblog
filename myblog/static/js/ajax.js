@@ -8,7 +8,7 @@ $.fn.grid = function for_ajax(options) {
     $.ajax({
         type: "post",
         url: url,
-        data: {"kernel":"e.g.2018"},
+        data: {"kernel": "e.g.2018"},
         dataType: "json",
         async: false,
         success: function (data) {
@@ -35,3 +35,30 @@ $.fn.grid = function for_ajax(options) {
         $tbody.append(html)
     }
 }
+
+function f(date) {
+    var t = Date.parse(date);
+    if (!isNaN(t)) {
+        return new Date(Date.parse(date.replace(/-/g, "/")));
+    } else {
+        return new Date();
+    }
+    ;
+}
+
+function getWeekOfYear(date) {
+    //var today = (new Date(data)).getTime()
+    var today = f(date)
+    //var today = new Date();
+    //alert(today)
+    var firstDay = new Date(today.getFullYear(), 0, 1);
+    var dayOfWeek = firstDay.getDay();
+    var spendDay = 1;
+    if (dayOfWeek != 0) {
+        spendDay = 7 - dayOfWeek + 1;
+    }
+    firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
+    var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
+    var result = Math.ceil(d / 7);
+    return result + 1;
+};

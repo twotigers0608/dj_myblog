@@ -11,15 +11,18 @@
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
     <script type="text/javascript" src="../static/js/ajax.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <p> now</p>
 <script type="text/javascript">
 
-    function getWeekOfYear() {
-        var today = new Date();
+    function getWeekOfYear(date) {
+        //var today = (new Date(data)).getTime()
+        var today = f(date)
+        //var today = new Date();
+        //alert(today)
         var firstDay = new Date(today.getFullYear(), 0, 1);
         var dayOfWeek = firstDay.getDay();
         var spendDay = 1;
@@ -31,7 +34,18 @@
         var result = Math.ceil(d / 7);
         return result + 1;
     };
-    alert(getWeekOfYear())
+
+    function f(date) {
+        var t = Date.parse(date);
+    if (!isNaN(t)) {
+        return new Date(Date.parse(date.replace(/-/g, "/")));
+    } else {
+        return new Date();
+    };
+    }
+
+    alert(getWeekOfYear('2019-07-09 19:44:01'))
+    //alert(f('2019-07-09 19:44:01'))
 </script>
 </body>
 </html>
