@@ -11,41 +11,32 @@
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
     <script type="text/javascript" src="../static/js/ajax.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <p> now</p>
 <script type="text/javascript">
-
-    function getWeekOfYear(date) {
-        //var today = (new Date(data)).getTime()
-        var today = f(date)
-        //var today = new Date();
-        //alert(today)
-        var firstDay = new Date(today.getFullYear(), 0, 1);
-        var dayOfWeek = firstDay.getDay();
-        var spendDay = 1;
-        if (dayOfWeek != 0) {
-            spendDay = 7 - dayOfWeek + 1;
+$.ajax({
+        type: "post",
+        async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+        url: "/ajax/get_metrics/",    //请求发送到TestServlet处
+        data: {"kernel":"e.g.lts2018"},
+        dataType: "json",        //返回数据形式为json
+        success: function (results) {
+            result = results.Result
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            if (result) {
+                var data_dict = data_reduction(result);
+                var result = data_durations(data_dict)
+            console.log(data_dict)
+            console.log(result)
+            }
+        },
+        error: function (errorMsg) {
+            //请求失败时执行该函数
+            alert("图表请求数据失败!");
         }
-        firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
-        var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
-        var result = Math.ceil(d / 7);
-        return result + 1;
-    };
-
-    function f(date) {
-        var t = Date.parse(date);
-    if (!isNaN(t)) {
-        return new Date(Date.parse(date.replace(/-/g, "/")));
-    } else {
-        return new Date();
-    };
-    }
-
-    alert(getWeekOfYear('2019-07-09 19:44:01'))
-    //alert(f('2019-07-09 19:44:01'))
+    })
 </script>
 </body>
 </html>

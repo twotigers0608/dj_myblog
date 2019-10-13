@@ -48,9 +48,9 @@ function f(date) {
 
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
-    var today = f(date)
-    //var today = new Date();
-    //alert(today)
+    var today = f(date);
+    //alert(today);
+    var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
     var spendDay = 1;
@@ -60,5 +60,61 @@ function getWeekOfYear(date) {
     firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
     var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
     var result = Math.ceil(d / 7);
-    return result + 1;
-};
+    result += 1;
+    var week = '' + y + '-' + '' + result
+    return week;
+}
+
+function data_reduction(data) {
+    var week_data = {};
+    var week_list = [];
+    for (var i = 0; i < data.length; i++) {
+        var ww = getWeekOfYear(data[i]['released_time'])
+        data[i]['week'] = ww
+        week_list.push(ww)
+    }
+    ;
+    for (var i = 0; i < week_list.length; i++) {
+        var col = [];
+        for (var l = 0; l < data.length; l++) {
+            if (week_list[i] == data[l]['week']) {
+                col.push(data[l]);
+            }
+            week_data[week_list[i]] = col;
+        }
+    }
+    //console.log(week_data);
+    return week_data;
+}
+
+function data_durations(data) {
+    result = {};
+    week = [];
+    merge_list = [];
+    rel_list = [];
+    review_list = [];
+    $.each(data, function (k, v) {
+        var review_duration = 0;
+        var merge_duration = 0;
+        var released_duration = 0;
+        week.push(k);
+
+        for (var i = 0; i < v.length; i++) {
+            for (var l = 0; l < v.length; l++) {
+                review_duration += v[l]['review_duration'];
+                merge_duration += Number(v[l]['merge_duration']);
+                released_duration += v[l]['rel_duration'];
+                console.log(v[l]['merge_duration'])
+            }
+        }
+        review_list.push(review_duration)
+        merge_list.push(merge_duration);
+        rel_list.push(released_duration);
+    })
+    result['week'] = week;
+    result['review_duration'] = review_list;
+    result['merge_duration'] = merge_list;
+    result['rel_durations'] = rel_list;
+    console.log(result)
+    return result
+}

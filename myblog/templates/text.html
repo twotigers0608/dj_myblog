@@ -53,7 +53,7 @@
     $.ajax({
         type: "post",
         async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-        url: "ajax/get_metrics/",    //请求发送到TestServlet处
+        url: "/ajax/get_metrics/",    //请求发送到TestServlet处
         data: {"kernel":"e.g.lts2018"},
         dataType: "json",        //返回数据形式为json
         success: function (results) {
@@ -61,9 +61,7 @@
             //请求成功时执行该函数内容，result即为服务器返回的json对象
             //https://blog.csdn.net/qq6759/article/details/95228778
             if (result) {
-                for (var i = 0; i < result.length; i++){
-
-                }
+                data_reduction(result)
                 for (var i = 0; i < result.length; i++) {
                     //挨个取出类别并填入类别数组
                     week.push(result[i]['released_time']);
@@ -288,7 +286,7 @@
 
     $(function for_ajax() {
         var options = {
-            url: "ajax/get_metrics/",//json文件或者数据库查询后的地址
+            url: "/ajax/get_metrics/",//json文件或者数据库查询后的地址
             colums: [{
                 "Index": "released_time",
                 "Name": "Week"
