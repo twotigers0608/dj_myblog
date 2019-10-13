@@ -1,73 +1,37 @@
-{% extends "week.html" %}
-{% block title %} 模板语法可硬{{ week }} {% endblock %}
-{% block rect %}
-    {% for i in week %}
-        <rect class="bar" fill="#1f77b4" y="327" height="{{ i.num|safe }}" width="21" x="1">
-            <!-- 获取焦点显示详细信息    -->
-            <title>Work Week: 2018.51
-                Nbr:{{ i.NO|safe }}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>week show</title>
+    <!-- including ECharts file -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          rel="external nofollow">
+    <style type="text/css" scr="../static/css/quiltreview.css"></style>
+    <style type="text/css" scr="../static/css/mertrics.css"></style>
+    <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="../static/js/ajax.js"></script>
 
-                BeforeReview: {{ i.BeforeReview|safe }}
-                Review:{{ i.Review|safe }}
-                Maintainer: {{ i.Maintainer }}
-                SubmitToMerge:{{ i.SubmitToMerge }}
-                Merge:{{ i.Merge }}
-            </title>
-        </rect>
-    {% endfor %}
-{% endblock rect %}
+</head>
+<body>    <!-- prepare a DOM container with width and height -->
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<p> now</p>
+<script type="text/javascript">
 
-{% block week %}
-    {% for w in week %}
-        <g class="tick" transform="translate(35.30769230769231,0)" style="opacity: 1;">
-            <line y2="6" x2="0"></line>
-            <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)" style="text-anchor: middle;">
-                {{ w|safe }}
-            </text>
-        </g>
-    {% endfor %}
-{% endblock %}
-
-{% block timeline %}
-    {% for t in context %}
-        <g class="tick" transform="translate(11.76923076923077,0)" style="opacity: 1;">
-            <line y2="6" x2="0"></line>
-            <text y="9" dy=".71em" x="0" dx="-25" transform="rotate(-30)"
-                  style="text-anchor: middle;">
-                {{ t }}
-            </text>
-        </g>
-    {% endfor %}
-{% endblock %}
-
-{% block numdetails %}
-    {% for i in context %}
-        <g class="stack _0">
-        <rect class="bar" fill="#1f77b4" y="215" height="13" width="21" x="1">
-            <title>Work Week: {{ i|safe }}
-
-                Nbr: {{ i.num|safe }}</title>
-        </rect>
-    {% endfor %}
-{% endblock %}
-
-{% block details %}
-    {% for x in context %}
-        <tbody>
-        <tr class="dc-table-group">
-            <td class="dc-table-label" colspan="7">{{ x|safe }}</td>
-        </tr>
-        {% for y in x %}
-            <tr class="dc-table-row">
-                <td class="dc-table-column _0"><a href="https://android.intel.com/680511" target="_blank">680511</a>
-                </td>
-                <td class="dc-table-column _1">{{ y.PatchId }}</td>
-                <td class="dc-table-column _2">{{ y.Date }}</td>
-                <td class="dc-table-column _3">{{ y.Before }}</td>
-                <td class="dc-table-column _4">{{ y.Review }}</td>
-                <td class="dc-table-column _5">{{ y.Maintainer }}</td>
-                <td class="dc-table-column _6">{{ y.Submit }}</td>
-            </tr>
-        {% endfor %}
-    {% endfor %}
-{% endblock %}
+    function getWeekOfYear() {
+        var today = new Date();
+        var firstDay = new Date(today.getFullYear(), 0, 1);
+        var dayOfWeek = firstDay.getDay();
+        var spendDay = 1;
+        if (dayOfWeek != 0) {
+            spendDay = 7 - dayOfWeek + 1;
+        }
+        firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
+        var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
+        var result = Math.ceil(d / 7);
+        return result + 1;
+    };
+    alert(getWeekOfYear())
+</script>
+</body>
+</html>
