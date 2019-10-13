@@ -71,53 +71,53 @@ def get_news(request):
 def Weekjson(request):
     if request.method == "POST":
         data = [{
-            'patch_id':'123456',
-            'total_duration': 15,
-            'review_duration': 23,
-            'merge_duration': 34,
-            'rel_duration': 25,
-            'released_time': 2019-22,
-        },{
             'patch_id': '123456',
             'total_duration': 15,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
-            'released_time': 2019-23,
-        },{
+            'released_time': 2019 - 22,
+        }, {
             'patch_id': '123456',
             'total_duration': 15,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
-            'released_time': 2019-24,
-        },{
+            'released_time': 2019 - 23,
+        }, {
             'patch_id': '123456',
             'total_duration': 15,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
-            'released_time': 2019-25,
-        },{
+            'released_time': 2019 - 24,
+        }, {
             'patch_id': '123456',
             'total_duration': 15,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
-            'released_time': 2019-26,
-        },{
+            'released_time': 2019 - 25,
+        }, {
             'patch_id': '123456',
             'total_duration': 15,
             'review_duration': 23,
             'merge_duration': 34,
             'rel_duration': 25,
-            'released_time': 2019-21,
+            'released_time': 2019 - 26,
+        }, {
+            'patch_id': '123456',
+            'total_duration': 15,
+            'review_duration': 23,
+            'merge_duration': 34,
+            'rel_duration': 25,
+            'released_time': 2019 - 21,
         }, ]
         return JsonResponse({"status": "200", "msg": "OK", "data": data})
 
 
 class Index(View):
-   def get(self, request):
+    def get(self, request):
         # post_list = Post.objects.all().order_by('-create_time')
         # return render(request, "index1.html",context={'post_list':post_list})
         pass
@@ -127,6 +127,7 @@ class Article(View):
     def get(self, request):
         return render(request, "column1.html")
 
+
 def test(request):
-    if request.method =='GET':
+    if request.method == 'GET':
         return render(request, 'week1.html')

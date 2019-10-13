@@ -4,8 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>week show</title>
     <!-- including ECharts file -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          rel="external nofollow">
     <style type="text/css" scr="../static/css/quiltreview.css"></style>
     <style type="text/css" scr="../static/css/mertrics.css"></style>
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
@@ -51,33 +49,54 @@
         data: {"kernel": "e.g.lts2018"},
         dataType: "json",        //返回数据形式为json
         success: function (results) {
-            result = results.data
+            result_data = results.Result
             //请求成功时执行该函数内容，result即为服务器返回的json对象
-            //https://blog.csdn.net/qq6759/article/details/95228778
-            if (result) {
+            if (result_data) {
                 var data_dict = data_reduction(result_data);
                 var result = data_durations(data_dict)
                 //挨个取出类别并填入类别数组
-                var week = result['released_time'];
-                var verify_nums = result['released_durations'];
-                var review_nums = result['review_durations'];
-                var merge_nums = result['merge_durations'];
-                var released_nums = result['rel_durations'];
+                var week = result['week'];
+                //var verify_nums = result['released_durations'];
+                var review_nums = result['review_duration'];
+                var merge_nums = result['merge_duration'];
+                var released_nums = result['rel_duration'];
+                console.log(week)
                 myChart.hideLoading();    //隐藏加载动画
-                myChart.setOption({        //加载数据图表
+                myChart.setOption({
+                    // 顶部选择
+                    legend: {
+                        data: ['Review', 'Merge', 'Released']
+                    },
+                    // 自动调节位置
+                    toolbox: {
+                        show: true,
+                        orient: 'vertical',
+                        x: 'right',
+                        y: 'center',
+                        feature: {
+                            mark: true,
+                            dataView: {readOnly: false},
+                            magicType: ['line', 'bar'],
+                            restore: true,
+                            saveAsImage: true
+                        }
+                    },
+                    calculable: true,
+                    // 显示每周
                     xAxis: {
                         data: week,
                         axisLabel: {
                             interval: 0,
                             rotate: 40
-                        }
+                        },
                     },
+                    // 每周每个任务的时间
                     yAxis: {
                         type: 'value',
                         splitArea: {show: true}
                     },
                     series: [{
-                        name: 'vierify Time',
+                        name: 'Review',
                         type: 'bar',
                         stack: '总量',
                         label: {
@@ -86,41 +105,32 @@
                                 position: 'insideRight'
                             }
                         },
-                        data: verify_nums
-                    }, {
-                        name: 'Review Time',
-                        type: 'bar',
-                        stack: '总量',
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'insideRight'
-                            }
+                        data: review_nums,
+                    },
+                        {
+                            name: 'Merge',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+                            data: merge_nums,
                         },
-                        data: review_nums
-                    }, {
-                        name: 'Merage Time',
-                        type: 'bar',
-                        stack: '总量',
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'insideRight'
-                            }
-                        },
-                        data: merge_nums
-                    }, {
-                        name: 'Release Time',
-                        type: 'bar',
-                        stack: '总量',
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'insideRight'
-                            }
-                        },
-                        data: released_nums
-                    }]
+                        {
+                            name: 'Released',
+                            type: 'bar',
+                            stack: '总量',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+                            data: released_nums,
+                        }]
                 });
 
             }
@@ -131,7 +141,7 @@
             alert("图表请求数据失败!");
             myChart.hideLoading();
         }
-    })
+    });
 </script>
 
 <div id="main" style="width:990px;height:400px;margin:auto;"></div>
@@ -161,40 +171,71 @@
     });
 
     // 异步加载数据
-    $.get('ajax/get_news/').done(function (resule) {
-        myChart1.hideLoading();
-        //resule = JSON.parse(resule);//把string字符串转换为json数组
-        myChart1.setOption({
-            // 自动调节位置
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                x: 'right',
-                y: 'center',
-                feature: {
-                    mark: true,
-                    dataView: {readOnly: false},
-                    magicType: ['line', 'bar'],
-                    restore: true,
-                    saveAsImage: true
-                }
-            },
-            xAxis: {
-                data: resule.Result.name,
-                axisLabel: {
-                    interval: 0,
-                    rotate: 40
-                },
-            },
-            yAxis: {},
-            series: [{
-                name: 'name:销量',
-                type: 'bar',
-                data: resule.Result.value
+    myChart1.showLoading();
+    $.ajax({
+        type: "post",
+        async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+        url: "/ajax/get_metrics/",    //请求发送到TestServlet处
+        data: {"kernel": "e.g.lts2018"},
+        dataType: "json",        //返回数据形式为json
+        success: function (results) {
+            result_data = results.Result
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            if (result_data) {
+                var data_dict = data_reduction(result_data);
+                console.log('data_dict')
+                console.log(data_dict)
+                var result = data_durations(data_dict)
+                //挨个取出类别并填入类别数组
+                var week = result['week'];
+                var week_num = []
+                $.each(data_dict, function (k, v) {
+                    var num_leg = v.length;
+                    week_num.push(num_leg)
+                })
+                console.log(week_num)
+                myChart1.hideLoading();
+                //resule = JSON.parse(resule);//把string字符串转换为json数组
+                myChart1.setOption({
+                    // 自动调节位置
+                    toolbox: {
+                        show: true,
+                        orient: 'vertical',
+                        x: 'right',
+                        y: 'center',
+                        feature: {
+                            mark: true,
+                            dataView: {readOnly: false},
+                            magicType: ['line', 'bar'],
+                            restore: true,
+                            saveAsImage: true
+                        }
+                    },
+                    xAxis: {
+                        data: week,
+                        axisLabel: {
+                            interval: 0,
+                            rotate: 40
+                        },
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'name:销量',
+                        type: 'bar',
+                        data: week_num,
+                    }
+                    ]
+                });
+
             }
-            ]
-        });
-    })
+
+        },
+        error: function (errorMsg) {
+            //请求失败时执行该函数
+            alert("图表请求数据失败!");
+            myChart.hideLoading();
+        }
+    });
 
     // 处理点击事件并且跳转到相应的百度搜索页面
     /*
@@ -288,7 +329,7 @@
                 "Name": "Verify"
             }, {
                 "Index": "review_duration",
-                "Name": "Review",
+                "Name": "Review"
             }, {
                 "Index": "merged_duration",
                 "Name": "Merged"
