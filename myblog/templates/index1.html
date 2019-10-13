@@ -2,31 +2,21 @@
 
 {% block title %} 个人博客分享 {% endblock %}
 {% block content %}
-    <article>
-        <h2 class="article-title">主要内容</h2>
+    {% for post in post_list %}
+        <article>
+            <h3 class="article-title">{{ post.title }}</h3>
 
-        <p class="article-meta">Posted on
-            <time datetime="2017-05-14">14 May</time>
-            by <a href="#" rel="author">Joe Bloggs</a></p>
+            <p class="article-meta">Posted on
+                <time datetime="2017-05-14">{{ post.created_time }}</time>
+                by <a href="#" rel="author">{{ post.author }}</a></p>
 
-        {#                可定义以后博客的简要信息#}
-        <p>Welcome to portal, a free CSS3 &amp; HTML5 responsive web template from <a href="#" title="ZyPOP">ZyPOP</a>.
-            This template is completely <strong>free</strong> to use permitting a link remains back to <a
-                    href="#" title="ZyPOP">ZyPOP</a>.</p>
-    </article>
-
-    <article>
-        <h3 class="article-title">添加内容</h3>
-
-        <p class="article-meta">Posted on
-            <time datetime="2017-05-14">14 Sep</time>
-            by <a href="#" rel="author">自定义的新内容</a></p>
-
-        {#                可定义以后博客的简要信息#}
-        <p>Welcome to visit my blog <a href="#" title="ZyPOP">ZyPOP</a>.
-            This template is completely <strong>free</strong> to use permitting a link remains back to <a
-                    href="#" title="ZyPOP">高亮显示</a>.</p>
-    </article>
+            {#  可定义以后博客的简要信息#}
+            <p>{{ post.body }}.</p>
+        </article>
+    {# 当数据不存在时输出  #}
+     {% empty %}
+        <div class="no-post">暂时没有发布文章</div>
+    {% endfor %}
 {% endblock %}
 
 {% block pagebreak %}
