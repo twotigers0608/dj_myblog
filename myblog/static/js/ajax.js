@@ -106,6 +106,12 @@ $.fn.grid = function for_ajax(options) {
                             cols.push(value2);
                         }
                     });
+                    var html = "<tr" + " class=" + k + ">";
+                    $.each(cols, function (k, v) {
+                        html += "<td>" + v + "</td>"
+                    });
+                    html += "</tr>";
+                    $tbody.append(html)
                 }
                 console.log(data_dict)
 
@@ -113,3 +119,5 @@ $.fn.grid = function for_ajax(options) {
             content = rqdata.data
 
         }
+    });
+}

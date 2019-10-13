@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="自定义柱状图颜色">
+    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/show/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/static/css/metrics.css" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/css/metrics.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/templates/text.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/text.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +64,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="110" column="8" lean-forward="true" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
+            <state relative-caret-position="462">
+              <caret line="123" column="4" lean-forward="true" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -393,7 +390,7 @@
       <workItem from="1570901888498" duration="21000" />
       <workItem from="1570902748177" duration="68000" />
       <workItem from="1570903006536" duration="305000" />
-      <workItem from="1570957968766" duration="9868000" />
+      <workItem from="1570957968766" duration="9976000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -605,11 +602,18 @@
       <option name="project" value="LOCAL" />
       <updated>1570979241316</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="注意括号">
+      <created>1570982164394</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1570982164394</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175787000" />
+    <option name="totallyTimeSpent" value="175895000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -720,7 +724,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="动态获取数据失败" />
     <MESSAGE value="成功返回json数据" />
     <MESSAGE value="ajax 获取不到信息" />
     <MESSAGE value="解决 ajax 显示问题" />
@@ -745,7 +748,8 @@
     <MESSAGE value="jquery 报错" />
     <MESSAGE value="图表返回完成" />
     <MESSAGE value="自定义柱状图颜色" />
-    <option name="LAST_COMMIT_MESSAGE" value="自定义柱状图颜色" />
+    <MESSAGE value="注意括号" />
+    <option name="LAST_COMMIT_MESSAGE" value="注意括号" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/myblog/show/getjson/admin.py">
@@ -1009,8 +1013,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="110" column="8" lean-forward="true" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="8" />
+        <state relative-caret-position="462">
+          <caret line="123" column="4" lean-forward="true" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="4" />
         </state>
       </provider>
     </entry>
