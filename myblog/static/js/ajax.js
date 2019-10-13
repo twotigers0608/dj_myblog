@@ -96,28 +96,31 @@ $.fn.grid = function for_ajax(options) {
             result_data = data.Result;
             var data_dict = data_reduction(result_data);
             var result = data_durations(data_dict);
+            console.log(data_dict)
             $.each(colums, function (key, value) {
-                //遍历数据 获取周
-                var cols = [];
-                for (var c = 0; c < value.length(); c++) {
-                    //遍历字典获取
-                    $.each(value[c], function (key2, value2) {
-                        if (key2 == value.Index) {
-                            cols.push(value2);
-                        }
-                    });
-                    var html = "<tr" + " class=" + k + ">";
-                    $.each(cols, function (k, v) {
-                        html += "<td>" + v + "</td>"
-                    });
-                    html += "</tr>";
-                    $tbody.append(html)
-                }
-                console.log(data_dict)
 
-            });
-            content = rqdata.data
-
+                $.each(data_dict, function (key1, value1) {
+                    //遍历数据 获取周
+                    var cols = [];
+                    //console.log(value1)
+                    for (var c = 0; c < value1.length; c++) {
+                        //遍历字典获取
+                        $.each(value1[c], function (key2, value2) {
+                            if (key2 == value.Index) {
+                                cols.push(value2);
+                            }
+                        });
+                        var html = "<tr" + " class=" + key1 + ">";
+                        $.each(cols, function (k, v) {
+                            html += "<td>" + v + "</td>"
+                        });
+                        html += "</tr>";
+                        $tbody.append(html)
+                    }
+                    console.log(html)
+                });
+                content = rqdata.data
+            })
         }
     });
 }
