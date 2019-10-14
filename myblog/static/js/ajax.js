@@ -119,12 +119,13 @@ $.fn.grid = function for_ajax(options) {
                     new_cols['week'] = cols['week']
                     new_cols['patch_id'] = cols['patch_id']
                     new_cols['verify_duration'] = cols['verify_duration']
+                    new_cols['review_duration'] = cols['review_duration']
                     new_cols['merge_duration'] = cols['merge_duration']
                     new_cols['rel_duration'] = cols['rel_duration']
                     var html = "<tr" + " class=" + cols['week'] + ">";
                     $.each(new_cols, function (k, v) {
                         //console.log(v)
-                        html += "<td>" + v + "</td>"
+                        html += "<th>" + v + "</th>"
                     });
                     // for (var i = 0; i < cols.length; i ++){
                     //     html += "<td>" + cols[i] + "</td>"

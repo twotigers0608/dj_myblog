@@ -1,24 +1,27 @@
-.table {
+
+table.altrowstable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
     border-collapse: collapse;
-    margin: 0 auto;
-    text-align: center;
 }
-
-.table td, .table th {
-    border: 1px solid #cad9ea;
-    color: #666;
-    height: 30px;
+table.altrowstable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
 }
-
-.table .thead th {
-    background-color: #CCE8EB;
-    width: 100px;
+table.altrowstable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
 }
-
-.table .tr:nth-child(odd) {
-    background: #fff;
+.oddrowcolor{
+    background-color:#d4e3e5;
 }
-
-.table .tr:nth-child(even) {
-    background: #F5FAFA;
+.evenrowcolor{
+    background-color:#c3dde0;
 }
