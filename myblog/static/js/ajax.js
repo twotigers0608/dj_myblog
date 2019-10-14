@@ -138,3 +138,139 @@ $.fn.grid = function for_ajax(options) {
         }
     });
 }
+
+function funmychart(result_data) {
+                var data_dict = data_reduction(result_data);
+                var result = data_durations(data_dict)
+                //挨个取出类别并填入类别数组
+                var week = result['week'];
+                //var verify_nums = result['released_durations'];
+                var review_nums = result['review_duration'];
+                var merge_nums = result['merge_duration'];
+                var released_nums = result['rel_duration'];
+                //console.log(week)
+                myChart.hideLoading();    //隐藏加载动画
+                myChart.setOption({
+                    // 顶部选择
+                    legend: {
+                        data: ['Review', 'Merge', 'Released']
+                    },
+                    // 自动调节位置
+                    toolbox: {
+                        show: true,
+                        orient: 'vertical',
+                        x: 'right',
+                        y: 'center',
+                        feature: {
+                            mark: true,
+                            dataView: {readOnly: false},
+                            magicType: ['line', 'bar'],
+                            restore: true,
+                            saveAsImage: true
+                        }
+                    },
+                    calculable: true,
+                    // 显示每周
+                    xAxis: {
+                        data: week,
+                        axisLabel: {
+                            interval: 0,
+                            rotate: 40
+                        },
+                    },
+                    // 每周每个任务的时间
+                    yAxis: {
+                        type: 'value',
+                        splitArea: {show: true},
+                    },
+                    series: [{
+                        name: 'Review',
+                        type: 'bar',
+                        stack: 'Review',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'insideRight'
+                            }
+                        },
+                        data: review_nums,
+                    },
+                        {
+                            name: 'Merge',
+                            type: 'bar',
+                            stack: 'Merge',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+                            data: merge_nums,
+                        },
+                        {
+                            name: 'Released',
+                            type: 'bar',
+                            stack: 'Released',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+                            data: released_nums,
+                        }]
+                });
+}
+function funmychart1(result_data) {
+                var data_dict = data_reduction(result_data);
+                //console.log('data_dict')
+                //console.log(data_dict)
+                var result = data_durations(data_dict)
+                //挨个取出类别并填入类别数组
+                var week = result['week'];
+                var week_num = []
+                $.each(data_dict, function (k, v) {
+                    var num_leg = v.length;
+                    week_num.push(num_leg)
+                })
+                //console.log(week_num)
+                myChart1.hideLoading();
+                //resule = JSON.parse(resule);//把string字符串转换为json数组
+                myChart1.setOption({
+                    // 自动调节位置
+                    toolbox: {
+                        show: true,
+                        orient: 'vertical',
+                        x: 'right',
+                        y: 'center',
+                        feature: {
+                            mark: true,
+                            dataView: {readOnly: false},
+                            magicType: ['line', 'bar'],
+                            restore: true,
+                            saveAsImage: true
+                        }
+                    },
+                    xAxis: {
+                        data: week,
+                        axisLabel: {
+                            interval: 0,
+                            rotate: 40
+                        },
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'name:num',
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: '#06d3cd',
+                                //barBorderRadius: [20, 20, 20, 20],
+                            }
+                        },
+                        data: week_num,
+                    }
+                    ]
+                });
+
+}
