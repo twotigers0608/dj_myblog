@@ -96,29 +96,37 @@ $.fn.grid = function for_ajax(options) {
             result_data = data.Result;
             var data_dict = data_reduction(result_data);
             var result = data_durations(data_dict);
-            console.log(data_dict)
-            $.each(colums, function (key, value) {
-
-                $.each(data_dict, function (key1, value1) {
-                    //遍历数据 获取周
-                    var cols = [];
-                    //console.log(value1)
-                    for (var c = 0; c < value1.length; c++) {
+            // console.log(data_dict);
+            console.log(colums)
+            $.each(data_dict, function (key1, value1) {
+                console.log(value1);
+                //遍历标签名 返回需要的key
+                for (var c = 0; c < value1.length; c++) {
+                    var cols = {};
+                    $.each(value1[c], function (key2, value2) {
+                        //console.log(value);
                         //遍历字典获取
-                        $.each(value1[c], function (key2, value2) {
+                        $.each(colums, function (key, value) {
                             if (key2 == value.Index) {
-                                cols.push(value2);
+                                cols[key2] = value2;
+                                //console.log(value2)
                             }
                         });
-                        var html = "<tr" + " class=" + key1 + ">";
-                        $.each(cols, function (k, v) {
-                            html += "<td>" + v + "</td>"
-                        });
-                        html += "</tr>";
-                        $tbody.append(html)
-                    }
-                    console.log(html)
-                });
+
+                    });
+                    console.log(cols)
+                    var html = "<tr" + " class=" + cols['week'] + ">";
+                    $.each(cols, function (k, v) {
+                        //console.log(v)
+                        html += "<td>" + v + "</td>"
+                    });
+                    // for (var i = 0; i < cols.length; i ++){
+                    //     html += "<td>" + cols[i] + "</td>"
+                    // };
+                    html += "</tr>";
+                    //console.log(html)
+                    $tbody.append(html)
+                }
                 content = rqdata.data
             })
         }
