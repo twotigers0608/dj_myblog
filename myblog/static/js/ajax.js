@@ -99,7 +99,7 @@ $.fn.grid = function for_ajax(options) {
             // console.log(data_dict);
             console.log(colums)
             $.each(data_dict, function (key1, value1) {
-                console.log(value1);
+                //console.log(value1);
                 //遍历标签名 返回需要的key
                 for (var c = 0; c < value1.length; c++) {
                     var cols = {};
@@ -115,8 +115,14 @@ $.fn.grid = function for_ajax(options) {
 
                     });
                     console.log(cols)
+                    new_cols = {}
+                    new_cols['week'] = cols['week']
+                    new_cols['patch_id'] = cols['patch_id']
+                    new_cols['verify_duration'] = cols['verify_duration']
+                    new_cols['merge_duration'] = cols['merge_duration']
+                    new_cols['rel_duration'] = cols['rel_duration']
                     var html = "<tr" + " class=" + cols['week'] + ">";
-                    $.each(cols, function (k, v) {
+                    $.each(new_cols, function (k, v) {
                         //console.log(v)
                         html += "<td>" + v + "</td>"
                     });
