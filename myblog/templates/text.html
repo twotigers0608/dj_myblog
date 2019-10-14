@@ -14,6 +14,7 @@
 <body>    <!-- prepare a DOM container with width and height -->
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="myChart" style="width:990px;height:400px;margin:auto;"></div>
+<div id="main" style="width:990px;height:400px;margin:auto;"></div>
 
 <script type="text/javascript">
     var myChart = echarts.init(document.getElementById('myChart'));
@@ -23,7 +24,7 @@
         title: {
             text: 'Patch Cycle Chart / Work Week',
             textStyle: {
-	        	 align: 'normal',
+                align: 'normal',
 	            fontSize: 18,
 	        },
         },
@@ -38,17 +39,12 @@
         series: [{
             name: '数量',
             type: 'bar',
-            data: []
+            data: [],
         }]
     });
 
     // 异步加载数据
     myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
-</script>
-
-<div id="main" style="width:990px;height:400px;margin:auto;"></div>
-
-<script type="text/javascript">
 
     var myChart1 = echarts.init(document.getElementById('main'));
     // 显示标题，图例和空的坐标轴
@@ -75,9 +71,9 @@
         }
         ]
     });
-
     // 异步加载数据
     myChart1.showLoading();
+
     $.ajax({
         type: "post",
         async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
@@ -111,40 +107,9 @@
         $("#tabledata tr").hide()
         $("#tabledata .title").show()
      */
-
-    myChart1.one('click', function (params) {
-        $("#tabledata tr").hide()
-        $("#tabledata .title").show()
-        myChart1.setOption({
-            xAxis: [{
-                axisLabel: {
-                    textStyle: {
-                        color: function (value, index) {
-                            return index == params.dataIndex ? '#F14845' : '#383738';
-                        }
-                    }
-                }
-            }]
-        })
-        $("#tabledata ." + params.name).show()
-    });
-    myChart.one('click', function (params) {
-        $("#tabledata tr").hide()
-        $("#tabledata .title").show()
-        myChart.setOption({
-            xAxis: [{
-                axisLabel: {
-                    textStyle: {
-                        color: function (value, index) {
-                            return index == params.dataIndex ? '#F14845' : '#383738';
-                        }
-                    }
-                }
-            }]
-        })
-        $("#tabledata ." + params.name).show()
-    });
     myChart1.on('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
         myChart1.setOption({
             xAxis: [{
                 axisLabel: {
@@ -156,13 +121,11 @@
                 }
             }]
         })
-        if ($("#tabledata ." + params.name).css('display') == 'none') {
-            $("#tabledata ." + params.name).show();
-        } else {
-            $("#tabledata ." + params.name).hide();
-        }
+        $("#tabledata ." + params.name).show()
     });
     myChart.on('click', function (params) {
+        $("#tabledata tr").hide()
+        $("#tabledata .title").show()
         myChart.setOption({
             xAxis: [{
                 axisLabel: {
@@ -174,12 +137,9 @@
                 }
             }]
         })
-        if ($("#tabledata ." + params.name).css('display') == 'none') {
-            $("#tabledata ." + params.name).show();
-        } else {
-            $("#tabledata ." + params.name).hide();
-        }
+        $("#tabledata ." + params.name).show()
     });
+
 
     $(function for_ajax() {
         var options = {
