@@ -274,5 +274,7 @@ function funmychart1(result_data) {
 
 }
 function display(status) {
+    $("#tabledata tr").hide()
+    $("#tabledata .title").show()
 
 }
