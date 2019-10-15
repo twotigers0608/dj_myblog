@@ -1,17 +1,19 @@
+//将时间戳转换为标准时间
 function f(date) {
-    var t = Date.parse(date);
+    var date = new Date(date);
+    // 格式化日期
+    dateTime = date.toLocaleString();
+    var t = Date.parse(dateTime);
     if (!isNaN(t)) {
-        return new Date(Date.parse(date.replace(/-/g, "/")));
+        return new Date(Date.parse(dateTime.replace(/-/g, "/")));
     } else {
         return new Date();
     }
     ;
 };
-
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
     var today = f(date);
-    //alert(today);
     var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
@@ -31,8 +33,8 @@ function data_reduction(data) {
     var week_data = {};
     var week_list = [];
     for (var i = 0; i < data.length; i++) {
-        var ww = getWeekOfYear(data[i]['released_time'])
-        data[i]['week'] = ww
+        var ww = getWeekOfYear(data[i]['released_time']);
+        data[i]['week'] = ww;
         week_list.push(ww)
     }
     ;
@@ -47,6 +49,17 @@ function data_reduction(data) {
     }
     //console.log(week_data);
     return week_data;
+}
+
+function fmt(s) {
+    var h = parseInt(s / 3600, 10);
+    var n = parseInt((s - h * 3600) / 60, 10);
+    //var s = s % 60;
+    r = '';
+    r = h == 0 ? r : h + "h"
+    r = (n == 0 && s == 0) ? r : r + n + "m"
+    //r = s = 0 ? r : r + s + "秒"
+    return r;
 }
 
 function data_durations(data) {
@@ -66,6 +79,9 @@ function data_durations(data) {
             released_duration += v[l]['rel_duration'];
         }
         ;
+        review_duration = parseFloat(released_duration / 3600, 10).toFixed(2);
+        merge_duration = parseFloat(merge_duration / 3600, 10).toFixed(2);
+        released_duration = parseFloat(released_duration / 3600, 10).toFixed(2);
         review_list.push(review_duration);
         merge_list.push(merge_duration);
         rel_list.push(released_duration);
@@ -93,11 +109,11 @@ $.fn.grid = function for_ajax(options) {
         dataType: "json",
         async: false,
         success: function (data) {
-            result_data = data.Result;
+            result_data = data.data;
             var data_dict = data_reduction(result_data);
             var result = data_durations(data_dict);
             // console.log(data_dict);
-            console.log(colums)
+            //console.log(colums)
             $.each(data_dict, function (key1, value1) {
                 //console.log(value1);
                 //遍历标签名 返回需要的key
@@ -114,14 +130,18 @@ $.fn.grid = function for_ajax(options) {
                         });
 
                     });
-                    console.log(cols)
-                    new_cols = {}
-                    new_cols['week'] = cols['week']
-                    new_cols['patch_id'] = cols['patch_id']
-                    new_cols['verify_duration'] = cols['verify_duration']
-                    new_cols['review_duration'] = cols['review_duration']
-                    new_cols['merge_duration'] = cols['merge_duration']
-                    new_cols['rel_duration'] = cols['rel_duration']
+                    //console.log(cols)
+                    new_cols = {};
+                    new_cols['week'] = cols['week'];
+                    new_cols['patch_id'] = cols['patch_id'];
+                    var verrify_time = fmt(cols['verify_duration']);
+                    new_cols['verify_duration'] = verrify_time;
+                    var review_time = fmt(cols['review_duration']);
+                    new_cols['review_duration'] = review_time;
+                    var merge_time = fmt(cols['merge_duration']);
+                    new_cols['merge_duration'] = merge_time;
+                    var rel_time = fmt(cols['rel_duration']);
+                    new_cols['rel_duration'] = rel_time;
                     var html = "<tr" + " class=" + cols['week'] + ">";
                     $.each(new_cols, function (k, v) {
                         //console.log(v)
@@ -137,5 +157,158 @@ $.fn.grid = function for_ajax(options) {
                 content = rqdata.data
             })
         }
+    });
+}
+
+function rq_mychart(result_data) {
+    var data_dict = data_reduction(result_data);
+    var result = data_durations(data_dict)
+    //挨个取出类别并填入类别数组
+    var week = result['week'];
+    //var verify_nums = result['released_durations'];
+    var review_nums = result['review_duration'];
+    var merge_nums = result['merge_duration'];
+    var released_nums = result['rel_duration'];
+    //console.log(week)
+    myChart.hideLoading();    //隐藏加载动画
+    myChart.setOption({
+        // 顶部选择
+        legend: {
+            data: ['Review', 'Merge', 'Released']
+        },
+        // 自动调节位置
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            x: 'right',
+            y: 'center',
+            feature: {
+                mark: true,
+                dataView: {readOnly: false},
+                magicType: ['line', 'bar'],
+                restore: true,
+                saveAsImage: true
+            }
+        },
+        calculable: true,
+        // 显示每周
+        xAxis: {
+            data: week,
+            axisLabel: {
+                interval: 0,
+                rotate: 40
+            },
+        },
+        // 每周每个任务的时间
+        yAxis: {
+            type: 'value',
+            splitArea: {show: true},
+        },
+        series: [{
+            name: 'Review',
+            type: 'bar',
+            stack: 'total',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'insideRight'
+                }
+            }, itemStyle: {
+                normal: {
+                    color: '#1f77b4',
+                    //barBorderRadius: [20, 20, 20, 20],
+                }
+            },
+            data: review_nums,
+        },
+            {
+                name: 'Merge',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight'
+                    }
+                }, itemStyle: {
+                    normal: {
+                        color: '#9467bd',
+                        //barBorderRadius: [20, 20, 20, 20],
+                    }
+                },
+                data: merge_nums,
+            },
+            {
+                name: 'Released',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'insideRight',
+
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#ff7f0e',
+                        //barBorderRadius: [20, 20, 20, 20],
+                    }
+                },
+                data: released_nums,
+            }]
+    });
+}
+
+function rq_mychart1(result_data) {
+    var data_dict = data_reduction(result_data);
+    //console.log('data_dict')
+    //console.log(data_dict)
+    var result = data_durations(data_dict)
+    //挨个取出类别并填入类别数组
+    var week = result['week'];
+    var week_num = []
+    $.each(data_dict, function (k, v) {
+        var num_leg = v.length;
+        week_num.push(num_leg)
+    })
+    //console.log(week_num)
+    myChart1.hideLoading();
+    //resule = JSON.parse(resule);//把string字符串转换为json数组
+    myChart1.setOption({
+        // 自动调节位置
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            x: 'right',
+            y: 'center',
+            feature: {
+                mark: true,
+                dataView: {readOnly: false},
+                magicType: ['line', 'bar'],
+                restore: true,
+                saveAsImage: true
+            }
+        },
+        xAxis: {
+            data: week,
+            axisLabel: {
+                interval: 0,
+                rotate: 40
+            },
+        },
+        yAxis: {},
+        series: [{
+            name: 'name:number',
+            type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: '#1f77b4',
+                    //barBorderRadius: [20, 20, 20, 20],
+                }
+            },
+            data: week_num,
+        }
+        ]
     });
 }

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html style="font-style:normal;font-weight:normal;font-size:18px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>week show</title>
+    <!-- including ECharts file -->
+    <style type="text/css" scr="../static/css/quiltreview.css"></style>
+    <style type="text/css" scr="../static/css/mertrics.css"></style>
+    <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="../static/js/ajax.js"></script>
+</head>
+<body>    <!-- prepare a DOM container with width and height -->
+<div id="myChart" style="width:990px;height:400px;margin:auto;"></div>
+<div id="main" style="width:990px;height:400px;margin:auto;"></div>
+<table width="90%" class="table" id="tabledata">
+    <tr class="title">
+        <th>Week</th>
+        <th>Patch ID</th>
+        <th>Verify Time</th>
+        <th>Review Time</th>
+        <th>Merage Time</th>
+        <th>Release Time</th>
+    </tr>
+</table>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('myChart'));
+
+    // 显示标题，图例和空的坐标轴
+    myChart.setOption({
+
+        title: {
+            text: 'Patch Cycle Chart / Work Week'
+        },
+        tooltip: {},
+        legend: {
+            data: ['Work Week(Years.WW)']
+        },
+        xAxis: {
+            data: []
+        },
+        yAxis: {},
+        series: [{
+            name: 'time',
+            type: 'bar',
+            data: []
+        }]
+    });
+    myChart.showLoading();
+    var myChart1 = echarts.init(document.getElementById('main'));
+    myChart1.setOption({
+        title: {
+            text: 'Number of Patches / Work Week'
+        },
+        tooltip: {},
+        legend: {
+            data: []
+        },
+        xAxis: {
+            data: []
+        },
+        yAxis: {},
+        series: [{
+            name: 'num',
+            type: 'bar',
+            data: []
+        }
+        ]
+    });
+    // 显示标题，图例和空的坐标轴
+    // 异步加载数据
+    myChart1.showLoading();
+    $.ajax({
+        type: "post",
+        async: true,
+        url: "/ajax/get_metrics/",
+        data: {"kernel": "e.g.lts2018"},
+        dataType: "json",
+        success: function (results) {
+            result_data = results.data;
+            if (result_data) {
+                rq_mychart(result_data);
+                rq_mychart1(result_data)
+            }
+        },
+        error: function (errorMsg) {
+            //请求失败时执行该函数
+            alert("Chart request data failed!");
+            myChart.hideLoading();
+        }
+    });
+
+    // 处理点击事件
+    myChart1.on('click', function (params) {
+        $("#tabledata tr").hide();
+        $("#tabledata .title").show();
+        myChart1.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
+        $("#tabledata ." + params.name).show()
+    });
+    myChart.on('click', function (params) {
+        $("#tabledata tr").hide();
+        $("#tabledata .title").show();
+        myChart.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
+        $("#tabledata ." + params.name).show()
+    });
+    //构造展示表格
+    $(function for_ajax() {
+        var options = {
+            url: "/ajax/get_metrics/",
+            colums: [{
+                "Index": "week",
+                "Name": "Week"
+            }, {
+                "Index": "patch_id",
+                "Name": "Patch ID"
+            }, {
+                "Index": "verify_duration",
+                "Name": "Verify"
+            }, {
+                "Index": "review_duration",
+                "Name": "Review"
+            }, {
+                "Index": "merge_duration",
+                "Name": "Merged"
+            }, {
+                "Index": "rel_duration",
+                "Name": "Released"
+            }]
+        }
+        $("#tabledata").grid(options);
+    });
+
+</script>
+</body>
+</html>
