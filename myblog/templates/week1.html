@@ -18,9 +18,10 @@
 <script type="text/javascript">
     //1571144176.912599
     //alert(new Data(1485136744758).format('yyyy-MM-dd'))
-    var date = new Date(1571144176912);
+    var date = new Date(1470004176912);
     // 格式化日期
-    dateTime = date.toLocaleString();
+    dateTime = date.toLocaleDateString();
+    var t = Date.parse(date);
     console.log(dateTime)
     console.log(typeof dateTime)
 </script>

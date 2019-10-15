@@ -1,28 +1,27 @@
 //将时间戳转换为标准时间
 function f(date) {
-    var date = new Date(date);
-    // 格式化日期
-    dateTime = date.toLocaleString();
+    var time_data = new Date(date);
+    dateTime = time_data.toLocaleString();
     var t = Date.parse(dateTime);
+    console.log(time_data)
     if (!isNaN(t)) {
-        return new Date(Date.parse(dateTime.replace(/-/g, "/")));
-    } else {
-        return new Date();
-    }
-    ;
+        //return new Date(Date.parse(dateTime.replace(/-/g, "/")));
+        return dateTimes
+    };
 };
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
-    var today = f(date);
-    var y = today.getFullYear();
-    var firstDay = new Date(today.getFullYear(), 0, 1);
+    var time_data = new Date(date);
+    //var today = f(date);
+    var y = time_data.getFullYear();
+    var firstDay = new Date(time_data.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
     var spendDay = 1;
     if (dayOfWeek != 0) {
         spendDay = 7 - dayOfWeek + 1;
     }
-    firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
-    var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
+    firstDay = new Date(time_data.getFullYear(), 0, 1 + spendDay);
+    var d = Math.ceil((time_data.valueOf() - firstDay.valueOf()) / 86400000);
     var result = Math.ceil(d / 7);
     result += 1;
     var week = '' + y + '-' + '' + result;

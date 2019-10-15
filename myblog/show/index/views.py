@@ -20,7 +20,7 @@ def ajax_get_data(request):
             'review_duration': 23000,
             'merge_duration': 34000,
             'rel_duration': 25000,
-            'released_time': 1570144176912,
+            'released_time': 1470004176912,
         }, {
             'patch_id': '29',
             'total_duration': 15000,
@@ -28,7 +28,7 @@ def ajax_get_data(request):
             'review_duration': 23000,
             'merge_duration': 34000,
             'rel_duration': 2500,
-            'released_time': 1571044176912,
+            'released_time': 1501044176912,
         }, {
             'patch_id': '29',
             'total_duration': 15000,
@@ -36,7 +36,7 @@ def ajax_get_data(request):
             'review_duration': 23000,
             'merge_duration': 34000,
             'rel_duration': 25,
-            'released_time': 1571100176912,
+            'released_time': 1501100176912,
         }, {
             'patch_id': '31',
             'total_duration': 15000,
@@ -44,7 +44,7 @@ def ajax_get_data(request):
             'review_duration': 23000,
             'merge_duration': 34000,
             'rel_duration': 25000,
-            'released_time': 1571100176912,
+            'released_time': 160100176912,
         }, {
             'patch_id': '31',
             'total_duration': 15000,
@@ -52,7 +52,7 @@ def ajax_get_data(request):
             'review_duration': 23000,
             'merge_duration': 3400,
             'rel_duration': 2500,
-            'released_time': 1571144106912,
+            'released_time': 1701144106912,
         }, {
             'patch_id': '34',
             'total_duration': 15000,
@@ -60,7 +60,7 @@ def ajax_get_data(request):
             'review_duration': 23000,
             'merge_duration': 34000,
             'rel_duration': 25000,
-            'released_time': 1571144176912,
+            'released_time': 171145051109,
         }, ]
         return JsonResponse({"data": data})
 
