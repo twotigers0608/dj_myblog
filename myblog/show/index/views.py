@@ -14,7 +14,7 @@ def testshow(request):
 def ajax_get_data(request):
     if request.method == "POST":
         data = [{
-            'patch_id': '28',
+            'id': '28',
             'total_duration': 15000,
             'verify_duration': 10000,
             'review_duration': 23000,
@@ -22,23 +22,15 @@ def ajax_get_data(request):
             'rel_duration': 25000,
             'released_time': 1570144176912,
         }, {
-            'patch_id': '29',
+            'id': '29',
             'total_duration': 15000,
             'verify_duration': 10000,
             'review_duration': 23000,
             'merge_duration': 34000,
-            'rel_duration': 2500,
-            'released_time': 1571044176912,
+            'rel_duration': 25000,
+            'released_time': 1570144176912,
         }, {
-            'patch_id': '29',
-            'total_duration': 15000,
-            'verify_duration': 10000,
-            'review_duration': 23000,
-            'merge_duration': 34000,
-            'rel_duration': 25,
-            'released_time': 1571100176912,
-        }, {
-            'patch_id': '31',
+            'id': '29',
             'total_duration': 15000,
             'verify_duration': 10000,
             'review_duration': 23000,
@@ -46,21 +38,29 @@ def ajax_get_data(request):
             'rel_duration': 25000,
             'released_time': 1571100176912,
         }, {
-            'patch_id': '31',
-            'total_duration': 15000,
-            'verify_duration': 10000,
-            'review_duration': 23000,
-            'merge_duration': 3400,
-            'rel_duration': 2500,
-            'released_time': 1571144106912,
-        }, {
-            'patch_id': '34',
+            'id': '31',
             'total_duration': 15000,
             'verify_duration': 10000,
             'review_duration': 23000,
             'merge_duration': 34000,
             'rel_duration': 25000,
-            'released_time': 1571144176912,
+            'released_time': 571100176912,
+        }, {
+            'id': '31',
+            'total_duration': 15000,
+            'verify_duration': 10000,
+            'review_duration': 23000,
+            'merge_duration': 34000,
+            'rel_duration': 25000,
+            'released_time': 571144106912,
+        }, {
+            'id': '34',
+            'total_duration': 15000,
+            'verify_duration': 10000,
+            'review_duration': 23000,
+            'merge_duration': 34000,
+            'rel_duration': 25000,
+            'released_time': 571144176912,
         }, ]
         return JsonResponse({"data": data})
 

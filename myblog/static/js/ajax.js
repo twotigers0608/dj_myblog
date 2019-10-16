@@ -4,6 +4,7 @@ function f(date) {
     // 格式化日期
     dateTime = date.toLocaleString();
     var t = Date.parse(dateTime);
+     console.log(t)
     if (!isNaN(t)) {
         return new Date(Date.parse(dateTime.replace(/-/g, "/")));
     } else {
@@ -14,6 +15,7 @@ function f(date) {
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
     var today = f(date);
+    console.log(today)
     var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
@@ -130,10 +132,11 @@ $.fn.grid = function for_ajax(options) {
                         });
 
                     });
+                    console.log(cols['review_duration'])
                     //console.log(cols)
                     new_cols = {};
                     new_cols['week'] = cols['week'];
-                    new_cols['patch_id'] = cols['patch_id'];
+                    new_cols['id'] = cols['id'];
                     var verrify_time = fmt(cols['verify_duration']);
                     new_cols['verify_duration'] = verrify_time;
                     var review_time = fmt(cols['review_duration']);
