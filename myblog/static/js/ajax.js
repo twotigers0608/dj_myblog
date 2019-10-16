@@ -2,7 +2,7 @@
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
     var today =new Date(date*1000);
-    console.log(today)
+    //console.log(today)
     var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
@@ -101,8 +101,6 @@ $.fn.grid = function (options) {
             result_data = data.data;
             var data_dict = data_reduction(result_data);
             var result = data_durations(data_dict);
-            // console.log(data_dict);
-            //console.log(colums)
             $.each(data_dict, function (key1, value1) {
                 //console.log(value1);
                 //遍历标签名 返回需要的key
@@ -119,8 +117,6 @@ $.fn.grid = function (options) {
                         });
 
                     });
-                    //console.log(cols['review_duration'])
-                    //console.log(cols)
                     new_cols = {};
                     new_cols['week'] = cols['week'];
                     new_cols['id'] = cols['id'];
@@ -141,7 +137,6 @@ $.fn.grid = function (options) {
                     //     html += "<td>" + cols[i] + "</td>"
                     // };
                     html += "</tr>";
-                    //console.log(html)
                     $tbody.append(html)
                 }
                 content = rqdata.data
@@ -302,3 +297,36 @@ function rq_mychart1(result_data) {
         ]
     });
 }
+
+/* ajax crsf */
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+	var csrftoken = getCookie('csrftoken');
+	if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
