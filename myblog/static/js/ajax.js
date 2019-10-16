@@ -18,33 +18,27 @@ function getWeekOfYear(date) {
     return week;
 }
 
-function fmt(s) {
-    var h = parseInt(s / 3600, 10);
-    var n = parseInt((s - h * 3600) / 60, 10);
-    //var s = s % 60;
-    r = '';
-    r = h == 0 ? r : h + "h"
-    r = (n == 0 && s == 0) ? r : r + n + "m"
-    //r = s = 0 ? r : r + s + "秒"
-    return r;
-}
-
 function SecondToDate(msd) {
     var time = msd
     if (null != time && "" != time) {
+        //minute
         if (time > 60 && time < 60 * 60) {
             time = parseInt(time / 60.0) + "m";
         } else if (time >= 60 * 60 && time < 60 * 60 * 24) {
+            //hour
             time = parseInt(time / 3600.0) + "h" + parseInt((parseFloat(time / 3600.0) -
                 parseInt(time / 3600.0)) * 60) + "m";
-            parseInt((parseFloat((parseFloat(time / 3600.0) - parseInt(time / 3600.0)) * 60)))
         } else if (time >= 60 * 60 * 24) {
+            //day
             time = parseInt(time / 3600.0 / 24) + "day" + parseInt((parseFloat(time / 3600.0 / 24) -
                 parseInt(time / 3600.0 / 24)) * 24) + "h";
+        } else {
+            time = parseInt(time) + "s";
         }
     }
     return time;
 }
+
 
 function data_reduction(data) {
     var week_data = {};
@@ -55,6 +49,7 @@ function data_reduction(data) {
         week_list.push(ww)
     }
     ;
+    //data是一个总的字典, list是字典中的相同周数据
     for (var i = 0; i < week_list.length; i++) {
         var col = [];
         for (var l = 0; l < data.length; l++) {
@@ -78,19 +73,22 @@ function data_durations(data) {
         var review_duration = 0;
         var merge_duration = 0;
         var released_duration = 0;
-        var review_num = 0;
-        var merge_num = 0;
-        var released_num = 0;
+        var review_num = 1;
+        var merge_num = 1;
+        var released_num = 1;
         week.push(k);
         for (var l = 0; l < v.length; l++) {
+            if (v[l]['review_duration'] == 0) review_num++;
             review_duration += v[l]['review_duration'];
+            if (v[l]['merge_duration'] == 0) merge_num++;
             merge_duration += v[l]['merge_duration'];
+            if (v[l]['rel_duration'] == 0) released_num++;
             released_duration += v[l]['rel_duration'];
         }
         ;
-        review_duration = parseFloat(released_duration / 3600, 10).toFixed(2);
-        merge_duration = parseFloat(merge_duration / 3600, 10).toFixed(2);
-        released_duration = parseFloat(released_duration / 3600, 10).toFixed(2);
+        review_duration = parseFloat(released_duration / 3600 * review_num, 10).toFixed(2);
+        merge_duration = parseFloat(merge_duration / 3600 * merge_num, 10).toFixed(2);
+        released_duration = parseFloat(released_duration / 3600 * released_num, 10).toFixed(2);
         review_list.push(review_duration);
         merge_list.push(merge_duration);
         rel_list.push(released_duration);
@@ -179,27 +177,25 @@ function rq_mychart(result_data) {
             data: ['Review', 'Merge', 'Released']
         },
         // 自动调节位置
-        /*Work
-                Week:                2019.20
-                Nbr:                    2
-
-                BeforeReview:        6 Day(s) 10 Hour(s)(81 %)
-                Review:            0 Day(s) 10 Hour(s)(5 %)
-                Maintainer:            0 Day(s) 1 Hour(s)(0 %)
-                SubmitToMerge:        1 Day(s) 1 Hour(s)(13 %)
-                Merge:            0 Day(s) 1 Hour(s)(1 %)*/
         tooltip: {
             trigger: 'axis',
             label: {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                console.log(params);
-                console.log(ticket);
-                console.log(callback);
+                //console.log(params);
+                //console.log(ticket);
+                //console.log(callback);
+                var week = params[0].name;
+                //var review = SecondToDate(params[0].value * 3600);
+                var review = params[0].value;
+                //var merge = SecondToDate(params[1].value * 3600);
+                var merge = params[1].value ;
+                //var released = SecondToDate(params[2].value);
+                var released = params[2].value;
 
-                return ['week'] + params[0].name + "<br />" + "Review:    " + params[0].value + "<br />" +
-                    "Merge:   " + params[1].value + "<br />" + "Released:   " + params[2].value;
+                return ['week:  '] + week + "<br />" + "Review:    " + review + "<br />" +
+                    "Merge:   " + merge + "<br />" + "Released:   " + released;
             }
         },
         // 显示每周
