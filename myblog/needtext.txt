@@ -1,31 +1,15 @@
-url(r'^ajax/get_metrics/$', views.ajax_get_metrics),
+首行
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th
+week行显示
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
+字段行显示
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
 
-parameters:
-kernel: e.g. lts2018
-weeks: <the number of weeks that the metrics cover>
+Work Week:				2019.20
+Nbr:					2
 
-From: Lin, Dave 
-Sent: Saturday, October 12, 2019 11:02 AM
-To: Liu, YanX A <yanx.a.liu@intel.com>
-Subject: data
-
-
-Data structure:
-[ { 
-total_duration: number of seconds,
-   review_duration: number of seconds,
-   merge_duration: number of seconds,
-   rel_duration: number of seconds,
-   released_time: <timestamp>,
-},
-…
-]
-
-Table:
-Released Date
-Review Time
-Verify Time
-Merge Time
-Release Time
-
-
+BeforeReview:		6 Day(s) 10 Hour(s)		(81%)
+Review:			0 Day(s) 10 Hour(s)		(5%)
+Maintainer:			0 Day(s) 1 Hour(s)		(0%)
+SubmitToMerge:		1 Day(s) 1 Hour(s)		(13%)
+Merge:			0 Day(s) 1 Hour(s)		(1%)

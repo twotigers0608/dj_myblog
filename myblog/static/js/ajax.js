@@ -1,7 +1,7 @@
 //将时间戳转换为标准时间
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
-    var today =new Date(date*1000);
+    var today = new Date(date * 1000);
     //console.log(today)
     var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
@@ -173,9 +173,27 @@ function rq_mychart(result_data) {
                 magicType: ['line', 'bar'],
                 restore: true,
                 saveAsImage: true
+            },
+        },
+        /*Work
+                Week:                2019.20
+                Nbr:                    2
+
+                BeforeReview:        6 Day(s) 10 Hour(s)(81 %)
+                Review:            0 Day(s) 10 Hour(s)(5 %)
+                Maintainer:            0 Day(s) 1 Hour(s)(0 %)
+                SubmitToMerge:        1 Day(s) 1 Hour(s)(13 %)
+                Merge:            0 Day(s) 1 Hour(s)(1 %)*/
+        tooltip: {
+            trigger: 'axis',
+            label: {
+                show: true
+            },
+            formatter: function (params, result, review_nums) {
+                return result['week'] + "<br />" +
+                    review_nums + "：" + params.value;
             }
         },
-        calculable: true,
         // 显示每周
         xAxis: {
             data: week,
@@ -189,36 +207,47 @@ function rq_mychart(result_data) {
             type: 'value',
             splitArea: {show: true},
         },
-        series: [{
-            name: 'Review',
-            type: 'bar',
-            stack: 'total',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            }, itemStyle: {
-                normal: {
-                    color: '#1f77b4',
-                    //barBorderRadius: [20, 20, 20, 20],
-                }
+        series: [
+            {
+                name: 'Review',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    normal: {
+                        position: 'inside',
+                        formatter: function (result) {
+                            /*Work
+                            Week:                2019.20
+                            Nbr:                    2
+
+                            BeforeReview:        6 Day(s) 10 Hour(s)(81 %)
+                            Review:            0 Day(s) 10 Hour(s)(5 %)
+                            Maintainer:            0 Day(s) 1 Hour(s)(0 %)
+                            SubmitToMerge:        1 Day(s) 1 Hour(s)(13 %)
+                            Merge:            0 Day(s) 1 Hour(s)(1 %)*/
+                            var text = 'Week:   ' + result['week'] + '\n Review:  ' + result['review_duration'] + '\n Merge:   ' + result['merge_duration'] + '\nReleased:    ' + result['rel_duration']
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#1f77b4',
+                    }
+                },
+                data: review_nums,
             },
-            data: review_nums,
-        },
             {
                 name: 'Merge',
                 type: 'bar',
                 stack: 'total',
                 label: {
                     normal: {
-                        show: true,
-                        position: 'insideRight'
+                        position: 'insideRight',
                     }
-                }, itemStyle: {
+                },
+                itemStyle: {
                     normal: {
                         color: '#9467bd',
-                        //barBorderRadius: [20, 20, 20, 20],
                     }
                 },
                 data: merge_nums,
@@ -229,7 +258,6 @@ function rq_mychart(result_data) {
                 stack: 'total',
                 label: {
                     normal: {
-                        show: true,
                         position: 'insideRight',
 
                     }
@@ -237,7 +265,6 @@ function rq_mychart(result_data) {
                 itemStyle: {
                     normal: {
                         color: '#ff7f0e',
-                        //barBorderRadius: [20, 20, 20, 20],
                     }
                 },
                 data: released_nums,
@@ -323,9 +350,9 @@ function csrfSafeMethod(method) {
 
 
 $.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-	var csrftoken = getCookie('csrftoken');
-	if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+    beforeSend: function (xhr, settings) {
+        var csrftoken = getCookie('csrftoken');
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
