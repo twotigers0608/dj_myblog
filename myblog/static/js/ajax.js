@@ -18,6 +18,34 @@ function getWeekOfYear(date) {
     return week;
 }
 
+function fmt(s) {
+    var h = parseInt(s / 3600, 10);
+    var n = parseInt((s - h * 3600) / 60, 10);
+    //var s = s % 60;
+    r = '';
+    r = h == 0 ? r : h + "h"
+    r = (n == 0 && s == 0) ? r : r + n + "m"
+    //r = s = 0 ? r : r + s + "秒"
+    return r;
+}
+
+function SecondToDate(msd) {
+    var time = msd
+    if (null != time && "" != time) {
+        if (time > 60 && time < 60 * 60) {
+            time = parseInt(time / 60.0) + "m";
+        } else if (time >= 60 * 60 && time < 60 * 60 * 24) {
+            time = parseInt(time / 3600.0) + "h" + parseInt((parseFloat(time / 3600.0) -
+                parseInt(time / 3600.0)) * 60) + "m";
+            parseInt((parseFloat((parseFloat(time / 3600.0) - parseInt(time / 3600.0)) * 60)))
+        } else if (time >= 60 * 60 * 24) {
+            time = parseInt(time / 3600.0 / 24) + "day" + parseInt((parseFloat(time / 3600.0 / 24) -
+                parseInt(time / 3600.0 / 24)) * 24) + "h";
+        }
+    }
+    return time;
+}
+
 function data_reduction(data) {
     var week_data = {};
     var week_list = [];
@@ -40,17 +68,6 @@ function data_reduction(data) {
     return week_data;
 }
 
-function fmt(s) {
-    var h = parseInt(s / 3600, 10);
-    var n = parseInt((s - h * 3600) / 60, 10);
-    //var s = s % 60;
-    r = '';
-    r = h == 0 ? r : h + "h"
-    r = (n == 0 && s == 0) ? r : r + n + "m"
-    //r = s = 0 ? r : r + s + "秒"
-    return r;
-}
-
 function data_durations(data) {
     result = {};
     week = [];
@@ -61,10 +78,13 @@ function data_durations(data) {
         var review_duration = 0;
         var merge_duration = 0;
         var released_duration = 0;
+        var review_num = 0;
+        var merge_num = 0;
+        var released_num = 0;
         week.push(k);
         for (var l = 0; l < v.length; l++) {
             review_duration += v[l]['review_duration'];
-            merge_duration += Number(v[l]['merge_duration']);
+            merge_duration += v[l]['merge_duration'];
             released_duration += v[l]['rel_duration'];
         }
         ;
@@ -120,22 +140,19 @@ $.fn.grid = function (options) {
                     new_cols = {};
                     new_cols['week'] = cols['week'];
                     new_cols['id'] = cols['id'];
-                    var verrify_time = fmt(cols['verify_duration']);
+                    var verrify_time = SecondToDate(cols['verify_duration']);
                     new_cols['verify_duration'] = verrify_time;
-                    var review_time = fmt(cols['review_duration']);
+                    var review_time = SecondToDate(cols['review_duration']);
                     new_cols['review_duration'] = review_time;
-                    var merge_time = fmt(cols['merge_duration']);
+                    var merge_time = SecondToDate(cols['merge_duration']);
                     new_cols['merge_duration'] = merge_time;
-                    var rel_time = fmt(cols['rel_duration']);
+                    var rel_time = SecondToDate(cols['rel_duration']);
                     new_cols['rel_duration'] = rel_time;
                     var html = "<tr" + " class=" + cols['week'] + ">";
                     $.each(new_cols, function (k, v) {
                         //console.log(v)
                         html += "<th>" + v + "</th>"
                     });
-                    // for (var i = 0; i < cols.length; i ++){
-                    //     html += "<td>" + cols[i] + "</td>"
-                    // };
                     html += "</tr>";
                     $tbody.append(html)
                 }
@@ -162,19 +179,6 @@ function rq_mychart(result_data) {
             data: ['Review', 'Merge', 'Released']
         },
         // 自动调节位置
-        toolbox: {
-            show: true,
-            orient: 'vertical',
-            x: 'right',
-            y: 'center',
-            feature: {
-                mark: true,
-                dataView: {readOnly: false},
-                magicType: ['line', 'bar'],
-                restore: true,
-                saveAsImage: true
-            },
-        },
         /*Work
                 Week:                2019.20
                 Nbr:                    2
@@ -189,9 +193,13 @@ function rq_mychart(result_data) {
             label: {
                 show: true
             },
-            formatter: function (params, result, review_nums) {
-                return result['week'] + "<br />" +
-                    review_nums + "：" + params.value;
+            formatter: function (params, ticket, callback) {
+                console.log(params);
+                console.log(ticket);
+                console.log(callback);
+
+                return ['week'] + params[0].name + "<br />" + "Review:    " + params[0].value + "<br />" +
+                    "Merge:   " + params[1].value + "<br />" + "Released:   " + params[2].value;
             }
         },
         // 显示每周
@@ -212,23 +220,6 @@ function rq_mychart(result_data) {
                 name: 'Review',
                 type: 'bar',
                 stack: 'total',
-                label: {
-                    normal: {
-                        position: 'inside',
-                        formatter: function (result) {
-                            /*Work
-                            Week:                2019.20
-                            Nbr:                    2
-
-                            BeforeReview:        6 Day(s) 10 Hour(s)(81 %)
-                            Review:            0 Day(s) 10 Hour(s)(5 %)
-                            Maintainer:            0 Day(s) 1 Hour(s)(0 %)
-                            SubmitToMerge:        1 Day(s) 1 Hour(s)(13 %)
-                            Merge:            0 Day(s) 1 Hour(s)(1 %)*/
-                            var text = 'Week:   ' + result['week'] + '\n Review:  ' + result['review_duration'] + '\n Merge:   ' + result['merge_duration'] + '\nReleased:    ' + result['rel_duration']
-                        },
-                    }
-                },
                 itemStyle: {
                     normal: {
                         color: '#1f77b4',
@@ -289,19 +280,6 @@ function rq_mychart1(result_data) {
     //resule = JSON.parse(resule);//把string字符串转换为json数组
     myChart1.setOption({
         // 自动调节位置
-        toolbox: {
-            show: true,
-            orient: 'vertical',
-            x: 'right',
-            y: 'center',
-            feature: {
-                mark: true,
-                dataView: {readOnly: false},
-                magicType: ['line', 'bar'],
-                restore: true,
-                saveAsImage: true
-            }
-        },
         xAxis: {
             data: week,
             axisLabel: {
@@ -316,7 +294,6 @@ function rq_mychart1(result_data) {
             itemStyle: {
                 normal: {
                     color: '#1f77b4',
-                    //barBorderRadius: [20, 20, 20, 20],
                 }
             },
             data: week_num,
@@ -342,12 +319,10 @@ function getCookie(name) {
     return cookieValue;
 }
 
-
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
-
 
 $.ajaxSetup({
     beforeSend: function (xhr, settings) {

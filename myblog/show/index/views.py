@@ -283,10 +283,6 @@ def ajax_get_data(request):
                           "rel_duration": 64.0, "total_duration": 21502.0, "verify_duration": 3816}]}
         return JsonResponse(data)
 
-    #1571100176912
-    #1570590355
-
-
 class Index(View):
     def get(self, request):
         # post_list = Post.objects.all().order_by('-create_time')
@@ -297,7 +293,6 @@ class Index(View):
 class Article(View):
     def get(self, request):
         return render(request, "column1.html")
-
 
 def test(request):
     if request.method == 'GET':

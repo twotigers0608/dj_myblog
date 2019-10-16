@@ -1,58 +1,142 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>week show</title>
-    <!-- including ECharts file -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          rel="external nofollow">
-    <style type="text/css" scr="../static/css/quiltreview.css"></style>
-    <style type="text/css" scr="../static/css/mertrics.css"></style>
-    <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
-    <script type="text/javascript" src="../static/js/ajax.js"></script>
+    <title></title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table td, table tr th {
+            border: 1px solid #cad9ea;
+            color: #666;
+            height: 30px;
+        }
+
+        table thead th {
+            background-color: #CCE8EB;
+            width: 100px;
+        }
+
+        table tr:nth-child(odd) {
+            background: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background: #F5FAFA;
+        }
+    </style>
 </head>
 <body>
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width: 600px;height:400px;"></div>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
+<table width="90%" class="table">
+    <thead>
+    <tr>
+        <th>
+            Patch ID
+        </th>
+        <th>
+            Verify Time
+        </th>
+        <th>
+            Review Time
+        </th>
+        <th>
+            Merage Time
+        </th>
+        <th>
+            Release Time
+        </th>
+    </tr>
 
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: 'ECharts 入门示例'
-            },
-            tooltip: {
-                trigger: 'axis',
-                    formatter: function (datas) {
-                    var res = datas[0].name + '<br/>'
-                    // for (var i = 0, length = datas.length; i < length; i++) {
-                    //     res += datas[i].showText + '：'
-                    //         + datas[i].text + '<br/>'
-                    // }
-                    res=res+'基督山:'+datas[0].data.text
-                    return res
-                }
-            },
-            legend: {
-                data: ['销量']
-            },
-            xAxis: {
-                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子", "地中海"]
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5, '_', 20, 36, 10, 10, { value: 40, name: '北京', text: '希望与等待', showText: '100' }]
-            }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
+    </thead>
+    <tr>
+        <td>2019-43</td>
+    </tr>
+    <tr>
+        <td>
+            109
+        </td>
+        <td>
+            13
+        </td>
+        <td>
+            1.34
+        </td>
+        <td>
+            213
+        </td>
+    </tr>
+    <tr>
+        <td>
+            109
+        </td>
+        <td>
+            13
+        </td>
+        <td>
+            1.34
+        </td>
+        <td>
+            213
+        </td>
+    </tr>
+    <tr>
+        <td>
+            109
+        </td>
+        <td>
+            13
+        </td>
+        <td>
+            1.34
+        </td>
+        <td>
+            213
+        </td>
+    </tr>
+    <tr>
+        <td>
+            109
+        </td>
+        <td>
+            13
+        </td>
+        <td>
+            1.34
+        </td>
+        <td>
+            213
+        </td>
+    </tr>
+    <tr>
+        <td>
+            109
+        </td>
+        <td>
+            13
+        </td>
+        <td>
+            1.34
+        </td>
+        <td>
+            213
+        </td>
+    </tr>
+    <tr>
+        <td>
+            109
+        </td>
+        <td>
+            13
+        </td>
+        <td>
+            1.34
+        </td>
+        <td>
+            213
+        </td>
+    </tr>
+</table>
 </body>
-
 </html>
