@@ -1,27 +1,17 @@
 //将时间戳转换为标准时间
-function f(date) {
-    var time_data = new Date(date);
-    dateTime = time_data.toLocaleString();
-    var t = Date.parse(dateTime);
-    console.log(time_data)
-    if (!isNaN(t)) {
-        //return new Date(Date.parse(dateTime.replace(/-/g, "/")));
-        return dateTimes
-    };
-};
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
-    var time_data = new Date(date);
-    //var today = f(date);
-    var y = time_data.getFullYear();
-    var firstDay = new Date(time_data.getFullYear(), 0, 1);
+    var today = new Date(date * 1000);
+    //console.log(today)
+    var y = today.getFullYear();
+    var firstDay = new Date(today.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
     var spendDay = 1;
     if (dayOfWeek != 0) {
         spendDay = 7 - dayOfWeek + 1;
     }
-    firstDay = new Date(time_data.getFullYear(), 0, 1 + spendDay);
-    var d = Math.ceil((time_data.valueOf() - firstDay.valueOf()) / 86400000);
+    firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
+    var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
     var result = Math.ceil(d / 7);
     result += 1;
     var week = '' + y + '-' + '' + result;
@@ -94,7 +84,7 @@ function data_durations(data) {
 }
 
 //返回表格数据
-$.fn.grid = function for_ajax(options) {
+$.fn.grid = function (options) {
     var $tbody = $(this).find("tbody");
     var colums = options.colums;
     var url = options.url;
@@ -111,8 +101,6 @@ $.fn.grid = function for_ajax(options) {
             result_data = data.data;
             var data_dict = data_reduction(result_data);
             var result = data_durations(data_dict);
-            // console.log(data_dict);
-            //console.log(colums)
             $.each(data_dict, function (key1, value1) {
                 //console.log(value1);
                 //遍历标签名 返回需要的key
@@ -129,10 +117,9 @@ $.fn.grid = function for_ajax(options) {
                         });
 
                     });
-                    //console.log(cols)
                     new_cols = {};
                     new_cols['week'] = cols['week'];
-                    new_cols['patch_id'] = cols['patch_id'];
+                    new_cols['id'] = cols['id'];
                     var verrify_time = fmt(cols['verify_duration']);
                     new_cols['verify_duration'] = verrify_time;
                     var review_time = fmt(cols['review_duration']);
@@ -150,7 +137,6 @@ $.fn.grid = function for_ajax(options) {
                     //     html += "<td>" + cols[i] + "</td>"
                     // };
                     html += "</tr>";
-                    //console.log(html)
                     $tbody.append(html)
                 }
                 content = rqdata.data
@@ -187,9 +173,27 @@ function rq_mychart(result_data) {
                 magicType: ['line', 'bar'],
                 restore: true,
                 saveAsImage: true
+            },
+        },
+        /*Work
+                Week:                2019.20
+                Nbr:                    2
+
+                BeforeReview:        6 Day(s) 10 Hour(s)(81 %)
+                Review:            0 Day(s) 10 Hour(s)(5 %)
+                Maintainer:            0 Day(s) 1 Hour(s)(0 %)
+                SubmitToMerge:        1 Day(s) 1 Hour(s)(13 %)
+                Merge:            0 Day(s) 1 Hour(s)(1 %)*/
+        tooltip: {
+            trigger: 'axis',
+            label: {
+                show: true
+            },
+            formatter: function (params, result, review_nums) {
+                return result['week'] + "<br />" +
+                    review_nums + "：" + params.value;
             }
         },
-        calculable: true,
         // 显示每周
         xAxis: {
             data: week,
@@ -203,36 +207,47 @@ function rq_mychart(result_data) {
             type: 'value',
             splitArea: {show: true},
         },
-        series: [{
-            name: 'Review',
-            type: 'bar',
-            stack: 'total',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'insideRight'
-                }
-            }, itemStyle: {
-                normal: {
-                    color: '#1f77b4',
-                    //barBorderRadius: [20, 20, 20, 20],
-                }
+        series: [
+            {
+                name: 'Review',
+                type: 'bar',
+                stack: 'total',
+                label: {
+                    normal: {
+                        position: 'inside',
+                        formatter: function (result) {
+                            /*Work
+                            Week:                2019.20
+                            Nbr:                    2
+
+                            BeforeReview:        6 Day(s) 10 Hour(s)(81 %)
+                            Review:            0 Day(s) 10 Hour(s)(5 %)
+                            Maintainer:            0 Day(s) 1 Hour(s)(0 %)
+                            SubmitToMerge:        1 Day(s) 1 Hour(s)(13 %)
+                            Merge:            0 Day(s) 1 Hour(s)(1 %)*/
+                            var text = 'Week:   ' + result['week'] + '\n Review:  ' + result['review_duration'] + '\n Merge:   ' + result['merge_duration'] + '\nReleased:    ' + result['rel_duration']
+                        },
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#1f77b4',
+                    }
+                },
+                data: review_nums,
             },
-            data: review_nums,
-        },
             {
                 name: 'Merge',
                 type: 'bar',
                 stack: 'total',
                 label: {
                     normal: {
-                        show: true,
-                        position: 'insideRight'
+                        position: 'insideRight',
                     }
-                }, itemStyle: {
+                },
+                itemStyle: {
                     normal: {
                         color: '#9467bd',
-                        //barBorderRadius: [20, 20, 20, 20],
                     }
                 },
                 data: merge_nums,
@@ -243,7 +258,6 @@ function rq_mychart(result_data) {
                 stack: 'total',
                 label: {
                     normal: {
-                        show: true,
                         position: 'insideRight',
 
                     }
@@ -251,7 +265,6 @@ function rq_mychart(result_data) {
                 itemStyle: {
                     normal: {
                         color: '#ff7f0e',
-                        //barBorderRadius: [20, 20, 20, 20],
                     }
                 },
                 data: released_nums,
@@ -311,3 +324,36 @@ function rq_mychart1(result_data) {
         ]
     });
 }
+
+/* ajax crsf */
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        var csrftoken = getCookie('csrftoken');
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});

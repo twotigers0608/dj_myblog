@@ -124,7 +124,7 @@
         $("#tabledata ." + params.name).show()
     });
     //构造展示表格
-    $(function for_ajax() {
+    $(function () {
         var options = {
             url: "/ajax/get_metrics/",
             colums: [{
@@ -146,7 +146,7 @@
                 "Index": "rel_duration",
                 "Name": "Released"
             }]
-        }
+        };
         $("#tabledata").grid(options);
     });
 
