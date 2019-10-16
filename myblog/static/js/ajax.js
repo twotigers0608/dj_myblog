@@ -1,20 +1,7 @@
 //将时间戳转换为标准时间
-function f(date) {
-    var date = new Date(date);
-    // 格式化日期
-    dateTime = date.toLocaleString();
-    var t = Date.parse(dateTime);
-     console.log(t)
-    if (!isNaN(t)) {
-        return new Date(Date.parse(dateTime.replace(/-/g, "/")));
-    } else {
-        return new Date();
-    }
-    ;
-};
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
-    var today = f(date);
+    var today =new Date(date*1000);
     console.log(today)
     var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
@@ -97,7 +84,7 @@ function data_durations(data) {
 }
 
 //返回表格数据
-$.fn.grid = function for_ajax(options) {
+$.fn.grid = function (options) {
     var $tbody = $(this).find("tbody");
     var colums = options.colums;
     var url = options.url;
@@ -132,7 +119,7 @@ $.fn.grid = function for_ajax(options) {
                         });
 
                     });
-                    console.log(cols['review_duration'])
+                    //console.log(cols['review_duration'])
                     //console.log(cols)
                     new_cols = {};
                     new_cols['week'] = cols['week'];
