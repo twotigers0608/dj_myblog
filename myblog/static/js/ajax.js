@@ -63,40 +63,57 @@ function data_reduction(data) {
     return week_data;
 }
 
+function avg_duration(list, num) {
+    re_list = [];
+    for (var i = 0; i < list.length; i++) {
+        if (num[i] == 0) num++;
+        avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
+        avg_time = Number(avg_time);
+        re_list.push(avg_time);
+    }
+    console.log(re_list)
+    return re_list
+}
+
 function data_durations(data) {
     result = {};
     week = [];
+    review_list = [];
     merge_list = [];
     rel_list = [];
-    review_list = [];
+    review_num_list = [];
+    merge_num_list = [];
+    released_num_list = [];
     $.each(data, function (k, v) {
         var review_duration = 0;
         var merge_duration = 0;
         var released_duration = 0;
-        var review_num = 1;
-        var merge_num = 1;
-        var released_num = 1;
+        var review_num = 0;
+        var merge_num = 0;
+        var released_num = 0;
         week.push(k);
         for (var l = 0; l < v.length; l++) {
-            if (v[l]['review_duration'] == 0) review_num++;
+            if (v[l]['review_duration'] != 0) review_num++;
             review_duration += v[l]['review_duration'];
-            if (v[l]['merge_duration'] == 0) merge_num++;
+            if (v[l]['merge_duration'] != 0) merge_num++;
             merge_duration += v[l]['merge_duration'];
-            if (v[l]['rel_duration'] == 0) released_num++;
+            if (v[l]['rel_duration'] != 0) released_num++;
             released_duration += v[l]['rel_duration'];
         }
-        ;
-        review_duration = parseFloat(released_duration / 3600 * review_num, 10).toFixed(2);
-        merge_duration = parseFloat(merge_duration / 3600 * merge_num, 10).toFixed(2);
-        released_duration = parseFloat(released_duration / 3600 * released_num, 10).toFixed(2);
         review_list.push(review_duration);
         merge_list.push(merge_duration);
         rel_list.push(released_duration);
+        review_num_list.push(review_num);
+        merge_num_list.push(merge_num);
+        released_num_list.push(released_num);
     });
+    review_duration_list = avg_duration(review_list, review_num_list);
+    merge_duration_list = avg_duration(merge_list, merge_num_list);
+    released_durations_list = avg_duration(rel_list, released_num_list);
     result['week'] = week;
-    result['review_duration'] = review_list;
-    result['merge_duration'] = merge_list;
-    result['rel_duration'] = rel_list;
+    result['review_duration'] = review_duration_list;
+    result['merge_duration'] = merge_duration_list;
+    result['rel_duration'] = released_durations_list;
     //console.log(result)
     return result
 }
@@ -187,12 +204,9 @@ function rq_mychart(result_data) {
                 //console.log(ticket);
                 //console.log(callback);
                 var week = params[0].name;
-                //var review = SecondToDate(params[0].value * 3600);
-                var review = params[0].value;
-                //var merge = SecondToDate(params[1].value * 3600);
-                var merge = params[1].value ;
-                //var released = SecondToDate(params[2].value);
-                var released = params[2].value;
+                var review = SecondToDate(params[0].value * 3600);
+                var merge = SecondToDate(params[1].value * 3600);
+                var released = SecondToDate(params[2].value * 3600);
 
                 return ['week:  '] + week + "<br />" + "Review:    " + review + "<br />" +
                     "Merge:   " + merge + "<br />" + "Released:   " + released;
