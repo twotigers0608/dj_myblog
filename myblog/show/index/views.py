@@ -3,6 +3,7 @@ from django.views import View
 from django.http import HttpResponse, JsonResponse
 import json
 from .models import Post
+import time
 
 
 # Create your views here.
@@ -281,6 +282,7 @@ def ajax_get_data(request):
                           "rel_duration": 54.0, "total_duration": 27108.0, "verify_duration": 9360},
                          {"review_duration": 21435, "merge_duration": 3, "released_time": 1570590355.0, "id": 114632,
                           "rel_duration": 64.0, "total_duration": 21502.0, "verify_duration": 3816}]}
+        time.sleep(20)
         return JsonResponse(data)
 
 class Index(View):

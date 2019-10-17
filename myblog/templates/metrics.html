@@ -10,20 +10,22 @@
     <script type="text/javascript" src="../static/js/ajax.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
-<div id="myChart" style="width: 1200px;height:400px;margin:auto;"></div>
-<div id="main" style="width:1200px;height:400px;margin:auto;"></div>
+<div id="myChart" style="width: 1000px;height:400px;margin:auto;"></div>
+<div id="main" style="width:1000px;height:400px;margin:auto;"></div>
 <table width="90%" class="table" id="tabledata">
     <tr class="title">
-        <th>ID</th>
-        <th>Date</th>
-        <th>Review Time</th>
-        <th>Verify Time</th>
-        <th>Merage Time</th>
-        <th>Release Time</th>
+        <td>ID</td>
+        <td>Date</td>
+        <td>Review Time</td>
+        <td>Verify Time</td>
+        <td>Merage Time</td>
+        <td>Release Time</td>
     </tr>
 </table>
 <script type="text/javascript">
+
     var myChart = echarts.init(document.getElementById('myChart'));
+    myChart.showLoading();
     // 显示标题，图例和空的坐标轴
     myChart.setOption({
         title: {
@@ -47,6 +49,7 @@
         }]
     });
     var myChart1 = echarts.init(document.getElementById('main'));
+    myChart1.showLoading();
     myChart1.setOption({
         title: {
             text: 'Number of Patches / Work Week'
@@ -66,13 +69,10 @@
             name: 'num',
             type: 'bar',
             data: []
-        }
-        ]
+        }]
     });
     // 显示标题，图例和空的坐标轴
     // 异步加载数据
-    myChart.showLoading();
-    myChart1.showLoading();
     $.ajax({
         type: "post",
         async: true,
@@ -82,8 +82,8 @@
         success: function (results) {
             result_data = results.data;
             if (result_data) {
-                myChart.hideLoading();
-                myChart1.hideLoading();
+                myChart.hideLoading();    //隐藏加载动画
+                myChart1.hideLoading();    //隐藏加载动画
                 rq_mychart(result_data);
                 rq_mychart1(result_data)
             }

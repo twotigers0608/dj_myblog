@@ -24,26 +24,26 @@ td {
     vertical-align: inherit;
 }
 
-table tr, table th {
+table tr, table td {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 1px solid #ddd;
 }
 
-table tbody thead th {
+table tbody thead td {
     vertical-align: bottom;
     border-bottom: 2px solid #ddd;
 }
 
-table tbody tr td {
+table tbody tr th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 1px solid #ddd
 }
 
-table tbody tr td {
+table tbody tr th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;

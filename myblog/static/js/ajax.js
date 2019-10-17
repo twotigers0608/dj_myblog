@@ -145,7 +145,7 @@ $.fn.grid = function (options) {
             var data_dict = data_reduction(result_data);
             var result = data_durations(data_dict);
             $.each(data_dict, function (key1, value1) {
-                var html = "<tr" + " class=" + key1 + ">" + "<td colspan='6' style='text-align:left'>" + key1 + "</td>" + "</tr>"
+                var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
                 for (var c = 0; c < value1.length; c++) {
                     html += "<tr" + " class=" + key1 + ">";
                     var id = value1[c]['id'];
@@ -153,16 +153,16 @@ $.fn.grid = function (options) {
                     var review_time = SecondToDate(value1[c]['review_duration']);
                     //var date_time =new Date(value1[c]['released_time']);
                     var date_time = getDateStr(value1[c]['released_time']);
-                    console.log(value1[c]['review_duration'])
+                    //console.log(value1[c]['review_duration'])
                     var merge_time = SecondToDate(value1[c]['merge_duration']);
                     var rel_time = SecondToDate(value1[c]['rel_duration']);
 
-                    html += "<th>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/"+id+"' >" + id + "</a>" + "</th>"
-                        + "<th>" + date_time + "</th>" +
-                        "<th>" + review_time + "</th>" +
-                        "<th>" + verify_time + "</th>" +
-                        "<th>" + merge_time + "</th>" +
-                        "<th>" + rel_time + "</th>";
+                    html += "<td>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+                        + "<td>" + date_time + "</td>" +
+                        "<td>" + review_time + "</td>" +
+                        "<td>" + verify_time + "</td>" +
+                        "<td>" + merge_time + "</td>" +
+                        "<td>" + rel_time + "</td>";
                     html += "</tr>"
                 }
                 ;
@@ -183,7 +183,6 @@ function rq_mychart(result_data) {
     var merge_nums = result['merge_duration'];
     var released_nums = result['rel_duration'];
     //console.log(week)
-    myChart.hideLoading();    //隐藏加载动画
     myChart.setOption({
         // 顶部选择
         legend: {
@@ -281,9 +280,6 @@ function rq_mychart1(result_data) {
         var num_leg = v.length;
         week_num.push(num_leg)
     })
-    //console.log(week_num)
-    myChart1.hideLoading();
-    //resule = JSON.parse(resule);//把string字符串转换为json数组
     myChart1.setOption({
         // 自动调节位置
         xAxis: {
