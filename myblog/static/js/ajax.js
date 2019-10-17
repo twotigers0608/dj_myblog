@@ -156,7 +156,8 @@ $.fn.grid = function (options) {
                     console.log(value1[c]['review_duration'])
                     var merge_time = SecondToDate(value1[c]['merge_duration']);
                     var rel_time = SecondToDate(value1[c]['rel_duration']);
-                    html += "<th>" + "<a href='#'>" + id + "</a>" + "</th>"
+
+                    html += "<th>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/"+id+"' >" + id + "</a>" + "</th>"
                         + "<th>" + date_time + "</th>" +
                         "<th>" + review_time + "</th>" +
                         "<th>" + verify_time + "</th>" +

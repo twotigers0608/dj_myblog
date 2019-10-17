@@ -10,8 +10,8 @@
     <script type="text/javascript" src="../static/js/ajax.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
-<div id="myChart" style="width:990px;height:400px;margin:auto;"></div>
-<div id="main" style="width:990px;height:400px;margin:auto;"></div>
+<div id="myChart" style="width: 1200px;height:400px;margin:auto;"></div>
+<div id="main" style="width:1200px;height:400px;margin:auto;"></div>
 <table width="90%" class="table" id="tabledata">
     <tr class="title">
         <th>ID</th>
@@ -24,7 +24,6 @@
 </table>
 <script type="text/javascript">
     var myChart = echarts.init(document.getElementById('myChart'));
-
     // 显示标题，图例和空的坐标轴
     myChart.setOption({
         title: {
@@ -35,9 +34,12 @@
             data: ['Work Week(Years.WW)']
         },
         xAxis: {
+            name:"Work Week",
             data: []
         },
-        yAxis: {},
+        yAxis: {
+            name:"Hours",
+        },
         series: [{
             name: 'time',
             type: 'bar',
@@ -54,9 +56,12 @@
             data: []
         },
         xAxis: {
+            name:"Work Week",
             data: []
         },
-        yAxis: {},
+        yAxis: {
+            name:"Number of Patches"
+        },
         series: [{
             name: 'num',
             type: 'bar',
