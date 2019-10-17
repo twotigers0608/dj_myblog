@@ -14,15 +14,12 @@
 <div id="main" style="width:990px;height:400px;margin:auto;"></div>
 <table width="90%" class="table" id="tabledata">
     <tr class="title">
-        <thead>
-        <th>week</th>
-        <th>Patch ID</th>
-        <th>Verify Time</th>
+        <th>ID</th>
+        <th>Date</th>
         <th>Review Time</th>
+        <th>Verify Time</th>
         <th>Merage Time</th>
         <th>Release Time</th>
-        </thead>
-
     </tr>
 </table>
 <script type="text/javascript">
@@ -47,8 +44,6 @@
             data: []
         }]
     });
-
-    myChart.showLoading();
     var myChart1 = echarts.init(document.getElementById('main'));
     myChart1.setOption({
         title: {
@@ -71,6 +66,7 @@
     });
     // 显示标题，图例和空的坐标轴
     // 异步加载数据
+    myChart.showLoading();
     myChart1.showLoading();
     $.ajax({
         type: "post",
@@ -81,6 +77,8 @@
         success: function (results) {
             result_data = results.data;
             if (result_data) {
+                myChart.hideLoading();
+                myChart1.hideLoading();
                 rq_mychart(result_data);
                 rq_mychart1(result_data)
             }
@@ -88,7 +86,6 @@
         error: function (errorMsg) {
             //请求失败时执行该函数
             alert("Chart request data failed!");
-            myChart.hideLoading();
         }
     });
 

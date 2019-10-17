@@ -2,7 +2,6 @@
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
     var today = new Date(date * 1000);
-    //console.log(today)
     var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
@@ -118,6 +117,15 @@ function data_durations(data) {
     return result
 }
 
+function getDateStr(seconds) {
+    var date = new Date(seconds * 1000)
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var currentTime = year + "-" + month + "-" + day;
+    return currentTime
+}
+
 //返回表格数据
 $.fn.grid = function (options) {
     var $tbody = $(this).find("tbody");
@@ -137,41 +145,27 @@ $.fn.grid = function (options) {
             var data_dict = data_reduction(result_data);
             var result = data_durations(data_dict);
             $.each(data_dict, function (key1, value1) {
-                //console.log(value1);
-                //遍历标签名 返回需要的key
+                var html = "<tr" + " class=" + key1 + ">" + "<td colspan='6' style='text-align:left'>" + key1 + "</td>" + "</tr>"
                 for (var c = 0; c < value1.length; c++) {
-                    var cols = {};
-                    $.each(value1[c], function (key2, value2) {
-                        //console.log(value);
-                        //遍历字典获取
-                        $.each(colums, function (key, value) {
-                            if (key2 == value.Index) {
-                                cols[key2] = value2;
-                                //console.log(value2)
-                            }
-                        });
-
-                    });
-                    new_cols = {};
-                    new_cols['week'] = cols['week'];
-                    new_cols['id'] = cols['id'];
-                    var verrify_time = SecondToDate(cols['verify_duration']);
-                    new_cols['verify_duration'] = verrify_time;
-                    var review_time = SecondToDate(cols['review_duration']);
-                    new_cols['review_duration'] = review_time;
-                    var merge_time = SecondToDate(cols['merge_duration']);
-                    new_cols['merge_duration'] = merge_time;
-                    var rel_time = SecondToDate(cols['rel_duration']);
-                    new_cols['rel_duration'] = rel_time;
-                    console.log(new_cols)
-                    var html = "<tr" + " class=" + cols['week'] + ">";
-                    $.each(new_cols, function (k, v) {
-                        //console.log(v)
-                        html += "<th>" + v + "</th>"
-                    });
-                    html += "</tr>";
-                    $tbody.append(html)
+                    html += "<tr" + " class=" + key1 + ">";
+                    var id = value1[c]['id'];
+                    var verify_time = SecondToDate(value1[c]['verify_duration']);
+                    var review_time = SecondToDate(value1[c]['review_duration']);
+                    //var date_time =new Date(value1[c]['released_time']);
+                    var date_time = getDateStr(value1[c]['released_time']);
+                    console.log(value1[c]['review_duration'])
+                    var merge_time = SecondToDate(value1[c]['merge_duration']);
+                    var rel_time = SecondToDate(value1[c]['rel_duration']);
+                    html += "<th>" + "<a href='#'>" + id + "</a>" + "</th>"
+                        + "<th>" + date_time + "</th>" +
+                        "<th>" + review_time + "</th>" +
+                        "<th>" + verify_time + "</th>" +
+                        "<th>" + merge_time + "</th>" +
+                        "<th>" + rel_time + "</th>";
+                    html += "</tr>"
                 }
+                ;
+                $tbody.append(html)
                 content = rqdata.data
             })
         }
