@@ -74,6 +74,10 @@ function avg_duration(list, num) {
     return re_list
 }
 
+function fill_week(s) {
+
+}
+
 function data_durations(data) {
     result = {};
     week = [];
@@ -110,6 +114,7 @@ function data_durations(data) {
     merge_duration_list = avg_duration(merge_list, merge_num_list);
     released_durations_list = avg_duration(rel_list, released_num_list);
     result['week'] = week;
+    console.log(week)
     result['review_duration'] = review_duration_list;
     result['merge_duration'] = merge_duration_list;
     result['rel_duration'] = released_durations_list;
@@ -195,16 +200,16 @@ function rq_mychart(result_data) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                //console.log(params);
-                //console.log(ticket);
+                console.log(params);
+                console.log(ticket);
                 //console.log(callback);
                 var week = params[0].name;
                 var review = SecondToDate(params[0].value * 3600);
                 var merge = SecondToDate(params[1].value * 3600);
                 var released = SecondToDate(params[2].value * 3600);
 
-                return ['week:  '] + week + "<br />" + "Review:    " + review + "<br />" +
-                    "Merge:   " + merge + "<br />" + "Released:   " + released;
+                return ['Week:  '] + week + "<br />" + params[0].marker + "Review:    " + review + "<br />" + params[1].marker +
+                    "Merge:   " + merge + "<br />" + params[2].marker + "Released:   " + released;
             }
         },
         // 显示每周
@@ -258,6 +263,7 @@ function rq_mychart(result_data) {
 
                     }
                 },
+
                 itemStyle: {
                     normal: {
                         color: '#ff7f0e',
@@ -281,6 +287,16 @@ function rq_mychart1(result_data) {
         week_num.push(num_leg)
     })
     myChart1.setOption({
+        tooltip: {
+            trigger: 'axis',
+            label: {
+                show: true
+            },
+            formatter: function (params, ticket, callback) {
+                console.log(params)
+                return '' + params[0].value;
+            }
+        },
         // 自动调节位置
         xAxis: {
             data: week,
@@ -291,7 +307,7 @@ function rq_mychart1(result_data) {
         },
         yAxis: {},
         series: [{
-            name: 'name:number',
+            name: '',
             type: 'bar',
             itemStyle: {
                 normal: {

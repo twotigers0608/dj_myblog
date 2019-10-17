@@ -36,11 +36,11 @@
             data: ['Work Week(Years.WW)']
         },
         xAxis: {
-            name:"Work Week",
+            name: "Work Week",
             data: []
         },
         yAxis: {
-            name:"Hours",
+            name: "Hours",
         },
         series: [{
             name: 'time',
@@ -59,11 +59,11 @@
             data: []
         },
         xAxis: {
-            name:"Work Week",
+            name: "Work Week",
             data: []
         },
         yAxis: {
-            name:"Number of Patches"
+            name: "Number of Patches"
         },
         series: [{
             name: 'num',
@@ -82,7 +82,7 @@
         success: function (results) {
             result_data = results.data;
             if (result_data) {
-                myChart.hideLoading();    //隐藏加载动画
+                myChart.hideLoading()    //隐藏加载动画
                 myChart1.hideLoading();    //隐藏加载动画
                 rq_mychart(result_data);
                 rq_mychart1(result_data)
