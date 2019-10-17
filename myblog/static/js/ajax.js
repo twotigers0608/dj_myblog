@@ -17,6 +17,28 @@ function getWeekOfYear(date) {
     return week;
 }
 
+function getWeek(date) {
+    //var today = (new Date(data)).getTime()
+    var today = new Date(date * 1000);
+    var firstDay = new Date(today.getFullYear(), 0, 1);
+    var dayOfWeek = firstDay.getDay();
+    var spendDay = 1;
+    if (dayOfWeek != 0) {
+        spendDay = 7 - dayOfWeek + 1;
+    }
+    firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
+    var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
+    var result = Math.ceil(d / 7);
+    result += 1;
+    return result;
+}
+
+function getyear(date) {
+    var today = new Date(date * 1000);
+    var y = today.getFullYear();
+    return y
+}
+
 function SecondToDate(msd) {
     var time = msd
     if (null != time && "" != time) {
@@ -42,12 +64,45 @@ function SecondToDate(msd) {
 function data_reduction(data) {
     var week_data = {};
     var week_list = [];
+    var year_week = {};
     for (var i = 0; i < data.length; i++) {
         var ww = getWeekOfYear(data[i]['released_time']);
+        var y = getyear(data[i]['released_time']);
+        var w = getWeek(data[i]['released_time']);
         data[i]['week'] = ww;
-        week_list.push(ww)
+        data[i]['year'] = y;
+        data[i]['week_num'] = w;
+        week_list.push(ww);
+        year_week[y] = [];
     }
-    ;
+    for (var key in year_week) {
+        col = [];
+        for (var c = 0; c < data.length; c++) {
+            if (key == data[c]["year"]) {
+                col.push(data[c]["week_num"])
+            }
+        }
+        year_week[key] = col;
+    }
+    for (var key in year_week) {
+        var max = Math.max.apply(null, year_week[key]);
+        var min = Math.min.apply(null, year_week[key]);
+        var diff = max - min + 1;
+        for (var c = 0; c < diff; c++) {
+            var str = "" + key + "-" + min
+            if (week_list.indexOf(str) > -1) {
+                min++;
+            } else {
+                data.push(
+                    {
+                        "rel_duration": null, "released_time": null, "verify_duration": null, "merge_duration": null,
+                        "total_duration": null, "review_duration": null, "id": null, "week": str,
+                    });
+                week_list.push(str);
+                min++;
+            }
+        }
+    }
     //data是一个总的字典, list是字典中的相同周数据
     for (var i = 0; i < week_list.length; i++) {
         var col = [];
@@ -58,8 +113,11 @@ function data_reduction(data) {
             week_data[week_list[i]] = col;
         }
     }
-    //console.log(week_data);
-    return week_data;
+    var sort_dic = week_data.sort(function (a, b) {
+        return a - b
+    })
+    console.log(sort_dic);
+    return sort_dic;
 }
 
 function avg_duration(list, num) {
@@ -74,9 +132,6 @@ function avg_duration(list, num) {
     return re_list
 }
 
-function fill_week(s) {
-
-}
 
 function data_durations(data) {
     result = {};
@@ -87,6 +142,7 @@ function data_durations(data) {
     review_num_list = [];
     merge_num_list = [];
     released_num_list = [];
+    //console.log(data)
     $.each(data, function (k, v) {
         var review_duration = 0;
         var merge_duration = 0;
@@ -114,7 +170,7 @@ function data_durations(data) {
     merge_duration_list = avg_duration(merge_list, merge_num_list);
     released_durations_list = avg_duration(rel_list, released_num_list);
     result['week'] = week;
-    console.log(week)
+    //console.log(week)
     result['review_duration'] = review_duration_list;
     result['merge_duration'] = merge_duration_list;
     result['rel_duration'] = released_durations_list;
@@ -148,7 +204,6 @@ $.fn.grid = function (options) {
         success: function (data) {
             result_data = data.data;
             var data_dict = data_reduction(result_data);
-            var result = data_durations(data_dict);
             $.each(data_dict, function (key1, value1) {
                 var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
                 for (var c = 0; c < value1.length; c++) {
@@ -200,8 +255,8 @@ function rq_mychart(result_data) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                console.log(params);
-                console.log(ticket);
+                //console.log(params);
+                //console.log(ticket);
                 //console.log(callback);
                 var week = params[0].name;
                 var review = SecondToDate(params[0].value * 3600);
@@ -293,7 +348,7 @@ function rq_mychart1(result_data) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                console.log(params)
+                //console.log(params)
                 return '' + params[0].value;
             }
         },

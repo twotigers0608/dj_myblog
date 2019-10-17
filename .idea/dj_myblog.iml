@@ -17,7 +17,7 @@
       <sourceFolder url="file://$MODULE_DIR$/myblog/static" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/myblog/show" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.5 (dj_mblog)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (myblog)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

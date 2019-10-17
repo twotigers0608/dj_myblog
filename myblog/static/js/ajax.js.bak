@@ -2,7 +2,6 @@
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
     var today = new Date(date * 1000);
-    //console.log(today)
     var y = today.getFullYear();
     var firstDay = new Date(today.getFullYear(), 0, 1);
     var dayOfWeek = firstDay.getDay();
@@ -75,6 +74,10 @@ function avg_duration(list, num) {
     return re_list
 }
 
+function fill_week(s) {
+
+}
+
 function data_durations(data) {
     result = {};
     week = [];
@@ -84,6 +87,7 @@ function data_durations(data) {
     review_num_list = [];
     merge_num_list = [];
     released_num_list = [];
+    console.log(data)
     $.each(data, function (k, v) {
         var review_duration = 0;
         var merge_duration = 0;
@@ -111,11 +115,21 @@ function data_durations(data) {
     merge_duration_list = avg_duration(merge_list, merge_num_list);
     released_durations_list = avg_duration(rel_list, released_num_list);
     result['week'] = week;
+    //console.log(week)
     result['review_duration'] = review_duration_list;
     result['merge_duration'] = merge_duration_list;
     result['rel_duration'] = released_durations_list;
     //console.log(result)
     return result
+}
+
+function getDateStr(seconds) {
+    var date = new Date(seconds * 1000)
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var currentTime = year + "-" + month + "-" + day;
+    return currentTime
 }
 
 //返回表格数据
@@ -135,43 +149,29 @@ $.fn.grid = function (options) {
         success: function (data) {
             result_data = data.data;
             var data_dict = data_reduction(result_data);
-            var result = data_durations(data_dict);
             $.each(data_dict, function (key1, value1) {
-                //console.log(value1);
-                //遍历标签名 返回需要的key
+                var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
                 for (var c = 0; c < value1.length; c++) {
-                    var cols = {};
-                    $.each(value1[c], function (key2, value2) {
-                        //console.log(value);
-                        //遍历字典获取
-                        $.each(colums, function (key, value) {
-                            if (key2 == value.Index) {
-                                cols[key2] = value2;
-                                //console.log(value2)
-                            }
-                        });
+                    html += "<tr" + " class=" + key1 + ">";
+                    var id = value1[c]['id'];
+                    var verify_time = SecondToDate(value1[c]['verify_duration']);
+                    var review_time = SecondToDate(value1[c]['review_duration']);
+                    //var date_time =new Date(value1[c]['released_time']);
+                    var date_time = getDateStr(value1[c]['released_time']);
+                    //console.log(value1[c]['review_duration'])
+                    var merge_time = SecondToDate(value1[c]['merge_duration']);
+                    var rel_time = SecondToDate(value1[c]['rel_duration']);
 
-                    });
-                    new_cols = {};
-                    new_cols['week'] = cols['week'];
-                    new_cols['id'] = cols['id'];
-                    var verrify_time = SecondToDate(cols['verify_duration']);
-                    new_cols['verify_duration'] = verrify_time;
-                    var review_time = SecondToDate(cols['review_duration']);
-                    new_cols['review_duration'] = review_time;
-                    var merge_time = SecondToDate(cols['merge_duration']);
-                    new_cols['merge_duration'] = merge_time;
-                    var rel_time = SecondToDate(cols['rel_duration']);
-                    new_cols['rel_duration'] = rel_time;
-                    console.log(new_cols)
-                    var html = "<tr" + " class=" + cols['week'] + ">";
-                    $.each(new_cols, function (k, v) {
-                        //console.log(v)
-                        html += "<th>" + v + "</th>"
-                    });
-                    html += "</tr>";
-                    $tbody.append(html)
+                    html += "<td>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+                        + "<td>" + date_time + "</td>" +
+                        "<td>" + review_time + "</td>" +
+                        "<td>" + verify_time + "</td>" +
+                        "<td>" + merge_time + "</td>" +
+                        "<td>" + rel_time + "</td>";
+                    html += "</tr>"
                 }
+                ;
+                $tbody.append(html)
                 content = rqdata.data
             })
         }
@@ -188,7 +188,6 @@ function rq_mychart(result_data) {
     var merge_nums = result['merge_duration'];
     var released_nums = result['rel_duration'];
     //console.log(week)
-    myChart.hideLoading();    //隐藏加载动画
     myChart.setOption({
         // 顶部选择
         legend: {
@@ -209,8 +208,8 @@ function rq_mychart(result_data) {
                 var merge = SecondToDate(params[1].value * 3600);
                 var released = SecondToDate(params[2].value * 3600);
 
-                return ['week:  '] + week + "<br />" + "Review:    " + review + "<br />" +
-                    "Merge:   " + merge + "<br />" + "Released:   " + released;
+                return ['Week:  '] + week + "<br />" + params[0].marker + "Review:    " + review + "<br />" + params[1].marker +
+                    "Merge:   " + merge + "<br />" + params[2].marker + "Released:   " + released;
             }
         },
         // 显示每周
@@ -264,6 +263,7 @@ function rq_mychart(result_data) {
 
                     }
                 },
+
                 itemStyle: {
                     normal: {
                         color: '#ff7f0e',
@@ -286,10 +286,17 @@ function rq_mychart1(result_data) {
         var num_leg = v.length;
         week_num.push(num_leg)
     })
-    //console.log(week_num)
-    myChart1.hideLoading();
-    //resule = JSON.parse(resule);//把string字符串转换为json数组
     myChart1.setOption({
+        tooltip: {
+            trigger: 'axis',
+            label: {
+                show: true
+            },
+            formatter: function (params, ticket, callback) {
+                console.log(params)
+                return '' + params[0].value;
+            }
+        },
         // 自动调节位置
         xAxis: {
             data: week,
@@ -300,7 +307,7 @@ function rq_mychart1(result_data) {
         },
         yAxis: {},
         series: [{
-            name: 'name:number',
+            name: '',
             type: 'bar',
             itemStyle: {
                 normal: {
