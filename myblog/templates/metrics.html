@@ -10,20 +10,22 @@
     <script type="text/javascript" src="../static/js/ajax.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
-div><h1>PKT Patch Life Cycle Dashboard</h1></div>
+<div><h1>PKT Patch Life Cycle Dashboard</h1></div>
+{# {% if row.status == 'OFF' %} selected="selected" {% endif %}#}
 <div>
-  <form id="metrics_form">{% csrf_token %}
-    <span>Kernel:</span>
-      <select id="kernel" name="kernel" class="" size="1" onchange="select()">
-                  <option value="all" >all</option>
-                   <option value="lts2018" >lts2018</option>
-                  <option value="lts.4.14">lts.4.14</option>
-   </select>
-  </form>
+    <form id="metrics_form">{% csrf_token %}
+        <span>Kernel:</span>
+        <select id="kernel" name="kernel" class="" size="1" onchange="select()">
+            <option value="all" selected="selected">all</option>
+            <option value="lts2018">lts2018</option>
+            <option value="lts.4.14">lts.4.14</option>
+        </select>
+    </form>
 </div>
 <div id="myChart" style="width: 1000px;height:400px;margin:auto;"></div>
 <div id="main" style="width:1000px;height:400px;margin:auto;"></div>
 <table width="90%" class="table" id="tabledata">
+    <tbody>
     <tr class="title">
         <td>ID</td>
         <td>Date</td>
@@ -32,6 +34,8 @@ div><h1>PKT Patch Life Cycle Dashboard</h1></div>
         <td>Merage Time</td>
         <td>Release Time</td>
     </tr>
+    </tbody>
+
 </table>
 <script type="text/javascript">
 
@@ -84,33 +88,36 @@ div><h1>PKT Patch Life Cycle Dashboard</h1></div>
     });
     // 显示标题，图例和空的坐标轴
     // 异步加载数据
-    function select(){
+    function select() {
+
         $.ajax({
-        type: "post",
-        async: true,
-        url: "/ajax/get_metrics/",
-        data: $('#metrics_form').serialize(),
-        dataType: "json",
-        beforeSend: function() {
-            myChart.showLoading();
-            myChart1.showLoading();
-        },
-        success: function (results) {
-            myChart.hideLoading();
-            myChart1.hideLoading();
-            result_data = results.data;
-            if (result_data) {
-                rq_mychart(result_data);
-                rq_mychart1(result_data)
+            type: "post",
+            async: true,
+            url: "/ajax/get_metrics/",
+            data: $('#metrics_form').serialize(),
+            dataType: "json",
+            beforeSend: function () {
+                myChart.showLoading();
+                myChart1.showLoading();
+            },
+            success: function (results) {
+                myChart.hideLoading();
+                myChart1.hideLoading();
+                result_data = results.data;
+                if (result_data) {
+                    rq_mychart(result_data);
+                    rq_mychart1(result_data)
+                    ajax_datble(result_data);
+                }
+            },
+            error: function (errorMsg) {
+                //请求失败时执行该函数
+                alert("Chart request data failed!");
             }
-        },
-        error: function (errorMsg) {
-            //请求失败时执行该函数
-            alert("Chart request data failed!");
-        }
-    });
+        });
 
     }
+
     // 处理点击事件
     myChart1.on('click', function (params) {
         $("#tabledata tr").hide();
@@ -145,31 +152,6 @@ div><h1>PKT Patch Life Cycle Dashboard</h1></div>
         $("#tabledata ." + params.name).show()
     });
     //构造展示表格
-    $(function () {
-        var options = {
-            url: "/ajax/get_metrics/",
-            colums: [{
-                "Index": "week",
-                "Name": "Week"
-            }, {
-                "Index": "id",
-                "Name": "ID"
-            }, {
-                "Index": "verify_duration",
-                "Name": "Verify"
-            }, {
-                "Index": "review_duration",
-                "Name": "Review"
-            }, {
-                "Index": "merge_duration",
-                "Name": "Merged"
-            }, {
-                "Index": "rel_duration",
-                "Name": "Released"
-            }]
-        };
-        $("#tabledata").grid(options);
-    });
 
 </script>
 </body>

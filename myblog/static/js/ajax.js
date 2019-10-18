@@ -152,7 +152,7 @@ function data_durations(data) {
         var merge_num = 0;
         var released_num = 0;
         week.push(k);
-        console.log(week)
+        //console.log(week)
         for (var l = 0; l < v.length; l++) {
             if (v[l]['review_duration'] != 0) review_num++;
             review_duration += v[l]['review_duration'];
@@ -190,47 +190,45 @@ function getDateStr(seconds) {
 }
 
 //返回表格数据
-$.fn.grid = function (options) {
-    var $tbody = $(this).find("tbody");
-    var colums = options.colums;
-    var url = options.url;
-    var content = [];
-    var rqdata = [];
-    //ajax获取数据源后存入content数据中。
-    $.ajax({
-        type: "post",
-        url: url,
-        data: {"kernel": "e.g.2018"},
-        dataType: "json",
-        async: false,
-        success: function (data) {
-            result_data = data.data;
-            var data_dict = data_reduction(result_data);
-            $.each(data_dict, function (key1, value1) {
-                var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
-                for (var c = 0; c < value1.length; c++) {
-                    html += "<tr" + " class=" + key1 + ">";
-                    var id = value1[c]['id'];
-                    var verify_time = SecondToDate(value1[c]['verify_duration']);
-                    var review_time = SecondToDate(value1[c]['review_duration']);
-                    ;
-                    var date_time = getDateStr(value1[c]['released_time']);
-                    var merge_time = SecondToDate(value1[c]['merge_duration']);
-                    var rel_time = SecondToDate(value1[c]['rel_duration']);
+function ajax_datble(result_data) {
+    $("#tabledata").html("");
+    var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\n" +
+        "    <tbody>\n" +
+        "    <tr class=\"title\">\n" +
+        "        <td>ID</td>\n" +
+        "        <td>Date</td>\n" +
+        "        <td>Review Time</td>\n" +
+        "        <td>Verify Time</td>\n" +
+        "        <td>Merage Time</td>\n" +
+        "        <td>Release Time</td>\n" +
+        "    </tr>\n" +
+        "    </tbody>\n" +
+        "</table>"
+    $("#tabledata ").append(str )
+    var html = '';
+    var data_dict = data_reduction(result_data);
+    $.each(data_dict, function (key1, value1) {
+        var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
+        for (var c = 0; c < value1.length; c++) {
+            html += "<tr" + " class=" + key1 + ">";
+            var id = value1[c]['id'];
+            var verify_time = SecondToDate(value1[c]['verify_duration']);
+            var review_time = SecondToDate(value1[c]['review_duration']);
+            var date_time = getDateStr(value1[c]['released_time']);
+            var merge_time = SecondToDate(value1[c]['merge_duration']);
+            var rel_time = SecondToDate(value1[c]['rel_duration']);
 
-                    html += "<td>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
-                        + "<td>" + date_time + "</td>" +
-                        "<td>" + review_time + "</td>" +
-                        "<td>" + verify_time + "</td>" +
-                        "<td>" + merge_time + "</td>" +
-                        "<td>" + rel_time + "</td>";
-                    html += "</tr>"
-                }
-                ;
-                $tbody.append(html)
-                content = rqdata.data
-            })
+            html += "<td>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+                + "<td>" + date_time + "</td>" +
+                "<td>" + review_time + "</td>" +
+                "<td>" + verify_time + "</td>" +
+                "<td>" + merge_time + "</td>" +
+                "<td>" + rel_time + "</td>";
+            html += "</tr>"
         }
+        ;
+        $("#tabledata ").append(html)
+        console.log(html)
     });
 }
 
