@@ -63,6 +63,7 @@ function SecondToDate(msd) {
 
 function data_reduction(data) {
     var week_data = {};
+    var new_week_data = {};
     var week_list = [];
     var year_week = {};
     for (var i = 0; i < data.length; i++) {
@@ -87,16 +88,15 @@ function data_reduction(data) {
     for (var key in year_week) {
         var max = Math.max.apply(null, year_week[key]);
         var min = Math.min.apply(null, year_week[key]);
-        var diff = max - min + 1;
-        for (var c = 0; c < diff; c++) {
+        var diff = max - min;
+        for (var c = 1; c < diff; c++) {
             var str = "" + key + "-" + min
             if (week_list.indexOf(str) > -1) {
                 min++;
             } else {
                 data.push(
                     {
-                        "rel_duration": null, "released_time": null, "verify_duration": null, "merge_duration": null,
-                        "total_duration": null, "review_duration": null, "id": null, "week": str,
+                        "id": null, "week": str,
                     });
                 week_list.push(str);
                 min++;
@@ -113,11 +113,17 @@ function data_reduction(data) {
             week_data[week_list[i]] = col;
         }
     }
-    var sort_dic = week_data.sort(function (a, b) {
-        return a - b
-    })
-    console.log(sort_dic);
-    return sort_dic;
+    var res = Object.keys(week_data).sort();
+    console.log(res)
+    for (key in res) {
+        //console.log(res[key])
+        //console.log(typeof key)
+        new_week_data[res[key]] = week_data[res[key]]
+        //console.log(new_week_data)
+
+    }
+    //console.log(new_week_data);
+    return new_week_data
 }
 
 function avg_duration(list, num) {
@@ -179,7 +185,7 @@ function data_durations(data) {
 }
 
 function getDateStr(seconds) {
-    var date = new Date(seconds * 1000)
+    var date = new Date(seconds * 1000);
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var day = date.getDate();
@@ -211,9 +217,8 @@ $.fn.grid = function (options) {
                     var id = value1[c]['id'];
                     var verify_time = SecondToDate(value1[c]['verify_duration']);
                     var review_time = SecondToDate(value1[c]['review_duration']);
-                    //var date_time =new Date(value1[c]['released_time']);
+                    ;
                     var date_time = getDateStr(value1[c]['released_time']);
-                    //console.log(value1[c]['review_duration'])
                     var merge_time = SecondToDate(value1[c]['merge_duration']);
                     var rel_time = SecondToDate(value1[c]['rel_duration']);
 
