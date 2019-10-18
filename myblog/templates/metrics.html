@@ -89,7 +89,6 @@
     // 显示标题，图例和空的坐标轴
     // 异步加载数据
     function select() {
-
         $.ajax({
             type: "post",
             async: true,
@@ -105,8 +104,12 @@
                 myChart1.hideLoading();
                 result_data = results.data;
                 if (result_data) {
+                    var data_dict = data_reduction(result_data);
+                    //console.log('data_dict')
+                    //console.log(data_dict)
+                    var result = data_durations(data_dict)
                     rq_mychart(result_data);
-                    rq_mychart1(result_data)
+                    rq_mychart1(result_data);
                     ajax_datble(result_data);
                 }
             },
