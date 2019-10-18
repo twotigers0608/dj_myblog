@@ -158,7 +158,7 @@ function rq_mychart(result_data) {
                 var merge = SecondToDate(params[1].value * 3600);
                 var release = SecondToDate(params[2].value * 3600);
                 return ['Week:  '] + week + "<br />" + params[0].marker + "Review:    " + review + "<br />" + params[1].marker +
-                            "Merge:   " + merge + "<br />" + params[2].marker + "Release:   " + release;
+                    "Merge:   " + merge + "<br />" + params[2].marker + "Release:   " + release;
             }
         },
         // 显示每周
@@ -302,6 +302,7 @@ $.ajaxSetup({
 });
 
 function ajax_datble(data_dict) {
+
     $("#tabledata").html("");
     var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\n" +
         "    <tbody>\n" +
@@ -315,10 +316,12 @@ function ajax_datble(data_dict) {
         "    </tr>\n" +
         "    </tbody>\n" +
         "</table>"
-    $("#tabledata ").append(str)
+    $("#tabledata ").append(str);
+    var $tbody = $("#tabledata").find("tbody");
+    console.log(data_dict)
     var data_dict = data_reduction(result_data);
     $.each(data_dict, function (key1, value1) {
-        console.log(result_data)
+        //console.log(result_data)
         var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
         for (var c = 0; c < value1.length; c++) {
             html += "<tr" + " class=" + key1 + ">";
@@ -338,7 +341,7 @@ function ajax_datble(data_dict) {
             html += "</tr>"
         }
         ;
-        $("#tabledata ").append(html)
+        $tbody.append(html)
         //console.log(html)
     });
 }
