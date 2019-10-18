@@ -114,13 +114,8 @@ function data_reduction(data) {
         }
     }
     var res = Object.keys(week_data).sort();
-    console.log(res)
     for (key in res) {
-        //console.log(res[key])
-        //console.log(typeof key)
         new_week_data[res[key]] = week_data[res[key]]
-        //console.log(new_week_data)
-
     }
     //console.log(new_week_data);
     return new_week_data
@@ -157,6 +152,7 @@ function data_durations(data) {
         var merge_num = 0;
         var released_num = 0;
         week.push(k);
+        console.log(week)
         for (var l = 0; l < v.length; l++) {
             if (v[l]['review_duration'] != 0) review_num++;
             review_duration += v[l]['review_duration'];

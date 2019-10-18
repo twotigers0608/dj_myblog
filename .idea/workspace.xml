@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dj_myblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dj_myblog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/show/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js.bak" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/templates/week1.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/week1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/templates/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/metrics.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,30 +51,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="115" column="26" lean-forward="true" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
+            <state relative-caret-position="209">
+              <caret line="145" column="6" selection-start-line="145" selection-start-column="6" selection-end-line="145" selection-end-column="6" />
               <folding>
-                <element signature="n#!!block;n#getDateStr#0" />
                 <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#!!block;n#getCookie#0" />
-                <element signature="n#!!block;n#csrfSafeMethod#0" />
-                <element signature="e#10301#10538#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
+        <entry file="file://$PROJECT_DIR$/myblog/static/css/quiltreview.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="17" column="85" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="17" selection-end-column="85" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="731">
+              <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -84,17 +75,90 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/templates/week1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+            <state relative-caret-position="60">
+              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#377#560#0" />
+                <element signature="e#580#766#0" />
+                <element signature="e#786#971#0" />
+                <element signature="e#991#1173#0" />
+                <element signature="e#1193#1375#0" />
+                <element signature="e#1395#1589#0" />
+                <element signature="e#1609#1798#0" />
+                <element signature="e#1818#2007#0" />
+                <element signature="e#2027#2216#0" />
+                <element signature="e#2236#2425#0" />
+                <element signature="e#2445#2631#0" />
+                <element signature="e#2651#2835#0" />
+                <element signature="e#2855#3042#0" />
+                <element signature="e#3062#3249#0" />
+                <element signature="e#3269#3456#0" />
+                <element signature="e#3476#3663#0" />
+                <element signature="e#3683#3870#0" />
+                <element signature="e#3890#4077#0" />
+                <element signature="e#4097#4284#0" />
+                <element signature="e#4304#4491#0" />
+                <element signature="e#4511#4697#0" />
+                <element signature="e#4717#4904#0" />
+                <element signature="e#4924#5111#0" />
+                <element signature="e#5131#5320#0" />
+                <element signature="e#5340#5529#0" />
+                <element signature="e#5549#5738#0" />
+                <element signature="e#5758#5947#0" />
+                <element signature="e#5967#6161#0" />
+                <element signature="e#6181#6375#0" />
+                <element signature="e#6395#6589#0" />
+                <element signature="e#6609#6803#0" />
+                <element signature="e#6823#7017#0" />
+                <element signature="e#7037#7231#0" />
+                <element signature="e#7251#7445#0" />
+                <element signature="e#7465#7659#0" />
+                <element signature="e#7679#7871#0" />
+                <element signature="e#7891#8085#0" />
+                <element signature="e#8105#8299#0" />
+                <element signature="e#8319#8511#0" />
+                <element signature="e#8531#8718#0" />
+                <element signature="e#8738#8923#0" />
+                <element signature="e#8943#9132#0" />
+                <element signature="e#9152#9341#0" />
+                <element signature="e#9361#9550#0" />
+                <element signature="e#9570#9759#0" />
+                <element signature="e#9779#9969#0" />
+                <element signature="e#9989#10174#0" />
+                <element signature="e#10194#10376#0" />
+                <element signature="e#10396#10578#0" />
+                <element signature="e#10598#10796#0" />
+                <element signature="e#10816#11014#0" />
+                <element signature="e#11034#11232#0" />
+                <element signature="e#11470#11668#0" />
+                <element signature="e#11688#11886#0" />
+                <element signature="e#11906#12104#0" />
+                <element signature="e#12124#12322#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="24" column="30" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="30" />
+            <state relative-caret-position="194">
+              <caret line="86" column="12" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="12" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#2512#3192#0#HTML" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,12 +221,12 @@
         <option value="$PROJECT_DIR$/myblog/static/css/metrics.css" />
         <option value="$PROJECT_DIR$/myblog/needtext.txt" />
         <option value="$PROJECT_DIR$/myblog/templates/index.html" />
-        <option value="$PROJECT_DIR$/myblog/static/css/quiltreview.css" />
-        <option value="$PROJECT_DIR$/myblog/templates/metrics.html" />
-        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
-        <option value="$PROJECT_DIR$/myblog/static/js/ajax.js.bak" />
         <option value="$PROJECT_DIR$/myblog/templates/week1.html" />
+        <option value="$PROJECT_DIR$/myblog/static/js/ajax.js.bak" />
+        <option value="$PROJECT_DIR$/myblog/static/css/quiltreview.css" />
         <option value="$PROJECT_DIR$/myblog/static/js/ajax.js" />
+        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
+        <option value="$PROJECT_DIR$/myblog/templates/metrics.html" />
       </list>
     </option>
   </component>
@@ -172,10 +236,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="797" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="555" />
+    <option name="y" value="108" />
+    <option name="width" value="973" />
+    <option name="height" value="941" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -192,12 +257,6 @@
             <path>
               <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
               <item name="myblog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -377,7 +436,7 @@
       <workItem from="1571223206562" duration="20352000" />
       <workItem from="1571302799458" duration="17069000" />
       <workItem from="1571322315692" duration="637000" />
-      <workItem from="1571325352354" duration="10001000" />
+      <workItem from="1571325352354" duration="17506000" />
     </task>
     <task id="LOCAL-00001" summary="初步修改首页 html">
       <created>1568560888593</created>
@@ -701,11 +760,25 @@
       <option name="project" value="LOCAL" />
       <updated>1571329238993</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="需要自动补全日期">
+      <created>1571335457511</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1571335457511</updated>
+    </task>
+    <task id="LOCAL-00048" summary="mychart 排序完成">
+      <created>1571394061988</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1571394061988</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="297275000" />
+    <option name="totallyTimeSpent" value="292645000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -717,24 +790,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21101573" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21503593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3282365" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.26626506" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.3027523" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32721713" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49713877" weight="0.2987952" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49640685" weight="0.29969418" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32925585" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5028612" side_tool="true" weight="0.34096387" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" weight="0.3253012" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50359315" side_tool="true" weight="0.29969418" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" weight="0.25382262" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.28433734" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32925585" />
@@ -816,8 +889,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="裸奔到有皮肤" />
-    <MESSAGE value="metrics 修改内容" />
     <MESSAGE value="前段修改需要 &#10;1.对返回数据进行处理&#10;2.需要重新构造table样式" />
     <MESSAGE value="增加需求" />
     <MESSAGE value="增加获取周数逻辑" />
@@ -841,7 +912,9 @@
     <MESSAGE value="初次版本" />
     <MESSAGE value="fix end" />
     <MESSAGE value="10.17" />
-    <option name="LAST_COMMIT_MESSAGE" value="10.17" />
+    <MESSAGE value="需要自动补全日期" />
+    <MESSAGE value="mychart 排序完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="mychart 排序完成" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../git_test/otc_kernel_team-metronome/quiltreview/static/echarts.common.min.js" />
@@ -1052,7 +1125,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../.virtualenvs/dj_mblog/lib/python3.5/site-packages/django/contrib/admin/static/admin/js/vendor/select2/select2.full.js" />
+    <entry file="file://$USER_HOME$/.virtualenvs/dj_mblog/lib/python3.5/site-packages/django/contrib/admin/static/admin/js/vendor/select2/select2.full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="907" column="2" selection-start-line="907" selection-start-column="2" selection-end-line="907" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/echarts.common.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1074">
@@ -1060,55 +1139,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/quiltreview.js" />
-    <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/quiltreview.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js.bak">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="30" />
+        <state relative-caret-position="861">
+          <caret line="351" column="3" selection-start-line="351" selection-start-column="3" selection-end-line="351" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/css/quiltreview.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="55" column="3" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
+        <state relative-caret-position="731">
+          <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js.bak">
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="47" column="26" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="26" />
+        <state relative-caret-position="209">
+          <caret line="145" column="6" selection-start-line="145" selection-start-column="6" selection-end-line="145" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="17" column="85" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="17" selection-end-column="85" />
+        <state relative-caret-position="30">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#377#560#0" />
+            <element signature="e#580#766#0" />
+            <element signature="e#786#971#0" />
+            <element signature="e#991#1173#0" />
+            <element signature="e#1193#1375#0" />
+            <element signature="e#1395#1589#0" />
+            <element signature="e#1609#1798#0" />
+            <element signature="e#1818#2007#0" />
+            <element signature="e#2027#2216#0" />
+            <element signature="e#2236#2425#0" />
+            <element signature="e#2445#2631#0" />
+            <element signature="e#2651#2835#0" />
+            <element signature="e#2855#3042#0" />
+            <element signature="e#3062#3249#0" />
+            <element signature="e#3269#3456#0" />
+            <element signature="e#3476#3663#0" />
+            <element signature="e#3683#3870#0" />
+            <element signature="e#3890#4077#0" />
+            <element signature="e#4097#4284#0" />
+            <element signature="e#4304#4491#0" />
+            <element signature="e#4511#4697#0" />
+            <element signature="e#4717#4904#0" />
+            <element signature="e#4924#5111#0" />
+            <element signature="e#5131#5320#0" />
+            <element signature="e#5340#5529#0" />
+            <element signature="e#5549#5738#0" />
+            <element signature="e#5758#5947#0" />
+            <element signature="e#5967#6161#0" />
+            <element signature="e#6181#6375#0" />
+            <element signature="e#6395#6589#0" />
+            <element signature="e#6609#6803#0" />
+            <element signature="e#6823#7017#0" />
+            <element signature="e#7037#7231#0" />
+            <element signature="e#7251#7445#0" />
+            <element signature="e#7465#7659#0" />
+            <element signature="e#7679#7871#0" />
+            <element signature="e#7891#8085#0" />
+            <element signature="e#8105#8299#0" />
+            <element signature="e#8319#8511#0" />
+            <element signature="e#8531#8718#0" />
+            <element signature="e#8738#8923#0" />
+            <element signature="e#8943#9132#0" />
+            <element signature="e#9152#9341#0" />
+            <element signature="e#9361#9550#0" />
+            <element signature="e#9570#9759#0" />
+            <element signature="e#9779#9969#0" />
+            <element signature="e#9989#10174#0" />
+            <element signature="e#10194#10376#0" />
+            <element signature="e#10396#10578#0" />
+            <element signature="e#10598#10796#0" />
+            <element signature="e#10816#11014#0" />
+            <element signature="e#11034#11232#0" />
+            <element signature="e#11470#11668#0" />
+            <element signature="e#11688#11886#0" />
+            <element signature="e#11906#12104#0" />
+            <element signature="e#12124#12322#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/week1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        <state relative-caret-position="60">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
+    <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="115" column="26" lean-forward="true" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
+        <state relative-caret-position="194">
+          <caret line="86" column="12" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="12" />
           <folding>
-            <element signature="n#!!block;n#getDateStr#0" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#!!block;n#getCookie#0" />
-            <element signature="n#!!block;n#csrfSafeMethod#0" />
-            <element signature="e#10301#10538#0" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2512#3192#0#HTML" />
           </folding>
         </state>
       </provider>

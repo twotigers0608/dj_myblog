@@ -10,6 +10,17 @@
     <script type="text/javascript" src="../static/js/ajax.js"></script>
 </head>
 <body>    <!-- prepare a DOM container with width and height -->
+div><h1>PKT Patch Life Cycle Dashboard</h1></div>
+<div>
+  <form id="metrics_form">{% csrf_token %}
+    <span>Kernel:</span>
+      <select id="kernel" name="kernel" class="" size="1" onchange="select()">
+                  <option value="all" >all</option>
+                   <option value="lts2018" >lts2018</option>
+                  <option value="lts.4.14">lts.4.14</option>
+   </select>
+  </form>
+</div>
 <div id="myChart" style="width: 1000px;height:400px;margin:auto;"></div>
 <div id="main" style="width:1000px;height:400px;margin:auto;"></div>
 <table width="90%" class="table" id="tabledata">
@@ -73,17 +84,22 @@
     });
     // 显示标题，图例和空的坐标轴
     // 异步加载数据
-    $.ajax({
+    function select(){
+        $.ajax({
         type: "post",
         async: true,
         url: "/ajax/get_metrics/",
-        data: {"kernel": "e.g.lts2018"},
+        data: $('#metrics_form').serialize(),
         dataType: "json",
+        beforeSend: function() {
+            myChart.showLoading();
+            myChart1.showLoading();
+        },
         success: function (results) {
+            myChart.hideLoading();
+            myChart1.hideLoading();
             result_data = results.data;
             if (result_data) {
-                myChart.hideLoading()    //隐藏加载动画
-                myChart1.hideLoading();    //隐藏加载动画
                 rq_mychart(result_data);
                 rq_mychart1(result_data)
             }
@@ -94,6 +110,7 @@
         }
     });
 
+    }
     // 处理点击事件
     myChart1.on('click', function (params) {
         $("#tabledata tr").hide();
