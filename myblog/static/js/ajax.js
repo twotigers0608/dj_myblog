@@ -38,27 +38,84 @@ function SecondToDate(msd) {
     return time;
 }
 
+function getWeek(date) {
+    //var today = (new Date(data)).getTime()
+    var today = new Date(date * 1000);
+    var firstDay = new Date(today.getFullYear(), 0, 1);
+    var dayOfWeek = firstDay.getDay();
+    var spendDay = 1;
+    if (dayOfWeek != 0) {
+        spendDay = 7 - dayOfWeek + 1;
+    }
+    firstDay = new Date(today.getFullYear(), 0, 1 + spendDay);
+    var d = Math.ceil((today.valueOf() - firstDay.valueOf()) / 86400000);
+    var result = Math.ceil(d / 7);
+    result += 1;
+    return result;
+}
+
+function getyear(date) {
+    var today = new Date(date * 1000);
+    var y = today.getFullYear();
+    return y
+}
 
 function data_reduction(data) {
     var week_data = {};
+    var new_week_data = {};
     var week_list = [];
+    var year_week = {};
     for (var i = 0; i < data.length; i++) {
         var ww = getWeekOfYear(data[i]['release_time']);
+        var y = getyear(data[i]['release_time']);
+        var w = getWeek(data[i]['release_time']);
         data[i]['week'] = ww;
-        week_list.push(ww)
+        data[i]['year'] = y;
+        data[i]['week_num'] = w;
+        year_week[y] = [];
     }
-    ;
-    //data是一个总的字典, list是字典中的相同周数据
-    for (var i = 0; i < week_list.length; i++) {
-        var col = [];
-        for (var l = 0; l < data.length; l++) {
-            if (week_list[i] == data[l]['week']) {
-                col.push(data[l]);
+    //构造一个 year:week 将max 和 min 中的week 填充起来
+    for (var key in year_week) {
+        col = [];
+        for (var c = 0; c < data.length; c++) {
+            if (key == data[c]["year"]) {
+                col.push(data[c]["week_num"])
             }
-            week_data[week_list[i]] = col;
+        }
+        year_week[key] = col;
+    }
+    for (var key in year_week) {
+        var max = Math.max.apply(null, year_week[key]);
+        var min = Math.min.apply(null, year_week[key]);
+        var diff = max - min + 1;
+        $.unique(year_week[key]);
+        if (diff != year_week[key].length) {
+            var new_week = []
+            for (var c = 0; c < diff; c++) {
+                var num = min + c;
+                new_week.push(num)
+            }
+            year_week[key] = new_week
         }
     }
-    console.log(week_data);
+    console.log(year_week);
+    // week_data = {week:data}
+    $.each(year_week, function (key, value) {
+        for (var i = 0; i < value.length; i++) {
+            var str = '' + key + '-' + value[i];
+            week_data[str] = [];
+        }
+    });
+
+    var year_week_data = {};
+    $.each(week_data, function (key, value) {
+        for (var i = 0; i < data.length; i++) {
+            if (key == data[i]["week"]) {
+                value.push(data[i])
+            }
+        }
+    })
+    console.log(week_data)
     return week_data;
 }
 
