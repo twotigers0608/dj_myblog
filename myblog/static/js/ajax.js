@@ -98,7 +98,6 @@ function data_reduction(data) {
             year_week[key] = new_week
         }
     }
-    console.log(year_week);
     // week_data = {week:data}
     $.each(year_week, function (key, value) {
         for (var i = 0; i < value.length; i++) {
@@ -112,6 +111,8 @@ function data_reduction(data) {
         for (var i = 0; i < data.length; i++) {
             if (key == data[i]["week"]) {
                 value.push(data[i])
+            } else {
+                value.push()
             }
         }
     })
@@ -158,16 +159,23 @@ function data_durations(data) {
     result['review_duration'] = review_duration_list;
     result['merge_duration'] = merge_duration_list;
     result['rel_duration'] = released_durations_list;
-    //console.log(result)
+    console.log(result)
     return result
 }
 
 function avg_duration(list, num) {
     re_list = [];
+    console.log(list);
+    console.log(num);
     for (var i = 0; i < list.length; i++) {
-        if (num[i] == 0) num++;
-        avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
-        avg_time = Number(avg_time);
+        if (num[i] == 0 && list[i] == 0) {
+            re_list.push(0);
+        } else if (num[i] != 0) {
+            avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
+            avg_time = Number(avg_time);
+        } else {
+            re_list.push(0);
+        }
         re_list.push(avg_time);
     }
     //console.log(re_list)
