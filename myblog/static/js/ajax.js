@@ -58,20 +58,8 @@ function data_reduction(data) {
             week_data[week_list[i]] = col;
         }
     }
-    //console.log(week_data);
+    console.log(week_data);
     return week_data;
-}
-
-function avg_duration(list, num) {
-    re_list = [];
-    for (var i = 0; i < list.length; i++) {
-        if (num[i] == 0) num++;
-        avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
-        avg_time = Number(avg_time);
-        re_list.push(avg_time);
-    }
-    //console.log(re_list)
-    return re_list
 }
 
 function data_durations(data) {
@@ -117,6 +105,18 @@ function data_durations(data) {
     return result
 }
 
+function avg_duration(list, num) {
+    re_list = [];
+    for (var i = 0; i < list.length; i++) {
+        if (num[i] == 0) num++;
+        avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
+        avg_time = Number(avg_time);
+        re_list.push(avg_time);
+    }
+    //console.log(re_list)
+    return re_list
+}
+
 function getDateStr(seconds) {
     var date = new Date(seconds * 1000)
     var year = date.getFullYear();
@@ -126,9 +126,9 @@ function getDateStr(seconds) {
     return currentTime
 }
 
-function rq_mychart(result_data) {
-    var data_dict = data_reduction(result_data);
-    var result = data_durations(data_dict)
+function rq_mychart(data_dict, result) {
+    //var data_dict = data_reduction(result_data);
+    //var result = data_durations(data_dict);
     //挨个取出类别并填入类别数组
     var week = result['week'];
     //var verify_nums = result['released_durations'];
@@ -221,11 +221,11 @@ function rq_mychart(result_data) {
     });
 }
 
-function rq_mychart1(result_data) {
-    var data_dict = data_reduction(result_data);
+function rq_mychart1(data_dict, result) {
+    //var data_dict = data_reduction(result_data);
     //console.log('data_dict')
     //console.log(data_dict)
-    var result = data_durations(data_dict)
+    //var result = data_durations(data_dict)
     //挨个取出类别并填入类别数组
     var week = result['week'];
     var week_num = []
@@ -301,7 +301,7 @@ $.ajaxSetup({
 });
 
 //返回表格数据
-function ajax_datble(result_data) {
+function ajax_datble(data_dict, result) {
     $("#tabledata").html("");
     var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\n" +
         "    <tbody>\n" +
@@ -317,7 +317,7 @@ function ajax_datble(result_data) {
         "</table>"
     $("#tabledata ").append(str)
     var table_tbody = $("#tabledata").find("tbody");
-    var data_dict = data_reduction(result_data);
+    //var data_dict = data_reduction(result_data);
     $.each(data_dict, function (key1, value1) {
         var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
         for (var c = 0; c < value1.length; c++) {

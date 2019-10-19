@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="合并ajax 并且可选择后刷新html">
+    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/templates/week1.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/week1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/templates/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/metrics.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,9 +53,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="244" column="20" lean-forward="true" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
+            <state relative-caret-position="211">
+              <caret line="305" column="46" selection-start-line="305" selection-start-column="46" selection-end-line="305" selection-end-column="46" />
               <folding>
+                <element signature="n#!!block;n#getWeekOfYear#0" />
+                <element signature="n#!!block;n#SecondToDate#0" />
+                <element signature="n#!!block;n#data_durations#0" />
+                <element signature="n#!!block;n#avg_duration#0" />
+                <element signature="n#!!block;n#getDateStr#0" />
+                <element signature="n#!!block;n#getCookie#0" />
+                <element signature="n#!!block;n#csrfSafeMethod#0" />
+                <element signature="e#8914#9151#0" />
                 <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -65,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="255">
               <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -86,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+            <state relative-caret-position="194">
+              <caret line="108" column="28" selection-start-line="108" selection-start-column="28" selection-end-line="108" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -376,20 +384,7 @@
       <workItem from="1571302799458" duration="17069000" />
       <workItem from="1571322315692" duration="637000" />
       <workItem from="1571325352354" duration="27473000" />
-    </task>
-    <task id="LOCAL-00003" summary="动态获取数据失败">
-      <created>1568819297179</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1568819297179</updated>
-    </task>
-    <task id="LOCAL-00004" summary="成功返回json数据">
-      <created>1569000824514</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1569000824514</updated>
+      <workItem from="1571461696960" duration="954000" />
     </task>
     <task id="LOCAL-00005" summary="ajax 获取不到信息">
       <created>1569057913939</created>
@@ -720,11 +715,25 @@
       <option name="project" value="LOCAL" />
       <updated>1571407444051</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="修改变量名正确显示效果">
+      <created>1571461761652</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1571461761653</updated>
+    </task>
+    <task id="LOCAL-00053" summary="显示问题解决&#10;需要具体到标签可以正确显示">
+      <created>1571462434210</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1571462434210</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303138000" />
+    <option name="totallyTimeSpent" value="304092000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -737,19 +746,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1981402" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20100144" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3282365" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" weight="0.30240965" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49713877" visible="true" weight="0.30240965" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32721713" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49640685" visible="true" weight="0.2987952" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49640685" weight="0.29787233" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50359315" side_tool="true" weight="0.29969418" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" weight="0.25382262" />
@@ -834,8 +844,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="增加获取周数逻辑" />
-    <MESSAGE value="js 处理日期转后周问题" />
     <MESSAGE value="暂时无语法错误版" />
     <MESSAGE value="jquery 报错" />
     <MESSAGE value="图表返回完成" />
@@ -859,7 +867,9 @@
     <MESSAGE value="mychart 排序完成" />
     <MESSAGE value="增加select标签" />
     <MESSAGE value="合并ajax 并且可选择后刷新html" />
-    <option name="LAST_COMMIT_MESSAGE" value="合并ajax 并且可选择后刷新html" />
+    <MESSAGE value="修改变量名正确显示效果" />
+    <MESSAGE value="显示问题解决&#10;需要具体到标签可以正确显示" />
+    <option name="LAST_COMMIT_MESSAGE" value="显示问题解决&#10;需要具体到标签可以正确显示" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../git_test/otc_kernel_team-metronome/quiltreview/static/echarts.common.min.js" />
@@ -1079,13 +1089,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/quiltreview.js" />
-    <entry file="file://$PROJECT_DIR$/myblog/templates/week1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js.bak">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
@@ -1102,7 +1105,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="255">
           <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -1110,18 +1113,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/templates/week1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        <state relative-caret-position="194">
+          <caret line="108" column="28" selection-start-line="108" selection-start-column="28" selection-end-line="108" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="244" column="20" lean-forward="true" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
+        <state relative-caret-position="211">
+          <caret line="305" column="46" selection-start-line="305" selection-start-column="46" selection-end-line="305" selection-end-column="46" />
           <folding>
+            <element signature="n#!!block;n#getWeekOfYear#0" />
+            <element signature="n#!!block;n#SecondToDate#0" />
+            <element signature="n#!!block;n#data_durations#0" />
+            <element signature="n#!!block;n#avg_duration#0" />
+            <element signature="n#!!block;n#getDateStr#0" />
+            <element signature="n#!!block;n#getCookie#0" />
+            <element signature="n#!!block;n#csrfSafeMethod#0" />
+            <element signature="e#8914#9151#0" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
           </folding>
         </state>
