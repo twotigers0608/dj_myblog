@@ -59,7 +59,7 @@ function getyear(date) {
     var y = today.getFullYear();
     return y
 }
-
+//构造数据结构
 function data_reduction(data) {
     var week_data = {};
     var new_week_data = {};
@@ -74,7 +74,7 @@ function data_reduction(data) {
         data[i]['week_num'] = w;
         year_week[y] = [];
     }
-    //构造一个 year:week 将max 和 min 中的week 填充起来
+    //将未存在周补齐
     for (var key in year_week) {
         col = [];
         for (var c = 0; c < data.length; c++) {
@@ -98,28 +98,26 @@ function data_reduction(data) {
             year_week[key] = new_week
         }
     }
-    // week_data = {week:data}
+    // week_data = {week:data} 将周填入
     $.each(year_week, function (key, value) {
         for (var i = 0; i < value.length; i++) {
             var str = '' + key + '-' + value[i];
             week_data[str] = [];
         }
     });
-
     var year_week_data = {};
+    //验证数据将符合条件填入 week_data
     $.each(week_data, function (key, value) {
         for (var i = 0; i < data.length; i++) {
             if (key == data[i]["week"]) {
                 value.push(data[i])
-            } else {
-                value.push()
             }
         }
     })
-    console.log(week_data)
+    //console.log(week_data)
     return week_data;
 }
-
+//根据数据构造 eachars 所需要数据
 function data_durations(data) {
     result = {};
     week = [];
@@ -162,7 +160,7 @@ function data_durations(data) {
     console.log(result)
     return result
 }
-
+//平均总时间
 function avg_duration(list, num) {
     re_list = [];
     console.log(list);
