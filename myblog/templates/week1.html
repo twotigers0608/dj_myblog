@@ -2,9 +2,9 @@
 <head>
 <body>
 <script type="text/javascript">
-    var arr5 = [{'2018-13':10},{'2018-15':5},{'2018-17':6},{'2018-23':9},{'2018-24':2},{'2018-33':3}];
+    var arr5 = [{'2018-13':10},{'2018-15':5},{'2018-17':6},{'2018-23':9},{'2018-24':2},{'2018-13':3}];
 		arr5.sort(function(a,b){
-			return a - b
+			return a.id - b.id
 		})
 		console.log(arr5);
 </script>

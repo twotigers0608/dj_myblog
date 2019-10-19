@@ -43,7 +43,7 @@ function data_reduction(data) {
     var week_data = {};
     var week_list = [];
     for (var i = 0; i < data.length; i++) {
-        var ww = getWeekOfYear(data[i]['released_time']);
+        var ww = getWeekOfYear(data[i]['release_time']);
         data[i]['week'] = ww;
         week_list.push(ww)
     }
@@ -246,7 +246,7 @@ function rq_mychart1(result_data) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                console.log(params)
+                //console.log(params)
                 return '' + params[0].value;
             }
         },
@@ -327,7 +327,7 @@ function ajax_datble(result_data) {
             var id = value1[c]['id'];
             var verify_time = SecondToDate(value1[c]['verify_duration']);
             var review_time = SecondToDate(value1[c]['review_duration']);
-            var date_time = getDateStr(value1[c]['released_time']);
+            var date_time = getDateStr(value1[c]['release_time']);
             var merge_time = SecondToDate(value1[c]['merge_duration']);
             var rel_time = SecondToDate(value1[c]['rel_duration']);
 

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="合并ajax 并且可选择后刷新html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/templates/week1.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/week1.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,45 +53,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="327" column="7" lean-forward="true" selection-start-line="327" selection-start-column="7" selection-end-line="327" selection-end-column="7" />
+            <state relative-caret-position="260">
+              <caret line="244" column="20" lean-forward="true" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
               <folding>
-                <element signature="n#!!block;n#getWeekOfYear#0" />
-                <element signature="n#!!block;n#SecondToDate#0" />
                 <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="e#8166#10562#0" />
-                <element signature="e#10962#11670#0" />
-                <element signature="n#!!block;n#getCookie#0" />
-                <element signature="n#!!block;n#csrfSafeMethod#0" />
-                <element signature="e#12417#12654#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js.bak">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="231" column="32" selection-start-line="231" selection-start-column="26" selection-end-line="231" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/static/css/quiltreview.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/templates/week1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -97,67 +65,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="752">
-              <caret line="241" column="16" lean-forward="true" selection-start-line="241" selection-start-column="16" selection-end-line="241" selection-end-column="16" />
+            <state relative-caret-position="340">
+              <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#377#560#0" />
-                <element signature="e#580#766#0" />
-                <element signature="e#786#971#0" />
-                <element signature="e#991#1173#0" />
-                <element signature="e#1193#1375#0" />
-                <element signature="e#1395#1589#0" />
-                <element signature="e#1609#1798#0" />
-                <element signature="e#1818#2007#0" />
-                <element signature="e#2027#2216#0" />
-                <element signature="e#2236#2425#0" />
-                <element signature="e#2445#2631#0" />
-                <element signature="e#2651#2835#0" />
-                <element signature="e#2855#3042#0" />
-                <element signature="e#3062#3249#0" />
-                <element signature="e#3269#3456#0" />
-                <element signature="e#3476#3663#0" />
-                <element signature="e#3683#3870#0" />
-                <element signature="e#3890#4077#0" />
-                <element signature="e#4097#4284#0" />
-                <element signature="e#4304#4491#0" />
-                <element signature="e#4511#4697#0" />
-                <element signature="e#4717#4904#0" />
-                <element signature="e#4924#5111#0" />
-                <element signature="e#5131#5320#0" />
-                <element signature="e#5340#5529#0" />
-                <element signature="e#5549#5738#0" />
-                <element signature="e#5758#5947#0" />
-                <element signature="e#5967#6161#0" />
-                <element signature="e#6181#6375#0" />
-                <element signature="e#6395#6589#0" />
-                <element signature="e#6609#6803#0" />
-                <element signature="e#6823#7017#0" />
-                <element signature="e#7037#7231#0" />
-                <element signature="e#7251#7445#0" />
-                <element signature="e#7465#7659#0" />
-                <element signature="e#7679#7871#0" />
-                <element signature="e#7891#8085#0" />
-                <element signature="e#8105#8299#0" />
-                <element signature="e#8319#8511#0" />
-                <element signature="e#8531#8718#0" />
-                <element signature="e#8738#8923#0" />
-                <element signature="e#8943#9132#0" />
-                <element signature="e#9152#9341#0" />
-                <element signature="e#9361#9550#0" />
-                <element signature="e#9570#9759#0" />
-                <element signature="e#9779#9969#0" />
-                <element signature="e#9989#10174#0" />
-                <element signature="e#10194#10376#0" />
-                <element signature="e#10396#10578#0" />
-                <element signature="e#10598#10796#0" />
-                <element signature="e#10816#11014#0" />
-                <element signature="e#11034#11232#0" />
-                <element signature="e#11470#11668#0" />
-                <element signature="e#11688#11886#0" />
-                <element signature="e#11906#12104#0" />
-                <element signature="e#12124#12322#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myblog/templates/week1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -165,12 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="109" column="45" lean-forward="true" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="646">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -191,7 +108,11 @@
       <find>dc-table-la</find>
       <find>dc-table</find>
       <find>id</find>
+      <find>released_time</find>
     </findStrings>
+    <replaceStrings>
+      <replace>release_time</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
@@ -248,7 +169,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="42" />
     <option name="y" value="24" />
     <option name="width" value="1359" />
@@ -269,6 +190,12 @@
             <path>
               <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
+              <item name="myblog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
+              <item name="myblog" type="462c0819:PsiDirectoryNode" />
               <item name="myblog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -325,7 +252,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../otc_kernel_team-metronome" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -797,7 +724,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="302612000" />
+    <option name="totallyTimeSpent" value="303138000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -809,21 +736,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11940298" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1981402" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3282365" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" weight="0.3027523" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49713877" weight="0.30240965" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32721713" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49640685" visible="true" weight="0.29969418" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49640685" visible="true" weight="0.2987952" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50359315" side_tool="true" weight="0.29969418" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" weight="0.25382262" />
@@ -1144,13 +1070,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dj_mblog/lib/python3.5/site-packages/django/contrib/admin/static/admin/js/vendor/select2/select2.full.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="907" column="2" selection-start-line="907" selection-start-column="2" selection-end-line="907" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../.virtualenvs/dj_mblog/lib/python3.5/site-packages/django/contrib/admin/static/admin/js/vendor/select2/select2.full.js" />
     <entry file="file://$PROJECT_DIR$/myblog/static/js/echarts.common.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1074">
@@ -1158,13 +1078,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/quiltreview.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/quiltreview.js" />
     <entry file="file://$PROJECT_DIR$/myblog/templates/week1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        <state relative-caret-position="170">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1184,94 +1102,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
-          <caret line="241" column="16" lean-forward="true" selection-start-line="241" selection-start-column="16" selection-end-line="241" selection-end-column="16" />
+        <state relative-caret-position="340">
+          <caret line="20" column="67" selection-start-line="20" selection-start-column="67" selection-end-line="20" selection-end-column="67" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#377#560#0" />
-            <element signature="e#580#766#0" />
-            <element signature="e#786#971#0" />
-            <element signature="e#991#1173#0" />
-            <element signature="e#1193#1375#0" />
-            <element signature="e#1395#1589#0" />
-            <element signature="e#1609#1798#0" />
-            <element signature="e#1818#2007#0" />
-            <element signature="e#2027#2216#0" />
-            <element signature="e#2236#2425#0" />
-            <element signature="e#2445#2631#0" />
-            <element signature="e#2651#2835#0" />
-            <element signature="e#2855#3042#0" />
-            <element signature="e#3062#3249#0" />
-            <element signature="e#3269#3456#0" />
-            <element signature="e#3476#3663#0" />
-            <element signature="e#3683#3870#0" />
-            <element signature="e#3890#4077#0" />
-            <element signature="e#4097#4284#0" />
-            <element signature="e#4304#4491#0" />
-            <element signature="e#4511#4697#0" />
-            <element signature="e#4717#4904#0" />
-            <element signature="e#4924#5111#0" />
-            <element signature="e#5131#5320#0" />
-            <element signature="e#5340#5529#0" />
-            <element signature="e#5549#5738#0" />
-            <element signature="e#5758#5947#0" />
-            <element signature="e#5967#6161#0" />
-            <element signature="e#6181#6375#0" />
-            <element signature="e#6395#6589#0" />
-            <element signature="e#6609#6803#0" />
-            <element signature="e#6823#7017#0" />
-            <element signature="e#7037#7231#0" />
-            <element signature="e#7251#7445#0" />
-            <element signature="e#7465#7659#0" />
-            <element signature="e#7679#7871#0" />
-            <element signature="e#7891#8085#0" />
-            <element signature="e#8105#8299#0" />
-            <element signature="e#8319#8511#0" />
-            <element signature="e#8531#8718#0" />
-            <element signature="e#8738#8923#0" />
-            <element signature="e#8943#9132#0" />
-            <element signature="e#9152#9341#0" />
-            <element signature="e#9361#9550#0" />
-            <element signature="e#9570#9759#0" />
-            <element signature="e#9779#9969#0" />
-            <element signature="e#9989#10174#0" />
-            <element signature="e#10194#10376#0" />
-            <element signature="e#10396#10578#0" />
-            <element signature="e#10598#10796#0" />
-            <element signature="e#10816#11014#0" />
-            <element signature="e#11034#11232#0" />
-            <element signature="e#11470#11668#0" />
-            <element signature="e#11688#11886#0" />
-            <element signature="e#11906#12104#0" />
-            <element signature="e#12124#12322#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="109" column="45" lean-forward="true" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="646">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="327" column="7" lean-forward="true" selection-start-line="327" selection-start-column="7" selection-end-line="327" selection-end-column="7" />
+        <state relative-caret-position="260">
+          <caret line="244" column="20" lean-forward="true" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
           <folding>
-            <element signature="n#!!block;n#getWeekOfYear#0" />
-            <element signature="n#!!block;n#SecondToDate#0" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="e#8166#10562#0" />
-            <element signature="e#10962#11670#0" />
-            <element signature="n#!!block;n#getCookie#0" />
-            <element signature="n#!!block;n#csrfSafeMethod#0" />
-            <element signature="e#12417#12654#0" />
           </folding>
         </state>
       </provider>
