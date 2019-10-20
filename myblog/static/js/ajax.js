@@ -59,6 +59,7 @@ function getyear(date) {
     var y = today.getFullYear();
     return y
 }
+
 //构造数据结构
 function data_reduction(data) {
     var week_data = {};
@@ -117,6 +118,7 @@ function data_reduction(data) {
     //console.log(week_data)
     return week_data;
 }
+
 //根据数据构造 eachars 所需要数据
 function data_durations(data) {
     result = {};
@@ -160,23 +162,22 @@ function data_durations(data) {
     console.log(result)
     return result
 }
+
 //平均总时间
 function avg_duration(list, num) {
     re_list = [];
     console.log(list);
     console.log(num);
     for (var i = 0; i < list.length; i++) {
-        if (num[i] == 0 && list[i] == 0) {
-            re_list.push(0);
-        } else if (num[i] != 0) {
+        if (num[i] != 0 && list != 0) {
             avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
             avg_time = Number(avg_time);
+            re_list.push(avg_time);
         } else {
             re_list.push(0);
         }
-        re_list.push(avg_time);
     }
-    //console.log(re_list)
+    console.log(re_list)
     return re_list
 }
 
@@ -306,7 +307,7 @@ function rq_mychart1(data_dict, result) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                //console.log(params)
+                console.log(params)
                 return '' + params[0].value;
             }
         },
