@@ -166,8 +166,8 @@ function data_durations(data) {
 //平均总时间
 function avg_duration(list, num) {
     re_list = [];
-    console.log(list);
-    console.log(num);
+    //console.log(list);
+    //console.log(num);
     for (var i = 0; i < list.length; i++) {
         if (num[i] != 0 && list != 0) {
             avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
@@ -177,7 +177,7 @@ function avg_duration(list, num) {
             re_list.push(0);
         }
     }
-    console.log(re_list)
+    //console.log(re_list)
     return re_list
 }
 
@@ -307,7 +307,7 @@ function rq_mychart1(data_dict, result) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                console.log(params)
+                //console.log(params)
                 return '' + params[0].value;
             }
         },
