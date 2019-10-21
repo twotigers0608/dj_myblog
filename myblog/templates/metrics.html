@@ -15,15 +15,15 @@
 <div>
     <form id="metrics_form">{% csrf_token %}
         <span>Kernel:</span>
-        <select id="kernel" name="kernel" class="" size="1" onchange="select()">
+        <select id="kernel" name="kernel" class="" size="1">
             <option value="all" selected="selected">all</option>
             <option value="lts2018">lts2018</option>
             <option value="lts.4.14">lts.4.14</option>
         </select>
     </form>
 </div>
-<div id="myChart" style="width: 1000px;height:400px;margin:auto;"></div>
-<div id="main" style="width:1000px;height:400px;margin:auto;"></div>
+<div id="patch_week" style="width: 1000px;height:400px;margin:auto;"></div>
+<div id="patch_num" style="width:1000px;height:400px;margin:auto;"></div>
 <div>
     <table width="70%" class="table" id="tabledata">
         <tr class="title">
@@ -37,119 +37,6 @@
     </table>
 </div>
 <script type="text/javascript">
-    var myChart = echarts.init(document.getElementById('myChart'));
-
-    // 显示标题，图例和空的坐标轴
-    myChart.setOption({
-        title: {
-            text: 'Patch Cycle Chart / Work Week'
-        },
-        tooltip: {},
-        legend: {
-            data: ['Work Week(Years.WW)']
-        },
-        xAxis: {
-            name: "Work Week",
-            data: []
-        },
-        yAxis: {
-            name: "Hours",
-        },
-        series: [{
-            name: 'time',
-            type: 'bar',
-            data: []
-        }]
-    });
-    var myChart1 = echarts.init(document.getElementById('main'));
-    myChart1.setOption({
-        title: {
-            text: 'Number of Patches / Work Week'
-        },
-        tooltip: {},
-        legend: {
-            data: []
-        },
-        xAxis: {
-            name: "Work Week",
-            data: []
-        },
-        yAxis: {
-            name: "Number of Patches"
-        },
-        series: [{
-            name: 'num',
-            type: 'bar',
-            data: []
-        }
-        ]
-    });
-    // 显示标题，图例和空的坐标轴
-    // 异步加载数据
-    function select() {
-        $.ajax({
-            type: "post",
-            async: true,
-            url: "/ajax/get_metrics/",
-            data: $('#metrics_form').serialize(),
-            dataType: "json",
-            beforeSend: function () {
-                myChart.showLoading();
-                myChart1.showLoading();
-            },
-            success: function (results) {
-                myChart.hideLoading();
-                myChart1.hideLoading();
-                result_data = results.data;
-                if (result_data) {
-                    var data_dict = data_reduction(result_data);
-                    var result = data_durations(data_dict);
-                    rq_mychart(data_dict, result);
-                    rq_mychart1(data_dict, result);
-                    ajax_datble(data_dict, result);
-                }
-            },
-            error: function (errorMsg) {
-                //请求失败时执行该函数
-                alert("Chart request data failed!");
-            }
-        });
-
-    }
-
-    // 处理点击事件
-    myChart1.on('click', function (params) {
-        $("#tabledata tr").hide();
-        $("#tabledata .title").show();
-        myChart1.setOption({
-            xAxis: [{
-                axisLabel: {
-                    textStyle: {
-                        color: function (value, index) {
-                            return index == params.dataIndex ? '#F14845' : '#383738';
-                        }
-                    }
-                }
-            }]
-        })
-        $("#tabledata ." + params.name).show()
-    });
-    myChart.on('click', function (params) {
-        $("#tabledata tr").hide();
-        $("#tabledata .title").show();
-        myChart.setOption({
-            xAxis: [{
-                axisLabel: {
-                    textStyle: {
-                        color: function (value, index) {
-                            return index == params.dataIndex ? '#F14845' : '#383738';
-                        }
-                    }
-                }
-            }]
-        })
-        $("#tabledata ." + params.name).show()
-    });
 </script>
 </body>
 </html>

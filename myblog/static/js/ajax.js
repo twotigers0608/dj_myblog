@@ -1,3 +1,127 @@
+$(document).ready(function () {
+    var patch_week = echarts.init(document.getElementById('patch_week'));
+    // 显示标题，图例和空的坐标轴
+    patch_week.setOption({
+        title: {
+            text: 'Patch Cycle Chart / Work Week'
+        },
+        tooltip: {},
+        legend: {
+            data: ['Work Week(Years.WW)']
+        },
+        xAxis: {
+            name: "Work Week",
+            data: []
+        },
+        yAxis: {
+            name: "Hours",
+        },
+        series: [{
+            name: 'time',
+            type: 'bar',
+            data: []
+        }]
+    });
+    var patch_num = echarts.init(document.getElementById('patch_num'));
+    patch_num.setOption({
+        title: {
+            text: 'Number of Patches / Work Week'
+        },
+        tooltip: {},
+        legend: {
+            data: []
+        },
+        xAxis: {
+            name: "Work Week",
+            data: []
+        },
+        yAxis: {
+            name: "Number of Patches"
+        },
+        series: [{
+            name: 'num',
+            type: 'bar',
+            data: []
+        }
+        ]
+    });
+
+    $("#kernel").change(function () {
+        select()
+    })
+
+    select();
+    // 处理点击事件
+    patch_week.on('click', function (params) {
+        $("#tabledata tr").hide();
+        $("#tabledata .title").show();
+        path_week.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
+        $("#tabledata ." + params.name).show()
+    });
+    patch_num.on('click', function (params) {
+        $("#tabledata tr").hide();
+        $("#tabledata .title").show();
+        path_num.setOption({
+            xAxis: [{
+                axisLabel: {
+                    textStyle: {
+                        color: function (value, index) {
+                            return index == params.dataIndex ? '#F14845' : '#383738';
+                        }
+                    }
+                }
+            }]
+        })
+        $("#tabledata ." + params.name).show()
+    });
+})
+
+// 异步加载数据
+function select() {
+    $.ajax({
+        type: "post",
+        async: true,
+        url: "/ajax/get_metrics/",
+        data: $('#metrics_form').serialize(),
+        dataType: "json",
+        beforeSend: function () {
+            var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
+            var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
+            patch_week.showLoading();
+            patch_num.showLoading();
+        },
+        success: function (results) {
+            var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
+            var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
+            patch_week.hideLoading();
+            patch_num.hideLoading();
+            result_data = results.data;
+            if (result_data) {
+                var data_dict = data_reduction(result_data);
+                var result = data_durations(data_dict);
+                rq_patch_week(data_dict, result);
+                rq_patch_num(data_dict, result);
+                ajax_datble(data_dict, result);
+            }
+        },
+        error: function (errorMsg) {
+            //请求失败时执行该函数
+            alert("Chart request data failed!");
+        }
+    });
+
+}
+
 //将时间戳转换为标准时间
 function getWeekOfYear(date) {
     //var today = (new Date(data)).getTime()
@@ -58,6 +182,15 @@ function getyear(date) {
     var today = new Date(date * 1000);
     var y = today.getFullYear();
     return y
+}
+
+function getDateStr(seconds) {
+    var date = new Date(seconds * 1000)
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var currentTime = year + "-" + month + "-" + day;
+    return currentTime
 }
 
 //构造数据结构
@@ -182,16 +315,7 @@ function avg_duration(list, num) {
     return re_list
 }
 
-function getDateStr(seconds) {
-    var date = new Date(seconds * 1000)
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var currentTime = year + "-" + month + "-" + day;
-    return currentTime
-}
-
-function rq_mychart(data_dict, result) {
+function rq_patch_week(data_dict, result) {
     //var data_dict = data_reduction(result_data);
     //var result = data_durations(data_dict);
     //挨个取出类别并填入类别数组
@@ -201,8 +325,8 @@ function rq_mychart(data_dict, result) {
     var merge_nums = result['merge_duration'];
     var released_nums = result['rel_duration'];
     //console.log(week)
-    myChart.hideLoading();    //隐藏加载动画
-    myChart.setOption({
+    patch_week.hideLoading();    //隐藏加载动画
+    patch_week.setOption({
         // 顶部选择
         legend: {
             data: ['Review', 'Merge', 'Released']
@@ -286,7 +410,7 @@ function rq_mychart(data_dict, result) {
     });
 }
 
-function rq_mychart1(data_dict, result) {
+function rq_patch_num(data_dict, result) {
     //var data_dict = data_reduction(result_data);
     //console.log('data_dict')
     //console.log(data_dict)
@@ -299,9 +423,9 @@ function rq_mychart1(data_dict, result) {
         week_num.push(num_leg)
     })
     //console.log(week_num)
-    myChart1.hideLoading();
+    patch_num.hideLoading();
     //resule = JSON.parse(resule);//把string字符串转换为json数组
-    myChart1.setOption({
+    patch_num.setOption({
         tooltip: {
             trigger: 'axis',
             label: {
@@ -383,18 +507,20 @@ function ajax_datble(data_dict, result) {
     $("#tabledata ").append(str)
     var table_tbody = $("#tabledata").find("tbody");
     //var data_dict = data_reduction(result_data);
-    $.each(data_dict, function (key1, value1) {
-        var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
-        for (var c = 0; c < value1.length; c++) {
-            html += "<tr" + " class=" + key1 + ">";
-            var id = value1[c]['id'];
-            var verify_time = SecondToDate(value1[c]['verify_duration']);
-            var review_time = SecondToDate(value1[c]['review_duration']);
-            var date_time = getDateStr(value1[c]['release_time']);
-            var merge_time = SecondToDate(value1[c]['merge_duration']);
-            var rel_time = SecondToDate(value1[c]['rel_duration']);
+   $.each(sorted_ww, function (i, ww) {
+        //console.log(result_data)
+        ww_data = week_data[ww];
+        var html = "<tr" + " class=" + ww + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + ww + "</th>" + "</tr>"
+        for (var c = 0; c < ww_data.length; c++) {
+            html += "<tr" + " class=" + ww + ">";
+            var id = ww_data[c]['id'];
+            var verify_time = SecondToDate(ww_data[c]['verify_duration']);
+            var review_time = SecondToDate(ww_data[c]['review_duration']);
+            var date_time = getDateStr(ww_data[c]['release_time']);
+            var merge_time = SecondToDate(ww_data[c]['merge_duration']);
+            var rel_time = SecondToDate(ww_data[c]['rel_duration']);
 
-            html += "<td>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+            html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
                 + "<td>" + date_time + "</td>" +
                 "<td>" + review_time + "</td>" +
                 "<td>" + verify_time + "</td>" +
@@ -402,6 +528,8 @@ function ajax_datble(data_dict, result) {
                 "<td>" + rel_time + "</td>";
             html += "</tr>"
         }
-        table_tbody.append(html)
+        ;
+        $tbody.append(html)
+        //console.log(html)
     });
 }
