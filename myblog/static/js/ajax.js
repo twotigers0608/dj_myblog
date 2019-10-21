@@ -137,6 +137,7 @@ function data_durations(data) {
         var merge_num = 0;
         var released_num = 0;
         week.push(k);
+        //console.log(v)
         for (var l = 0; l < v.length; l++) {
             if (v[l]['review_duration'] != 0) review_num++;
             review_duration += v[l]['review_duration'];
@@ -159,7 +160,7 @@ function data_durations(data) {
     result['review_duration'] = review_duration_list;
     result['merge_duration'] = merge_duration_list;
     result['rel_duration'] = released_durations_list;
-    console.log(result)
+    //console.log(result)
     return result
 }
 
@@ -170,7 +171,7 @@ function avg_duration(list, num) {
     //console.log(num);
     for (var i = 0; i < list.length; i++) {
         if (num[i] != 0 && list != 0) {
-            avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
+            avg_time = parseFloat(list[i] / 3600 / num[i]).toFixed(2);
             avg_time = Number(avg_time);
             re_list.push(avg_time);
         } else {

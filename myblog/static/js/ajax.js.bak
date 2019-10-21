@@ -17,6 +17,27 @@ function getWeekOfYear(date) {
     return week;
 }
 
+function SecondToDate(msd) {
+    var time = msd
+    if (null != time && "" != time) {
+        //minute
+        if (time > 60 && time < 60 * 60) {
+            time = parseInt(time / 60.0) + "m";
+        } else if (time >= 60 * 60 && time < 60 * 60 * 24) {
+            //hour
+            time = parseInt(time / 3600.0) + "h" + parseInt((parseFloat(time / 3600.0) -
+                parseInt(time / 3600.0)) * 60) + "m";
+        } else if (time >= 60 * 60 * 24) {
+            //day
+            time = parseInt(time / 3600.0 / 24) + "day" + parseInt((parseFloat(time / 3600.0 / 24) -
+                parseInt(time / 3600.0 / 24)) * 24) + "h";
+        } else {
+            time = parseInt(time) + "s";
+        }
+    }
+    return time;
+}
+
 function getWeek(date) {
     //var today = (new Date(data)).getTime()
     var today = new Date(date * 1000);
@@ -39,43 +60,22 @@ function getyear(date) {
     return y
 }
 
-function SecondToDate(msd) {
-    var time = msd
-    if (null != time && "" != time) {
-        //minute
-        if (time > 60 && time < 60 * 60) {
-            time = parseInt(time / 60.0) + "m";
-        } else if (time >= 60 * 60 && time < 60 * 60 * 24) {
-            //hour
-            time = parseInt(time / 3600.0) + "h" + parseInt((parseFloat(time / 3600.0) -
-                parseInt(time / 3600.0)) * 60) + "m";
-        } else if (time >= 60 * 60 * 24) {
-            //day
-            time = parseInt(time / 3600.0 / 24) + "day" + parseInt((parseFloat(time / 3600.0 / 24) -
-                parseInt(time / 3600.0 / 24)) * 24) + "h";
-        } else {
-            time = parseInt(time) + "s";
-        }
-    }
-    return time;
-}
-
-
+//构造数据结构
 function data_reduction(data) {
     var week_data = {};
     var new_week_data = {};
     var week_list = [];
     var year_week = {};
     for (var i = 0; i < data.length; i++) {
-        var ww = getWeekOfYear(data[i]['released_time']);
-        var y = getyear(data[i]['released_time']);
-        var w = getWeek(data[i]['released_time']);
+        var ww = getWeekOfYear(data[i]['release_time']);
+        var y = getyear(data[i]['release_time']);
+        var w = getWeek(data[i]['release_time']);
         data[i]['week'] = ww;
         data[i]['year'] = y;
         data[i]['week_num'] = w;
-        week_list.push(ww);
         year_week[y] = [];
     }
+    //将未存在周补齐
     for (var key in year_week) {
         col = [];
         for (var c = 0; c < data.length; c++) {
@@ -88,52 +88,38 @@ function data_reduction(data) {
     for (var key in year_week) {
         var max = Math.max.apply(null, year_week[key]);
         var min = Math.min.apply(null, year_week[key]);
-        var diff = max - min;
-        for (var c = 1; c < diff; c++) {
-            var str = "" + key + "-" + min
-            if (week_list.indexOf(str) > -1) {
-                min++;
-            } else {
-                data.push(
-                    {
-                        "id": null, "week": str,
-                    });
-                week_list.push(str);
-                min++;
+        var diff = max - min + 1;
+        $.unique(year_week[key]);
+        if (diff != year_week[key].length) {
+            var new_week = []
+            for (var c = 0; c < diff; c++) {
+                var num = min + c;
+                new_week.push(num)
             }
+            year_week[key] = new_week
         }
     }
-    //data是一个总的字典, list是字典中的相同周数据
-    for (var i = 0; i < week_list.length; i++) {
-        var col = [];
-        for (var l = 0; l < data.length; l++) {
-            if (week_list[i] == data[l]['week']) {
-                col.push(data[l]);
-            }
-            week_data[week_list[i]] = col;
+    // week_data = {week:data} 将周填入
+    $.each(year_week, function (key, value) {
+        for (var i = 0; i < value.length; i++) {
+            var str = '' + key + '-' + value[i];
+            week_data[str] = [];
         }
-    }
-    var res = Object.keys(week_data).sort();
-    for (key in res) {
-        new_week_data[res[key]] = week_data[res[key]]
-    }
-    //console.log(new_week_data);
-    return new_week_data
+    });
+    var year_week_data = {};
+    //验证数据将符合条件填入 week_data
+    $.each(week_data, function (key, value) {
+        for (var i = 0; i < data.length; i++) {
+            if (key == data[i]["week"]) {
+                value.push(data[i])
+            }
+        }
+    })
+    //console.log(week_data)
+    return week_data;
 }
 
-function avg_duration(list, num) {
-    re_list = [];
-    for (var i = 0; i < list.length; i++) {
-        if (num[i] == 0) num++;
-        avg_time = parseFloat(list[i] / 3600 / num[i], 10).toFixed(2);
-        avg_time = Number(avg_time);
-        re_list.push(avg_time);
-    }
-    //console.log(re_list)
-    return re_list
-}
-
-
+//根据数据构造 eachars 所需要数据
 function data_durations(data) {
     result = {};
     week = [];
@@ -143,7 +129,6 @@ function data_durations(data) {
     review_num_list = [];
     merge_num_list = [];
     released_num_list = [];
-    //console.log(data)
     $.each(data, function (k, v) {
         var review_duration = 0;
         var merge_duration = 0;
@@ -152,7 +137,7 @@ function data_durations(data) {
         var merge_num = 0;
         var released_num = 0;
         week.push(k);
-        console.log(week)
+        //console.log(v)
         for (var l = 0; l < v.length; l++) {
             if (v[l]['review_duration'] != 0) review_num++;
             review_duration += v[l]['review_duration'];
@@ -172,7 +157,6 @@ function data_durations(data) {
     merge_duration_list = avg_duration(merge_list, merge_num_list);
     released_durations_list = avg_duration(rel_list, released_num_list);
     result['week'] = week;
-    //console.log(week)
     result['review_duration'] = review_duration_list;
     result['merge_duration'] = merge_duration_list;
     result['rel_duration'] = released_durations_list;
@@ -180,8 +164,26 @@ function data_durations(data) {
     return result
 }
 
+//平均总时间
+function avg_duration(list, num) {
+    re_list = [];
+    //console.log(list);
+    //console.log(num);
+    for (var i = 0; i < list.length; i++) {
+        if (num[i] != 0 && list != 0) {
+            avg_time = parseFloat(list[i] / 3600 / num[i]).toFixed(2);
+            avg_time = Number(avg_time);
+            re_list.push(avg_time);
+        } else {
+            re_list.push(0);
+        }
+    }
+    //console.log(re_list)
+    return re_list
+}
+
 function getDateStr(seconds) {
-    var date = new Date(seconds * 1000);
+    var date = new Date(seconds * 1000)
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var day = date.getDate();
@@ -189,55 +191,9 @@ function getDateStr(seconds) {
     return currentTime
 }
 
-//返回表格数据
-$.fn.grid = function (options) {
-    var $tbody = $(this).find("tbody");
-    var colums = options.colums;
-    var url = options.url;
-     var rq_data = options.data;
-    var content = [];
-    var rqdata = [];
-    //ajax获取数据源后存入content数据中。
-    $.ajax({
-        type: "post",
-        url: url,
-        data: rq_data,
-        dataType: "json",
-        async: false,
-        success: function (data) {
-            result_data = data.data;
-            var data_dict = data_reduction(result_data);
-            $.each(data_dict, function (key1, value1) {
-                var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
-                for (var c = 0; c < value1.length; c++) {
-                    html += "<tr" + " class=" + key1 + ">";
-                    var id = value1[c]['id'];
-                    var verify_time = SecondToDate(value1[c]['verify_duration']);
-                    var review_time = SecondToDate(value1[c]['review_duration']);
-                    ;
-                    var date_time = getDateStr(value1[c]['released_time']);
-                    var merge_time = SecondToDate(value1[c]['merge_duration']);
-                    var rel_time = SecondToDate(value1[c]['rel_duration']);
-
-                    html += "<td>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
-                        + "<td>" + date_time + "</td>" +
-                        "<td>" + review_time + "</td>" +
-                        "<td>" + verify_time + "</td>" +
-                        "<td>" + merge_time + "</td>" +
-                        "<td>" + rel_time + "</td>";
-                    html += "</tr>"
-                }
-                ;
-                $tbody.append(html)
-                content = rqdata.data
-            })
-        }
-    });
-}
-
-function rq_mychart(result_data) {
-    var data_dict = data_reduction(result_data);
-    var result = data_durations(data_dict)
+function rq_mychart(data_dict, result) {
+    //var data_dict = data_reduction(result_data);
+    //var result = data_durations(data_dict);
     //挨个取出类别并填入类别数组
     var week = result['week'];
     //var verify_nums = result['released_durations'];
@@ -245,6 +201,7 @@ function rq_mychart(result_data) {
     var merge_nums = result['merge_duration'];
     var released_nums = result['rel_duration'];
     //console.log(week)
+    myChart.hideLoading();    //隐藏加载动画
     myChart.setOption({
         // 顶部选择
         legend: {
@@ -264,7 +221,6 @@ function rq_mychart(result_data) {
                 var review = SecondToDate(params[0].value * 3600);
                 var merge = SecondToDate(params[1].value * 3600);
                 var released = SecondToDate(params[2].value * 3600);
-
                 return ['Week:  '] + week + "<br />" + params[0].marker + "Review:    " + review + "<br />" + params[1].marker +
                     "Merge:   " + merge + "<br />" + params[2].marker + "Released:   " + released;
             }
@@ -320,7 +276,6 @@ function rq_mychart(result_data) {
 
                     }
                 },
-
                 itemStyle: {
                     normal: {
                         color: '#ff7f0e',
@@ -331,11 +286,11 @@ function rq_mychart(result_data) {
     });
 }
 
-function rq_mychart1(result_data) {
-    var data_dict = data_reduction(result_data);
+function rq_mychart1(data_dict, result) {
+    //var data_dict = data_reduction(result_data);
     //console.log('data_dict')
     //console.log(data_dict)
-    var result = data_durations(data_dict)
+    //var result = data_durations(data_dict)
     //挨个取出类别并填入类别数组
     var week = result['week'];
     var week_num = []
@@ -343,6 +298,9 @@ function rq_mychart1(result_data) {
         var num_leg = v.length;
         week_num.push(num_leg)
     })
+    //console.log(week_num)
+    myChart1.hideLoading();
+    //resule = JSON.parse(resule);//把string字符串转换为json数组
     myChart1.setOption({
         tooltip: {
             trigger: 'axis',
@@ -354,7 +312,6 @@ function rq_mychart1(result_data) {
                 return '' + params[0].value;
             }
         },
-        // 自动调节位置
         xAxis: {
             data: week,
             axisLabel: {
@@ -364,7 +321,7 @@ function rq_mychart1(result_data) {
         },
         yAxis: {},
         series: [{
-            name: '',
+            name: 'name:number',
             type: 'bar',
             itemStyle: {
                 normal: {
@@ -407,3 +364,44 @@ $.ajaxSetup({
         }
     }
 });
+
+//返回表格数据
+function ajax_datble(data_dict, result) {
+    $("#tabledata").html("");
+    var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\n" +
+        "    <tbody>\n" +
+        "    <tr class=\"title\">\n" +
+        "        <td>ID</td>\n" +
+        "        <td>Date</td>\n" +
+        "        <td>Review Time</td>\n" +
+        "        <td>Verify Time</td>\n" +
+        "        <td>Merage Time</td>\n" +
+        "        <td>Release Time</td>\n" +
+        "    </tr>\n" +
+        "    </tbody>\n" +
+        "</table>"
+    $("#tabledata ").append(str)
+    var table_tbody = $("#tabledata").find("tbody");
+    //var data_dict = data_reduction(result_data);
+    $.each(data_dict, function (key1, value1) {
+        var html = "<tr" + " class=" + key1 + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + key1 + "</th>" + "</tr>"
+        for (var c = 0; c < value1.length; c++) {
+            html += "<tr" + " class=" + key1 + ">";
+            var id = value1[c]['id'];
+            var verify_time = SecondToDate(value1[c]['verify_duration']);
+            var review_time = SecondToDate(value1[c]['review_duration']);
+            var date_time = getDateStr(value1[c]['release_time']);
+            var merge_time = SecondToDate(value1[c]['merge_duration']);
+            var rel_time = SecondToDate(value1[c]['rel_duration']);
+
+            html += "<td>" + "<a href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+                + "<td>" + date_time + "</td>" +
+                "<td>" + review_time + "</td>" +
+                "<td>" + verify_time + "</td>" +
+                "<td>" + merge_time + "</td>" +
+                "<td>" + rel_time + "</td>";
+            html += "</tr>"
+        }
+        table_tbody.append(html)
+    });
+}
