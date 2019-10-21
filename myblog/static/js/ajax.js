@@ -88,6 +88,8 @@ $(document).ready(function () {
 
 // 异步加载数据
 function select() {
+    var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
+    var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
     $.ajax({
         type: "post",
         async: true,
@@ -95,14 +97,10 @@ function select() {
         data: $('#metrics_form').serialize(),
         dataType: "json",
         beforeSend: function () {
-            var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
-            var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
             patch_week.showLoading();
             patch_num.showLoading();
         },
         success: function (results) {
-            var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
-            var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
             patch_week.hideLoading();
             patch_num.hideLoading();
             result_data = results.data;
@@ -316,9 +314,7 @@ function avg_duration(list, num) {
 }
 
 function rq_patch_week(data_dict, result) {
-    //var data_dict = data_reduction(result_data);
-    //var result = data_durations(data_dict);
-    //挨个取出类别并填入类别数组
+    var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
     var week = result['week'];
     //var verify_nums = result['released_durations'];
     var review_nums = result['review_duration'];
@@ -411,10 +407,7 @@ function rq_patch_week(data_dict, result) {
 }
 
 function rq_patch_num(data_dict, result) {
-    //var data_dict = data_reduction(result_data);
-    //console.log('data_dict')
-    //console.log(data_dict)
-    //var result = data_durations(data_dict)
+    var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
     //挨个取出类别并填入类别数组
     var week = result['week'];
     var week_num = []
@@ -507,9 +500,10 @@ function ajax_datble(data_dict, result) {
     $("#tabledata ").append(str)
     var table_tbody = $("#tabledata").find("tbody");
     //var data_dict = data_reduction(result_data);
-   $.each(sorted_ww, function (i, ww) {
-        //console.log(result_data)
-        ww_data = week_data[ww];
+    var sorted_ww = Object.keys(data_dict).sort();
+    $.each(sorted_ww, function (i, ww) {
+        ww_data = sorted_ww[i];
+        console.log(ww_data)
         var html = "<tr" + " class=" + ww + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + ww + "</th>" + "</tr>"
         for (var c = 0; c < ww_data.length; c++) {
             html += "<tr" + " class=" + ww + ">";
@@ -519,7 +513,6 @@ function ajax_datble(data_dict, result) {
             var date_time = getDateStr(ww_data[c]['release_time']);
             var merge_time = SecondToDate(ww_data[c]['merge_duration']);
             var rel_time = SecondToDate(ww_data[c]['rel_duration']);
-
             html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
                 + "<td>" + date_time + "</td>" +
                 "<td>" + review_time + "</td>" +
@@ -529,7 +522,7 @@ function ajax_datble(data_dict, result) {
             html += "</tr>"
         }
         ;
-        $tbody.append(html)
+        table_tbody.append(html)
         //console.log(html)
     });
 }
