@@ -55,7 +55,7 @@ $(document).ready(function () {
     patch_week.on('click', function (params) {
         $("#tabledata tr").hide();
         $("#tabledata .title").show();
-        path_week.setOption({
+        patch_week.setOption({
             xAxis: [{
                 axisLabel: {
                     textStyle: {
@@ -71,7 +71,7 @@ $(document).ready(function () {
     patch_num.on('click', function (params) {
         $("#tabledata tr").hide();
         $("#tabledata .title").show();
-        path_num.setOption({
+        patch_num.setOption({
             xAxis: [{
                 axisLabel: {
                     textStyle: {
@@ -88,6 +88,8 @@ $(document).ready(function () {
 
 // 异步加载数据
 function select() {
+    var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
+    var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
     $.ajax({
         type: "post",
         async: true,
@@ -95,8 +97,6 @@ function select() {
         data: $('#metrics_form').serialize(),
         dataType: "json",
         beforeSend: function () {
-            var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
-            var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
             patch_week.showLoading();
             patch_num.showLoading();
         },
@@ -315,10 +315,13 @@ function avg_duration(list, num) {
     return re_list
 }
 
+//返回图形数据
 function rq_patch_week(data_dict, result) {
     //var data_dict = data_reduction(result_data);
     //var result = data_durations(data_dict);
     //挨个取出类别并填入类别数组
+    var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
+    var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
     var week = result['week'];
     //var verify_nums = result['released_durations'];
     var review_nums = result['review_duration'];
@@ -331,6 +334,7 @@ function rq_patch_week(data_dict, result) {
         legend: {
             data: ['Review', 'Merge', 'Released']
         },
+         backgroundColor: "#fbffff",
         // 自动调节位置
         tooltip: {
             trigger: 'axis',
@@ -338,9 +342,6 @@ function rq_patch_week(data_dict, result) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
-                //console.log(params);
-                //console.log(ticket);
-                //console.log(callback);
                 var week = params[0].name;
                 var review = SecondToDate(params[0].value * 3600);
                 var merge = SecondToDate(params[1].value * 3600);
@@ -416,6 +417,8 @@ function rq_patch_num(data_dict, result) {
     //console.log(data_dict)
     //var result = data_durations(data_dict)
     //挨个取出类别并填入类别数组
+    var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
+    var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
     var week = result['week'];
     var week_num = []
     $.each(data_dict, function (k, v) {
@@ -458,6 +461,51 @@ function rq_patch_num(data_dict, result) {
     });
 }
 
+//返回表格数据
+function ajax_datble(data_dict, result) {
+    $("#tabledata").html("");
+    var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\n" +
+        "    <tbody>\n" +
+        "    <tr class=\"title\">\n" +
+        "        <td>ID</td>\n" +
+        "        <td>Date</td>\n" +
+        "        <td>Review Time</td>\n" +
+        "        <td>Verify Time</td>\n" +
+        "        <td>Merage Time</td>\n" +
+        "        <td>Release Time</td>\n" +
+        "    </tr>\n" +
+        "    </tbody>\n" +
+        "</table>"
+    $("#tabledata ").append(str)
+    var $tbody = $("#tabledata").find("tbody");
+    var sorted_ww = Object.keys(data_dict).sort().reverse();
+    $.each(sorted_ww, function (i, ww) {
+        //console.log(result_data)
+        ww_data = data_dict[ww];
+        var html = "<tr" + " class=" + ww + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + ww + "</th>" + "</tr>"
+        for (var c = 0; c < ww_data.length; c++) {
+            html += "<tr" + " class=" + ww + ">";
+            var id = ww_data[c]['id'];
+            var verify_time = SecondToDate(ww_data[c]['verify_duration']);
+            var review_time = SecondToDate(ww_data[c]['review_duration']);
+            var date_time = getDateStr(ww_data[c]['release_time']);
+            var merge_time = SecondToDate(ww_data[c]['merge_duration']);
+            var rel_time = SecondToDate(ww_data[c]['rel_duration']);
+
+            html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+                + "<td>" + date_time + "</td>" +
+                "<td>" + review_time + "</td>" +
+                "<td>" + verify_time + "</td>" +
+                "<td>" + merge_time + "</td>" +
+                "<td>" + rel_time + "</td>";
+            html += "</tr>"
+        }
+        ;
+        $tbody.append(html)
+        //console.log(html)
+    });
+}
+
 /* ajax crsf */
 function getCookie(name) {
     var cookieValue = null;
@@ -489,47 +537,3 @@ $.ajaxSetup({
     }
 });
 
-//返回表格数据
-function ajax_datble(data_dict, result) {
-    $("#tabledata").html("");
-    var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\n" +
-        "    <tbody>\n" +
-        "    <tr class=\"title\">\n" +
-        "        <td>ID</td>\n" +
-        "        <td>Date</td>\n" +
-        "        <td>Review Time</td>\n" +
-        "        <td>Verify Time</td>\n" +
-        "        <td>Merage Time</td>\n" +
-        "        <td>Release Time</td>\n" +
-        "    </tr>\n" +
-        "    </tbody>\n" +
-        "</table>"
-    $("#tabledata ").append(str)
-    var table_tbody = $("#tabledata").find("tbody");
-    //var data_dict = data_reduction(result_data);
-   $.each(sorted_ww, function (i, ww) {
-        //console.log(result_data)
-        ww_data = week_data[ww];
-        var html = "<tr" + " class=" + ww + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + ww + "</th>" + "</tr>"
-        for (var c = 0; c < ww_data.length; c++) {
-            html += "<tr" + " class=" + ww + ">";
-            var id = ww_data[c]['id'];
-            var verify_time = SecondToDate(ww_data[c]['verify_duration']);
-            var review_time = SecondToDate(ww_data[c]['review_duration']);
-            var date_time = getDateStr(ww_data[c]['release_time']);
-            var merge_time = SecondToDate(ww_data[c]['merge_duration']);
-            var rel_time = SecondToDate(ww_data[c]['rel_duration']);
-
-            html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
-                + "<td>" + date_time + "</td>" +
-                "<td>" + review_time + "</td>" +
-                "<td>" + verify_time + "</td>" +
-                "<td>" + merge_time + "</td>" +
-                "<td>" + rel_time + "</td>";
-            html += "</tr>"
-        }
-        ;
-        $tbody.append(html)
-        //console.log(html)
-    });
-}
