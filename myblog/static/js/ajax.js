@@ -55,7 +55,7 @@ $(document).ready(function () {
     patch_week.on('click', function (params) {
         $("#tabledata tr").hide();
         $("#tabledata .title").show();
-        patch_week.setOption({
+        path_week.setOption({
             xAxis: [{
                 axisLabel: {
                     textStyle: {
@@ -71,7 +71,7 @@ $(document).ready(function () {
     patch_num.on('click', function (params) {
         $("#tabledata tr").hide();
         $("#tabledata .title").show();
-        patch_num.setOption({
+        path_num.setOption({
             xAxis: [{
                 axisLabel: {
                     textStyle: {
@@ -101,8 +101,6 @@ function select() {
             patch_num.showLoading();
         },
         success: function (results) {
-            var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
-            var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
             patch_week.hideLoading();
             patch_num.hideLoading();
             result_data = results.data;
@@ -317,11 +315,7 @@ function avg_duration(list, num) {
 
 //返回图形数据
 function rq_patch_week(data_dict, result) {
-    //var data_dict = data_reduction(result_data);
-    //var result = data_durations(data_dict);
-    //挨个取出类别并填入类别数组
     var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
-    var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
     var week = result['week'];
     //var verify_nums = result['released_durations'];
     var review_nums = result['review_duration'];
@@ -342,6 +336,9 @@ function rq_patch_week(data_dict, result) {
                 show: true
             },
             formatter: function (params, ticket, callback) {
+                //console.log(params);
+                //console.log(ticket);
+                //console.log(callback);
                 var week = params[0].name;
                 var review = SecondToDate(params[0].value * 3600);
                 var merge = SecondToDate(params[1].value * 3600);
@@ -412,13 +409,8 @@ function rq_patch_week(data_dict, result) {
 }
 
 function rq_patch_num(data_dict, result) {
-    //var data_dict = data_reduction(result_data);
-    //console.log('data_dict')
-    //console.log(data_dict)
-    //var result = data_durations(data_dict)
-    //挨个取出类别并填入类别数组
-    var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
     var patch_num = echarts.getInstanceByDom(document.getElementById('patch_num'));
+    //挨个取出类别并填入类别数组
     var week = result['week'];
     var week_num = []
     $.each(data_dict, function (k, v) {
@@ -460,6 +452,37 @@ function rq_patch_num(data_dict, result) {
         ]
     });
 }
+
+/* ajax crsf */
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        var csrftoken = getCookie('csrftoken');
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
 
 //返回表格数据
 function ajax_datble(data_dict, result) {
@@ -505,35 +528,3 @@ function ajax_datble(data_dict, result) {
         //console.log(html)
     });
 }
-
-/* ajax crsf */
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-
-$.ajaxSetup({
-    beforeSend: function (xhr, settings) {
-        var csrftoken = getCookie('csrftoken');
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-    }
-});
-
