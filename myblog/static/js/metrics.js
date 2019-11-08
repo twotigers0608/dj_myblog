@@ -55,7 +55,7 @@ $(document).ready(function () {
     patch_week.on('click', function (params) {
         $("#tabledata tr").hide();
         $("#tabledata .title").show();
-        path_week.setOption({
+        patch_week.setOption({
             xAxis: [{
                 axisLabel: {
                     textStyle: {
@@ -71,7 +71,7 @@ $(document).ready(function () {
     patch_num.on('click', function (params) {
         $("#tabledata tr").hide();
         $("#tabledata .title").show();
-        path_num.setOption({
+        patch_num.setOption({
             xAxis: [{
                 axisLabel: {
                     textStyle: {
@@ -316,6 +316,7 @@ function avg_duration(list, num) {
 //返回图形数据
 function rq_patch_week(data_dict, result) {
     var patch_week = echarts.getInstanceByDom(document.getElementById('patch_week'));
+    var a = echarts.g
     var week = result['week'];
     //var verify_nums = result['released_durations'];
     var review_nums = result['review_duration'];
@@ -328,7 +329,7 @@ function rq_patch_week(data_dict, result) {
         legend: {
             data: ['Review', 'Merge', 'Released']
         },
-         backgroundColor: "#fbffff",
+        backgroundColor: "#fbffff",
         // 自动调节位置
         tooltip: {
             trigger: 'axis',
@@ -487,18 +488,18 @@ $.ajaxSetup({
 //返回表格数据
 function ajax_datble(data_dict, result) {
     $("#tabledata").html("");
-    var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\n" +
-        "    <tbody>\n" +
-        "    <tr class=\"title\">\n" +
-        "        <td>ID</td>\n" +
-        "        <td>Date</td>\n" +
-        "        <td>Review Time</td>\n" +
-        "        <td>Verify Time</td>\n" +
-        "        <td>Merage Time</td>\n" +
-        "        <td>Release Time</td>\n" +
-        "    </tr>\n" +
-        "    </tbody>\n" +
-        "</table>"
+    var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\
+            <tbody>\
+            <tr class=\"title\">\
+                <td>ID</td>\
+                <td>Date</td>\
+                <td>Review Time</td>\
+                <td>Verify Time</td>\
+                <td>Merage Time</td>\
+                <td>Release Time</td>\
+            </tr>\
+            </tbody>\
+        </table>"
     $("#tabledata ").append(str)
     var $tbody = $("#tabledata").find("tbody");
     var sorted_ww = Object.keys(data_dict).sort().reverse();
@@ -515,7 +516,14 @@ function ajax_datble(data_dict, result) {
             var merge_time = SecondToDate(ww_data[c]['merge_duration']);
             var rel_time = SecondToDate(ww_data[c]['rel_duration']);
 
-            html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+            // html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
+            //     + "<td>" + date_time + "</td>" +
+            //     "<td>" + review_time + "</td>" +
+            //     "<td>" + verify_time + "</td>" +
+            //     "<td>" + merge_time + "</td>" +
+            //     "<td>" + rel_time + "</td>";
+            // html += "</tr>"
+             html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
                 + "<td>" + date_time + "</td>" +
                 "<td>" + review_time + "</td>" +
                 "<td>" + verify_time + "</td>" +

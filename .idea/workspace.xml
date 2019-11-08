@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="保存可自动排序 1.0 版本">
+    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="修改排序方式(字典排序不可靠)">
+      <change beforePath="$PROJECT_DIR$/.idea/dj_myblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dj_myblog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/metrics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/static/js/ajax.js.bak" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/metrics.js.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/templates/metrics.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/metrics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/templates/text1.html" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/templates/text1.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +32,17 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="myblog: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
     </expand>
     <select />
   </component>
@@ -39,15 +55,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
+        <entry file="file://$PROJECT_DIR$/myblog/static/js/metrics.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="504" column="29" selection-start-line="504" selection-start-column="29" selection-end-line="504" selection-end-column="29" />
+            <state relative-caret-position="375">
+              <caret line="66" column="14" lean-forward="true" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
               <folding>
                 <element signature="e#152#566#0" />
                 <element signature="e#665#1077#0" />
-                <element signature="e#1217#1694#0" />
-                <element signature="e#1741#2217#0" />
                 <element signature="n#!!block;n#select#0" />
                 <element signature="n#!!block;n#getWeekOfYear#0" />
                 <element signature="n#!!block;n#SecondToDate#0" />
@@ -57,63 +71,14 @@
                 <element signature="n#!!block;n#data_reduction#0" />
                 <element signature="n#!!block;n#data_durations#0" />
                 <element signature="n#!!block;n#avg_duration#0" />
+                <element signature="n#!!block;n#rq_patch_week#0" />
+                <element signature="n#!!block;n#rq_patch_num#0" />
+                <element signature="n#!!block;n#getCookie#0" />
+                <element signature="n#!!block;n#csrfSafeMethod#0" />
+                <element signature="e#14131#14368#0" />
+                <element signature="n#!!block;n#ajax_datble#0" />
                 <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#221#384#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#22#53#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/myblog/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-675">
-              <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-              <folding>
-                <element signature="e#305#314#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/myblog/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="28" lean-forward="true" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -177,7 +142,6 @@
         <option value="$PROJECT_DIR$/myblog/static/js/jquery-3.1.1.min.js" />
         <option value="$PROJECT_DIR$/myblog/templates/text1.html" />
         <option value="$PROJECT_DIR$/myblog/show/index/urls.py" />
-        <option value="$PROJECT_DIR$/myblog/static/js/quiltreview.js" />
         <option value="$PROJECT_DIR$/myblog/templates/text.html" />
         <option value="$PROJECT_DIR$/myblog/templates/examples.html" />
         <option value="$PROJECT_DIR$/myblog/myblog/settings.py" />
@@ -189,8 +153,10 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
         <option value="$PROJECT_DIR$/myblog/static/js/ajax.js.bak" />
-        <option value="$PROJECT_DIR$/myblog/templates/metrics.html" />
         <option value="$PROJECT_DIR$/myblog/static/js/ajax.js" />
+        <option value="$PROJECT_DIR$/myblog/templates/metrics.html" />
+        <option value="$PROJECT_DIR$/myblog/static/js/quiltreview.js" />
+        <option value="$PROJECT_DIR$/myblog/static/js/metrics.js" />
       </list>
     </option>
   </component>
@@ -201,10 +167,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="90" />
+    <option name="x" value="65" />
     <option name="y" value="24" />
-    <option name="width" value="1179" />
-    <option name="height" value="1056" />
+    <option name="width" value="1350" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -222,12 +188,6 @@
             <path>
               <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
               <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dj_myblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dj_myblog" type="462c0819:PsiDirectoryNode" />
-              <item name="myblog" type="462c0819:PsiDirectoryNode" />
               <item name="myblog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -283,22 +243,22 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../git_test/otc_kernel_team-metronome" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/myblog/static/js" />
-      <recent name="$PROJECT_DIR$/myblog/templates" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/myblog/static" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/myblog/templates" />
       <recent name="$PROJECT_DIR$/myblog/static/js" />
       <recent name="$PROJECT_DIR$/myblog/static/css" />
       <recent name="$PROJECT_DIR$/myblog/show/getjson" />
+      <recent name="$PROJECT_DIR$/myblog/static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myblog/static/js" />
+      <recent name="$PROJECT_DIR$/myblog/templates" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/myblog/static" />
     </key>
   </component>
@@ -406,21 +366,16 @@
       <workItem from="1571223206562" duration="20352000" />
       <workItem from="1571302799458" duration="17069000" />
       <workItem from="1571322315692" duration="637000" />
-      <workItem from="1571325352354" duration="55830000" />
-    </task>
-    <task id="LOCAL-00009" summary="隐藏存在bug">
-      <created>1569316243671</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1569316243671</updated>
-    </task>
-    <task id="LOCAL-00010" summary="恢复功能">
-      <created>1569423117925</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1569423117925</updated>
+      <workItem from="1571325352354" duration="64526000" />
+      <workItem from="1571756267798" duration="767000" />
+      <workItem from="1571852585421" duration="632000" />
+      <workItem from="1572432838794" duration="174000" />
+      <workItem from="1572544438115" duration="1055000" />
+      <workItem from="1572604172053" duration="3341000" />
+      <workItem from="1572873783529" duration="7594000" />
+      <workItem from="1572953667957" duration="2329000" />
+      <workItem from="1573063067456" duration="1819000" />
+      <workItem from="1573227312090" duration="3735000" />
     </task>
     <task id="LOCAL-00011" summary="恢复展示信息">
       <created>1569582861583</created>
@@ -751,11 +706,25 @@
       <option name="project" value="LOCAL" />
       <updated>1571666502688</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="修改排序方式(字典排序不可靠)">
+      <created>1571674147669</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1571674147669</updated>
+    </task>
+    <task id="LOCAL-00059" summary="修改排序方式(字典排序不可靠)">
+      <created>1571735791478</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1571735791478</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="333397000" />
+    <option name="totallyTimeSpent" value="361111000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -767,24 +736,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2067239" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18186843" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3282365" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49640685" weight="0.28674698" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49640685" visible="true" weight="0.3027523" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32721713" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.49640685" visible="true" weight="0.2987952" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49640685" weight="0.29969418" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32925585" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50359315" side_tool="true" weight="0.3027523" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" weight="0.25382262" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49642345" weight="0.235474" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.28433734" />
       <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32925585" />
@@ -792,7 +761,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.32904148" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
       <window_info anchor="right" id="Remote Host" order="5" />
     </layout>
     <layout-to-restore>
@@ -866,7 +835,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="图表返回完成" />
     <MESSAGE value="自定义柱状图颜色" />
     <MESSAGE value="注意括号" />
     <MESSAGE value="修复格式" />
@@ -891,7 +859,8 @@
     <MESSAGE value="可恢复版本 凑活用版本" />
     <MESSAGE value="Dave 版本" />
     <MESSAGE value="保存可自动排序 1.0 版本" />
-    <option name="LAST_COMMIT_MESSAGE" value="保存可自动排序 1.0 版本" />
+    <MESSAGE value="修改排序方式(字典排序不可靠)" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改排序方式(字典排序不可靠)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../.virtualenv/myblog/lib/python3.7/site-packages/django/core/handlers/exception.py" />
@@ -1005,7 +974,7 @@
     <entry file="file://$PROJECT_DIR$/myblog/templates/textshow.html" />
     <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#22#53#0" expanded="true" />
@@ -1047,11 +1016,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/myblog/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-675">
-          <caret line="37" column="30" lean-forward="true" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding>
-            <element signature="e#305#314#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1104,7 +1070,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dj_mblog/lib/python3.5/site-packages/django/contrib/admin/static/admin/js/vendor/select2/select2.full.js" />
+    <entry file="file://$USER_HOME$/.virtualenvs/dj_mblog/lib/python3.5/site-packages/django/contrib/admin/static/admin/js/vendor/select2/select2.full.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="907" column="2" selection-start-line="907" selection-start-column="2" selection-end-line="907" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/echarts.common.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1074">
@@ -1128,46 +1100,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/myblog/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="28" lean-forward="true" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
+        <state relative-caret-position="15">
+          <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/quiltreview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#221#384#0" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js.bak">
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/metrics.js.bak">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="380" column="26" lean-forward="true" selection-start-line="380" selection-start-column="26" selection-end-line="380" selection-end-column="26" />
+        <state relative-caret-position="624">
+          <caret line="380" column="26" selection-start-line="380" selection-start-column="26" selection-end-line="380" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/templates/metrics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+        <state relative-caret-position="420">
+          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/quiltreview.js" />
-    <entry file="file://$PROJECT_DIR$/myblog/static/js/ajax.js">
+    <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="504" column="29" selection-start-line="504" selection-start-column="29" selection-end-line="504" selection-end-column="29" />
+        <state relative-caret-position="285">
+          <caret line="24" column="399" selection-start-line="24" selection-start-column="399" selection-end-line="24" selection-end-column="399" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/static/js/metrics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="66" column="14" lean-forward="true" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
           <folding>
             <element signature="e#152#566#0" />
             <element signature="e#665#1077#0" />
-            <element signature="e#1217#1694#0" />
-            <element signature="e#1741#2217#0" />
             <element signature="n#!!block;n#select#0" />
             <element signature="n#!!block;n#getWeekOfYear#0" />
             <element signature="n#!!block;n#SecondToDate#0" />
@@ -1177,6 +1152,12 @@
             <element signature="n#!!block;n#data_reduction#0" />
             <element signature="n#!!block;n#data_durations#0" />
             <element signature="n#!!block;n#avg_duration#0" />
+            <element signature="n#!!block;n#rq_patch_week#0" />
+            <element signature="n#!!block;n#rq_patch_num#0" />
+            <element signature="n#!!block;n#getCookie#0" />
+            <element signature="n#!!block;n#csrfSafeMethod#0" />
+            <element signature="e#14131#14368#0" />
+            <element signature="n#!!block;n#ajax_datble#0" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
           </folding>
         </state>
