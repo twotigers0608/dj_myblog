@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import sys
 
+#链接数据库的方法
+import pymysql
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'show'))
@@ -82,9 +86,9 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'myblog',
 #         'USER': 'root',
-#         'PASSWORD': 'intel.123',
+#         'PASSWORD': 'intel@123',
 #         'HOST': '127.0.0.1',
-#         'PORT': '3306',
+#         'PORT': '3307',
 #     }
 # }
 DATABASES = {

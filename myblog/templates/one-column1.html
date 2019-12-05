@@ -1,6 +1,4 @@
-{% extends "index.html" %}
-
-{% block title %} 个人博客分享 {% endblock %}
+{% extends "one-column.html" %}
 
 {% block sorts %}
     <li class="nav-item dropdown">
@@ -12,33 +10,27 @@
         </div>
     </li>
 {% endblock %}
-    {% for c in categroy %}
-        <a class="list-group-item" href="text.html">{{ c }}</a>
-    {% endfor %}
-{% block sidebar %}
 
-{% endblock %}
+{% block title %} 随笔杂谈 {% endblock %}
 
+{# 根据时间排序文章进行显示 #}
 {% block content %}
-    {% for post in post_list %}
-        <article>
-            <h3 class="article-title">{{ post.title }}</h3>
+    <article>
+        <h2 class="article-title">{{ title }}标题</h2>
+        <!-- 更新日期   作者  文章简要信息 -->
+        <p class="article-meta">Posted on
+            <time datetime="{{ time }}">{{ time }}</time>
+            by <a href="#" rel="author">{{ author }}</a></p>
 
-            <p class="article-meta">Posted on
-                <time datetime="2017-05-14">{{ post.created_time }}</time>
-                by <a href="#" rel="author">{{ post.author }}</a></p>
-
-            {#  可定义以后博客的简要信息#}
-            <p>{{ post.body }}.</p>
-        </article>
-    {# 当数据不存在时输出  #}
-     {% empty %}
-        <div class="no-post">暂时没有发布文章</div>
-    {% endfor %}
+        <p>文章详细信息 <a href="#licensing" title="template license">#licensing</a></p>
+        <p>简要信息</p>
+        <a href="{{ id }}" class="btn btn-primary">Read more</a>
+        <a href="{{ id }}" class="btn btn-secondary">Comments</a>
+    </article>
 {% endblock %}
 
+{# 增加分页内容 #}
 {% block pagebreak %}
-    <!-- 分页 -->
     <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
@@ -48,7 +40,6 @@
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item active"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
     <li class="page-item">
         <a class="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
@@ -56,4 +47,3 @@
         </a>
     </li>
 {% endblock %}
-

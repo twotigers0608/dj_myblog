@@ -72,7 +72,7 @@ $(document).ready(function () {
         $("#tabledata tr").hide();
         $("#tabledata .title").show();
         patch_num.setOption({
-            xAxis: [{
+            xAxis: [{0
                 axisLabel: {
                     textStyle: {
                         color: function (value, index) {

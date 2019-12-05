@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>{% block title %}Home{% endblock %}</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -60,16 +60,18 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <!-- 下拉列表 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="true" aria-expanded="false">分类</a>
-                    <div class="dropdown-menu navbar-dark bg-primary">
-                        <a class="dropdown-item" href="examples.html">Style Examples</a>
-                        <a class="dropdown-item" href="three-column.html">Three Column</a>
-                        <a class="dropdown-item" href="one-column.html">One column / no sidebar</a>
-                        <a class="dropdown-item" href="text.html">Text / left sidebar</a>
-                    </div>
-                </li>
+                {% block sorts %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">分类</a>
+                        <div class="dropdown-menu navbar-dark bg-primary">
+                            <a class="dropdown-item" href="examples.html">Style Examples</a>
+                            <a class="dropdown-item" href="three-column.html">Three Column</a>
+                            <a class="dropdown-item" href="one-column.html">One column / no sidebar</a>
+                            <a class="dropdown-item" href="text.html">Text / left sidebar</a>
+                        </div>
+                    </li>
+                {% endblock %}
 
                 <li class="nav-item">
                     <a class="nav-link" href="">随笔杂谈<span class="sr-only">(current)</span></a>
