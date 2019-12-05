@@ -12,11 +12,12 @@
         </div>
     </li>
 {% endblock %}
+{% block sidebar %}
+    <div class="list-group">
     {% for c in categroy %}
         <a class="list-group-item" href="text.html">{{ c }}</a>
     {% endfor %}
-{% block sidebar %}
-
+    </div>
 {% endblock %}
 
 {% block content %}
