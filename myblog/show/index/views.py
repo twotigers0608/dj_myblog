@@ -7,17 +7,26 @@ import time
 from .models import Category, Tag, Post
 import markdown
 from django.shortcuts import get_object_or_404, render
+import re
 
-#定义makedowm语法显示框
+from django.utils.text import slugify
+from markdown.extensions.toc import TocExtension
+
+# 定义makedowm语法显示框
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.body = markdown.markdown(post.body,
-                                  extensions=[
-                                      'markdown.extensions.extra',
-                                      'markdown.extensions.codehilite',
-                                      'markdown.extensions.toc',
-                                  ])
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        # 记得在顶部引入 TocExtension 和 slugify
+        TocExtension(slugify=slugify),
+    ])
+    post.body = md.convert(post.body)
+
+    m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
+    post.toc = m.group(1) if m is not None else ''
     return render(request, 'blog/detail.html', context={'post': post})
+
 
 # Create your views here.
 def testshow(request):
