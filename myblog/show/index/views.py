@@ -4,7 +4,20 @@ from django.http import HttpResponse, JsonResponse
 import json
 from .models import Post
 import time
+from .models import Category, Tag, Post
+import markdown
+from django.shortcuts import get_object_or_404, render
 
+#定义makedowm语法显示框
+def detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.body = markdown.markdown(post.body,
+                                  extensions=[
+                                      'markdown.extensions.extra',
+                                      'markdown.extensions.codehilite',
+                                      'markdown.extensions.toc',
+                                  ])
+    return render(request, 'blog/detail.html', context={'post': post})
 
 # Create your views here.
 def testshow(request):
@@ -666,14 +679,9 @@ def ajax_get_data(request):
 
 class Index(View):
     def get(self, request):
-        # post_list = Post.objects.all().order_by('-create_time')
+        # post_list = Post.objects.all().order_by('-created_time')
         # return render(request, "index1.html", context={'post_list': post_list})
         return render(request, "index1.html")
-
-
-def test(request):
-    if request.method == 'GET':
-        return render(request, 'week1.html')
 
 
 class Article(View):

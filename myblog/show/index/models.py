@@ -1,14 +1,11 @@
-from django.db import models
-
 # Create your models here.
 from django.db import models
 
 # Create your models here.
 from django.contrib.auth.models import User
-from django.db import models
 from django.urls import reverse
 from mdeditor.fields import MDTextField
-
+from django.db import migrations
 
 # 分类
 class Category(models.Model):
@@ -51,7 +48,7 @@ class Post(models.Model):
     # 指定 CharField 的 blank=True 参数值后就可以允许空值了。
     excerpt = models.CharField(max_length=200, blank=True)
     # 这两个列分别表示文章的创建时间和最后一次修改时间，存储时间的字段用 DateTimeField 类型。
-    created_time = models.DateTimeField()
+    created_time = models.DateTimeField(default=timezone.now)
     modified_time = models.DateTimeField()
     # 标签
     tag = models.ManyToManyField(Tag, blank=True)
@@ -66,6 +63,10 @@ class Post(models.Model):
     # 记得从 django.urls 中导入 reverse 函数
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        self.modified_time = timezone.now()
+        super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'tb_content'
