@@ -23,7 +23,7 @@
             <div class="row">
                 <!-- Left header box -->
                 <header class="col-6 text-left">
-                    <h1><span>website</span>name</h1>
+                    <h1><span>bigboo</span>博客</h1>
                 </header>
                 <!-- 右上角小图标 -->
                 <!-- Right header box -->
@@ -56,10 +56,11 @@
             <!-- Main navigation items -->
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav mr-auto">
+                    {% block classify %}
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-
+                    {% endblock %}
                     <!-- 下拉列表 -->
                     {% block sorts %}
                     <li class="nav-item dropdown">
@@ -75,7 +76,7 @@
                     {% endblock %}
 
                     <li class="nav-item">
-                        <a class="nav-link" href="article">随笔杂谈</a>
+                        <a class="nav-link" href="show_article">随笔杂谈</a>
                     </li>
 
                     <li class="nav-item">

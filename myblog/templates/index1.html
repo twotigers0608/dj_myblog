@@ -32,6 +32,7 @@
             {#  可定义以后博客的简要信息#}
             <p>{{ post.body|safe }}</p>
             <a href="/article/{{ post.id }}" class="btn btn-primary">Read more</a>
+            <!-- <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read more</a> -->
         </article>
     {# 当数据不存在时输出  #}
      {% empty %}

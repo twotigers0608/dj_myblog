@@ -1,4 +1,14 @@
-{% extends "one-column.html" %}
+{% extends "index.html" %}
+
+
+
+{% block title %} 个人博客分享 {% endblock %}
+
+{% block classify %}
+    <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
 
 {% block sorts %}
     <li class="nav-item dropdown">
@@ -11,9 +21,14 @@
     </li>
 {% endblock %}
 
-{% block title %} 随笔杂谈 {% endblock %}
+{% block sidebar %}
+    <div class="list-group">
+    {% for c in categroy %}
+        <a class="list-group-item" href="#">{{ c }}</a>
+    {% endfor %}
+    </div>
+{% endblock %}
 
-{# 根据时间排序文章进行显示 #}
 {% block content %}
     {% for post in post_list %}
         <article>
@@ -33,8 +48,8 @@
     {% endfor %}
 {% endblock %}
 
-{# 增加分页内容 #}
 {% block pagebreak %}
+    <!-- 分页 -->
     <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
@@ -44,6 +59,7 @@
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item active"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
     <li class="page-item">
         <a class="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
@@ -51,3 +67,4 @@
         </a>
     </li>
 {% endblock %}
+

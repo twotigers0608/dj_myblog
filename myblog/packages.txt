@@ -1,8 +1,11 @@
-Django==2.2.5
-django-mdeditor==0.1.16
-mysqlclient==1.4.4
-pytz==2019.2
-selenium==3.141.0
+cffi==1.13.2
+configparser==3.7.4
+cryptography==2.8
+Django==2.2
+django-mdeditor==0.1.13
+Markdown==3.1
+pycparser==2.19
+PyMySQL==0.9.3
+pytz==2019.1
+six==1.12.0
 sqlparse==0.3.0
-urllib3==1.25.6
-#pip freeze > packages.txt
