@@ -13,9 +13,14 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import sys
 
+#链接数据库的方法
+import pymysql
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'show'))
+print(sys.path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -26,7 +31,7 @@ SECRET_KEY = 'bn3#hq*dhc$a9+p4vrr1ujsj%6hgp@k#td)eoa3y0xfog(m)1+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,15 +81,17 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-# 使用mysql数据库
+#使用mysql数据库
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'myblog',
         'USER': 'root',
-        'PASSWORD': 'intel@123',
+        'PASSWORD': 'qq123123',
         'HOST': '127.0.0.1',
-        'PORT': '3307',
+        # 'HOST': '47.94.94.248',
+        'PORT': '3306',
     }
 }
 # DATABASES = {
