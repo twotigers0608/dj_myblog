@@ -51,7 +51,6 @@ def Article(request, pk):
 
 def classify(request):
     if request.method == 'GET':
-
         context = {}
         return render(request, "classify.html", context)
 
