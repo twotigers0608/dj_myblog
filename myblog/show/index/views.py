@@ -45,10 +45,9 @@ def show_article(request):
 
 def Article(request, pk):
     print('pk:', pk)
-    # post = get_object_or_404(Post, pk=pk)
     categroy = Category.objects.all()
-    post_list = Post.objects.all().order_by('-created_time')
-    return render(request, 'one-column1.html', context={'post': post_list, 'categroy': categroy})
+    post = Post.objects.get(id = pk)
+    return render(request, 'article.html', context={'post': post, 'categroy': categroy})
 
 def classify(request):
     if request.method == 'GET':
