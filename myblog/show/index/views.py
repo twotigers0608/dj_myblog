@@ -2,6 +2,7 @@ from django.views import View
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.utils.text import slugify
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
 import time
 import markdown
@@ -26,13 +27,15 @@ def detail(request, pk):
     return render(request, 'article.html', context={'post': post})
 
 
-# Create your views here.
-
-
 class Index(View):
     def get(self, request):
         categroy = Category.objects.all()
         post_list = Post.objects.all().order_by('-created_time')
+        # page = int(page)
+        paginator = Paginator(post_list,2,1)
+        # article_page = paginator.page(page)
+        num_pages = paginator.num_pages
+        print('paginator:', paginator, 'num_pages', num_pages)
         return render(request, "index1.html", context={'post_list': post_list, 'categroy': categroy})
 
 
@@ -52,7 +55,7 @@ def Article(request, pk):
 
 def classify(request, classify):
     if request.method == 'GET':
-        post_list = Post.objects.filter(category__name=classify)
+        post_list = Post.objects.filter(category__name=classify).order_by('-created_time')
         categroy = Category.objects.all()
         return render(request, "classify.html", context={'post_list': post_list, 'categroy': categroy})
 
