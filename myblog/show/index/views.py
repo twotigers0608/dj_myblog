@@ -46,13 +46,15 @@ def show_article(request):
 def Article(request, pk):
     print('pk:', pk)
     categroy = Category.objects.all()
-    post = Post.objects.get(id = pk)
+    post = Post.objects.get(id=pk)
     return render(request, 'article.html', context={'post': post, 'categroy': categroy})
 
-def classify(request):
+
+def classify(request, classify):
     if request.method == 'GET':
-        context = {}
-        return render(request, "classify.html", context)
+        post_list = Post.objects.filter(category__name=classify)
+        categroy = Category.objects.all()
+        return render(request, "classify.html", context={'post_list': post_list, 'categroy': categroy})
 
 
 def Aboutme(request):

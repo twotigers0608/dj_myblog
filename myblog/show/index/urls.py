@@ -10,6 +10,7 @@ urlpatterns = [
     re_path('^article/$', views.show_article),
     # path('article/<int:pk>/', views.Article),
     path('article/<int:pk>/', views.detail, name='article'),
-    re_path('^tools/', views.testshow),
-    re_path('^aboutme/', views.Aboutme),
+    path('classify/<str:classify>', views.classify),
+    re_path('^tools/$', views.testshow),
+    re_path('^aboutme/$', views.Aboutme),
 ]

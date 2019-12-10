@@ -5,7 +5,7 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">分类</a>
         <div class="dropdown-menu navbar-dark bg-primary">
             {% for c in categroy %}
-                <a class="dropdown-item" href="#">{{ c }}</a>
+                <a class="dropdown-item" href="/classify/{{ c }}">{{ c }}</a>
             {% endfor %}
         </div>
     </li>
