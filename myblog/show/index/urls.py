@@ -8,8 +8,8 @@ urlpatterns = [
     re_path('^testshow/$', views.testshow),
     re_path('^ajax/get_metrics/$', views.ajax_get_data),
     re_path('^article/$', views.show_article),
-    path('article/<int:pk>/', views.Article),
-    # re_path('^article/<int:pk>$', views.Article, name='article'),
+    # path('article/<int:pk>/', views.Article),
+    re_path('^article/(?P<pk>\d+)/$', views.Article, name='article'),
     re_path('^tools/', views.testshow),
     re_path('^aboutme/', views.Aboutme),
 ]
