@@ -28,14 +28,20 @@ def detail(request, pk):
 
 # Create your views here.
 
-
+# 首页
 class Index(View):
     def get(self, request):
         categroy = Category.objects.all()
+        class_name = request.GET.get('classification')
+        if class_name:
+            print(class_name)
+            post_list = Post.objects.filter(category_id__name=class_name)
+            return render(request, "index1.html", context={'post_list': post_list, 'categroy': categroy})
         post_list = Post.objects.all().order_by('-created_time')
         return render(request, "index1.html", context={'post_list': post_list, 'categroy': categroy})
 
 
+# 文本
 def show_article(request):
     if request.method == 'GET':
         categroy = Category.objects.all()
@@ -46,12 +52,12 @@ def show_article(request):
 def Article(request, pk):
     print('pk:', pk)
     categroy = Category.objects.all()
-    post = Post.objects.get(id = pk)
+    post = Post.objects.get(id=pk)
     return render(request, 'article.html', context={'post': post, 'categroy': categroy})
+
 
 def classify(request):
     if request.method == 'GET':
-
         context = {}
         return render(request, "classify.html", context)
 

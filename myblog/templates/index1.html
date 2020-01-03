@@ -7,7 +7,7 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">分类</a>
         <div class="dropdown-menu navbar-dark bg-primary">
             {% for c in categroy %}
-                <a class="dropdown-item" href="#">{{ c }}</a>
+                <a class="dropdown-item" href="/?classification={{ c }}">{{ c }}</a>
             {% endfor %}
         </div>
     </li>
@@ -16,7 +16,7 @@
 {% block sidebar %}
     <div class="list-group">
     {% for c in categroy %}
-        <a class="list-group-item" href="#">{{ c }}</a>
+        <a class="list-group-item" href="/?classification={{ c }}">{{ c }}</a>
     {% endfor %}
     </div>
 {% endblock %}
