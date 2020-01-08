@@ -4,7 +4,8 @@
 
 {% block sorts %}
     <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">分类</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+           aria-expanded="false">分类</a>
         <div class="dropdown-menu navbar-dark bg-primary">
             {% for c in categroy %}
                 <a class="dropdown-item" href="/?classification={{ c }}">{{ c }}</a>
@@ -15,9 +16,9 @@
 
 {% block sidebar %}
     <div class="list-group">
-    {% for c in categroy %}
-        <a class="list-group-item" href="/?classification={{ c }}">{{ c }}</a>
-    {% endfor %}
+        {% for c in categroy %}
+            <a class="list-group-item" href="/?classification={{ c }}">{{ c }}</a>
+        {% endfor %}
     </div>
 {% endblock %}
 
@@ -30,12 +31,12 @@
                 <time datetime="{{ post.modified_time }}">{{ post.modified_time }}</time>
                 by <a href="/aboutme" rel="author">{{ post.author }}</a></p>
             {#  可定义以后博客的简要信息#}
-            <p>{{ post.body|safe }}</p>
+            <p>{{ post.excerpt|safe }}</p>
             <a href="/article/{{ post.id }}" class="btn btn-primary">Read more</a>
             <!-- <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read more</a> -->
         </article>
-    {# 当数据不存在时输出  #}
-     {% empty %}
+        {# 当数据不存在时输出  #}
+    {% empty %}
         <div class="no-post">暂时没有发布文章</div>
     {% endfor %}
 {% endblock %}

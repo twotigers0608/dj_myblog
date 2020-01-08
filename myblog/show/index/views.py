@@ -26,22 +26,20 @@ def detail(request, pk):
     return render(request, 'blog/detail.html', context={'post': post})
 
 
-# Create your views here.
-
 # 首页
 class Index(View):
     def get(self, request):
         categroy = Category.objects.all()
+        # 获取分类的属性
         class_name = request.GET.get('classification')
         if class_name:
-            print(class_name)
             post_list = Post.objects.filter(category_id__name=class_name)
             return render(request, "index1.html", context={'post_list': post_list, 'categroy': categroy})
         post_list = Post.objects.all().order_by('-created_time')
         return render(request, "index1.html", context={'post_list': post_list, 'categroy': categroy})
 
 
-# 文本
+# 随笔杂谈
 def show_article(request):
     if request.method == 'GET':
         categroy = Category.objects.all()
@@ -49,10 +47,17 @@ def show_article(request):
         return render(request, 'one-column1.html', context={'post_list': post_list, 'categroy': categroy})
 
 
+#单页文本显示
 def Article(request, pk):
     print('pk:', pk)
     categroy = Category.objects.all()
     post = Post.objects.get(id=pk)
+    post.body = markdown.markdown(post.body,
+                                  extensions=[
+                                      'markdown.extensions.extra',
+                                      'markdown.extensions.codehilite',
+                                      'markdown.extensions.toc',
+                                  ])
     return render(request, 'article.html', context={'post': post, 'categroy': categroy})
 
 
@@ -62,6 +67,7 @@ def classify(request):
         return render(request, "classify.html", context)
 
 
+# about me 首页显示
 def Aboutme(request):
     if request.method == "GET":
         return render(request, "about.html")
