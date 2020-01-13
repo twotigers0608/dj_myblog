@@ -2,6 +2,7 @@ from django.views import View
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.utils.text import slugify
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 import json
 import time
 import markdown
@@ -42,14 +43,24 @@ class Index(View):
 # 随笔杂谈
 def show_article(request):
     if request.method == 'GET':
+        page = request.GET.get('page', 1)
         categroy = Category.objects.all()
         post_list = Post.objects.all().order_by('-created_time')
-        return render(request, 'one-column1.html', context={'post_list': post_list, 'categroy': categroy})
+        p = Paginator(post_list, 3)
+        print(p.count, 'num_pages', p.num_pages, 'page_range', p.page_range)
+        try:
+            post_list = p.get_page(page)
+        except PageNotAnInteger:
+            # 如果请求的页数不是整数，返回第一页。
+            contacts = p.page(1)
+        except EmptyPage:
+            # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+            post_list = p.page(p.num_pages)
+        return render(request, 'one-column1.html', context={'post_list': post_list, 'categroy': categroy, 'paginator':p})
 
 
-#单页文本显示
+# 单页文本显示
 def Article(request, pk):
-    print('pk:', pk)
     categroy = Category.objects.all()
     post = Post.objects.get(id=pk)
     post.body = markdown.markdown(post.body,

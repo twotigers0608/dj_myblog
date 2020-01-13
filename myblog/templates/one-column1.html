@@ -2,7 +2,8 @@
 
 {% block sorts %}
     <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">分类</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+           aria-expanded="false">分类</a>
         <div class="dropdown-menu navbar-dark bg-primary">
             {% for c in categroy %}
                 <a class="dropdown-item" href="/?classification={{ c }}">{{ c }}</a>
@@ -27,27 +28,57 @@
             <a href="/article/{{ post.id }}" class="btn btn-primary">Read more</a>
             <!-- <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read more</a> -->
         </article>
-    {# 当数据不存在时输出  #}
-     {% empty %}
+        {# 当数据不存在时输出  #}
+    {% empty %}
         <div class="no-post">暂时没有发布文章</div>
     {% endfor %}
 {% endblock %}
 
 {# 增加分页内容 #}
 {% block pagebreak %}
-    <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-        </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-        </a>
-    </li>
+
+    {% if post_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="/aiticle/?page={{ post_list.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link"
+                                 href="/article/?page={{ post_list.previous_page_number }}">{{ post_list.previous_page_number }}</a>
+        </li>
+    {% else %}
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#"></a></li>
+    {% endif %}
+
+
+    <li class="page-item active"><a class="page-link"
+                                    href="/article/?page={{ post_list.number }}">{{ post_list.number }}</a></li>
+
+    {% if post_list.has_next %}
+        <li class="page-item"><a class="page-link"
+                                 href="/article/?page={{ post_list.next_page_number }}">{{ post_list.next_page_number }}</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="/article/?page={{ post_list.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    {% else %}
+        <li class="page-item"><a class="page-link" href="#"></a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    {% endif %}
+
 {% endblock %}
