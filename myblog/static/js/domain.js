@@ -4,7 +4,7 @@ $(document).ready(function () {
     patch_week.setOption({
         title: {
             text: 'UPSTREAMING RACE CHART',
-            x: 'center',
+            x: 'center'
         },
         tooltip: {},
         legend: {
@@ -24,9 +24,15 @@ $(document).ready(function () {
             data: []
         }]
     });
-    select()
+    select();
 })
 
+// window.addEvent('domready', function() {
+// 	var count = 0;
+// 	$('table tbody tr').each(function(el) {
+// 		el.addClass(count++ % 2 == 0 ? 'odd' : 'even');
+// 	});
+// });
 
 // 异步加载数据
 function select() {
@@ -43,12 +49,15 @@ function select() {
         success: function (result) {
             domain.hideLoading();
             result_data = result;
+            // get_num(result_data);
+            data_reduction2(result_data);
             if (result_data) {
                 //var result = data_durations(data_dict);
                 //rq_patch_num(data_dict, result);
                 //ajax_datble(data_dict, result);
                 var data_dict = data_reduction(result_data);
                 rq_domain(data_dict);
+                data_reduction2(data_dict)
                 console.log(result_data)
             }
         },
@@ -198,22 +207,21 @@ $.ajaxSetup({
     }
 });
 
-//构造数据结构
+//构造echarts数据结构
 function data_reduction(data) {
-
     var domain_list = ["Graphics+Display", "Camera/IPO", "Sensor", "Storage", "Audio and Codes",
         "Core Kernel", "Image and Video", "USB", "Low power subsystem",
         "Rower and Perfromance", "Network", "config", "Unassrgned", "Hypervisor",
         "Security(Trustu)", "Security(CSE, MEI,...)", "sep-Socwatch"]
     var total_list = [];
     $.each(data, function (key, value) {
-            console.log(value);
+            //console.log(value);
             var data_list = [];
             // $.each(value, function (key1, value1) {
             //     data_list.push(value1)
             // });
             for (var i = 0; i < domain_list.length; i++) {
-                console.log(value[domain_list[i]]);
+                //console.log(value[domain_list[i]]);
                 if (value[domain_list[i]]) {
                     var num = parseInt(value[domain_list[i]])
                     data_list.push(num)
@@ -228,54 +236,38 @@ function data_reduction(data) {
     return total_list;
 }
 
-//返回表格数据
-function ajax_datble(data_dict, result) {
-    $("#tabledata").html("");
-    var str = "<table width=\"90%\" class=\"table\" id=\"tabledata\">\
-            <tbody>\
-            <tr class=\"title\">\
-                <td>ID</td>\
-                <td>Date</td>\
-                <td>Review Time</td>\
-                <td>Verify Time</td>\
-                <td>Merage Time</td>\
-                <td>Release Time</td>\
-            </tr>\
-            </tbody>\
-        </table>"
-    $("#tabledata ").append(str)
-    var $tbody = $("#tabledata").find("tbody");
-    var sorted_ww = Object.keys(data_dict).sort().reverse();
-    $.each(sorted_ww, function (i, ww) {
-        //console.log(result_data)
-        ww_data = data_dict[ww];
-        var html = "<tr" + " class=" + ww + ">" + "<th colspan='6' style='text-align:left'>" + "WW" + ww + "</th>" + "</tr>"
-        for (var c = 0; c < ww_data.length; c++) {
-            html += "<tr" + " class=" + ww + ">";
-            var id = ww_data[c]['id'];
-            var verify_time = SecondToDate(ww_data[c]['verify_duration']);
-            var review_time = SecondToDate(ww_data[c]['review_duration']);
-            var date_time = getDateStr(ww_data[c]['release_time']);
-            var merge_time = SecondToDate(ww_data[c]['merge_duration']);
-            var rel_time = SecondToDate(ww_data[c]['rel_duration']);
 
-            // html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
-            //     + "<td>" + date_time + "</td>" +
-            //     "<td>" + review_time + "</td>" +
-            //     "<td>" + verify_time + "</td>" +
-            //     "<td>" + merge_time + "</td>" +
-            //     "<td>" + rel_time + "</td>";
-            // html += "</tr>"
-            html += "<td>" + "<a target='_blank' href='https://git-amr-4.devtools.intel.com/gerrit/#/c/" + id + "' >" + id + "</a>" + "</td>"
-                + "<td>" + date_time + "</td>" +
-                "<td>" + review_time + "</td>" +
-                "<td>" + verify_time + "</td>" +
-                "<td>" + merge_time + "</td>" +
-                "<td>" + rel_time + "</td>";
-            html += "</tr>"
-        }
-        ;
-        $tbody.append(html)
-        //console.log(html)
-    });
+function get_num(data) {
+    $.each(data, function (v, dic) {
+        $.each(dic, function (domain, num) {
+            // $("#tabledata ." + domain + " .v54").text(num)
+            console.log(typeof (domain), domain, num);
+            // $("#tabledata ." + domain + " ."+ v).html(num);
+        })
+    })
+    //重写数据
 }
+
+
+function data_reduction2(data) {
+    var domain_listv54 = ["Graphicsv54", "Camerav54", "Sensorv54", "Storagev54", "Audiov54",
+        "Kernelv54", "Imagev54", "USBv54", "powerv54",
+        "Rowerv54", "Networkv54", "configv54", "Unassrgnedv54", "Hypervisorv54",
+        "Securityv54", "Trustuv54", "Socwatchv54"];
+    var domain_listv55 = ["Graphicsv55", "Camerav55", "Sensorv55", "Storagev55", "Audiov55",
+        "Kernelv55", "Imagev55", "USBv55", "powerv55",
+        "Rowerv55", "Networkv55", "configv55", "Unassrgnedv55", "Hypervisorv55",
+        "Securityv55", "Trustuv55", "Socwatchv55"];
+    var domain_listv56 = ["Graphicsv56", "Camerav56", "Sensorv56", "Storagev56", "Audiov56",
+        "Kernelv56", "Imagev56", "USBv56", "powerv56",
+        "Rowerv56", "Networkv56", "configv56", "Unassrgnedv56", "Hypervisorv56",
+        "Securityv56", "Trustuv56", "Socwatchv56"];
+    console.log(data[0]);
+    $.each(data, function (key, l1) {
+        if (key == "v5.4") {
+            for (var i = 0; i < l1.length; i++) {
+                $("#" + domain_listv54[i]).text(l1[i]);
+            }
+        }
+//返回表格数据
+    }

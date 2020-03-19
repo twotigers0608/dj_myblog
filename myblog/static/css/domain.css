@@ -28,27 +28,34 @@ table tr, table td {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
-    border-top: 1px solid rgb(31, 218, 15);
+    border-top: 1px solid #ddd;
 }
 
 table tbody thead td {
     vertical-align: bottom;
-    border-bottom: 2px solid rgb(10, 231, 110);
+    border-bottom: 2px solid #ddd;
 }
 
 table tbody tr th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
-    border-top: 1px solid rgb(48, 212, 33)
+    border-top: 1px solid #ddd
 }
-
+.odd{
+	background: #83ff82;
+	color: #090909;
+}
+.even{
+	background-color: #d7dfde;
+	color: #0b0b0b;
+}
 table tbody tr th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 1px solid #ddd;
-    background-color: rgb(8, 235, 38);
+    background-color: silver;
     box-sizing: border-box;
     display: table-cell;
 }

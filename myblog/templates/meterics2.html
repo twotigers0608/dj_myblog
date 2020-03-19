@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>metrics</title>
     <!-- including ECharts file -->
-    <link rel="stylesheet" type="text/css" href="../static/css/quiltreview.css">
-    <link rel="stylesheet" type="text/css" href="../../static/css/quiltreview.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/domain.css">
+{#    <link rel="stylesheet" type="text/css" href="../static/css/quiltreview.css">#}
     <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
     <script type="text/javascript" src="../static/js/domain.js"></script>
@@ -13,6 +13,10 @@
 <body>    <!-- prepare a DOM container with width and height -->
 <div><h1>domain</h1></div>
 {# {% if row.status == 'OFF' %} selected="selected" {% endif %}#}
+<!--
+json 数据格式       kd = Kernel domain      e.g Sensors     camera
+{"v5.4":{"kd1":xx,"kd2":xx},"v5.5":{"kd1":xx}, "V5.6":{"kd1":xx}}
+-->
 
 <div>
     <table width="70%" class="table" id="tabledata">
@@ -24,132 +28,144 @@
             <th>v5.5</th>
             <th>v5.6-rc5</th>
         </tr>
-        <tr class="Camera/IPO">
+        <tr class="Graphics+Dispaly">
             <td></td>
+            <td>junxiaochan</td>
+            <td style="width:150px;">Graphics+Dispaly</td>
+            <td id="Graphicsv54"></td>
+            <td id="Graphicsv55"></td>
+            <td id="Graphicsv56"></td>
+        </tr>
+        <tr class="Camera">
+            <td>SSP-Camera</td>
             <td>pankris,linjanh</td>
             <td style="width:150px;">Camera/IPO</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Sensor">
+            <td id="Camerav54"></td>
+            <td id="Camerav55"></td>
+            <td id="Camerav56"></td>
+        </tr>
+        <tr class="Sensor">
             <td></td>
             <td>zhoufuro,nikunj</td>
             <td style="width:150px;">Sensor</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Storage">
+           <td id="Sensorv54"></td>
+            <td id="Sensorv55"></td>
+            <td id="Sensorv56"></td>
+        </tr>
+        <tr class="Storage">
             <td></td>
             <td>zgoufuro</td>
             <td style="width:150px;">Storage</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Audio and Codes">
+           <td id="Storagev54"></td>
+            <td id="Storagev55"></td>
+            <td id="Storagev56"></td>
+        </tr>
+        <tr class="Audio and Codes">
             <td></td>
             <td>nikunj</td>
             <td style="width:150px;">Audio and Codes</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Core Kernel">
-            <td></td>
+            <td id="Audiov54"></td>
+            <td id="Audiov55"></td>
+            <td id="Audiov56"></td>
+        </tr>
+        <tr class="Core Kernel">
+            <td>SSP-Kernel</td>
             <td>lilili</td>
             <td style="width:150px;">Core Kernel</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Image and Video">
-            <td></td>
-            <td></td>
-            <td style="width:150px;">Image and Video</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Graphics+Display">
+            <td id="Kernelv54"></td>
+            <td id="Kernelv55"></td>
+            <td id="Kernelv56"></td>
+        </tr>
+        <tr class="Image and Video">
             <td></td>
             <td>liyifan1</td>
-            <td style="width:150px;">Graphics+Display</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="USB">
+            <td style="width:150px;">Image and Video</td>
+            <td id="Imagev54"></td>
+            <td id="Imagev55"></td>
+            <td id="Imagev56"></td>
+        </tr>
+        <tr class="USB">
             <td></td>
             <td>pankirs</td>
             <td style="width:150px;">USB</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Low power subsyste">
+            <td id="USBv54"></td>
+            <td id="USBv55"></td>
+            <td id="USB56"></td>
+        </tr>
+        <tr class="Low power subsyste">
             <td></td>
             <td>honglili</td>
             <td style="width:150px;">Low power subsyste</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Rower and Perfromance">
+            <td id="powerv54"></td>
+            <td id="powerv55"></td>
+            <td id="powerv56"></td>
+        </tr>
+        <tr class="Rower and Perfromance">
             <td></td>
             <td>chaoqin</td>
             <td style="width:150px;">Rower and Perfromance</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Network">
-            <td></td>
+            <td id="Rowerv54"></td>
+            <td id="Rowerv55"></td>
+            <td id="Rowerv56"></td>
+        </tr>
+        <tr class="Network">
+            <td>HSPE-SWS</td>
             <td>baolizha</td>
             <td style="width:150px;">Network</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="config">
+            <td id="Networkv54"></td>
+            <td id="Networkv55"></td>
+            <td id="Networkv56"></td>
+        </tr>
+        <tr class="config">
             <td></td>
             <td></td>
             <td style="width:150px;">config</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Unassrgned">
+            <td id="configv54"></td>
+            <td id="configv55"></td>
+            <td id="configv56"></td>
+        </tr>
+        <tr class="Unassrgned">
             <td></td>
             <td>mgross</td>
             <td style="width:150px;">Unassrgned</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Hypervisor">
-            <td></td>
+            <td id="Unassrgnedv54"></td>
+            <td id="Unassrgnedv55"></td>
+            <td id="Unassrgnedv56"></td>
+        </tr>
+        <tr class="Hypervisor">
+            <td>SSP-ACRN</td>
             <td>junxiaoc</td>
             <td style="width:150px;">Hypervisor</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Security">
+            <td id="Hypervisorv54"></td>
+            <td id="Hypervisorv55"></td>
+            <td id="Hypervisorv56"></td>
+        </tr>
+        <tr class="Security">
             <td></td>
             <td>zhoufuro</td>
             <td style="width:150px;">Security</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="Security">
+            <td id="Securityv54"></td>
+            <td id="Securityv55"></td>
+            <td id="Securityv56"></td>
+        </tr>
+        <tr class="Trustu">
             <td></td>
             <td>nikunj</td>
             <td style="width:150px;">Security</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
-        </tr><tr class="sep-Socwatch">
+            <td id="Trustuv54"></td>
+            <td id="Trustuv55"></td>
+            <td id="Trustuv56"></td>
+        </tr>
+        <tr class="sep-Socwatch">
             <td></td>
             <td>chaoqin</td>
             <td style="width:150px;">sep-Socwatch</td>
-            <td>856</td>
-            <td>77</td>
-            <td>35</td>
+            <td id="Socwatchv54"></td>
+            <td id="Socwatchv55"></td>
+            <td id="Socwatchv56"></td>
         </tr>
     </table>
 </div>
-<!--
-json 数据格式       kd = Kernel domain      e.g Sensors     camera
-{"v5.4":{"kd1":xx,"kd2":xx},"v5.5":{"kd1":xx}, "V5.6":{"kd1":xx}}
--->
 <div id="domain" style="width: 1000px;height:500px;margin:auto;"></div>
 
 </body>
