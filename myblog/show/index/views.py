@@ -47,16 +47,17 @@ def show_article(request):
         categroy = Category.objects.all()
         post_list = Post.objects.all().order_by('-created_time')
         p = Paginator(post_list, 3)
-        print(p.count, 'num_pages', p.num_pages, 'page_range', p.page_range)
-        try:
-            post_list = p.get_page(page)
-        except PageNotAnInteger:
-            # 如果请求的页数不是整数，返回第一页。
-            contacts = p.page(1)
-        except EmptyPage:
-            # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
-            post_list = p.page(p.num_pages)
-        return render(request, 'one-column1.html', context={'post_list': post_list, 'categroy': categroy, 'paginator':p})
+        post_list = p.get_page(page)
+        # try:
+        #     post_list = p.get_page(page)
+        # except PageNotAnInteger:
+        #     # 如果请求的页数不是整数，返回第一页。
+        #     contacts = p.page(1)
+        # except EmptyPage:
+        #     # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+        #     post_list = p.page(p.num_pages)
+        return render(request, 'one-column1.html',
+                      context={'post_list': post_list, 'categroy': categroy, 'paginator': p})
 
 
 # 单页文本显示
@@ -738,4 +739,28 @@ def ajax_get_data(request):
                               "id": 109214}
                              ]}
             time.sleep(1)
+        return JsonResponse(data)
+
+
+def domain(request):
+    if request.method == "GET":
+        return render(request, "meterics2.html")
+
+
+def doamin_ajax(request):
+    if request.method == "POST":
+        data = {"v5.4": {"Graphics+Display": 856, "Camera/IPO": 1, "Sensor": 56, "Storage": 9, "Audio and Codes": 11,
+                         "Core Kernel": 91, "Image and Video": 3, "USB": 78, "Low power subsystem": 53,
+                         "Rower and Perfromance": 4, "Network": 149, "config": 4, "Unassrgned": 20, "Hypervisor": 141,
+                         "Security(Trustu)": 2, "Security(CSE, MEI,...)": 116, "sep-Socwatch": 28},
+                "v5.5": {"Graphics+Display": 77, "Sensor": 39, "Storage": 9, "Audio and Codes": 9,
+                         "Core Kernel": 66, "USB": 13, "Low power subsystem": 38,
+                         "Rower and Perfromance": 4, "Network": 147, "config": 4, "Unassrgned": 17, "Hypervisor": 141,
+                         "Security(Trustu)": 2, "Security(CSE, MEI,...)": 111, "sep-Socwatch": 28},
+                "V5.6": {"Graphics+Display": 35, "Sensor": 8, "Storage": 9, "Audio and Codes": 9,
+                         "Core Kernel": 62, "USB": 13, "Low power subsystem": 35,
+                         "Rower and Perfromance": 11, "Network": 145, "config": 4, "Unassrgned": 17, "Hypervisor": 141,
+                         "Security(Trustu)": 2, "Security(CSE, MEI,...)": 111, "sep-Socwatch": 28},
+                }
+
         return JsonResponse(data)

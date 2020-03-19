@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>metrics</title>
+    <!-- including ECharts file -->
+    <link rel="stylesheet" type="text/css" href="../static/css/quiltreview.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/quiltreview.css">
+    <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="../static/js/domain.js"></script>
+</head>
+<body>    <!-- prepare a DOM container with width and height -->
+<div><h1>domain</h1></div>
+{# {% if row.status == 'OFF' %} selected="selected" {% endif %}#}
+
+<div>
+    <table width="70%" class="table" id="tabledata">
+        <tr class="title">
+            <th>Org</th>
+            <th>Owner</th>
+            <th>Dmain</th>
+            <th>v5.4</th>
+            <th>v5.5</th>
+            <th>v5.6-rc5</th>
+        </tr>
+    </table>
+</div>
+<!--
+json 数据格式       kd = Kernel domain      e.g Sensors     camera
+{"v5.4":{"kd1":xx,"kd2":xx},"v5.5":{"kd1":xx}, "V5.6":{"kd1":xx}}
+-->
+<div id="domain" style="width: 1000px;height:500px;margin:auto;"></div>
+
+</body>
+</html>
