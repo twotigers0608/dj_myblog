@@ -49,15 +49,16 @@ function select() {
         success: function (result) {
             domain.hideLoading();
             result_data = result;
-            // get_num(result_data);
-            data_reduction2(result_data);
+
+            // data_reduction2(result_data);
             if (result_data) {
                 //var result = data_durations(data_dict);
                 //rq_patch_num(data_dict, result);
                 //ajax_datble(data_dict, result);
                 var data_dict = data_reduction(result_data);
                 rq_domain(data_dict);
-                data_reduction2(data_dict)
+                get_num(data_dict);
+                // data_reduction2(data_dict)
                 console.log(result_data)
             }
         },
@@ -238,18 +239,7 @@ function data_reduction(data) {
 
 
 function get_num(data) {
-    $.each(data, function (v, dic) {
-        $.each(dic, function (domain, num) {
-            // $("#tabledata ." + domain + " .v54").text(num)
-            console.log(typeof (domain), domain, num);
-            // $("#tabledata ." + domain + " ."+ v).html(num);
-        })
-    })
     //重写数据
-}
-
-
-function data_reduction2(data) {
     var domain_listv54 = ["Graphicsv54", "Camerav54", "Sensorv54", "Storagev54", "Audiov54",
         "Kernelv54", "Imagev54", "USBv54", "powerv54",
         "Rowerv54", "Networkv54", "configv54", "Unassrgnedv54", "Hypervisorv54",
@@ -262,12 +252,27 @@ function data_reduction2(data) {
         "Kernelv56", "Imagev56", "USBv56", "powerv56",
         "Rowerv56", "Networkv56", "configv56", "Unassrgnedv56", "Hypervisorv56",
         "Securityv56", "Trustuv56", "Socwatchv56"];
-    console.log(data[0]);
-    $.each(data, function (key, l1) {
-        if (key == "v5.4") {
-            for (var i = 0; i < l1.length; i++) {
-                $("#" + domain_listv54[i]).text(l1[i]);
-            }
-        }
-//返回表格数据
+    var domain_list=[];
+    domain_list.push(domain_listv54);
+    domain_list.push(domain_listv55);
+    domain_list.push(domain_listv56);
+    for (var i =0; i<data.length;i++){
+        $.each(data[i],function (x,y) {
+            $("#" + domain_list[i][x]).text(y);
+        })
+
     }
+}
+
+
+function data_reduction2(data) {
+
+    $.each(data, function (v, dic) {
+        $.each(dic,function (domain, num) {
+            // $("#" +v +" ."+domain).text(num)
+
+            $("#v54 .Camera").html(num)
+            console.log('选中标签类型',domain,v, num)
+        })
+    })
+}
