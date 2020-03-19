@@ -28,19 +28,19 @@ table tr, table td {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid rgb(31, 218, 15);
 }
 
 table tbody thead td {
     vertical-align: bottom;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid rgb(10, 231, 110);
 }
 
 table tbody tr th {
     padding: 8px;
     line-height: 1.42857143;
     vertical-align: top;
-    border-top: 1px solid #ddd
+    border-top: 1px solid rgb(48, 212, 33)
 }
 
 table tbody tr th {
@@ -48,7 +48,7 @@ table tbody tr th {
     line-height: 1.42857143;
     vertical-align: top;
     border-top: 1px solid #ddd;
-    background-color: silver;
+    background-color: rgb(8, 235, 38);
     box-sizing: border-box;
     display: table-cell;
 }
