@@ -5,15 +5,16 @@ html {
     font-size: 62.5%;
     -webkit-tap-highlight-color: transparent;
 }
+
 /*实现斑马色*/
-tr:nth-child(odd)
-{
-background: #abffb5;
+tr:nth-child(odd) {
+    background: #ffffff;
 }
-tr:nth-child(even)
-{
-background: #ffffff;
+
+tr:nth-child(even) {
+    background: #abffb5;
 }
+
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -50,14 +51,17 @@ table tbody tr th {
     vertical-align: top;
     border-top: 1px solid #ddd
 }
-.odd{
-	background: #83ff82;
-	color: #090909;
+
+.odd {
+    background: #83ff82;
+    color: #090909;
 }
-.even{
-	background-color: #d7dfde;
-	color: #0b0b0b;
+
+.even {
+    background-color: #d7dfde;
+    color: #0b0b0b;
 }
+
 table tbody tr th {
     padding: 8px;
     line-height: 1.42857143;

@@ -111,9 +111,9 @@ function rq_domain(data_dict) {
         // domain
         xAxis: {
             data: ["Graphics+Display", "Camera/IPO", "Sensor", "Storage", "Audio and Codes",
-                "Core Kernel", "Image and Video", "USB", "Low power subsystem",
-                "Rower and Perfromance", "Network", "config", "Unassrgned", "Hypervisor",
-                "Security(Trustu)", "Security(CSE, MEI,...)", "sep-Socwatch"],
+                "Core Kernel", "Image and Video", "USB", "LowPowerSubsystem",
+                "Rower Perfromance", "Network", "config", "Unassrgned", "Hypervisor",
+                "Security(Trustu)", "Security(CSE, MEI)", "sep-Socwatch"],
             axisLabel: {
                 interval: 0,
                 rotate: 30,
@@ -262,17 +262,4 @@ function get_num(data) {
         })
 
     }
-}
-
-
-function data_reduction2(data) {
-
-    $.each(data, function (v, dic) {
-        $.each(dic,function (domain, num) {
-            // $("#" +v +" ."+domain).text(num)
-
-            $("#v54 .Camera").html(num)
-            console.log('选中标签类型',domain,v, num)
-        })
-    })
 }
