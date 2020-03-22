@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="">
+    <list default="true" id="cda2227e-f71b-4d28-b8d1-5617e0420b88" name="Default Changelist" comment="1,完成total 总值">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myblog/show/index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/show/index/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myblog/static/js/domain.js" beforeDir="false" afterPath="$PROJECT_DIR$/myblog/static/js/domain.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="758" column="94" selection-start-line="758" selection-start-column="94" selection-end-line="758" selection-end-column="94" />
+            <state relative-caret-position="534">
+              <caret line="765" lean-forward="true" selection-start-line="765" selection-end-line="765" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -80,8 +81,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myblog/static/js/domain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="501">
-              <caret line="61" column="40" lean-forward="true" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+            <state relative-caret-position="259">
+              <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myblog/static/css/quiltreview.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -171,10 +181,10 @@
         <option value="$PROJECT_DIR$/myblog/static/js/metrics.js.bak" />
         <option value="$PROJECT_DIR$/myblog/static/metrics.js" />
         <option value="$PROJECT_DIR$/myblog/show/index/urls.py" />
-        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
         <option value="$PROJECT_DIR$/myblog/static/domain.js" />
         <option value="$PROJECT_DIR$/myblog/templates/meterics2.html" />
         <option value="$PROJECT_DIR$/myblog/static/css/domain.css" />
+        <option value="$PROJECT_DIR$/myblog/show/index/views.py" />
         <option value="$PROJECT_DIR$/myblog/static/js/domain.js" />
       </list>
     </option>
@@ -195,6 +205,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -256,7 +267,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,14 +438,9 @@
       <workItem from="1584526026109" duration="24983000" />
       <workItem from="1584583882537" duration="225000" />
       <workItem from="1584621688060" duration="2969000" />
-      <workItem from="1584865738030" duration="1193000" />
-    </task>
-    <task id="LOCAL-00027" summary="暂时无语法错误版">
-      <created>1570955825267</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1570955825267</updated>
+      <workItem from="1584865738030" duration="1238000" />
+      <workItem from="1584867004814" duration="21000" />
+      <workItem from="1584890537478" duration="3110000" />
     </task>
     <task id="LOCAL-00028" summary="jquery 报错">
       <created>1570956234534</created>
@@ -773,11 +778,18 @@
       <option name="project" value="LOCAL" />
       <updated>1584629346264</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="1,完成total 总值">
+      <created>1584866975610</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1584866975610</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="459749000" />
+    <option name="totallyTimeSpent" value="462925000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -792,7 +804,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19098713" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19670959" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -888,7 +900,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="10.17" />
     <MESSAGE value="需要自动补全日期" />
     <MESSAGE value="mychart 排序完成" />
     <MESSAGE value="增加select标签" />
@@ -913,7 +924,8 @@
     <MESSAGE value="1,table内容基本符合" />
     <MESSAGE value="1,基本展示完成&#10;2,细节 bug 需要调整" />
     <MESSAGE value="1,css 实现斑马色" />
-    <option name="LAST_COMMIT_MESSAGE" value="1,css 实现斑马色" />
+    <MESSAGE value="1,完成total 总值" />
+    <option name="LAST_COMMIT_MESSAGE" value="1,完成total 总值" />
   </component>
   <component name="editorHistoryManager">
     <entry file="das://52fe49b1-cfa1-4a8a-8b4b-73b6989447b2/schema/main/table/django_migrations" />
@@ -1124,9 +1136,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/templates/meterics2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myblog/static/css/domain.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/metrics.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
+        <state relative-caret-position="-3480">
           <caret line="228" column="13" lean-forward="true" selection-start-line="228" selection-start-column="13" selection-end-line="228" selection-end-column="13" />
           <folding>
             <element signature="n#!!block;n#getWeekOfYear#0" />
@@ -1150,31 +1183,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/show/index/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/templates/meterics2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myblog/static/css/domain.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myblog/show/index/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="758" column="94" selection-start-line="758" selection-start-column="94" selection-end-line="758" selection-end-column="94" />
+        <state relative-caret-position="534">
+          <caret line="765" lean-forward="true" selection-start-line="765" selection-end-line="765" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -1183,8 +1195,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myblog/static/js/domain.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="61" column="40" lean-forward="true" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+        <state relative-caret-position="259">
+          <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
         </state>
       </provider>
     </entry>

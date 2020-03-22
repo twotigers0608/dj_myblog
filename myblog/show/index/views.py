@@ -753,14 +753,13 @@ def doamin_ajax(request):
                          "Core Kernel": 91, "Image and Video": 3, "USB": 78, "Low power subsystem": 53,
                          "Rower and Perfromance": 4, "Network": 149, "config": 4, "Unassrgned": 20, "Hypervisor": 141,
                          "Security(Trustu)": 2, "Security(CSE, MEI,...)": 116, "sep-Socwatch": 28},
-                "v5.5": {"Graphics+Display": 77, "Sensor": 39, "Storage": 9, "Audio and Codes": 9,
-                         "Core Kernel": 66, "USB": 13, "Low power subsystem": 38,
-                         "Rower and Perfromance": 4, "Network": 147, "config": 4, "Unassrgned": 17, "Hypervisor": 141,
-                         "Security(Trustu)": 2, "Security(CSE, MEI,...)": 111, "sep-Socwatch": 28},
-                "V5.6": {"Graphics+Display": 35, "Sensor": 8, "Storage": 9, "Audio and Codes": 9,
+                "v5.6": {"Graphics+Display": 35, "Sensor": 8, "Storage": 9, "Audio and Codes": 9,
                          "Core Kernel": 62, "USB": 13, "Low power subsystem": 35,
                          "Rower and Perfromance": 11, "Network": 145, "config": 4, "Unassrgned": 17, "Hypervisor": 141,
                          "Security(Trustu)": 2, "Security(CSE, MEI,...)": 111, "sep-Socwatch": 28},
-                }
+                "v5.5": {"Graphics+Display": 77, "Sensor": 39, "Storage": 9, "Audio and Codes": 9,
+                         "Core Kernel": 66, "USB": 13, "Low power subsystem": 38,
+                         "Rower and Perfromance": 4, "Network": 147, "config": 4, "Unassrgned": 17, "Hypervisor": 141,
+                         "Security(Trustu)": 2, "Security(CSE, MEI,...)": 111, "sep-Socwatch": 28}, }
 
         return JsonResponse(data)
