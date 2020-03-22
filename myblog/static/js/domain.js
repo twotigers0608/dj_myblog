@@ -58,7 +58,7 @@ function select() {
                 var data_dict = data_reduction(result_data);
                 rq_domain(data_dict);
                 get_num(data_dict);
-                // data_reduction2(data_dict)
+                get_total_num(result_data)
                 console.log(result_data)
             }
         },
@@ -260,6 +260,21 @@ function get_num(data) {
         $.each(data[i],function (x,y) {
             $("#" + domain_list[i][x]).text(y);
         })
+    }
+}
 
+function get_total_num(data) {
+    var total_list = [];
+    $.each(data,function (v, value) {
+        var total=0;
+        $.each(value,function (k, num) {
+            total += num;
+        });
+        total_list.push(total);
+    });
+    total_id = ["totalv54", "totalv55", "totalv56"];
+
+    for (var i = 0; i < total_id.length; i++){
+        $("#" + total_id[i]).text(total_list[i])
     }
 }
