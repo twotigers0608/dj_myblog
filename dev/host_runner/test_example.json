@@ -1,0 +1,15 @@
+{
+    "correct_session": {
+        "host": "host",
+        "host_domain" : "host.domain.com",
+        "user": "user",
+        "password": "******"
+    },
+    "wrong_session": {
+        "host": "wrong_host",
+        "user": "wrong_name",
+        "password": "12345678"
+    },
+    "get_user": "whoami",
+    "get_host": "hostname"
+}

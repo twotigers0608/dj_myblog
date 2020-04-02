@@ -1,0 +1,27 @@
+host_runner: osi_runner on host side, and will trigger device runner via ssh connection
+maintained by Yifan
+developed by Wenjie and Yifan
+
+dependencies:
+  pexpect==3.1
+  serial==3.3
+
+
+including modules:
+  ssh_session => Implement of ssh_session class, connect with session and send command.
+  utils => utils function module
+  test => unittest entry
+  
+
+
+TODOs:
+1. Add serial session implemention.
+2. Integrate log_parser.awk to osit_runner.
+3. Deploy and boot integrate to osit_runner.
+
+DONEs:
+1. Add scp method to ssh_session module.
+2. Add check_hang to ssh_session module.
+3. Add unittest framework.
+4. Refactor ssh_session test cases with unittest framework.
+
