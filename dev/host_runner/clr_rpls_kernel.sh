@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-
-VMLINUZ_DST='/boot/EFI/org.clearlinux'
+#image 文件
+VMLINUZ_DST='/boot/'
+#lib 文件
 LIB_DST='/lib/modules'
 CFG_DST='/lib/kernel'
 LOADER='/boot/loader/loader.conf'
@@ -18,7 +19,6 @@ USAGE:
     l = module location
     c = config location
     h|? = help (this screen)
-
 
 
 EOF
