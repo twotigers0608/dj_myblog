@@ -79,12 +79,12 @@ check_params(){
 
 replace_kernel(){
     INFO "Delete original PKT kernel file"
-    rm -rf $VMLINUZ_DST/vmlinu*PKT*
+    rm -rf $VMLINUZ_DST/bzImage*
     INFO "Copy $VMLINUZ to $VMLINUZ_DST"
     cp $VMLINUZ $VMLINUZ_DST
     [ $? -eq 0 ] && INFO "Copy kernel finished" || INFO "error, copy $VMLINUZ failed"
     INFO "Delete original PKT kernel modules"
-    rm -rf $LIB_DST/*PKT*
+    rm -rf $LIB_DST/*kernel*
     INFO "Copy $LIB to $LIB_DST"
     cp -rf $LIB $LIB_DST
     [ $? -eq 0 ] && INFO "Copy module finished" || INFO "error, copy $LIB failed"
