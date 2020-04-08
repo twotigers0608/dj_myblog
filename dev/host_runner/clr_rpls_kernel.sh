@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #image 文件
-VMLINUZ_DST='/boot/'
+IMAGE_DST='/boot/'
 #lib 文件
 LIB_DST='/lib/modules'
 CFG_DST='/lib/kernel'
@@ -19,7 +19,6 @@ USAGE:
     l = module location
     c = config location
     h|? = help (this screen)
-
 
 EOF
     exit 1
@@ -79,9 +78,9 @@ check_params(){
 
 replace_kernel(){
     INFO "Delete original PKT kernel file"
-    rm -rf $VMLINUZ_DST/bzImage*
-    INFO "Copy $VMLINUZ to $VMLINUZ_DST"
-    cp $VMLINUZ $VMLINUZ_DST
+    rm -rf $IMAGE_DST/bzImage*
+    INFO "Copy $VMLINUZ to $IMAGE_DST"
+    cp $VMLINUZ $IMAGE_DST
     [ $? -eq 0 ] && INFO "Copy kernel finished" || INFO "error, copy $VMLINUZ failed"
     INFO "Delete original PKT kernel modules"
     rm -rf $LIB_DST/*kernel*
