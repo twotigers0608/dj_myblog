@@ -179,7 +179,7 @@ def replace_kernel(test_session, kernel_build, password=None):
         osit_logger.info("image error: please check your kernel image")
         return False
 
-    if test_session.host.startswith('bxt_gp_clr'):
+    if test_session.host.startswith('*'):
         osit_logger.info("Do kernel replacement for %s", test_session.host)
         test_session.sendcommand("mkdir -p " + clr_tmp_dst, timeout=10)
         test_session.sendcommand("rm -rf %s/*" % clr_tmp_dst, timeout=10)
@@ -222,7 +222,7 @@ def reboot_device(test_session, user, host, password=None):
     osit_logger.info("Reboot the device.")
     test_session.sendcommand(runcommand, timeout=60)
     time.sleep(10)  # wait 10 seconds for device totally power-off
-    bxt_gp_power_on(host)
+    # bxt_gp_power_on(host)
     count = 0
     while count < 3:
         osit_logger.info("Attempt to connect to device...")
@@ -530,8 +530,9 @@ def main(arg_list):
 
         if check_kernel == 1:
             raise KernelErrorException("Wrong kernel version!")
-    runcommand_sync_rtc = "hwclock -w"
+    runcommand_sync_rtc = "hwclock"
     logs, _ = test_session.sendcommand(runcommand_sync_rtc, timeout=10)
+    '''
     proc_run = start_ositest(test_data_dir,
                              std_log_fnm,
                              args.kernel_build,
@@ -546,7 +547,6 @@ def main(arg_list):
                              args.scenario_name,
                              args.ltp_dir,
                              )
-
     osit_logger.info("Test process started, now start check_hang loop.")
     if args.device_name == "icl_simics":
         osit_logger.info("The test device is icl_simics, so skip the check_hang!")
@@ -578,7 +578,7 @@ def main(arg_list):
                               password,
                               )
                 break
-
+    '''
 
 if __name__ == "__main__":
     main(sys.argv[1:])

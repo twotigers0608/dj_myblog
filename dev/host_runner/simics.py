@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#coding:utf-8
+# coding:utf-8
 import os
 import sys
 import subprocess
@@ -20,11 +20,12 @@ def cmd(command, is_shell=False):
                             stdout=dev_null,
                             stderr=subprocess.STDOUT)
 
+
 def cmd_check(command, ignore=False):
     debug(command)
     try:
         subprocess.check_call(command, shell=True)
-    except subprocess.CalledProcessError, e:
+    except subprocess.CalledProcessError as e:
         if ignore:
             logging.error("The cmd failed(status: %d), ignored." % e.returncode)
         else:
@@ -37,7 +38,6 @@ def is_process_running(pid):
 
 
 class Simics:
-
     # class static variables - private
     __script_dir = os.path.dirname(os.path.abspath(__file__))
     __replacekernel_sh = "%s/replacekernel.sh" % __script_dir
@@ -45,7 +45,7 @@ class Simics:
     __SIMICS_BIN = "/opt/simics/simics-5.0.107/bin/simics"
     __SIMICS_SCRIPT = "/opt/simics/simics-icl-5.0.pre101/targets/x86-icl/default2.simics"
     __SIMICS_STARTUP_CMD = '%s -no-win %s -e disable-real-time-mode -e continue' % \
-                             (__SIMICS_BIN, __SIMICS_SCRIPT)
+                           (__SIMICS_BIN, __SIMICS_SCRIPT)
 
     __VAR_DIR = "/var/tmp/osit-icl"
     __OSI_IMG_NM = "osit-simics_icl.img"
@@ -58,10 +58,8 @@ class Simics:
     LOG_FILE = "%s/simics.log" % __VAR_DIR
     UART_LOG = "%s/uart.log" % __VAR_DIR
 
-
     def __init__(self):
         self.proc = None
-
 
     @staticmethod
     def replace_kernel(kernel_path):
@@ -81,12 +79,11 @@ class Simics:
         cmd_check(rkel_cmd)
         # set a cron job to make a copy of OSI image in advance
         cron_cmd = "echo 'cp %s %s.cp && mv %s.cp %s' | at now + 30minutes" % \
-                     (Simics.__OSI_IMG_TPL,
-                      Simics.__OSI_IMG_ORI,
-                      Simics.__OSI_IMG_ORI,
-                      Simics.__OSI_IMG_ORI)
+                   (Simics.__OSI_IMG_TPL,
+                    Simics.__OSI_IMG_ORI,
+                    Simics.__OSI_IMG_ORI,
+                    Simics.__OSI_IMG_ORI)
         cmd(cron_cmd, is_shell=True)
-
 
     def start(self, force=False):
         pid = None
@@ -107,7 +104,6 @@ class Simics:
         with open(self.__PID_FILE, 'w') as pf:
             pf.write(str(self.proc.pid))
         return 0
-
 
     def stop(self):
         if self.proc and is_process_running(self.proc.pid):

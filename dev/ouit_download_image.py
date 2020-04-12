@@ -2,6 +2,9 @@
 import os
 import zipfile
 import requests
+import wget
+import getpass
+import sys
 
 def __check_zip_file_zsq(func):
     def inner(*args, **kwargs):
@@ -48,3 +51,14 @@ def download_img_with_progressBar(download_url, file_save_path):
         print('\nDone', flush=True)
     r.close()
     return (fileName, total_size)
+
+
+if __name__ == '__main__':
+    USER_ROOT = getpass.getuser()
+    kernel_build = sys.argv[2,]
+    kernel_package_dir = "/home/%s/kernel_package/%s" % (USER_ROOT, kernel_build)
+
+    url = 'http://www.baidu.com'
+    filename = wget.download(url)
+    # 指定输出文件, 相当于 `-O output`
+    filename = wget.download(url, out=kernel_package_dir)
