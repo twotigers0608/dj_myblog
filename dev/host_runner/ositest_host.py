@@ -185,7 +185,7 @@ def replace_kernel(test_session, kernel_build, password=None):
         test_session.sendcommand("rm -rf %s/*" % clr_tmp_dst, timeout=10)
         for item in [file_to_send_vmlinuz, file_to_send_modules, file_to_send_config, clr_rp_exe]:
             test_session.scp_send(item, clr_tmp_dst, password, recursive=True, timeout=20)
-        #拷贝文件
+        # 拷贝文件
         test_session.scp_send(CWD + '/host_runner/' + clr_rp_exe, clr_tmp_dst, password, recursive=True, timeout=20)
 
         try:
@@ -530,7 +530,7 @@ def main(arg_list):
 
         if check_kernel == 1:
             raise KernelErrorException("Wrong kernel version!")
-    runcommand_sync_rtc = "hwclock"
+    runcommand_sync_rtc = "hwclock -l"
     logs, _ = test_session.sendcommand(runcommand_sync_rtc, timeout=10)
     '''
     proc_run = start_ositest(test_data_dir,
@@ -579,6 +579,7 @@ def main(arg_list):
                               )
                 break
     '''
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
