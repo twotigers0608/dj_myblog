@@ -118,8 +118,9 @@ class SSHSession():
         self.logger.debug("Send command: %s", command)
         self.session.sendline(command)
         self.session.expect([self.shell_prompt_str, pexpect.EOF], timeout=timeout)
-        output = format_asc_log(self.session.before)
-        output_lines = output.split('\n')
+        # output = format_asc_log(self.session.before)
+        output = self.session.before
+        output_lines = output
         return output_lines[1:-1], output_lines[0]
 
     def __scp__(self, local, destination, password, recursive, timeout=-1):

@@ -24,12 +24,13 @@ if __name__ == '__main__':
     args = parse_args(sys.argv[2:])
     kernel_build = args.build_num
     url = args.url
-    kernel_package_dir = "/Users/%s/kernel_package/%s" % (USER_ROOT, kernel_build)
+    kernel_package_dir = "/home/%s/kernel_package/%s/" % (USER_ROOT, kernel_build)
     if not os.path.exists(kernel_package_dir):
-        os.chdir("/Users/%s/kernel_package" % USER_ROOT)
+        os.chdir("/home/%s/kernel_package" % USER_ROOT)
         os.mkdir(kernel_build)
     # 指定输出文件, 相当于 `-O output`
     else:
         pass
-    filename = wget.download(url, out=kernel_package_dir)
+    # os.chdir(kernel_package_dir)
+    filename = wget.download(url, kernel_package_dir + kernel_build + '.log')
     print(filename)

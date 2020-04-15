@@ -94,23 +94,23 @@ def parse_args(arg_list):
     """osit runner arg parser"""
     parser = argparse.ArgumentParser(description="OS-independent test runner",
                                      epilog="Don't panic!")
-    parser.add_argument("-t", dest="template", required=True,
-                        action="store", help="template: osi test type")
-    parser.add_argument("-i", dest="target_list",
-                        action="store",
-                        help="targe list: single or multiple test case")
-    parser.add_argument("-f", dest="scenario_name",
-                        action="store",
-                        help="scenario name: scenario file defined in runtest")
-    parser.add_argument("-d", dest="ltp_dir",
-                        action="store",
-                        help="ltp directory: the ltp tool path")
+    # parser.add_argument("-t", dest="template", required=True,
+    #                     action="store", help="template: osi test type")
+    # parser.add_argument("-i", dest="target_list",
+    #                     action="store",
+    #                     help="targe list: single or multiple test case")
+    # parser.add_argument("-f", dest="scenario_name",
+    #                     action="store",
+    #                     help="scenario name: scenario file defined in runtest")
+    # parser.add_argument("-d", dest="ltp_dir",
+    #                     action="store",
+    #                     help="ltp directory: the ltp tool path")
     parser.add_argument("-b", dest="kernel_build", required=True,
                         action="store",
                         help="kernel build: kernel build num need replace")
-    parser.add_argument("-p", dest="product", required=True,
-                        action="store",
-                        help="product: the product type")
+    # parser.add_argument("-p", dest="product", required=True,
+    #                     action="store",
+    #                     help="product: the product type")
     parser.add_argument("-D", dest="device_name", required=True,
                         action="store",
                         help="device name: testing device name")
@@ -146,7 +146,8 @@ def replace_kernel(test_session, kernel_build, password=None):
     file_to_send_vmlinuz = ""
     file_to_send_modules = ""
     file_to_send_config = ""
-
+    # if not os.path.exists(kernel_package_dir):
+    #     os.makedirs(kernel_untar_dir)
     os.chdir(kernel_package_dir)
     for name in os.listdir(kernel_package_dir):
         if name.endswith(".tar.bz2"):
@@ -175,11 +176,11 @@ def replace_kernel(test_session, kernel_build, password=None):
             file_to_send_config = name
     osit_logger.info("kernel is %s, module is %s, config is %s", file_to_send_vmlinuz, file_to_send_modules,
                      file_to_send_config)
-    if not (file_to_send_vmlinuz and file_to_send_modules and file_to_send_config):
-        osit_logger.info("image error: please check your kernel image")
-        return False
+    # if not (file_to_send_vmlinuz and file_to_send_modules and file_to_send_config):
+    #     osit_logger.info("image error: please check your kernel image")
+    #     return False
 
-    if test_session.host.startswith('*'):
+    if test_session.host:
         osit_logger.info("Do kernel replacement for %s", test_session.host)
         test_session.sendcommand("mkdir -p " + clr_tmp_dst, timeout=10)
         test_session.sendcommand("rm -rf %s/*" % clr_tmp_dst, timeout=10)
@@ -243,7 +244,7 @@ def reboot_device(test_session, user, host, password=None):
 
 def check_kernel_version(test_session, kernel_version_modules):
     """After replace kernel, need to check kernel version"""
-    logs, _ = test_session.sendcommand(KERNEL_INFO, timeout=10)
+    logs = test_session.sendcommand(KERNEL_INFO, timeout=10)
     if kernel_version_modules in logs:
         osit_logger.info("Check kernel version passed!")
         return 0
@@ -502,11 +503,11 @@ def main(arg_list):
     password = args.password
     port = args.port
     dead_counts = 0
-    std_log_fnm = "%s-%s-%s" % (args.kernel_build,
-                                args.device_name,
-                                DATE_FORMAT)
-    test_data_dir = os.path.join(TEST_DIR, std_log_fnm)
-    add_logger_hander(test_data_dir)
+    # std_log_fnm = "%s-%s-%s" % (args.kernel_build,
+    #                             args.device_name,
+    #                             DATE_FORMAT)
+    # test_data_dir = os.path.join(TEST_DIR, std_log_fnm)
+    # add_logger_hander(test_data_dir)
 
     if args.device_name == "icl_simics":
         simics_test = start_simics(args.kernel_build, user, host, port, password)
@@ -527,10 +528,10 @@ def main(arg_list):
                                      password,
                                      )
         check_kernel = check_kernel_version(test_session, kernel_verison_modules)
-
         if check_kernel == 1:
             raise KernelErrorException("Wrong kernel version!")
-    runcommand_sync_rtc = "hwclock -l"
+    # runcommand_sync_rtc = "hwclock -l"
+    runcommand_sync_rtc = "hwclock"
     logs, _ = test_session.sendcommand(runcommand_sync_rtc, timeout=10)
     '''
     proc_run = start_ositest(test_data_dir,
