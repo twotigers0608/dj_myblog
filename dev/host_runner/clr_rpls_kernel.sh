@@ -2,7 +2,7 @@
 #image 文件
 IMAGE_DST='/boot/'
 #lib 文件
-LIB_DST='/lib/modules'
+LIB_DST='/lib/modules/'
 CFG_DST='/lib/kernel'
 LOADER='/boot/loader/loader.conf'
 ENTRY_DIR='/boot/loader/entries'
@@ -32,9 +32,9 @@ while getopts "k:l:c:h?" opt; do
       l)
         LIB=${OPTARG}
         ;;
-      c)
-        CONFIG=${OPTARG}
-        ;;
+    #   c)
+    #     CONFIG=${OPTARG}
+    #     ;;
       h|?)
         usage
         ;;
@@ -49,49 +49,49 @@ if [ -z "$LIB" ] ; then
     echo "no lib!"
     usage
 fi
-if [ -z "$CONFIG" ] ; then
-    echo "no config!"
-    usage
-fi
+# if [ -z "$CONFIG" ] ; then
+#     echo "no config!"
+#     usage
+# fi
 
-LOADER_CONF="default Clear-linux-$(echo $VMLINUZ | cut -d '-' -f 2,3)"
+LOADER_CONF="default yocto-$(echo $VMLINUZ | cut -d '-' -f 2,3)"
 ENTRY="${ENTRY_DIR}/$( echo ${LOADER_CONF} | cut -d ' ' -f 2 ).conf"
 
 
 INFO(){
-    echo "[clr][$(date +%m%d-%H:%M:%S)]: $@"
+    echo "[yocto][$(date +%m%d-%H:%M:%S)]: $@"
 }
 
 check_params(){
     local vmlinuz=$1
     local lib=$2
     local config=$3
-    if [ $# -ne 3 ]; then
+    if [ $# -ne 2 ]; then
         INFO "target vmlinuz lib and config are needed"
         exit 1
     else
         [ -f "$vmlinuz" ] || INFO "error, $vmlinuz file is not existent"
         [ -d "$lib" ] || INFO "error, $lib module is not existent"
-        [ -f "$config" ] || INFO "error, $config file is not existent"
+        # [ -f "$config" ] || INFO "error, $config file is not existent"
     fi
 }
 
 replace_kernel(){
-    INFO "Delete original PKT kernel file"
+    INFO "Delete original yocto kernel file"
     rm -rf $IMAGE_DST/bzImage*
     INFO "Copy $VMLINUZ to $IMAGE_DST"
     cp $VMLINUZ $IMAGE_DST
     [ $? -eq 0 ] && INFO "Copy kernel finished" || INFO "error, copy $VMLINUZ failed"
     INFO "Delete original PKT kernel modules"
-    rm -rf $LIB_DST/*kernel*
+    rm -rf $LIB_DST/*
     INFO "Copy $LIB to $LIB_DST"
     cp -rf $LIB $LIB_DST
     [ $? -eq 0 ] && INFO "Copy module finished" || INFO "error, copy $LIB failed"
-    INFO "Delete original PKT kernel config"
-    rm -rf $CFG_DST/*PKT*
-    INFO "Copy $CONFIG to $CFG_DST"
-    cp -rf $CONFIG $CFG_DST
-    [ $? -eq 0 ] && INFO "Copy config finished" || INFO "error, copy $CONFIG failed"
+    # INFO "Delete original PKT kernel config"
+    # rm -rf $CFG_DST/*PKT*
+    # INFO "Copy $CONFIG to $CFG_DST"
+    # cp -rf $CONFIG $CFG_DST
+    # [ $? -eq 0 ] && INFO "Copy config finished" || INFO "error, copy $CONFIG failed"
 
     INFO "backup and modify $LOADER"
     cp $LOADER ${LOADER}.bak
