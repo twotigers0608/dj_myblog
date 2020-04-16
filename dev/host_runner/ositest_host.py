@@ -527,6 +527,7 @@ def main(arg_list):
                                      host,
                                      password,
                                      )
+        #todo 解决替换kernel后的检查信息
         check_kernel = check_kernel_version(test_session, kernel_verison_modules)
         if check_kernel == 1:
             raise KernelErrorException("Wrong kernel version!")
