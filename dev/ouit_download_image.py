@@ -26,11 +26,10 @@ if __name__ == '__main__':
     url = args.url
     kernel_package_dir = "/home/%s/kernel_package/%s/" % (USER_ROOT, kernel_build)
     if not os.path.exists(kernel_package_dir):
-        os.chdir("/home/%s/kernel_package" % USER_ROOT)
+        os.chdir("/home/%s/kernel_package/" % USER_ROOT)
         os.mkdir(kernel_build)
     # 指定输出文件, 相当于 `-O output`
-    else:
-        pass
+
     # os.chdir(kernel_package_dir)
-    filename = wget.download(url, kernel_package_dir + kernel_build + '.log')
+    filename = wget.download(url, kernel_package_dir + kernel_build + '.tar.bz2')
     print(filename)

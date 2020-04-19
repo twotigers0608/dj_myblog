@@ -155,7 +155,9 @@ def replace_kernel(test_session, kernel_build, password=None):
             osit_logger.info("-------------------- tar_bz2_filename: %s --------------------", tar_bz2_filename)
         else:
             raise KernelErrorException("Can't find kernel package!")
-
+    #Does the folder exist
+    if not os.path.exists(kernel_untar_dir):
+        os.makedirs(kernel_untar_dir)
     if kernel_build in tar_bz2_filename:
         osit_logger.debug("start to decompression kernel package...")
         archive = tarfile.open(tar_bz2_filename, 'r:bz2')
@@ -163,7 +165,6 @@ def replace_kernel(test_session, kernel_build, password=None):
         for tarinfo in archive:
             archive.extract(tarinfo, kernel_untar_dir)
         archive.close()
-
     os.chdir(kernel_untar_dir)
     for name in os.listdir(kernel_untar_dir):
         if name.startswith("bzImage"):
@@ -533,7 +534,7 @@ def main(arg_list):
             raise KernelErrorException("Wrong kernel version!")
     # runcommand_sync_rtc = "hwclock -l"
     runcommand_sync_rtc = "hwclock"
-    logs, _ = test_session.sendcommand(runcommand_sync_rtc, timeout=10)
+    logs = test_session.sendcommand(runcommand_sync_rtc, timeout=10)
     '''
     proc_run = start_ositest(test_data_dir,
                              std_log_fnm,
