@@ -17,8 +17,12 @@ def format_asc_log(new_line):
         '\n\n': '\n',  # double lines to single
         '\r': '',  # change \r\n to \n
         '"': '\\\"',  # escape double quotes for YAML syntax
-        '\x1b': ''  # remove escape control characters
+        '\x1b': '' , # remove escape control characters
+        '\\r': '',
+        '\\n':'',
+
     }
+    new_line = str(new_line)
     logger.debug("Format input: %s", new_line)
     for key, value in replacements.items():
         new_line = new_line.replace(key, value)

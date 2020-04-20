@@ -141,7 +141,7 @@ def replace_kernel(test_session, kernel_build, password=None):
     kernel_untar_dir = "/home/%s/kernel_untar/%s" % (USER_ROOT, kernel_build)
     dest_path_vmlinuz = "/boot/vmlinuz"
     dest_path_modules = "/lib/modules/"
-    clr_rp_exe = "clr_rpls_kernel.sh"
+    clr_rp_exe = "/home/yan/Desktop/dj_myblog/dev/host_runner/clr_rpls_kernel.sh"
     clr_tmp_dst = "/data/kernel/tmp_img/"
     file_to_send_vmlinuz = ""
     file_to_send_modules = ""
@@ -193,11 +193,15 @@ def replace_kernel(test_session, kernel_build, password=None):
         try:
             osit_logger.info("chmod 755 %s" % os.path.join(clr_tmp_dst, clr_rp_exe))
             test_session.sendcommand("chmod 755 %s" % os.path.join(clr_tmp_dst, clr_rp_exe))
-            reply = test_session.sendcommand("/bin/bash %s -k %s -l %s -c %s " % \
+            # reply = test_session.sendcommand("/bin/bash %s -k %s -l %s -c %s " % \
+            #                                  (os.path.join(clr_tmp_dst, os.path.basename(clr_rp_exe)),
+            #                                   os.path.join(clr_tmp_dst, os.path.basename(file_to_send_vmlinuz)),
+            #                                   os.path.join(clr_tmp_dst, os.path.basename(file_to_send_modules)),
+            #                                   os.path.join(clr_tmp_dst, os.path.basename(file_to_send_config))))
+            reply = test_session.sendcommand("/bin/bash %s -k %s -l %s" % \
                                              (os.path.join(clr_tmp_dst, os.path.basename(clr_rp_exe)),
                                               os.path.join(clr_tmp_dst, os.path.basename(file_to_send_vmlinuz)),
-                                              os.path.join(clr_tmp_dst, os.path.basename(file_to_send_modules)),
-                                              os.path.join(clr_tmp_dst, os.path.basename(file_to_send_config))))
+                                              os.path.join(clr_tmp_dst, os.path.basename(file_to_send_modules))))
             osit_logger.debug(reply[-2])
             osit_logger.info("------Value List: -------- \n %s\n %s\n %s\n" % \
                              (os.path.join(clr_tmp_dst, os.path.basename(clr_rp_exe)),
