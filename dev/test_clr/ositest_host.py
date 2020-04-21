@@ -110,13 +110,22 @@ def parse_args(arg_list):
     return args
 
 
+def del_file(path):
+    for i in os.listdir(path):
+        path_file = os.path.join(path, i)  # 取文件绝对路径
+        if os.path.isfile(path_file):
+            os.remove(path_file)
+        else:
+            del_file(path_file)
+
+
 def replace_kernel(test_session, kernel_build, password=None):
     """
     tar-package format: branch_name-device_name-kernel_version-build_number.tar.bz2
             e.g: devbkc-bxt_gp-4.16.0-427.tar.bz2
     """
-    kernel_package_dir = "/data/kernel_package/%s" % kernel_build
-    kernel_untar_dir = "/data/kernel_untar/%s" % kernel_build
+    kernel_package_dir = "/data/kernel_package/"
+    kernel_untar_dir = "/data/kernel_untar/"
     dest_path_vmlinuz = "/boot/vmlinuz"
     dest_path_modules = "/lib/modules/"
     clr_rp_exe = "/data/workspace/replace-kernel-image/clr_rpls_kernel.sh"
@@ -136,6 +145,8 @@ def replace_kernel(test_session, kernel_build, password=None):
     # Does the folder exist
     if not os.path.exists(kernel_untar_dir):
         os.makedirs(kernel_untar_dir)
+    else:
+        del_file(kernel_untar_dir)
     if kernel_build in tar_bz2_filename:
         osit_logger.debug("start to decompression kernel package...")
         archive = tarfile.open(tar_bz2_filename, 'r:bz2')
