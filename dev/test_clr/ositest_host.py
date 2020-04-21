@@ -92,9 +92,6 @@ def parse_args(arg_list):
     # parser.add_argument("-p", dest="product", required=True,
     #                     action="store",
     #                     help="product: the product type")
-    parser.add_argument("-D", dest="device_name", required=True,
-                        action="store",
-                        help="device name: testing device name")
     parser.add_argument("-U", dest="user", required=True,
                         action="store",
                         help="user: user of hostname you need to connect")
@@ -118,11 +115,11 @@ def replace_kernel(test_session, kernel_build, password=None):
     tar-package format: branch_name-device_name-kernel_version-build_number.tar.bz2
             e.g: devbkc-bxt_gp-4.16.0-427.tar.bz2
     """
-    kernel_package_dir = "/home/%s/kernel_package/%s" % (USER_ROOT, kernel_build)
-    kernel_untar_dir = "/home/%s/kernel_untar/%s" % (USER_ROOT, kernel_build)
+    kernel_package_dir = "/data/kernel_package/%s" % kernel_build
+    kernel_untar_dir = "/data/kernel_untar/%s" % kernel_build
     dest_path_vmlinuz = "/boot/vmlinuz"
     dest_path_modules = "/lib/modules/"
-    clr_rp_exe = "/home/yan/Desktop/dj_myblog/dev/host_runner/clr_rpls_kernel.sh"
+    clr_rp_exe = "/data/workspace/replace-kernel-image/clr_rpls_kernel.sh"
     clr_tmp_dst = "/data/kernel/tmp_img/"
     file_to_send_vmlinuz = ""
     file_to_send_modules = ""
