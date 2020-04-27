@@ -15,8 +15,6 @@ def parse_args(arg_list):
                                      epilog="Don't panic!")
     parser.add_argument("-u", dest="url", required=True,
                         action="store", help="download url")
-    parser.add_argument("-b", dest="build_num",
-                        action="store", help="jenkins build num")
     args = parser.parse_args(arg_list)
     return args
 
@@ -34,10 +32,9 @@ if __name__ == '__main__':
 
     USER_ROOT = getpass.getuser()
     args = parse_args(sys.argv[2:])
-    kernel_build = args.build_num
     url = args.url
     # kernel_package_dir = "/home/%s/kernel_package/%s/" % (USER_ROOT, kernel_build)
-    kernel_package_dir = "/data/kernel_package/"
+    kernel_package_dir = "/data/kernel_package"
     if not os.path.exists(kernel_package_dir):
         os.chdir("/data/kernel_package")
     else:

@@ -86,9 +86,9 @@ def parse_args(arg_list):
     """osit runner arg parser"""
     parser = argparse.ArgumentParser(description="OS-independent test runner",
                                      epilog="Don't panic!")
-    parser.add_argument("-b", dest="kernel_build", required=True,
-                        action="store",
-                        help="kernel build: kernel build num need replace")
+    # parser.add_argument("-b", dest="kernel_build", required=True,
+    #                     action="store",
+    #                     help="kernel build: kernel build num need replace")
     # parser.add_argument("-p", dest="product", required=True,
     #                     action="store",
     #                     help="product: the product type")
@@ -119,7 +119,7 @@ def del_file(path):
             del_file(path_file)
 
 
-def replace_kernel(test_session, kernel_build, password=None):
+def replace_kernel(test_session, password=None):
     """
     tar-package format: branch_name-device_name-kernel_version-build_number.tar.bz2
             e.g: devbkc-bxt_gp-4.16.0-427.tar.bz2
@@ -147,7 +147,7 @@ def replace_kernel(test_session, kernel_build, password=None):
         os.makedirs(kernel_untar_dir)
     else:
         del_file(kernel_untar_dir)
-    if kernel_build in tar_bz2_filename:
+    if tar_bz2_filename:
         osit_logger.debug("start to decompression kernel package...")
         archive = tarfile.open(tar_bz2_filename, 'r:bz2')
         archive.debug = 1
@@ -277,9 +277,7 @@ def main(arg_list):
     if not test_session:
         osit_logger.error("Can't connect to the test device, exit!")
         return 1
-    kernel_verison_modules = replace_kernel(test_session,
-                                            args.kernel_build,
-                                            password)
+    kernel_verison_modules = replace_kernel(test_session, password)
     if not kernel_verison_modules:
         raise KernelErrorException("Wrong kernel image!")
 
