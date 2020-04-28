@@ -1,5 +1,6 @@
 # -*- coding:utf8 -*-
 import os
+import shutil
 import argparse
 import wget
 import getpass
@@ -24,8 +25,8 @@ def del_file(path):
         path_file = os.path.join(path, i)  # 取文件绝对路径
         if os.path.isfile(path_file):
             os.remove(path_file)
-        else:
-            del_file(path_file)
+        elif os.path.isdir(path_file):
+            shutil.rmtree(path_file, True)
 
 
 if __name__ == '__main__':
@@ -33,10 +34,12 @@ if __name__ == '__main__':
     USER_ROOT = getpass.getuser()
     args = parse_args(sys.argv[2:])
     url = args.url
-    # kernel_package_dir = "/home/%s/kernel_package/%s/" % (USER_ROOT, kernel_build)
-    kernel_package_dir = "/data/kernel_package"
+    kernel_package_dir = "/home/%s/kernel_package/" % (USER_ROOT)
+    # kernel_package_dir = "/data/kernel_package"
     if not os.path.exists(kernel_package_dir):
-        os.chdir("/data/kernel_package")
+        # os.makedirs("/data/kernel_package")
+        os.chdir("/home/{}".format(USER_ROOT))
+        os.makedirs("kernel_package")
     else:
         del_file(kernel_package_dir)
         # os.mkdir(kernel_build)
