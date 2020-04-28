@@ -6,6 +6,7 @@ import wget
 import getpass
 import sys
 import ssl
+import time
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -30,22 +31,32 @@ def del_file(path):
 
 
 if __name__ == '__main__':
-
-    USER_ROOT = getpass.getuser()
-    args = parse_args(sys.argv[2:])
-    url = args.url
-    kernel_package_dir = "/home/%s/kernel_package/" % (USER_ROOT)
-    # kernel_package_dir = "/data/kernel_package"
-    if not os.path.exists(kernel_package_dir):
-        # os.makedirs("/data/kernel_package")
-        os.chdir("/home/{}".format(USER_ROOT))
-        os.makedirs("kernel_package")
-    else:
-        del_file(kernel_package_dir)
-        # os.mkdir(kernel_build)
-    # 指定输出文件, 相当于 `-O output`
-    # os.chdir(kernel_package_dir)
-    # filename = wget.download(url, kernel_package_dir + kernel_build + '.tar.bz2')
-    filename = wget.download(url, kernel_package_dir)
-
-    print(filename)
+    try:
+        while True:
+            num = 0
+            USER_ROOT = getpass.getuser()
+            args = parse_args(sys.argv[2:])
+            url = args.url
+            kernel_package_dir = "/home/%s/kernel_package/" % (USER_ROOT)
+            # kernel_package_dir = "/data/kernel_package"
+            if not os.path.exists(kernel_package_dir):
+                # os.makedirs("/data/kernel_package")
+                os.chdir("/home/{}".format(USER_ROOT))
+                os.makedirs("kernel_package")
+            else:
+                del_file(kernel_package_dir)
+                # os.mkdir(kernel_build)
+            # 指定输出文件, 相当于 `-O output`
+            # os.chdir(kernel_package_dir)
+            # filename = wget.download(url, kernel_package_dir + kernel_build + '.tar.bz2')
+            filename = wget.download(url, kernel_package_dir)
+            if filename:
+                print(filename)
+                break
+            else:
+                time.sleep(10)
+                num +=1
+                if num >= 3:
+                    break
+    except Exception as e:
+        print(e)
