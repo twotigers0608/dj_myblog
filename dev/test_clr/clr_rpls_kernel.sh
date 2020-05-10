@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #image 文件
-IMAGE_DST='/boot/'
+IMAGE_DST='/boot/bzImage-kernel'
 #lib 文件
 LIB_DST='/lib/modules/'
 CFG_DST='/lib/kernel'
