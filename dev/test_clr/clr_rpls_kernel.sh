@@ -104,17 +104,18 @@ replace_kernel(){
         [ -z "${CUR_ENTRY}" ] || break
     done
     INFO "CUR_ENTRY: ${CUR_ENTRY}"
-    if [[ -n ${CUR_ENTRY} ]]; then
-        cp "${ENTRY_DIR}/${CUR_ENTRY}" "$ENTRY"
-        sed -i "2c linux /EFI/org.clearlinux/${VMLINUZ##*/}" $ENTRY
-        [ -n "$(cat $ENTRY | grep 'rootwait')" ] || sed -i 's/ rw/ rw rootwait/' $ENTRY
-        [ -n "$(cat $ENTRY | grep 'console=ttyS2')" ] || sed -i 's/ rw/ rw console=ttyS2/' $ENTRY
-        [ -n "$(cat $ENTRY | grep 'pcie_port_pm=off')" ] ||\
-        sed -i 's/ rw/ rw pcie_port_pm=off/' $ENTRY
-    else
-        INFO "Error. Current entry file was not found"
-        exit 2
-    fi
+#    if [[ -n ${CUR_ENTRY} ]]; then
+#        cp "${ENTRY_DIR}/${CUR_ENTRY}" "$ENTRY"
+#        sed -i "2c linux /EFI/org.clearlinux/${VMLINUZ##*/}" $ENTRY
+#        [ -n "$(cat $ENTRY | grep 'rootwait')" ] || sed -i 's/ rw/ rw rootwait/' $ENTRY
+#        [ -n "$(cat $ENTRY | grep 'console=ttyS2')" ] || sed -i 's/ rw/ rw console=ttyS2/' $ENTRY
+#        [ -n "$(cat $ENTRY | grep 'pcie_port_pm=off')" ] ||\
+#        sed -i 's/ rw/ rw pcie_port_pm=off/' $ENTRY
+#    else
+#        INFO "Error. Current entry file was not found"
+#        exit 2
+#    fi
+
 }
 
 check_params $VMLINUZ $LIB $CONFIG
