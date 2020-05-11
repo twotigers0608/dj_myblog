@@ -129,7 +129,7 @@ def replace_kernel(test_session, password=None):
     kernel_untar_dir = "/data/kernel_untar/"
     dest_path_vmlinuz = "/boot/vmlinuz"
     dest_path_modules = "/lib/modules/"
-    clr_rp_exe = "/data/workspace/replace-kernel-image/clr_rpls_kernel.sh"
+    clr_rp_exe = "/clr_rpls_kernel.sh"
     clr_tmp_dst = "/data/kernel/tmp_img/"
     file_to_send_vmlinuz = ""
     file_to_send_modules = ""
@@ -175,10 +175,10 @@ def replace_kernel(test_session, password=None):
         osit_logger.info("Do kernel replacement for %s", test_session.host)
         test_session.sendcommand("mkdir -p " + clr_tmp_dst, timeout=10)
         test_session.sendcommand("rm -rf %s/*" % clr_tmp_dst, timeout=10)
-        for item in [file_to_send_vmlinuz, file_to_send_modules, file_to_send_config, clr_rp_exe]:
+        for item in [file_to_send_vmlinuz, file_to_send_modules, clr_rp_exe]:
             test_session.scp_send(item, clr_tmp_dst, password, recursive=True, timeout=20)
         # 拷贝文件
-        test_session.scp_send(CWD + '/host_runner/' + clr_rp_exe, clr_tmp_dst, password, recursive=True, timeout=20)
+        test_session.scp_send(CWD + clr_rp_exe, clr_tmp_dst, password, recursive=True, timeout=20)
 
         try:
             osit_logger.info("chmod 755 %s" % os.path.join(clr_tmp_dst, clr_rp_exe))
