@@ -1,19 +1,19 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 """Author: Yifan Li
    Ssh Session module, include ShellSession
 """
 
 import logging
 import pexpect
+import paramiko
 import re
 from utils import format_asc_log
-
-
 
 SSH_NEWKEY_RE = r'Are you sure you want to continue connecting \(yes/no\)\?'
 SSH_WRONG_PWD = 'Permission denied, please try again.'
 PING_STATUS_RE = re.compile(r'(?P<transmit>[1-9][0-9]*) packets transmitted, ' +
                             r'(?P<receive>[1-9][0-9]*) received')
+
 
 class SSHConnectionError(Exception):
     """ SSH connection failed error"""
@@ -24,6 +24,7 @@ class SSHConnectionError(Exception):
 
 class SSHSession():
     """ SSH session class"""
+
     def __init__(self, user, host, password=None, shell_prompt=None, port=22):
         self.name = "SSHSession"
         self.logger = logging.getLogger(self.name)
@@ -37,7 +38,7 @@ class SSHSession():
         self.login_prompt_str = r':?~'
         self.pwd_prompt_str = '(\'s )?[Pp]assword:'
         self.shell_prompt_str = shell_prompt if shell_prompt \
-                                             else r"host_session\$"
+            else r"host_session\$"
         self.session_alive = False
         self.session = self.start_session(password)
         if not self.session:
@@ -49,7 +50,7 @@ class SSHSession():
         """ try connect to host with given param
             return session instance or None(connect failure)
         """
-        start_cmd = "ssh -p %s %s@%s" %(str(self.port), self.user, self.host)
+        start_cmd = "ssh -p %s %s@%s" % (str(self.port), self.user, self.host)
         session_process = pexpect.spawn(start_cmd)
         o = session_process.expect([pexpect.TIMEOUT, pexpect.EOF,
                                     self.login_prompt_str, self.pwd_prompt_str,
@@ -67,7 +68,7 @@ class SSHSession():
             # SSH does not have the public key. Just accept it.
             session_process.sendline('yes')
             session_process.expect(self.pwd_prompt_str)
-        #do password input
+        # do password input
         if not password:
             self.logger.error('No password input!')
             return None
@@ -105,7 +106,7 @@ class SSHSession():
         """
         self.logger.debug("Set shell prompt.")
         self.clean_session_buffer()
-        set_prompt_cmd = 'export PS1="%s"' %self.shell_prompt_str
+        set_prompt_cmd = 'export PS1="%s"' % self.shell_prompt_str
         self.session.sendline(set_prompt_cmd)
         set_pass = self.session.expect([self.shell_prompt_str, pexpect.EOF],
                                        timeout=1)
@@ -125,8 +126,8 @@ class SSHSession():
     def __scp__(self, local, destination, password, recursive, timeout=-1):
         """internal function, wrapps of scp"""
         recursive_signal = "-r" if recursive else ""
-        scp_command = "scp %s %s %s" %(recursive_signal, local, destination)
-        #TODO: Change this to be a static method
+        scp_command = "scp %s %s %s" % (recursive_signal, local, destination)
+        # TODO: Change this to be a static method
         self.logger.debug("Scp command: %s", scp_command)
         process = pexpect.spawn(scp_command)
         o = process.expect([pexpect.TIMEOUT, pexpect.EOF,
@@ -146,13 +147,13 @@ class SSHSession():
         if pwd_correct == 0:
             raise SSHConnectionError("Scp could not connect.")
         logs = format_asc_log(process.before).split('\n')[:-1]
-        #remove empty item at list end
+        # remove empty item at list end
         return logs
 
     def scp_send(self, local, remote,
                  password=None, recursive=False, timeout=-1):
         """ This method wraps 'scp <ORIGIN> <USER>@<HOST>:<DESTINATION>'"""
-        destination = "%s@%s:%s" %(self.user, self.host, remote)
+        destination = "%s@%s:%s" % (self.user, self.host, remote)
         origin = local
         logs = self.__scp__(origin, destination, password,
                             recursive, timeout)
@@ -166,7 +167,7 @@ class SSHSession():
     def scp_get(self, local, remote,
                 password=None, recursive=False, timeout=-1):
         """ This method wraps 'scp <USER>@<HOST>:<ORIGIN> <DESTINATION>'"""
-        origin = "%s@%s:%s" %(self.user, self.host, remote)
+        origin = "%s@%s:%s" % (self.user, self.host, remote)
         destination = local
         logs = self.__scp__(origin, destination, password,
                             recursive, timeout)
@@ -179,16 +180,16 @@ class SSHSession():
 
     def __ping__(self, timeout=2, count=1):
         """ Ping remote host, return logs """
-        ping_cmd = "ping %s -W %d -c %d" %(self.host, timeout, count)
+        ping_cmd = "ping %s -W %d -c %d" % (self.host, timeout, count)
         self.logger.debug("Ping: %s", ping_cmd)
         p = pexpect.spawn(ping_cmd)
-        o = p.expect([pexpect.EOF, pexpect.TIMEOUT], timeout=timeout+1)
-        #ensure expect could return
+        o = p.expect([pexpect.EOF, pexpect.TIMEOUT], timeout=timeout + 1)
+        # ensure expect could return
         if o == 1:
             logs = ["Ping command timeout!"]
         else:
             logs = format_asc_log(p.before).split('\n')[:-1]
-        return logs #remove empty item at end of list
+        return logs  # remove empty item at end of list
 
     def check_hang(self, timeout=2, count=1):
         """ Check remote host hang or not """
@@ -196,24 +197,24 @@ class SSHSession():
         self.logger.debug("Check host %s hang or not.", self.host)
         lines = self.__ping__(timeout=timeout, count=count)
         if len(lines) < 2:
-            #In this case the single line mostly like below:
+            # In this case the single line mostly like below:
             #    ping: unknown host <HOSTNAME>
             #    ping: bad number of packets to transmit.
-            #these are error msg when ping <HOST>, so return False
+            # these are error msg when ping <HOST>, so return False
             self.logger.error("Ping host %s error, it says:", self.host)
             host_alive = False
         else:
             ping_result = PING_STATUS_RE.search(lines[-2])
-            #ping normal lines like below:
+            # ping normal lines like below:
             #   PING <HOST> (<IP>) 56(84) bytes of data.
             #   64 bytes from <HOST> (<IP>): icmp_seq=1 ttl=63 time=0.725 ms
             #   --- <HOST> ping statistics ---
             #   1 packets transmitted, 1 received, 0% packet loss, time 0ms
             #   rtt min/avg/max/mdev = 0.725/0.725/0.725/0.000 ms
-            #so we see if line[-2] matches count then <HOST> works good
+            # so we see if line[-2] matches count then <HOST> works good
             if not ping_result:
                 self.logger.error("Ping host %s unexpected output, it says:",
-                                   self.host)
+                                  self.host)
                 host_alive = False
             else:
                 t, r = ping_result.group("transmit"), \
@@ -239,3 +240,12 @@ class SSHSession():
             for l in lines:
                 self.logger.error("Check hang output: %s", l)
         return host_alive
+
+    def paramiko_scp(self, host_ip, remote, local, username, password):
+        t = paramiko.Transport((host_ip, 22))
+        t.connect(username=username, password=password)  # 登录远程服务器
+        sftp = paramiko.SFTPClient.from_transport(t)  # sftp传输协议
+        src = remote
+        des = local
+        sftp.get(src, des)
+        t.close()
